@@ -30,9 +30,12 @@ class dataLoader():
         self.rulesDf.rename(columns=self.rulesDf.iloc[0], inplace = True)
         self.rulesDf.drop([0], inplace = True)
         
+        # remove rows with missing values
+        self.rulesDf.dropna(subset=['Class path (M)', 'Property path (M)'], inplace=True)
+
         Field_XPath = self.rulesDf["Field XPath (M)"].tolist()
-        Class_path = self.rulesDf["Class Path (M)"].tolist()
-        Property_path = self.rulesDf["Property Path (M)"].tolist()
+        Class_path = self.rulesDf["Class path (M)"].tolist()
+        Property_path = self.rulesDf["Property path (M)"].tolist()
 
         return Field_XPath, Class_path, Property_path
 
