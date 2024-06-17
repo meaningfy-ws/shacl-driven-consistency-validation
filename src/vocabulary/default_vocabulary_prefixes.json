@@ -1,0 +1,52 @@
+{
+		"xml": "http://www.w3.org/XML/1998/namespace",
+		"xsd": "http://www.w3.org/2001/XMLSchema#",
+		"rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+		"rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+		"owl": "http://www.w3.org/2002/07/owl#",
+		"skos": "http://www.w3.org/2004/02/skos/core#",
+		"dc": "http://purl.org/dc/elements/1.1/",
+		"dct": "http://purl.org/dc/terms/",
+		"foaf": "http://xmlns.com/foaf/0.1/",
+
+		"time": "http://www.w3.org/2006/time#",
+		"org": "http://www.w3.org/ns/org#",
+
+		"cc": "http://creativecommons.org/ns#",
+		"vann": "http://purl.org/vocab/vann/",
+
+
+		"epo": "http://data.europa.eu/a4g/ontology#",
+		"epo-not": "http://data.europa.eu/a4g/ontology#",
+		"epd": "http://data.europa.eu/a4g/resource/",
+		"tedm": "http://data.europa.eu/a4g/mapping/sf-rml/",
+		"tedd": "http://data.europa.eu/a4g/dataset/sf-rml/",
+		"locn": "http://www.w3.org/ns/locn#",
+		"legal": "https://www.w3.org/ns/legal#",
+
+		"cv": "http://data.europa.eu/m8g/",
+		"cccev": "http://data.europa.eu/m8g/",
+		"cpov": "http://data.europa.eu/m8g/",
+		"cpv": "http://data.europa.eu/m8g/",
+		"geosparql": "http://www.opengis.net/ont/geosparql#",
+		"dul": "http://www.loa-cnr.it/ontologies/DUL.owl#",
+
+		"epor": "http://data.europa.eu/a4g/rule#",
+		"epos": "http://data.europa.eu/a4g/shape#",
+
+
+		"rr": "http://www.w3.org/ns/r2rml#",
+		"rml": "http://semweb.mmlab.be/ns/rml#",
+
+		"ql": "http://semweb.mmlab.be/ns/ql#",
+		
+		"grel": "http://users.ugent.be/~bjdmeest/function/grel.ttl#",
+		
+		"xf": "http://www.w3.org/TR/xforms-xpath#",
+		
+		"map" : "http://mapping.example.com/", 
+		"sd": "http://www.w3.org/ns/sparql-service-description#",
+		"ht": "http://www.w3.org/2006/http#",
+		"v": "http://rdf.data-vocabulary.org/#"
+  }
+  
