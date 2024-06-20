@@ -16,11 +16,11 @@ class dataLoader():
         
     def load_metadata(self):
 
-        metaData_info = f"""The SHACL shapes graph is automatic translated from the Conceptual Mapping which has: 
-        Identifier: {self.metadataDf.loc[self.metadataDf['Field'] == 'Identifier', 'Value examples'].values[0]}, 
-        Description {self.metadataDf.loc[self.metadataDf['Field'] == 'Description', 'Value examples'].values[0],},
-        Mapping Version {self.metadataDf.loc[self.metadataDf['Field'] == 'Mapping Version', 'Value examples'].values[0]}, and
-        EPO version {self.metadataDf.loc[self.metadataDf['Field'] == 'EPO version', 'Value examples'].values[0]}."""
+        metaData_info = f"""# The SHACL shapes graph is automatic translated from the Conceptual Mapping below: 
+        # Identifier: {self.metadataDf.loc[self.metadataDf['Field'] == 'Identifier', 'Value examples'].values[0]}, 
+        # Description {self.metadataDf.loc[self.metadataDf['Field'] == 'Description', 'Value examples'].values[0],},
+        # Mapping Version {self.metadataDf.loc[self.metadataDf['Field'] == 'Mapping Version', 'Value examples'].values[0]}
+        # EPO version {self.metadataDf.loc[self.metadataDf['Field'] == 'EPO version', 'Value examples'].values[0]}."""
 
         self.baseXpath = self.metadataDf.loc[self.metadataDf['Field'] == 'Base XPath', 'Value examples'].values[0]
         

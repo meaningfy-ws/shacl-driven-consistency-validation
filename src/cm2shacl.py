@@ -194,6 +194,11 @@ class CMtoSHACL():
 
     def writeShapeToFile(self, file_name):
         self.g.serialize(destination=file_name, format='turtle')
+        # write comments to the beginning of the file
+        metaData_info, baseXpath = self.dL.load_metadata()
+        with open(file_name, 'r') as original: data = original.read()
+        with open(file_name, 'w') as modified: modified.write(f"{metaData_info}\n" + data)
+
 
     def evaluate_file(self, args):
         # load the data
