@@ -21,7 +21,9 @@ class CMtoSHACL():
         self.g.bind("rdf", RDF)
         self.g.bind("epo", Namespace(self.vocab["epo"]))
 
-        self.indentifiers = {}
+        self.identifiers = {}
+        self.shaclinDict = {}
+
 
     def translate(self):
         # load the data
@@ -51,39 +53,57 @@ class CMtoSHACL():
                         self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1], True)
                     else:
                         self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1])
+
+        self.addSHACLin()
                 
 
     def addNodePropertyShape(self, c, p, next_c, next_p, is_last=False):
         c = URIRef(c)
         p = URIRef(p)
-        if c not in self.indentifiers:
-            self.indentifiers[c] = {}
+        if c not in self.identifiers:
+            self.identifiers[c] = {}
             self.g.add((c, RDF.type, SH.NodeShape))
             self.g.add((c, SH.targetClass, c))
-        if p not in self.indentifiers[c]:
-            self.indentifiers[c][p] = BNode()
-            self.g.add((c, SH.property, self.indentifiers[c][p]))
-            self.g.add((self.indentifiers[c][p], SH.path, p))
+        if p not in self.identifiers[c]:
+            self.identifiers[c][p] = BNode()
+            self.g.add((c, SH.property, self.identifiers[c][p]))
+            self.g.add((self.identifiers[c][p], SH.path, p))
             
         if is_last == False and next_c != None:
-            self.g.add((self.indentifiers[c][p], SH["class"], URIRef(next_c)))
-            self.g.add((self.indentifiers[c][p], SH["nodeKind"], SH["IRI"]))
+            self.g.add((self.identifiers[c][p], SH["class"], URIRef(next_c)))
+            self.g.add((self.identifiers[c][p], SH["nodeKind"], SH["IRI"]))
         elif is_last == True:
             next_c_type = self.checkType(next_c)
             if next_c_type == "class":
-                self.g.add((self.indentifiers[c][p], SH["class"], URIRef(next_c)))
-                self.g.add((self.indentifiers[c][p], SH["nodeKind"], SH["IRI"]))
+                self.g.add((self.identifiers[c][p], SH["class"], URIRef(next_c)))
+                self.g.add((self.identifiers[c][p], SH["nodeKind"], SH["IRI"]))
             elif next_c_type == "datatype":
-                self.g.add((self.indentifiers[c][p], SH["datatype"], next_c))
-                self.g.add((self.indentifiers[c][p], SH["nodeKind"], SH["Literal"]))
+                self.g.add((self.identifiers[c][p], SH["datatype"], next_c))
+                self.g.add((self.identifiers[c][p], SH["nodeKind"], SH["Literal"]))
             elif next_c_type == None:
-                self.g.add((self.indentifiers[c][p], SH["nodeKind"], SH["IRI"]))
+                self.g.add((self.identifiers[c][p], SH["nodeKind"], SH["IRI"]))
             if next_p != "?value":
-                self.g.add((self.indentifiers[c][p], SH["hasValue"], Literal(next_p)))
+                # self.g.add((self.identifiers[c][p], SH["hasValue"], Literal(next_p)))
+                currentIn = self.shaclinDict.get(self.identifiers[c][p], [])
+                currentIn.append(Literal(next_p))
+                self.shaclinDict[self.identifiers[c][p]] = currentIn
                 #TODO to be added nodeKind
 
 
-            
+    def addSHACLin(self):
+        for k, v in self.shaclinDict.items():
+            bn = BNode()
+            # translate element in v to a list of literals
+            self.g.add((k,SH["in"],bn))
+            for i in v[:-1]:
+                self.g.add((bn,RDF.first,i))
+                nextBn = BNode()
+                self.g.add((bn,RDF.rest,nextBn))
+                bn = nextBn
+            self.g.add((bn,RDF.first,v[-1]))
+            self.g.add((bn,RDF.rest,RDF.nil))
+    
+    
     def parseClassPath(self, class_path):
         class_path_clean = []
         if "<http" not in class_path:
