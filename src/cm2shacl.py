@@ -23,11 +23,13 @@ class CMtoSHACL():
 
         self.identifiers = {}
         self.shaclinDict = {}
+        self.datatypeDict = {}
 
 
     def translate(self):
         # load the data
         self.Field_XPath, self.Class_path, self.Property_path = self.dL.load_rules()
+        self.controlled_list_c1 = self.dL.load_controlled_list()["CL1"]
 
         # loop through the rules
         for XPath, Class, Property in zip(self.Field_XPath, self.Class_path, self.Property_path):
@@ -35,16 +37,16 @@ class CMtoSHACL():
             if "{" in Property and "UNION" in Property:
                 Property = [i.replace("{","").replace("}","").strip() for i in Property.split("UNION")]
                 for p in Property:
-                    c_list = self.parseClassPath(Class)
+                    c_list = self.parseClassPath(Class, XPath)
                     p_list = self.parsePropertyPath(p)
             else:
-                c_list = self.parseClassPath(Class)
+                c_list = self.parseClassPath(Class, XPath)
                 p_list = self.parsePropertyPath(Property)
             
             if len(c_list) != len(p_list):
-                print("parsing the rule: ", Class, Property)
-                print("c_list: ", c_list)
-                print("p_list: ", p_list)
+                print("The length of the rule is not consistent: ", Class, Property)
+                print("class list: ", c_list)
+                print("property list: ", p_list)
             else:
                 for index in range(len(c_list) - 1):
                     c = c_list[index]
@@ -55,6 +57,7 @@ class CMtoSHACL():
                         self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1])
 
         self.addSHACLin()
+        self.addSHACLdatatype()
                 
 
     def addNodePropertyShape(self, c, p, next_c, next_p, is_last=False):
@@ -78,7 +81,10 @@ class CMtoSHACL():
                 self.g.add((self.identifiers[c][p], SH["class"], URIRef(next_c)))
                 self.g.add((self.identifiers[c][p], SH["nodeKind"], SH["IRI"]))
             elif next_c_type == "datatype":
-                self.g.add((self.identifiers[c][p], SH["datatype"], next_c))
+                # self.g.add((self.identifiers[c][p], SH["datatype"], next_c))
+                currentDatatype = self.datatypeDict.get(self.identifiers[c][p], [])
+                currentDatatype.append(next_c)
+                self.datatypeDict[self.identifiers[c][p]] = currentDatatype
                 self.g.add((self.identifiers[c][p], SH["nodeKind"], SH["Literal"]))
             elif next_c_type == None:
                 self.g.add((self.identifiers[c][p], SH["nodeKind"], SH["IRI"]))
@@ -103,8 +109,28 @@ class CMtoSHACL():
             self.g.add((bn,RDF.first,v[-1]))
             self.g.add((bn,RDF.rest,RDF.nil))
     
-    
-    def parseClassPath(self, class_path):
+    def addSHACLdatatype(self):
+        for k, v in self.datatypeDict.items():
+            # remove duplicates
+            v = list(set(v))
+            if len(v) == 1:
+                self.g.add((k,SH["datatype"],v[0]))
+            else:
+                bn = BNode()
+                self.g.add((k,SH["or"],bn))
+                for i in v[:-1]:
+                    datatypeBn = BNode()
+                    self.g.add((bn,RDF.first,datatypeBn))
+                    self.g.add((datatypeBn,SH["datatype"],i))
+                    nextBn = BNode()
+                    self.g.add((bn,RDF.rest,nextBn))
+                    bn = nextBn
+                datatypeBn = BNode()
+                self.g.add((bn,RDF.first,datatypeBn))
+                self.g.add((datatypeBn,SH["datatype"],v[-1]))
+                self.g.add((bn,RDF.rest,RDF.nil))
+
+    def parseClassPath(self, class_path, XPath):
         class_path_clean = []
         if "<http" not in class_path:
             class_path = class_path.split("/")
@@ -115,11 +141,11 @@ class CMtoSHACL():
                 continue
             if "(from CL1)" in c:
                 c = c.replace("(from CL1)", "")
-                c = self.controlledClassReplace(c.strip(), "CL1")
+                c = self.controlledClassReplace(c.strip(), "CL1", XPath)
                 class_path_clean.append(self.wordToURL(c))
             elif "(from CL2)" in c:
                 c = c.replace("(from CL2)", "")
-                c = self.controlledClassReplace(c.strip(), "CL2")
+                c = self.controlledClassReplace(c.strip(), "CL2", XPath)
                 class_path_clean.append(self.wordToURL(c))
             else:
                 class_path_clean.append(self.wordToURL(c.strip()))
@@ -161,8 +187,13 @@ class CMtoSHACL():
 
         return property_path_clean
 
-    def controlledClassReplace(self, c, list_type):
-        return c # TODO: implement this
+    def controlledClassReplace(self, c, list_type, XPath):
+        class_XPath_fragment = XPath.split("/")[1]
+        if list_type == "CL1":
+            c = self.controlled_list_c1.get(class_XPath_fragment, c)
+        elif list_type == "CL2":
+            c = c #TODO: DOUBLE CHECK CL2 CONTROLLED LIST
+        return c 
 
     def wordToURL(self, word):
         if word == "?value" or word == "true" or word == "false":

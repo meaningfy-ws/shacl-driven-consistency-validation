@@ -40,9 +40,13 @@ class dataLoader():
         return Field_XPath, Class_path, Property_path
 
     def load_controlled_list(self):
-        pass
+        # remove first row
+        self.cl1Df.rename(columns=self.cl1Df.iloc[0], inplace = True)
+        # Convert Mapping Reference (in ePO) to value and XML PATH Fragment to key
+        cl1Df_dict = dict(zip(self.cl1Df['XML PATH Fragment'][1:], self.cl1Df['Mapping Reference (in ePO)'][1:]))
+        return {'CL1':cl1Df_dict}
 
 
 # dL = dataLoader("TED/conceptual_mappings.xlsx")
-# data = dL.load_rules()
+# data = dL.load_controlled_list()
 # print(data)
