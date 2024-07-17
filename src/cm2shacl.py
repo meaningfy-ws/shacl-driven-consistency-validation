@@ -2,11 +2,10 @@ import rdflib
 from rdflib import Graph, URIRef, Literal, Namespace, BNode
 from rdflib.namespace import RDF, RDFS,XSD, SH
 from pyshacl import validate
-import argparse
 import re
 
-from data_load import dataLoader
-from utils import json_load
+from .data_load import dataLoader
+from .utils import json_load
 
 class CMtoSHACL():
     def __init__(self):
@@ -271,12 +270,3 @@ class CMtoSHACL():
         else:
             self.writeShapeToFile(args.cm_file + ".shape.ttl")
         
-        
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Translate Conceptual Mapping to SHACL')
-    parser.add_argument("cm_file",  help='conceptual mapping file location', type=str)
-    parser.add_argument("-o", "--output_file", help='output file location', type=str, default=None)
-    args = parser.parse_args()
-
-    C2S = CMtoSHACL()
-    C2S.evaluate_file(args)
