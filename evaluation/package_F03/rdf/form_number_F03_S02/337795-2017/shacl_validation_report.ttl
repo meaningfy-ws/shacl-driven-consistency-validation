@@ -1,0 +1,817 @@
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_ZqK4WZRgemPDn3Ysr8vzYE> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_EfkPABTMGaKJjagCr4NM39> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_WgiQcjsEWj6tuR8LMPEZMV> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_5ZLiMRkUgqFjmY8Likn4Ux> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractorOrganisationAddress_fGsbEzmLvKJwWkqnbQps9N> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postName> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb108 ;
+            sh:value "Madrid" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_dAXP6ExRvmiPUWTM79za5E> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Procedure_faF7Q5dyoGpXu3Ru4RGg73> ;
+            sh:resultMessage "Value class is not in classes (epo:DirectAwardTerm, epo:ProcedureTerm, epo:ReviewTerm)" ;
+            sh:resultPath epo:isSubjectToProcedureSpecificTerm ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb113 ;
+            sh:value <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_DirectAwardTerm_C5nS5y4XErvUqzRNMARW8r> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_5ZLiMRkUgqFjmY8Likn4Ux> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_fJApzpBfAGn3Gt6wej4m5k> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postName> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb108 ;
+            sh:value "Zamora" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_R9qSF8NjURavF277ftM5By> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_YYoP8Sxj9ccJAKaaJ8KoJG> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_QuP4oyiZdKbWwRDyyENkx5> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_TJTXbsBLuodUzD4KtPx8yf> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_GKVFFsdKyAthGpxfCSGWDL> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_ZqK4WZRgemPDn3Ysr8vzYE> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContactPoint_UU5jeWb9wCr2uQLNME2nwM> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://data.europa.eu/m8g/telephone> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape [ sh:datatype rdf:langString ;
+                    sh:nodeKind sh:Literal ;
+                    sh:path <http://data.europa.eu/m8g/telephone> ] ;
+            sh:value "+34 923291100" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Procedure_faF7Q5dyoGpXu3Ru4RGg73> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call> not in list ['Literal(\"http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial\")', 'Literal(\"http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted\")', 'Literal(\"http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call\")', 'Literal(\"http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call\")', 'Literal(\"http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation\")', 'Literal(\"http://publications.europa.eu/resource/authority/procurement-procedure-type/open\")']" ;
+            sh:resultPath epo:hasProcedureType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape [ sh:in ( "http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call" "http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial" "http://publications.europa.eu/resource/authority/procurement-procedure-type/open" "http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation" "http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted" "http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call" ) ;
+                    sh:nodeKind sh:IRI ;
+                    sh:path epo:hasProcedureType ] ;
+            sh:value <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_BUrBJRv6JucyVRyPNLDhCX> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_G6gvLtAxsfbeCRYod8ZZ7g> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_Qh2dhiBoHhwHtFAWsHy77k> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_fx4hLAs4Z38Bh5cGsvG7gk> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_82EGRwGgP7yEXDqsBoGsLw> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_b3bxZYyEQFnFreTFXRj2pN> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_cJZWJqZcEPiptZegK7cD8o> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_K6Vip2R8P9d3uXDkcDpYqF> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractorOrganisationAddress_jWk7Q5mQHDzJUFWcUXvZRM> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postName> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb108 ;
+            sh:value "Madrid" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_mTEvhKnWX8fXwfVid2J7WM> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_TcgeCvAjzgJL9XPXfch3C6> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_B5i9E4pQTX7XCkyEjNt7UC> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_892jPigYFVfQuuQEioV5g7> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_KR7KHtyyvJVi6BLJ4F48YF> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContactPoint_UU5jeWb9wCr2uQLNME2nwM> ;
+            sh:resultMessage "Value is not Literal with datatype xsd:anyURI" ;
+            sh:resultPath <http://data.europa.eu/m8g/email> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:anyURI ;
+                    sh:nodeKind sh:Literal ;
+                    sh:path <http://data.europa.eu/m8g/email> ] ;
+            sh:value "uca.husa@saludcastillayleon.es" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Notice> ;
+            sh:resultMessage "Node epd:id_2017-S-164-337795_Winner_C3T3nTexRiBTgRTniD3sb7 does not conform to one or more shapes in [ sh:class epo:Mediator ] , [ sh:class epo:Buyer ] , [ sh:class epo:Reviewer ] , [ sh:class epo:ReviewProcedureInformationProvider ]" ;
+            sh:resultPath epo:announcesRole ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:OrConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb48 ;
+            sh:value <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Winner_C3T3nTexRiBTgRTniD3sb7> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_DGubhTSDxCCPkKuRQcaACD> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postName> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb108 ;
+            sh:value "Salamanca" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractorOrganisationAddress_C3T3nTexRiBTgRTniD3sb7> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postName> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb108 ;
+            sh:value "Madrid" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_AVSiFGXeZvbvgMmMDWY3h7> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_R9qSF8NjURavF277ftM5By> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_EqxKeBX4cL5CmdQD8JWgA5> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_R6LXWtxmsHpX2fZeXmNYBn> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_cJZWJqZcEPiptZegK7cD8o> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_EqxKeBX4cL5CmdQD8JWgA5> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_WgiQcjsEWj6tuR8LMPEZMV> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_DZGjLtmb6Y5UmZBFAh8YJd> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Notice> ;
+            sh:resultMessage "Node epd:id_2017-S-164-337795_Winner_fGsbEzmLvKJwWkqnbQps9N does not conform to one or more shapes in [ sh:class epo:Mediator ] , [ sh:class epo:Buyer ] , [ sh:class epo:Reviewer ] , [ sh:class epo:ReviewProcedureInformationProvider ]" ;
+            sh:resultPath epo:announcesRole ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:OrConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb48 ;
+            sh:value <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Winner_fGsbEzmLvKJwWkqnbQps9N> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_bUw6RAsoMhcWzoHqdWboLP> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postCode> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape [ sh:datatype rdf:langString ;
+                    sh:nodeKind sh:Literal ;
+                    sh:path <http://www.w3.org/ns/locn#postCode> ] ;
+            sh:value "37007" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_eamppjMLP9e8HyWKgmvo6X> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_QuP4oyiZdKbWwRDyyENkx5> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_3UgB4SZDRExoKn9SCT9ya4> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Procedure_faF7Q5dyoGpXu3Ru4RGg73> ;
+            sh:resultMessage "Value class is not in classes (epo:DirectAwardTerm, epo:ProcedureTerm, epo:ReviewTerm)" ;
+            sh:resultPath epo:isSubjectToProcedureSpecificTerm ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb113 ;
+            sh:value <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_DirectAwardTerm_C5nS5y4XErvUqzRNMARW8r> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_NLqE5jWBXrmCpftysHo7Yk> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_B5i9E4pQTX7XCkyEjNt7UC> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Notice> ;
+            sh:resultMessage "Node epd:id_2017-S-164-337795_Winner_jWk7Q5mQHDzJUFWcUXvZRM does not conform to one or more shapes in [ sh:class epo:Mediator ] , [ sh:class epo:Buyer ] , [ sh:class epo:Reviewer ] , [ sh:class epo:ReviewProcedureInformationProvider ]" ;
+            sh:resultPath epo:announcesRole ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:OrConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb48 ;
+            sh:value <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Winner_jWk7Q5mQHDzJUFWcUXvZRM> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_BUrBJRv6JucyVRyPNLDhCX> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_EfkPABTMGaKJjagCr4NM39> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_TJTXbsBLuodUzD4KtPx8yf> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_crg9reiFhham3ALRuHxw75> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_3xqL9Y7aD5vHPxPJTRP5ge> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_DgNm7RuiSQ47VBTvdrHsRv> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_b3bxZYyEQFnFreTFXRj2pN> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_NLqE5jWBXrmCpftysHo7Yk> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_fSX5qfa2M8umiGJHmwzzaL> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_eamppjMLP9e8HyWKgmvo6X> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_fSX5qfa2M8umiGJHmwzzaL> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_9X5vk75uwGdbwreTzknDGT> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_DirectAwardTerm_C5nS5y4XErvUqzRNMARW8r> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/direct-award-justification/liquidator> not in list ['Literal(\"http://publications.europa.eu/resource/authority/direct-award-justification/urgency\")', 'Literal(\"http://publications.europa.eu/resource/authority/direct-award-justification/closure\")', 'Literal(\"http://publications.europa.eu/resource/authority/direct-award-justification/artistic\")', 'Literal(\"http://publications.europa.eu/resource/authority/direct-award-justification/commodity\")', 'Literal(\"http://publications.europa.eu/resource/authority/direct-award-justification/technical\")', 'Literal(\"http://publications.europa.eu/resource/authority/direct-award-justification/additional\")', 'Literal(\"http://publications.europa.eu/resource/authority/direct-award-justification/exclusive\")', 'Literal(\"http://publications.europa.eu/resource/authority/direct-award-justification/repetition\")', 'Literal(\"http://publications.europa.eu/resource/authority/direct-award-justification/unsuitable\")', 'Literal(\"http://publications.europa.eu/resource/authority/direct-award-justification/contest\")', 'Literal(\"http://publications.europa.eu/resource/authority/direct-award-justification/resd\")', 'Literal(\"http://publications.europa.eu/resource/authority/direct-award-justification/liquidator\")']" ;
+            sh:resultPath epo:hasDirectAwardJustification ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape [ sh:in ( "http://publications.europa.eu/resource/authority/direct-award-justification/liquidator" "http://publications.europa.eu/resource/authority/direct-award-justification/contest" "http://publications.europa.eu/resource/authority/direct-award-justification/urgency" "http://publications.europa.eu/resource/authority/direct-award-justification/technical" "http://publications.europa.eu/resource/authority/direct-award-justification/unsuitable" "http://publications.europa.eu/resource/authority/direct-award-justification/artistic" "http://publications.europa.eu/resource/authority/direct-award-justification/commodity" "http://publications.europa.eu/resource/authority/direct-award-justification/additional" "http://publications.europa.eu/resource/authority/direct-award-justification/resd" "http://publications.europa.eu/resource/authority/direct-award-justification/closure" "http://publications.europa.eu/resource/authority/direct-award-justification/exclusive" "http://publications.europa.eu/resource/authority/direct-award-justification/repetition" ) ;
+                    sh:nodeKind sh:IRI ;
+                    sh:path epo:hasDirectAwardJustification ] ;
+            sh:value <http://publications.europa.eu/resource/authority/direct-award-justification/liquidator> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_diPp46XcmeHRAMFFenhpzZ> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_diPp46XcmeHRAMFFenhpzZ> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_8VTZHQStmGUdX77jeyaz8x> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_Kt8UpywEVFP3uv6yd8LZAV> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_SjuWjFkcFYthE95bUHfvFb> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_TcgeCvAjzgJL9XPXfch3C6> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_Vx8FWYGqG5Bg4X7qkL8zTK> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_8V29iYbQ5LXL9SCyzS2ufD> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_bUw6RAsoMhcWzoHqdWboLP> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_YYoP8Sxj9ccJAKaaJ8KoJG> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_9X5vk75uwGdbwreTzknDGT> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Procedure_faF7Q5dyoGpXu3Ru4RGg73> ;
+            sh:resultMessage "Value Literal(\"true\" = True, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isCoveredByGPA ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:boolean ;
+                    sh:in ( "false" "true" ) ;
+                    sh:nodeKind sh:Literal ;
+                    sh:path epo:isCoveredByGPA ] ;
+            sh:value true ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#thoroughfare> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape [ sh:datatype rdf:langString ;
+                    sh:nodeKind sh:Literal ;
+                    sh:path <http://www.w3.org/ns/locn#thoroughfare> ] ;
+            sh:value "Registro General, Paseo de San Vicente, 58, 182" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_Lot_892jPigYFVfQuuQEioV5g7> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_R6LXWtxmsHpX2fZeXmNYBn> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_Di9jEA6PNzT4fZmaFnKduy> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_ContractTermLot_AVSiFGXeZvbvgMmMDWY3h7> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_LotAwardOutcome_P2VSufQndGRkHvUySMbAhc> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> not in list ['Literal(\"http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw\")', 'Literal(\"http://publications.europa.eu/resource/authority/winner-selection-status/selec-w\")']" ;
+            sh:resultPath epo:hasAwardStatus ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb92 ;
+            sh:value <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> not in list ['Literal(\"http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw\")', 'Literal(\"http://publications.europa.eu/resource/authority/winner-selection-status/selec-w\")']" ;
+            sh:resultPath epo:hasAwardStatus ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb92 ;
+            sh:value <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_BogaKxhguWKB9zTbQu7iD4> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_o2QK2SJgYPBXYAtUkYHuK7> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_AwardCriterionPrice_Ad8UwLXbgA2ti996xdXytN> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2017-S-164-337795_LotAwardOutcome_PQBPvqdyF5Muuezd58jcsm> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> not in list ['Literal(\"http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw\")', 'Literal(\"http://publications.europa.eu/resource/authority/winner-selection-status/selec-w\")']" ;
+            sh:resultPath epo:hasAwardStatus ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb92 ;
+            sh:value <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> ] .
+
+_:N072fe71c402e4f0f982eec87f446552f rdf:first "http://publications.europa.eu/resource/authority/award-criterion-type/price" ;
+    rdf:rest ( "http://publications.europa.eu/resource/authority/award-criterion-type/quality" ) .
+
+_:N10144be857fe4523bc35db74ff3616af sh:class epo:Mediator .
+
+_:N212822da1bc84905bf37ffeccacfdafb rdf:first [ sh:class epo:Buyer ] ;
+    rdf:rest ( [ sh:class epo:Reviewer ] [ sh:class epo:ReviewProcedureInformationProvider ] ) .
+
+_:N23e09283779846f489ad89622d3e6449 rdf:first _:N10144be857fe4523bc35db74ff3616af ;
+    rdf:rest _:N212822da1bc84905bf37ffeccacfdafb .
+
+_:N2d8412137bf24082a63e9b8c385eb1cd rdf:first "true" ;
+    rdf:rest () .
+
+_:N4d6b4b98053c40b9a941e6349fa1cff2 rdf:first "false" ;
+    rdf:rest ( "true" ) .
+
+_:N68a18647ad4f441383a5339a0f4b2afc rdf:first "http://publications.europa.eu/resource/authority/winner-selection-status/selec-w" ;
+    rdf:rest ( "http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw" ) .
+
+_:N9511323e8faa40d4985f7ec35f47e87c rdf:first "http://publications.europa.eu/resource/authority/award-criterion-type/cost" ;
+    rdf:rest _:N072fe71c402e4f0f982eec87f446552f .
+
+_:Ncda80ab4ad454f5a8fed4242f995fafc rdf:first "false" ;
+    rdf:rest _:N2d8412137bf24082a63e9b8c385eb1cd .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb113 sh:class epo:DirectAwardTerm,
+        epo:ProcedureTerm,
+        epo:ReviewTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:isSubjectToProcedureSpecificTerm .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb48 sh:nodeKind sh:IRI ;
+    sh:or _:N23e09283779846f489ad89622d3e6449 ;
+    sh:path epo:announcesRole .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb92 sh:in _:N68a18647ad4f441383a5339a0f4b2afc ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasAwardStatus .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb108 sh:datatype rdf:langString ;
+    sh:nodeKind sh:Literal ;
+    sh:path <http://www.w3.org/ns/locn#postName> .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb14 sh:in _:N9511323e8faa40d4985f7ec35f47e87c ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasAwardCriterionType .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb147 sh:datatype xsd:boolean ;
+    sh:in _:Ncda80ab4ad454f5a8fed4242f995fafc ;
+    sh:nodeKind sh:Literal ;
+    sh:path epo:isUsingEUFunds .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb78 sh:datatype xsd:boolean ;
+    sh:in _:N4d6b4b98053c40b9a941e6349fa1cff2 ;
+    sh:nodeKind sh:Literal ;
+    sh:path epo:hasOptions .
+

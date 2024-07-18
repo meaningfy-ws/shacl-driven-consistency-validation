@@ -1,0 +1,537 @@
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+[] a sh:ValidationReport ;
+    sh:conforms false ;
+    sh:result [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ReviewProcedureInformationProviderAddress_eP5uWDhd4iYABCZbaj8dzQ> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#thoroughfare> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb109 ;
+            sh:value "2 place de Verdun — BP 1135" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_AwardCriterionPrice_DRhJdosd6Y9c3T8UnSgTC9> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#thoroughfare> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb109 ;
+            sh:value "maison des services publics, 1 avenue Saint-Martin" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ReviewerContactPoint_bdZjimbzCaRXbeYeBmF94j> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath epo:hasFax ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb101 ;
+            sh:value "+33 476518944" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorContactPoint_WFzZGbdirSo5EBhCMeQqCo> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://data.europa.eu/m8g/telephone> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb104 ;
+            sh:value "+33 475014974" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postCode> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb105 ;
+            sh:value "38022" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_LotAwardOutcome_P2VSufQndGRkHvUySMbAhc> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> not in list ['Literal(\"http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw\")', 'Literal(\"http://publications.europa.eu/resource/authority/winner-selection-status/selec-w\")']" ;
+            sh:resultPath epo:hasAwardStatus ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb92 ;
+            sh:value <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Notice> ;
+            sh:resultMessage "Node epd:id_2021-S-123-325008_Winner_3wPdLbAG6nvmaE8euzWnmf does not conform to one or more shapes in [ sh:class epo:Mediator ] , [ sh:class epo:Buyer ] , [ sh:class epo:Reviewer ] , [ sh:class epo:ReviewProcedureInformationProvider ]" ;
+            sh:resultPath epo:announcesRole ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:OrConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb48 ;
+            sh:value <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Winner_3wPdLbAG6nvmaE8euzWnmf> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorOrganisationAddress_3wPdLbAG6nvmaE8euzWnmf> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#thoroughfare> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb109 ;
+            sh:value "ZI les Malalonnes — 31 rue Paul Sabatier" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_AwardCriterionPrice_FowJL4khGZR579pakhqkDn> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ReviewProcedureInformationProviderAddress_eP5uWDhd4iYABCZbaj8dzQ> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postCode> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb105 ;
+            sh:value "38022" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Lot_DgNm7RuiSQ47VBTvdrHsRv> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorOrganisationAddress_iNeZPiTJwMWfr7iAbQZ9WZ> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postName> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb108 ;
+            sh:value "Pierrelatte" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorContactPoint_3wPdLbAG6nvmaE8euzWnmf> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath epo:hasFax ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb101 ;
+            sh:value "+33 475534690" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_LotAwardOutcome_KaeDJ6cSC7UaS6sXtDUnvf> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> not in list ['Literal(\"http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw\")', 'Literal(\"http://publications.europa.eu/resource/authority/winner-selection-status/selec-w\")']" ;
+            sh:resultPath epo:hasAwardStatus ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb92 ;
+            sh:value <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorContactPoint_3wPdLbAG6nvmaE8euzWnmf> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://data.europa.eu/m8g/telephone> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb104 ;
+            sh:value "+33 475503340" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContactPoint_UU5jeWb9wCr2uQLNME2nwM> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://data.europa.eu/m8g/telephone> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb104 ;
+            sh:value "+33 475531074" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContactPoint_UU5jeWb9wCr2uQLNME2nwM> ;
+            sh:resultMessage "Value is not Literal with datatype xsd:anyURI" ;
+            sh:resultPath <http://data.europa.eu/m8g/email> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:anyURI ;
+                    sh:nodeKind sh:Literal ;
+                    sh:path <http://data.europa.eu/m8g/email> ] ;
+            sh:value "dcpaj@montelimar-agglo.fr" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorOrganisationAddress_WFzZGbdirSo5EBhCMeQqCo> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#thoroughfare> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb109 ;
+            sh:value "5 rue Marc Seguin" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#thoroughfare> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb109 ;
+            sh:value "2 place de Verdun — BP 1135" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_AwardCriterionQuality_JanoevckwB6SvxZQNqvGXY> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/quality> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/quality> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Procedure_faF7Q5dyoGpXu3Ru4RGg73> ;
+            sh:resultMessage "Value class is not in classes (epo:DirectAwardTerm, epo:ProcedureTerm, epo:ReviewTerm)" ;
+            sh:resultPath epo:isSubjectToProcedureSpecificTerm ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb113 ;
+            sh:value <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_DirectAwardTerm_C5nS5y4XErvUqzRNMARW8r> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorOrganisationAddress_WFzZGbdirSo5EBhCMeQqCo> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postName> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb108 ;
+            sh:value "Les Tourrettes" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorContactPoint_iNeZPiTJwMWfr7iAbQZ9WZ> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath epo:hasFax ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb101 ;
+            sh:value "+33 475534690" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorOrganisationAddress_iNeZPiTJwMWfr7iAbQZ9WZ> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postCode> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb105 ;
+            sh:value "26700" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Procedure_faF7Q5dyoGpXu3Ru4RGg73> ;
+            sh:resultMessage "Value class is not in classes (epo:DirectAwardTerm, epo:ProcedureTerm, epo:ReviewTerm)" ;
+            sh:resultPath epo:isSubjectToProcedureSpecificTerm ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb113 ;
+            sh:value <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ReviewTerm_jG5VjxWThsx6R9XUAaxN6G> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Notice> ;
+            sh:resultMessage "Node epd:id_2021-S-123-325008_Winner_WFzZGbdirSo5EBhCMeQqCo does not conform to one or more shapes in [ sh:class epo:Mediator ] , [ sh:class epo:Buyer ] , [ sh:class epo:Reviewer ] , [ sh:class epo:ReviewProcedureInformationProvider ]" ;
+            sh:resultPath epo:announcesRole ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:OrConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb48 ;
+            sh:value <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Winner_WFzZGbdirSo5EBhCMeQqCo> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorOrganisationAddress_WFzZGbdirSo5EBhCMeQqCo> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postCode> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb105 ;
+            sh:value "26740" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postName> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb108 ;
+            sh:value "Montélimar" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorContactPoint_iNeZPiTJwMWfr7iAbQZ9WZ> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://data.europa.eu/m8g/telephone> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb104 ;
+            sh:value "+33 475503340" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Lot_diPp46XcmeHRAMFFenhpzZ> ;
+            sh:resultMessage "Value Literal(\"true\" = True, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value true ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ReviewProcedureInformationProviderContactPoint_eP5uWDhd4iYABCZbaj8dzQ> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://data.europa.eu/m8g/telephone> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb104 ;
+            sh:value "+33 476429016" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorContactPoint_WFzZGbdirSo5EBhCMeQqCo> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath epo:hasFax ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb101 ;
+            sh:value "+33 475548335" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ReviewerOrganisationAddress_bdZjimbzCaRXbeYeBmF94j> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postName> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb108 ;
+            sh:value "Grenoble Cedex" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractTermLot_892jPigYFVfQuuQEioV5g7> ;
+            sh:resultMessage "Value Literal(\"true\" = True, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value true ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorOrganisationAddress_3wPdLbAG6nvmaE8euzWnmf> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postName> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb108 ;
+            sh:value "Pierrelatte" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_AwardCriterionQuality_9ba7oHVMbDnNRbjpRcjrBT> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/quality> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/quality> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Procedure_faF7Q5dyoGpXu3Ru4RGg73> ;
+            sh:resultMessage "Value class is not in classes (epo:DirectAwardTerm, epo:ProcedureTerm, epo:ReviewTerm)" ;
+            sh:resultPath epo:isSubjectToProcedureSpecificTerm ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb113 ;
+            sh:value <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_DirectAwardTerm_C5nS5y4XErvUqzRNMARW8r> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_OrganisationAddress_UU5jeWb9wCr2uQLNME2nwM> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postCode> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb105 ;
+            sh:value "26200" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Procedure_faF7Q5dyoGpXu3Ru4RGg73> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isCoveredByGPA ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape [ sh:datatype xsd:boolean ;
+                    sh:in ( "false" "true" ) ;
+                    sh:nodeKind sh:Literal ;
+                    sh:path epo:isCoveredByGPA ] ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ReviewProcedureInformationProviderContactPoint_eP5uWDhd4iYABCZbaj8dzQ> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath epo:hasFax ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb101 ;
+            sh:value "+33 476518944" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorOrganisationAddress_iNeZPiTJwMWfr7iAbQZ9WZ> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#thoroughfare> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb109 ;
+            sh:value "ZI les Malalonnes — 31 rue Paul Sabatier" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_AwardCriterionPrice_ewZirA4QTmyLrLffbmoC4T> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/price> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/price> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Procedure_faF7Q5dyoGpXu3Ru4RGg73> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call> not in list ['Literal(\"http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial\")', 'Literal(\"http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted\")', 'Literal(\"http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call\")', 'Literal(\"http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call\")', 'Literal(\"http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation\")', 'Literal(\"http://publications.europa.eu/resource/authority/procurement-procedure-type/open\")']" ;
+            sh:resultPath epo:hasProcedureType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape [ sh:in ( "http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call" "http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial" "http://publications.europa.eu/resource/authority/procurement-procedure-type/open" "http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation" "http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted" "http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call" ) ;
+                    sh:nodeKind sh:IRI ;
+                    sh:path epo:hasProcedureType ] ;
+            sh:value <http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractorOrganisationAddress_3wPdLbAG6nvmaE8euzWnmf> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postCode> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb105 ;
+            sh:value "26700" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Lot_892jPigYFVfQuuQEioV5g7> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:isUsingEUFunds ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb147 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Notice> ;
+            sh:resultMessage "Node epd:id_2021-S-123-325008_Winner_iNeZPiTJwMWfr7iAbQZ9WZ does not conform to one or more shapes in [ sh:class epo:Mediator ] , [ sh:class epo:Buyer ] , [ sh:class epo:Reviewer ] , [ sh:class epo:ReviewProcedureInformationProvider ]" ;
+            sh:resultPath epo:announcesRole ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:OrConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb48 ;
+            sh:value <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Winner_iNeZPiTJwMWfr7iAbQZ9WZ> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractTermLot_DgNm7RuiSQ47VBTvdrHsRv> ;
+            sh:resultMessage "Value Literal(\"true\" = True, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value true ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_LotAwardOutcome_PQBPvqdyF5Muuezd58jcsm> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> not in list ['Literal(\"http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw\")', 'Literal(\"http://publications.europa.eu/resource/authority/winner-selection-status/selec-w\")']" ;
+            sh:resultPath epo:hasAwardStatus ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb92 ;
+            sh:value <http://publications.europa.eu/resource/authority/winner-selection-status/selec-w> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ReviewTerm_jG5VjxWThsx6R9XUAaxN6G> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath epo:hasReviewDeadlineInformation ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape [ sh:datatype rdf:langString ;
+                    sh:nodeKind sh:Literal ;
+                    sh:path epo:hasReviewDeadlineInformation ] ;
+            sh:value "Les recours applicables aux contrats de la commande publique sont: — soit, avant la signature du marché, le référé pré-contractuel conformément aux délais et aux dispositions de l’article L. 551-1 du code de justice administrative; — soit, après la signature du marché, un recours en plein contentieux dans les formes mentionnées aux articles R. 411-1 et R. 421-7 du code de justice administrative et dans un délai de deux (2) mois à compter de la publication de l’avis d’attribution; — soit, après la signature du marché, un référé pré-contractuel dans les formes et délais mentionnés à l’article R. 551-7 du code de justice administrative après la conclusion du contrat." ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ReviewerContactPoint_bdZjimbzCaRXbeYeBmF94j> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://data.europa.eu/m8g/telephone> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb104 ;
+            sh:value "+33 476429016" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ReviewProcedureInformationProviderAddress_eP5uWDhd4iYABCZbaj8dzQ> ;
+            sh:resultMessage "Value is not Literal with datatype rdf:langString" ;
+            sh:resultPath <http://www.w3.org/ns/locn#postName> ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:DatatypeConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb108 ;
+            sh:value "Grenoble Cedex" ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_Procedure_faF7Q5dyoGpXu3Ru4RGg73> ;
+            sh:resultMessage "Value class is not in classes (epo:DirectAwardTerm, epo:ProcedureTerm, epo:ReviewTerm)" ;
+            sh:resultPath epo:isSubjectToProcedureSpecificTerm ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:ClassConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb113 ;
+            sh:value <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ReviewTerm_jG5VjxWThsx6R9XUAaxN6G> ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_ContractTermLot_diPp46XcmeHRAMFFenhpzZ> ;
+            sh:resultMessage "Value Literal(\"false\" = False, datatype=xsd:boolean) not in list ['Literal(\"false\")', 'Literal(\"true\")']" ;
+            sh:resultPath epo:hasOptions ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb78 ;
+            sh:value false ],
+        [ a sh:ValidationResult ;
+            sh:focusNode <http://data.europa.eu/a4g/resource/id_2021-S-123-325008_AwardCriterionQuality_5CitgLHATvV4YGuDcxd8KP> ;
+            sh:resultMessage "Value <http://publications.europa.eu/resource/authority/award-criterion-type/quality> not in list ['Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/quality\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/cost\")', 'Literal(\"http://publications.europa.eu/resource/authority/award-criterion-type/price\")']" ;
+            sh:resultPath epo:hasAwardCriterionType ;
+            sh:resultSeverity sh:Violation ;
+            sh:sourceConstraintComponent sh:InConstraintComponent ;
+            sh:sourceShape _:n9ae14c4eec424181a996a955a1cc79ffb14 ;
+            sh:value <http://publications.europa.eu/resource/authority/award-criterion-type/quality> ] .
+
+_:N01112ca297bd40ff8271edd809e2ff49 rdf:first "true" ;
+    rdf:rest () .
+
+_:N0abd6cf7bd5447dfbb47e7a8a9be8531 sh:class epo:Reviewer .
+
+_:N1f95e56d9ec44f21b4b13e192188589d rdf:first "http://publications.europa.eu/resource/authority/award-criterion-type/quality" ;
+    rdf:rest () .
+
+_:N2a78da83383549b3b71308876d905b41 rdf:first "http://publications.europa.eu/resource/authority/award-criterion-type/price" ;
+    rdf:rest _:N1f95e56d9ec44f21b4b13e192188589d .
+
+_:N40c159ff2b30412fab6220de8151d0c9 rdf:first "http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw" ;
+    rdf:rest () .
+
+_:N785afe6daba640c58269ea915f13f378 rdf:first "http://publications.europa.eu/resource/authority/award-criterion-type/cost" ;
+    rdf:rest _:N2a78da83383549b3b71308876d905b41 .
+
+_:N93a9c585e01e4427b7c4e276f1eb377a rdf:first "http://publications.europa.eu/resource/authority/winner-selection-status/selec-w" ;
+    rdf:rest _:N40c159ff2b30412fab6220de8151d0c9 .
+
+_:N972e3eb4c72c4ec5a4a5bbf06025b05d rdf:first [ sh:class epo:ReviewProcedureInformationProvider ] ;
+    rdf:rest () .
+
+_:N97d85938d61244a5a9569aedc15f8caf rdf:first [ sh:class epo:Mediator ] ;
+    rdf:rest ( [ sh:class epo:Buyer ] _:N0abd6cf7bd5447dfbb47e7a8a9be8531 _:N9d61a9aa7f7b401a9c4af3eea2695da4 ) .
+
+_:Nd43c6713c1994873b649fc4949d261a2 rdf:first "false" ;
+    rdf:rest _:N01112ca297bd40ff8271edd809e2ff49 .
+
+_:Ne7edf15a1d644dd0a2e3ecdf57282f09 rdf:first "false" ;
+    rdf:rest ( "true" ) .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb147 sh:datatype xsd:boolean ;
+    sh:in _:Nd43c6713c1994873b649fc4949d261a2 ;
+    sh:nodeKind sh:Literal ;
+    sh:path epo:isUsingEUFunds .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb48 sh:nodeKind sh:IRI ;
+    sh:or _:N97d85938d61244a5a9569aedc15f8caf ;
+    sh:path epo:announcesRole .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb78 sh:datatype xsd:boolean ;
+    sh:in _:Ne7edf15a1d644dd0a2e3ecdf57282f09 ;
+    sh:nodeKind sh:Literal ;
+    sh:path epo:hasOptions .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb92 sh:in _:N93a9c585e01e4427b7c4e276f1eb377a ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasAwardStatus .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb113 sh:class epo:DirectAwardTerm,
+        epo:ProcedureTerm,
+        epo:ReviewTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:isSubjectToProcedureSpecificTerm .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb101 sh:datatype rdf:langString ;
+    sh:nodeKind sh:Literal ;
+    sh:path epo:hasFax .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb104 sh:datatype rdf:langString ;
+    sh:nodeKind sh:Literal ;
+    sh:path <http://data.europa.eu/m8g/telephone> .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb105 sh:datatype rdf:langString ;
+    sh:nodeKind sh:Literal ;
+    sh:path <http://www.w3.org/ns/locn#postCode> .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb108 sh:datatype rdf:langString ;
+    sh:nodeKind sh:Literal ;
+    sh:path <http://www.w3.org/ns/locn#postName> .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb109 sh:datatype rdf:langString ;
+    sh:nodeKind sh:Literal ;
+    sh:path <http://www.w3.org/ns/locn#thoroughfare> .
+
+_:n9ae14c4eec424181a996a955a1cc79ffb14 sh:in _:N785afe6daba640c58269ea915f13f378 ;
+    sh:nodeKind sh:IRI ;
+    sh:path epo:hasAwardCriterionType .
+

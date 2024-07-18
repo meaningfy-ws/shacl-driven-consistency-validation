@@ -1,0 +1,449 @@
+# The SHACL shapes graph is automatic translated from the Conceptual Mapping below: 
+        # Identifier: package_F03, 
+        # Description ('This is the conceptual mapping for Standard Form F03, all directives.',),
+        # Mapping Version 2.1.1
+        # EPO version 3.1.0.
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo:OrganisationGroup a sh:NodeShape ;
+    sh:property [ sh:class <http://www.w3.org/ns/org#Organization> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasMember ] ;
+    sh:targetClass epo:OrganisationGroup .
+
+epo:ProcurementProcessInformation a sh:NodeShape ;
+    sh:property [ sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:concernsProcedure ],
+        [ sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isCompetitionTerminated ],
+        [ sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isDPSTerminated ] ;
+    sh:targetClass epo:ProcurementProcessInformation .
+
+epo:ResultNotice a sh:NodeShape ;
+    sh:property [ sh:class epo:NoticeAwardInformation ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:announcesNoticeAwardInformation ] ;
+    sh:targetClass epo:ResultNotice .
+
+epo:SubmissionStatisticalInformation a sh:NodeShape ;
+    sh:property [ sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasLowestReceivedTenderValue ],
+        [ sh:class epo:LotAwardOutcome ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:summarisesInformationForLotAwardOutcome ],
+        [ sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReceivedNonEUTenders ],
+        [ sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasElectronicTenders ],
+        [ sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReceivedSMETenders ],
+        [ sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEUReceivedTenders ],
+        [ sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReceivedTenders ],
+        [ sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasHighestReceivedTenderValue ] ;
+    sh:targetClass epo:SubmissionStatisticalInformation .
+
+epo:AwardCriterion a sh:NodeShape ;
+    sh:property [ sh:in ( "http://publications.europa.eu/resource/authority/award-criterion-type/cost" "http://publications.europa.eu/resource/authority/award-criterion-type/price" "http://publications.europa.eu/resource/authority/award-criterion-type/quality" ) ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAwardCriterionType ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://data.europa.eu/m8g/name> ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://data.europa.eu/m8g/weight> ] ;
+    sh:targetClass epo:AwardCriterion .
+
+epo:Buyer a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:anyURI ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBuyerProfile ],
+        [ sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ],
+        [ sh:class <http://www.w3.org/ns/org#Organization> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:Buyer .
+
+epo:Contract a sh:NodeShape ;
+    sh:property [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasTitle ],
+        [ sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasContractConclusionDate ],
+        [ sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:includesLot ],
+        [ sh:class epo:LotAwardOutcome ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:resultsFromLotAwardOutcome ] ;
+    sh:targetClass epo:Contract .
+
+epo:DirectAwardTerm a sh:NodeShape ;
+    sh:property [ sh:in ( "http://publications.europa.eu/resource/authority/direct-award-justification/liquidator" "http://publications.europa.eu/resource/authority/direct-award-justification/contest" "http://publications.europa.eu/resource/authority/direct-award-justification/urgency" "http://publications.europa.eu/resource/authority/direct-award-justification/technical" "http://publications.europa.eu/resource/authority/direct-award-justification/unsuitable" "http://publications.europa.eu/resource/authority/direct-award-justification/artistic" "http://publications.europa.eu/resource/authority/direct-award-justification/commodity" "http://publications.europa.eu/resource/authority/direct-award-justification/additional" "http://publications.europa.eu/resource/authority/direct-award-justification/resd" "http://publications.europa.eu/resource/authority/direct-award-justification/closure" "http://publications.europa.eu/resource/authority/direct-award-justification/exclusive" "http://publications.europa.eu/resource/authority/direct-award-justification/repetition" ) ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasDirectAwardJustification ],
+        [ sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:refersToPreviousProcedure ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasJustification ] ;
+    sh:targetClass epo:DirectAwardTerm .
+
+epo:Fund a sh:NodeShape ;
+    sh:property [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDescription ] ;
+    sh:targetClass epo:Fund .
+
+epo:Mediator a sh:NodeShape ;
+    sh:property [ sh:class <http://www.w3.org/ns/org#Organization> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:Mediator .
+
+epo:Notice a sh:NodeShape ;
+    sh:property [ sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ sh:datatype xsd:string ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasPublicationDate ],
+        [ sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDispatchDate ],
+        [ sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:Mediator ] [ sh:class epo:Buyer ] [ sh:class epo:Reviewer ] [ sh:class epo:ReviewProcedureInformationProvider ] ) ;
+            sh:path epo:announcesRole ],
+        [ sh:class epo:Contract ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:announcesContract ],
+        [ sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:refersToLot ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path epo:hasLegalBasis ],
+        [ sh:class epo:NoticeAwardInformation ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:announcesNoticeAwardInformation ],
+        [ sh:class epo:Notice ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:refersToPrevious ],
+        [ sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:refersToProcedure ] ;
+    sh:targetClass epo:Notice .
+
+epo:ProcedureTerm a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:boolean ;
+            sh:in ( "true" ) ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isAwardedByCPB ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasCrossBorderLaw ] ;
+    sh:targetClass epo:ProcedureTerm .
+
+epo:ReviewProcedureInformationProvider a sh:NodeShape ;
+    sh:property [ sh:class <http://www.w3.org/ns/org#Organization> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:ReviewProcedureInformationProvider .
+
+epo:ReviewTerm a sh:NodeShape ;
+    sh:property [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReviewDeadlineInformation ] ;
+    sh:targetClass epo:ReviewTerm .
+
+epo:Reviewer a sh:NodeShape ;
+    sh:property [ sh:class <http://www.w3.org/ns/org#Organization> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:Reviewer .
+
+epo:SubcontractingEstimate a sh:NodeShape ;
+    sh:property [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDescription ],
+        [ sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasSubcontractingEstimatedValue ],
+        [ sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEstimatedPercentage ] ;
+    sh:targetClass epo:SubcontractingEstimate .
+
+epo:Tender a sh:NodeShape ;
+    sh:property [ sh:class epo:SubcontractingEstimate ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:foreseesSubcontracting ] ;
+    sh:targetClass epo:Tender .
+
+epo:TenderAwardOutcome a sh:NodeShape ;
+    sh:property [ sh:class epo:Winner ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:indicatesAwardOfLotToWinner ],
+        [ sh:class epo:Tender ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:describesTender ] ;
+    sh:targetClass epo:TenderAwardOutcome .
+
+epo:Winner a sh:NodeShape ;
+    sh:property [ sh:class <http://www.w3.org/ns/org#Organization> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:Winner .
+
+<http://purl.org/dc/terms/Location> a sh:NodeShape ;
+    sh:property [ sh:nodeKind sh:IRI ;
+            sh:path epo:hasNutsCode ],
+        [ sh:class <http://www.w3.org/ns/locn#Address> ;
+            sh:nodeKind sh:IRI ;
+            sh:path <http://www.w3.org/ns/locn#address> ] ;
+    sh:targetClass <http://purl.org/dc/terms/Location> .
+
+epo:ContractTerm a sh:NodeShape ;
+    sh:property [ sh:datatype xsd:boolean ;
+            sh:in ( "false" "true" ) ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasOptions ],
+        [ sh:class <http://purl.org/dc/terms/Location> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesSpecificPlaceOfPerformance ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path epo:hasContractNatureType ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasOptionsDescription ] ;
+    sh:targetClass epo:ContractTerm .
+
+epo:LotAwardOutcome a sh:NodeShape ;
+    sh:property [ sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAwardedValue ],
+        [ sh:class epo:TenderAwardOutcome ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:comprisesTenderAwardOutcome ],
+        [ sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:describesLot ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasNonAwardedContractTitle ],
+        [ sh:in ( "http://publications.europa.eu/resource/authority/non-award-justification/none-rej" "http://publications.europa.eu/resource/authority/non-award-justification/other" ) ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNonAwardJustification ],
+        [ sh:datatype xsd:string ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasNonAwardedContractNumber ],
+        [ sh:in ( "http://publications.europa.eu/resource/authority/winner-selection-status/selec-w" "http://publications.europa.eu/resource/authority/winner-selection-status/clos-nw" ) ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAwardStatus ] ;
+    sh:targetClass epo:LotAwardOutcome .
+
+epo:NoticeAwardInformation a sh:NodeShape ;
+    sh:property [ sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasProcurementHighestReceivedTenderValue ],
+        [ sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasProcurementLowestReceivedTenderValue ],
+        [ sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasTotalAwardedValue ] ;
+    sh:targetClass epo:NoticeAwardInformation .
+
+epo:Purpose a sh:NodeShape ;
+    sh:property [ sh:nodeKind sh:IRI ;
+            sh:path epo:hasMainClassification ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path epo:hasAdditionalClassification ] ;
+    sh:targetClass epo:Purpose .
+
+<http://data.europa.eu/m8g/ContactPoint> a sh:NodeShape ;
+    sh:property [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasContactName ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasFax ],
+        [ sh:datatype xsd:anyURI ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasInternetAddress ],
+        [ sh:datatype xsd:anyURI ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://data.europa.eu/m8g/email> ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://data.europa.eu/m8g/telephone> ] ;
+    sh:targetClass <http://data.europa.eu/m8g/ContactPoint> .
+
+<http://www.w3.org/ns/locn#Address> a sh:NodeShape ;
+    sh:property [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://www.w3.org/ns/locn#postCode> ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path epo:hasCountryCode ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path epo:hasNutsCode ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://www.w3.org/ns/locn#postName> ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://www.w3.org/ns/locn#thoroughfare> ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://www.w3.org/ns/locn#fullAddress> ] ;
+    sh:targetClass <http://www.w3.org/ns/locn#Address> .
+
+epo:Procedure a sh:NodeShape ;
+    sh:property [ sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ sh:class epo:ContractTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:foreseesContractSpecificTerm ],
+        [ sh:class epo:DirectAwardTerm,
+                epo:ProcedureTerm,
+                epo:ReviewTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:isSubjectToProcedureSpecificTerm ],
+        [ sh:in ( "http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-wo-call" "http://publications.europa.eu/resource/authority/procurement-procedure-type/comp-dial" "http://publications.europa.eu/resource/authority/procurement-procedure-type/open" "http://publications.europa.eu/resource/authority/procurement-procedure-type/innovation" "http://publications.europa.eu/resource/authority/procurement-procedure-type/restricted" "http://publications.europa.eu/resource/authority/procurement-procedure-type/neg-w-call" ) ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasProcedureType ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasTitle ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAdditionalInformation ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAcceleratedProcedureJustification ],
+        [ sh:datatype xsd:boolean ;
+            sh:in ( "false" "true" ) ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isCoveredByGPA ],
+        [ sh:datatype xsd:boolean ;
+            sh:in ( "true" ) ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isAccelerated ],
+        [ sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:FrameworkAgreementTechniqueUsage ] [ sh:class epo:DynamicPurchaseSystemTechniqueUsage ] ) ;
+            sh:path epo:usesTechnique ],
+        [ sh:class epo:Purpose ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPurpose ],
+        [ sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasProcurementScopeDividedIntoLot ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDescription ],
+        [ sh:datatype xsd:boolean ;
+            sh:in ( "true" ) ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isJointProcurement ] ;
+    sh:targetClass epo:Procedure .
+
+epo:Lot a sh:NodeShape ;
+    sh:property [ sh:class epo:AwardCriterion ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:specifiesAwardCriterion ],
+        [ sh:class epo:ContractTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:foreseesContractSpecificTerm ],
+        [ sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasRestatedEstimatedValue ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasTitle ],
+        [ sh:class epo:Purpose ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPurpose ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDescription ],
+        [ sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAdditionalInformation ],
+        [ sh:datatype xsd:boolean ;
+            sh:in ( "false" "true" ) ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isUsingEUFunds ],
+        [ sh:class epo:Fund ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:isFundedBy ] ;
+    sh:targetClass epo:Lot .
+
+epo:Identifier a sh:NodeShape ;
+    sh:property [ sh:nodeKind sh:Literal ;
+            sh:or ( [ sh:datatype rdf:langString ] [ sh:datatype xsd:string ] ) ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://www.w3.org/ns/org#Organization> a sh:NodeShape ;
+    sh:property [ sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path epo:hasBuyerLegalType ],
+        [ sh:nodeKind sh:IRI ;
+            sh:path epo:hasMainActivity ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLegalName ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBuyerLegalTypeDescription ],
+        [ sh:datatype rdf:langString ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMainActivityDescription ],
+        [ sh:class <http://www.w3.org/ns/locn#Address> ;
+            sh:nodeKind sh:IRI ;
+            sh:path <http://data.europa.eu/m8g/registeredAddress> ],
+        [ sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPrimaryContactPoint ],
+        [ sh:in ( "http://publications.europa.eu/resource/authority/economic-operator-size/sme" ) ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasBusinessSize ] ;
+    sh:targetClass <http://www.w3.org/ns/org#Organization> .
+
+epo:MonetaryValue a sh:NodeShape ;
+    sh:property [ sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ],
+        [ sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ] ;
+    sh:targetClass epo:MonetaryValue .
+
