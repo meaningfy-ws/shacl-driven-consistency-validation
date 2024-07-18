@@ -22,7 +22,7 @@ class CMtoSHACL():
 
         self.identifiers = {}
         self.shaclinDict = {}
-        self.datatypeDict = {}
+        self.constraintDict = {SH["datatype"]:{}, SH["class"]:{}}
 
 
     def translate(self):
@@ -56,7 +56,7 @@ class CMtoSHACL():
                         self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1])
 
         self.addSHACLin()
-        self.addSHACLdatatype()
+        self.addSHACLconstraints()
                 
 
     def addNodePropertyShape(self, c, p, next_c, next_p, is_last=False):
@@ -77,13 +77,16 @@ class CMtoSHACL():
         elif is_last == True:
             next_c_type = self.checkType(next_c)
             if next_c_type == "class":
-                self.g.add((self.identifiers[c][p], SH["class"], URIRef(next_c)))
+                # self.g.add((self.identifiers[c][p], SH["class"], URIRef(next_c)))
+                currentClass = self.constraintDict[SH["class"]].get(self.identifiers[c][p], [])
+                currentClass.append(URIRef(next_c))
+                self.constraintDict[SH["class"]][self.identifiers[c][p]] = currentClass
                 self.g.add((self.identifiers[c][p], SH["nodeKind"], SH["IRI"]))
             elif next_c_type == "datatype":
                 # self.g.add((self.identifiers[c][p], SH["datatype"], next_c))
-                currentDatatype = self.datatypeDict.get(self.identifiers[c][p], [])
+                currentDatatype = self.constraintDict[SH["datatype"]].get(self.identifiers[c][p], [])
                 currentDatatype.append(next_c)
-                self.datatypeDict[self.identifiers[c][p]] = currentDatatype
+                self.constraintDict[SH["datatype"]][self.identifiers[c][p]] = currentDatatype
                 self.g.add((self.identifiers[c][p], SH["nodeKind"], SH["Literal"]))
             elif next_c_type == None:
                 self.g.add((self.identifiers[c][p], SH["nodeKind"], SH["IRI"]))
@@ -97,10 +100,15 @@ class CMtoSHACL():
 
     def addSHACLin(self):
         for k, v in self.shaclinDict.items():
+            v = list(set(v))
             bn = BNode()
             # translate element in v to a list of literals
             self.g.add((k,SH["in"],bn))
             for i in v[:-1]:
+                if i == "true" or i == "false":
+                    i = Literal(i, datatype=XSD.boolean)
+                else:
+                    i = Literal(i)
                 self.g.add((bn,RDF.first,i))
                 nextBn = BNode()
                 self.g.add((bn,RDF.rest,nextBn))
@@ -108,26 +116,28 @@ class CMtoSHACL():
             self.g.add((bn,RDF.first,v[-1]))
             self.g.add((bn,RDF.rest,RDF.nil))
     
-    def addSHACLdatatype(self):
-        for k, v in self.datatypeDict.items():
-            # remove duplicates
-            v = list(set(v))
-            if len(v) == 1:
-                self.g.add((k,SH["datatype"],v[0]))
-            else:
-                bn = BNode()
-                self.g.add((k,SH["or"],bn))
-                for i in v[:-1]:
+    def addSHACLconstraints(self):
+        # to keep consistent and avoid unsatisfiable shapes
+        for constraint, valueDict in self.constraintDict.items():
+            for k, v in valueDict.items():
+                # remove duplicates
+                v = list(set(v))
+                if len(v) == 1:
+                    self.g.add((k,constraint,v[0]))
+                else:
+                    bn = BNode()
+                    self.g.add((k,SH["or"],bn))
+                    for i in v[:-1]:
+                        datatypeBn = BNode()
+                        self.g.add((bn,RDF.first,datatypeBn))
+                        self.g.add((datatypeBn,constraint,i))
+                        nextBn = BNode()
+                        self.g.add((bn,RDF.rest,nextBn))
+                        bn = nextBn
                     datatypeBn = BNode()
                     self.g.add((bn,RDF.first,datatypeBn))
-                    self.g.add((datatypeBn,SH["datatype"],i))
-                    nextBn = BNode()
-                    self.g.add((bn,RDF.rest,nextBn))
-                    bn = nextBn
-                datatypeBn = BNode()
-                self.g.add((bn,RDF.first,datatypeBn))
-                self.g.add((datatypeBn,SH["datatype"],v[-1]))
-                self.g.add((bn,RDF.rest,RDF.nil))
+                    self.g.add((datatypeBn,constraint,v[-1]))
+                    self.g.add((bn,RDF.rest,RDF.nil))
 
     def parseClassPath(self, class_path, XPath):
         class_path_clean = []
