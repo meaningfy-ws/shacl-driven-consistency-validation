@@ -47,6 +47,9 @@
 		"map" : "http://mapping.example.com/", 
 		"sd": "http://www.w3.org/ns/sparql-service-description#",
 		"ht": "http://www.w3.org/2006/http#",
-		"v": "http://rdf.data-vocabulary.org/#"
+		"v": "http://rdf.data-vocabulary.org/#",
+
+		"adms": "http://www.w3.org/ns/adms#",
+		"person": "http://www.example.org/todo#"
   }
   
