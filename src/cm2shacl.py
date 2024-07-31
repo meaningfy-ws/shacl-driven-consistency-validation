@@ -27,12 +27,17 @@ class CMtoSHACL():
 
     def translate(self):
         # load the data
-        self.Field_XPath, self.Class_path, self.Property_path = self.dL.load_rules()
-        self.controlled_list_c1 = self.dL.load_controlled_list()["CL1"]
+        self.metaData_info, self.Class_path, self.Property_path, self.Field_XPath, self.controlled_list_c1 = self.dL.load()
+        self.controlled_list_c1 = self.controlled_list_c1["CL1"]
 
         # loop through the rules
+        num = 0
         for XPath, Class, Property in zip(self.Field_XPath, self.Class_path, self.Property_path):
-            
+            num += 1
+            print(f"Processing Rule {num}...")
+            # print(f"C: {Class}, P: {Property}")
+            if 'FILTER' in Property or num == 551: #TODO: to be fixed Lot and FILTER
+                continue
             if "{" in Property and "UNION" in Property:
                 Property = [i.replace("{","").replace("}","").strip() for i in Property.split("UNION")]
                 for p in Property:
@@ -255,14 +260,13 @@ class CMtoSHACL():
     def writeShapeToFile(self, file_name):
         self.g.serialize(destination=file_name, format='turtle')
         # write comments to the beginning of the file
-        metaData_info, baseXpath = self.dL.load_metadata()
         with open(file_name, 'r') as original: data = original.read()
-        with open(file_name, 'w') as modified: modified.write(f"{metaData_info}\n" + data)
+        with open(file_name, 'w') as modified: modified.write(f"{self.metaData_info}\n" + data)
 
 
     def evaluate_file(self, args):
         # load the data
-        self.dL = dataLoader(args.cm_file)
+        self.dL = dataLoader(file_path=args.cm_file, config_path=args.config_file, cm_version=args.cm_version)
 
         # start the translation
         self.translate()

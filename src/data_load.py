@@ -1,52 +1,141 @@
+import re
 import pandas as pd
-
+import configparser
+from openpyxl import load_workbook
 
 ########################################################
 ###########Load Conceptual Mapping Sheet################
 ########################################################
 
 class dataLoader():
-    def __init__(self, file_path):
-        # load the data
-        self.data = pd.read_excel(file_path, 
-                                  sheet_name = ["Metadata", "Rules", "CL1 Controlled List of Roles", "CL2 Controlled List for Organis"])
-        self.metadataDf, self.rulesDf, self.cl1Df, self.cl2Df = self.data["Metadata"], self.data["Rules"], self.data["CL1 Controlled List of Roles"], self.data["CL2 Controlled List for Organis"]
-        # release the memory
-        del self.data
+    def __init__(self, file_path, config_path, cm_version):
+        # load the configuration file
         
-    def load_metadata(self):
+        self.cm_version = cm_version
+        self.config = configparser.ConfigParser()
+        self.config.read(config_path)
+        self.file_path = file_path
+
+        # load the data
+        self.sheet_names = {}
+        for i in ["metadata_sheet_name", "rules_sheet_name", "cl1_sheet_name"]:
+            self.sheet_names[i] = self.config.get(self.cm_version, i)
+
+        self.workbook = load_workbook(self.file_path, data_only=True)
+
+
+    def load(self):
+
+        if self.sheet_names['metadata_sheet_name'] != "":
+            metaData_info = self.load_metadata(self.sheet_names['metadata_sheet_name'])
+        else: metaData_info = ""
+
+        if self.sheet_names['rules_sheet_name'] != "":
+            class_paths, property_paths, field_XPaths = self.load_rules(self.sheet_names['rules_sheet_name'])
+        else: raise ValueError("Rules Information is not provided in the configuration file")
+        
+        if self.sheet_names['cl1_sheet_name'] != "":
+            cl1 = self.load_controlled_list(self.sheet_names['cl1_sheet_name'])
+        else: cl1 = {"CL1":{}}
+
+        # release the memory
+        del self.workbook
+
+        return metaData_info, class_paths, property_paths, field_XPaths, cl1
+
+    def _split_cell(self, cell):
+        match = re.match(r"([A-Z]+)([0-9]+)", cell, re.I)
+        if match:
+            items = match.groups()
+            return items[0], int(items[1])
+        return None, None
+
+    def _get_cell_value(self, sheet_name, cell):
+        sheet = self.workbook[sheet_name]
+        return sheet[cell].value
+
+    def _get_column_values(self, sheet_name, start_cell):
+        sheet = self.workbook[sheet_name]
+       
+        col, start_row = self._split_cell(start_cell)
+        
+        values = []
+        for row in range(start_row, sheet.max_row + 1):
+            cell_value = sheet[f"{col}{row}"].value
+            values.append(cell_value)
+        
+        return values
+
+    def _get_rules_values(self, sheet_name, start_cell1, start_cell2, start_cell3):
+
+        sheet = self.workbook[sheet_name]
+
+        col1, start_row1 = self._split_cell(start_cell1)
+        col2, start_row2 = self._split_cell(start_cell2)
+        col3, start_row3 = self._split_cell(start_cell3)
+
+        if col1 is None or start_row1 is None or col2 is None or start_row2 is None or col3 is None or start_row3 is None:
+            return [], [], []
+
+        l1 = []
+        l2 = []
+        l3 = []
+        max_row = max(sheet.max_row, start_row1, start_row2, start_row3)
+        for row in range(max(start_row1, start_row2, start_row3), max_row + 1):
+            cell_value1 = sheet[f"{col1}{row}"].value
+            cell_value2 = sheet[f"{col2}{row}"].value
+            cell_value3 = sheet[f"{col3}{row}"].value
+            if cell_value1 is not None and cell_value2 is not None: # Xpath is optional
+                l1.append(cell_value1)
+                l2.append(cell_value2)
+                l3.append(cell_value3)
+
+        return l1, l2, l3
+        
+    def load_metadata(self, sheet_name):
+
+        identifier_cell = self.config[self.cm_version].get('Identifier', '')
+        description_cell = self.config[self.cm_version].get('Description', '')
+        mapping_version_cell = self.config[self.cm_version].get('Mapping_Version', '')
+        epo_version_cell = self.config[self.cm_version].get('EPO_version', '')
+        base_xpath_cell = self.config[self.cm_version].get('baseXpath', '')
+
+        identifier = self._get_cell_value(sheet_name, identifier_cell) if identifier_cell != '' else ''
+        description = self._get_cell_value(sheet_name, description_cell) if description_cell != '' else ''
+        mapping_version = self._get_cell_value(sheet_name, mapping_version_cell) if mapping_version_cell != '' else ''
+        epo_version = self._get_cell_value(sheet_name, epo_version_cell) if epo_version_cell != '' else ''
+        base_xpath = self._get_cell_value(sheet_name, base_xpath_cell) if base_xpath_cell != '' else ''
 
         metaData_info = f"""# The SHACL shapes graph is automatic translated from the Conceptual Mapping below: 
-        # Identifier: {self.metadataDf.loc[self.metadataDf['Field'] == 'Identifier', 'Value examples'].values[0]}, 
-        # Description {self.metadataDf.loc[self.metadataDf['Field'] == 'Description', 'Value examples'].values[0],},
-        # Mapping Version {self.metadataDf.loc[self.metadataDf['Field'] == 'Mapping Version', 'Value examples'].values[0]}
-        # EPO version {self.metadataDf.loc[self.metadataDf['Field'] == 'EPO version', 'Value examples'].values[0]}."""
+        # Identifier: {identifier}, 
+        # Description: {description},
+        # Mapping Version: {mapping_version}
+        # EPO version: {epo_version}."""
 
-        self.baseXpath = self.metadataDf.loc[self.metadataDf['Field'] == 'Base XPath', 'Value examples'].values[0]
-        
-        return metaData_info, self.baseXpath
+        return metaData_info
 
-    def load_rules(self):
-        self.rulesDf.rename(columns=self.rulesDf.iloc[0], inplace = True)
-        self.rulesDf.drop([0], inplace = True)
-        
-        # remove rows with missing values
-        self.rulesDf.dropna(subset=['Class path (M)', 'Property path (M)'], inplace=True)
+    def load_rules(self, sheet_name):
 
-        Field_XPath = self.rulesDf["Field XPath (M)"].tolist()
-        Class_path = self.rulesDf["Class path (M)"].tolist()
-        Property_path = self.rulesDf["Property path (M)"].tolist()
+        class_path_cell = self.config[self.cm_version].get('Class_path', '')
+        property_path_cell = self.config[self.cm_version].get('Property_path', '')
+        field_XPath_cell = self.config[self.cm_version].get('Field_XPath', '')
 
-        return Field_XPath, Class_path, Property_path
+        class_paths, property_paths, field_XPaths = self._get_rules_values(sheet_name, class_path_cell, property_path_cell, field_XPath_cell)
 
-    def load_controlled_list(self):
-        # remove first row
-        self.cl1Df.rename(columns=self.cl1Df.iloc[0], inplace = True)
-        # Convert Mapping Reference (in ePO) to value and XML PATH Fragment to key
-        cl1Df_dict = dict(zip(self.cl1Df['XML PATH Fragment'][1:], self.cl1Df['Mapping Reference (in ePO)'][1:]))
+        return class_paths, property_paths, field_XPaths
+
+    def load_controlled_list(self, sheet_name):
+        xml_path_fragment_cell = self.config[self.cm_version].get('XML_PATH_Fragment', '')
+        mapping_reference_cell = self.config[self.cm_version].get('Mapping_Reference', '')
+
+        xml_path_fragment = self._get_column_values(sheet_name, xml_path_fragment_cell) if xml_path_fragment_cell != '' else []
+        mapping_reference = self._get_column_values(sheet_name, mapping_reference_cell) if mapping_reference_cell != '' else []
+
+        cl1Df_dict = dict(zip(xml_path_fragment, mapping_reference))
         return {'CL1':cl1Df_dict}
 
 
-# dL = dataLoader("TED/conceptual_mappings.xlsx")
-# data = dL.load_controlled_list()
-# print(data)
+dL = dataLoader("TED/conceptual_mappings.xlsx", "config.ini", "Conceptual Mapping Version 1.0")
+# dL = dataLoader("TED/NEW eForms Master Conceptual Mapping (v2).xlsx", "config.ini", "Conceptual Mapping Version 2.0")
+
+dL.load()
