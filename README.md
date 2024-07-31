@@ -21,5 +21,5 @@ $ python main.py CM_FILE_LOCATION
 Or you can specify the location for storing the generated SHACL shapes
 
 ```
-$ python main.py CM_FILE_LOCATION -o SHACL_PATH
+$ python main.py CM_FILE_LOCATION -o SHACL_PATH -cf CONFIGURATION_FILE -cv CONCEPTUAL_MAPPING_VERSION
 ```
