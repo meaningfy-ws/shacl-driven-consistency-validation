@@ -70,6 +70,8 @@ class CMtoSHACL():
         if c not in self.identifiers:
             self.identifiers[c] = {}
             self.g.add((c, RDF.type, SH.NodeShape))
+            if self.close:
+                self.g.add((c, SH.closed, Literal("true", datatype=XSD.boolean)))
             self.g.add((c, SH.targetClass, c))
         if p not in self.identifiers[c]:
             self.identifiers[c][p] = BNode()
@@ -265,6 +267,9 @@ class CMtoSHACL():
 
 
     def evaluate_file(self, args):
+        # Load whether to close shapes
+        self.close = args.close_shapes
+
         # load the data
         self.dL = dataLoader(file_path=args.cm_file, config_path=args.config_file, cm_version=args.cm_version)
 
