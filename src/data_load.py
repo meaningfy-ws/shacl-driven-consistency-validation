@@ -133,9 +133,3 @@ class dataLoader():
 
         cl1Df_dict = dict(zip(xml_path_fragment, mapping_reference))
         return {'CL1':cl1Df_dict}
-
-
-dL = dataLoader("TED/conceptual_mappings.xlsx", "config.ini", "Conceptual Mapping Version 1.0")
-# dL = dataLoader("TED/NEW eForms Master Conceptual Mapping (v2).xlsx", "config.ini", "Conceptual Mapping Version 2.0")
-
-dL.load()
