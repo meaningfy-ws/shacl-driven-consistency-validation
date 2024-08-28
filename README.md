@@ -28,6 +28,10 @@ You can specify whether want to close the generated SHACL shapes
 ```
 $ python main.py -cm CM_FILE_LOCATION -o SHACL_PATH -cf CONFIGURATION_FILE -cv CONCEPTUAL_MAPPING_VERSION --close_shapes True
 ```
+For example: 
+```
+$ python main.py -cm 'conceptual_mappings.xlsx' -cf 'config.ini' -cv 'Conceptual Mapping Version 1.0' -o 'shacl_output_v1.ttl' --close_shapes True
+```
 
 To validate RDF graph
 
