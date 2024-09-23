@@ -5,7 +5,7 @@ from pyshacl import validate
 import re
 
 from .data_load import dataLoader
-from .utils import json_load
+from .utils import json_load, combine_shapes_with_same_path
 
 class CMtoSHACL():
     def __init__(self):
@@ -23,6 +23,7 @@ class CMtoSHACL():
         self.identifiers = {}
         self.shaclinDict = {}
         self.constraintDict = {SH["datatype"]:{}, SH["class"]:{}}
+        
 
 
     def translate(self):
@@ -60,11 +61,13 @@ class CMtoSHACL():
                     else:
                         self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1])
 
-        self.addSHACLin()
-        self.addSHACLconstraints()
+        #self.addSHACLin()
+        # self.addSHACLconstraints()
+        # self.addDisjunctionShapes()
+        self.g = combine_shapes_with_same_path(self.g)
                 
 
-    def addNodePropertyShape(self, c, p, next_c, next_p, is_last=False):
+    def _addNodePropertyShape(self, c, p, next_c, next_p, is_last=False):
         c = URIRef(c)
         p = URIRef(p)
         if c not in self.identifiers:
@@ -73,6 +76,7 @@ class CMtoSHACL():
             if self.close:
                 self.g.add((c, SH.closed, Literal("true", datatype=XSD.boolean)))
             self.g.add((c, SH.targetClass, c))
+            self.g.add((c, SH["class"],c))
         if p not in self.identifiers[c]:
             self.identifiers[c][p] = BNode()
             self.g.add((c, SH.property, self.identifiers[c][p]))
@@ -104,6 +108,59 @@ class CMtoSHACL():
                 self.shaclinDict[self.identifiers[c][p]] = currentIn
                 #TODO to be added nodeKind
 
+    def addNodePropertyShape(self, c, p, next_c, next_p, is_last=False):
+        c = URIRef(c)
+        p = URIRef(p)
+        if c not in self.identifiers:
+            self.identifiers[c] = {}
+            self.g.add((c, RDF.type, SH.NodeShape))
+            if self.close:
+                self.g.add((c, SH.closed, Literal("true", datatype=XSD.boolean)))
+            self.g.add((c, SH.targetClass, c))
+            self.g.add((c, SH["class"],c))
+        if p not in self.identifiers[c]:
+            ps = BNode()
+            self.identifiers[c][p] = [ps]
+            self.g.add((c, SH.property, ps))
+            self.g.add((ps, SH.path, p))
+        else:
+            ps = BNode()
+            self.identifiers[c][p].append(ps)
+            self.g.add((c, SH.property, ps))
+            self.g.add((ps, SH.path, p))
+            
+        if is_last == False and next_c != None:
+            self.g.add((ps, SH["class"], URIRef(next_c)))
+            self.g.add((ps, SH["nodeKind"], SH["IRI"]))
+        elif is_last == True:
+            next_c_type = self.checkType(next_c)
+            if next_c_type == "class":
+                # self.g.add((self.identifiers[c][p], SH["class"], URIRef(next_c)))
+                # currentClass = self.constraintDict[SH["class"]].get(self.identifiers[c][p], [])
+                # currentClass.append(URIRef(next_c))
+                # self.constraintDict[SH["class"]][self.identifiers[c][p]] = currentClass
+                self.g.add((ps, SH["nodeKind"], SH["IRI"]))
+                self.g.add((ps, SH["class"], URIRef(next_c)))
+            elif next_c_type == "datatype":
+                # self.g.add((self.identifiers[c][p], SH["datatype"], next_c))
+                # currentDatatype = self.constraintDict[SH["datatype"]].get(self.identifiers[c][p], [])
+                # currentDatatype.append(next_c)
+                # self.constraintDict[SH["datatype"]][self.identifiers[c][p]] = currentDatatype
+                self.g.add((ps, SH["nodeKind"], SH["Literal"]))
+                self.g.add((ps, SH["datatype"], next_c))
+            elif next_c_type == None:
+                self.g.add((ps, SH["nodeKind"], SH["IRI"]))
+            if next_p != "?value":
+                # self.g.add((self.identifiers[c][p], SH["hasValue"], Literal(next_p)))
+                # currentIn = self.shaclinDict.get(self.identifiers[c][p], [])
+                # currentIn.append(Literal(next_p))
+                # self.shaclinDict[self.identifiers[c][p]] = currentIn
+                bn = BNode()
+                self.g.add((ps, SH["in"], bn))
+                self.g.add((bn, RDF.first, Literal(next_p)))
+                self.g.add((bn, RDF.rest, RDF.nil))
+                #TODO to be added nodeKind
+
 
     def addSHACLin(self):
         for k, v in self.shaclinDict.items():
@@ -122,8 +179,30 @@ class CMtoSHACL():
                 bn = nextBn
             self.g.add((bn,RDF.first,v[-1]))
             self.g.add((bn,RDF.rest,RDF.nil))
+
     
-    def addSHACLconstraints(self):
+    def addDisjunctionShapes(self):
+        for ns_class, ps_properties in self.identifiers.items():
+            for p, ps_list in ps_properties.items():
+                if len(ps_list) == 1:
+                    continue
+                bn = BNode()
+                self.g.add((ns_class,SH["or"],bn))
+                for i in ps_list[:-1]:
+                    self.g.remove((ns_class, SH.property, i))
+                    bn_prop = BNode()
+                    self.g.add((bn, RDF.first, bn_prop))
+                    self.g.add((bn_prop, SH.property, i))
+                    nextBn = BNode()
+                    self.g.add((bn,RDF.rest,nextBn))
+                    bn = nextBn
+                self.g.remove((ns_class, SH.property, ps_list[-1]))
+                bn_prop = BNode()
+                self.g.add((bn, RDF.first, bn_prop))
+                self.g.add((bn_prop, SH.property, ps_list[-1]))
+                self.g.add((bn,RDF.rest,RDF.nil))
+
+    def _addSHACLconstraints(self):
         # to keep consistent and avoid unsatisfiable shapes
         for constraint, valueDict in self.constraintDict.items():
             for k, v in valueDict.items():
