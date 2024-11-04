@@ -19,21 +19,22 @@ class CMtoSHACL():
         self.g.bind("rdfs", RDFS)
         self.g.bind("rdf", RDF)
         self.g.bind("epo", Namespace(self.vocab["epo"]))
+        self.g.bind("dct", Namespace(self.vocab["dct"]))
 
+        self.dctsource = Namespace(self.vocab["dct"]).source
+        
         self.identifiers = {}
         self.shaclinDict = {}
         self.constraintDict = {SH["datatype"]:{}, SH["class"]:{}}
         
-
-
     def translate(self):
         # load the data
-        self.metaData_info, self.Class_path, self.Property_path, self.Field_XPath, self.controlled_list_c1 = self.dL.load()
+        self.metaData_info, self.Class_path, self.Property_path, self.Field_XPath, self.controlled_list_c1, self.field_id = self.dL.load()
         self.controlled_list_c1 = self.controlled_list_c1["CL1"]
 
         # loop through the rules
         num = 0
-        for XPath, Class, Property in zip(self.Field_XPath, self.Class_path, self.Property_path):
+        for XPath, Class, Property, ID in zip(self.Field_XPath, self.Class_path, self.Property_path, self.field_id):
             num += 1
             print(f"Processing Rule {num}...")
             # print(f"C: {Class}, P: {Property}")
@@ -57,9 +58,9 @@ class CMtoSHACL():
                     c = c_list[index]
                     p = p_list[index]
                     if index == len(c_list)-2:
-                        self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1], True)
+                        self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1], ID, True)
                     else:
-                        self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1])
+                        self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1], ID)
 
         #self.addSHACLin()
         # self.addSHACLconstraints()
@@ -67,20 +68,23 @@ class CMtoSHACL():
         self.g = combine_shapes_with_same_path(self.g)
                 
 
-    def _addNodePropertyShape(self, c, p, next_c, next_p, is_last=False):
+    def _addNodePropertyShape(self, c, p, next_c, next_p, ID, is_last=False):
         c = URIRef(c)
         p = URIRef(p)
         if c not in self.identifiers:
             self.identifiers[c] = {}
             self.g.add((c, RDF.type, SH.NodeShape))
+            self.g.add((c, self.dctsource, Literal(ID)))
             if self.close:
                 self.g.add((c, SH.closed, Literal("true", datatype=XSD.boolean)))
             self.g.add((c, SH.targetClass, c))
             self.g.add((c, SH["class"],c))
+            self.g.add((c, SH["nodeKind"], SH["IRI"]))
         if p not in self.identifiers[c]:
             self.identifiers[c][p] = BNode()
             self.g.add((c, SH.property, self.identifiers[c][p]))
             self.g.add((self.identifiers[c][p], SH.path, p))
+            self.g.add((self.identifiers[c][p], self.dctsource, Literal(ID)))
             
         if is_last == False and next_c != None:
             self.g.add((self.identifiers[c][p], SH["class"], URIRef(next_c)))
@@ -108,26 +112,31 @@ class CMtoSHACL():
                 self.shaclinDict[self.identifiers[c][p]] = currentIn
                 #TODO to be added nodeKind
 
-    def addNodePropertyShape(self, c, p, next_c, next_p, is_last=False):
+    def addNodePropertyShape(self, c, p, next_c, next_p, ID, is_last=False):
         c = URIRef(c)
         p = URIRef(p)
         if c not in self.identifiers:
             self.identifiers[c] = {}
             self.g.add((c, RDF.type, SH.NodeShape))
+            self.g.add((c, self.dctsource, Literal(ID)))
             if self.close:
                 self.g.add((c, SH.closed, Literal("true", datatype=XSD.boolean)))
             self.g.add((c, SH.targetClass, c))
             self.g.add((c, SH["class"],c))
+            self.g.add((c, SH["nodeKind"], SH["IRI"]))
+            self.g
         if p not in self.identifiers[c]:
             ps = BNode()
             self.identifiers[c][p] = [ps]
             self.g.add((c, SH.property, ps))
             self.g.add((ps, SH.path, p))
+            self.g.add((ps, self.dctsource, Literal(ID)))
         else:
             ps = BNode()
             self.identifiers[c][p].append(ps)
             self.g.add((c, SH.property, ps))
             self.g.add((ps, SH.path, p))
+            self.g.add((ps, self.dctsource, Literal(ID)))
             
         if is_last == False and next_c != None:
             self.g.add((ps, SH["class"], URIRef(next_c)))

@@ -50,6 +50,6 @@
 		"v": "http://rdf.data-vocabulary.org/#",
 
 		"adms": "http://www.w3.org/ns/adms#",
-		"person": "http://www.example.org/todo#"
+		"person": "http://www.w3.org/ns/person#"
   }
   
