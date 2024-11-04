@@ -5,16 +5,28 @@ from rdflib.namespace import SH, RDF, RDFS, XSD
 from rdflib import Namespace, URIRef, Literal, BNode
 from collections import defaultdict
 from .rml2shacl.RMLtoShacl import RMLtoSHACL
+from ..utils import combine_shapes_with_same_path
 
 class SHACLRewrite:
     def __init__(self):
         preserved_constraints_file = "src/consistency/preserved_constraints.txt"
         self.preserved_constraints = self.load_preserved_constraints(preserved_constraints_file)
+        self.dctsource = URIRef("http://purl.org/dc/terms/source")
 
     def load_preserved_constraints(self, file_path):
         with open(file_path, 'r') as file:
             return [URIRef(line.strip()) for line in file.readlines()]
 
+    def addSources(self, graph):
+        """
+        Add dct:source to the SHACL shapes to keep track of the original RML rules
+        """
+        for s, p, o in graph.triples((None, RDF.type, SH.NodeShape)):
+            source = URIRef(str(s).split("/shape")[0])
+            graph.add((s, self.dctsource, source))
+            for _, _, o2 in graph.triples((s, SH.property, None)):
+                graph.add((o2, self.dctsource, source))
+        return graph
     def filter_constraints(self, shape_graph):
         """
         only focus on interested constraints, remove others
@@ -54,7 +66,7 @@ class SHACLRewrite:
                 shape_graph.remove((o, None, None))
         return shape_graph
 
-    def combine_shapes_with_same_path(self, graph):
+    def _combine_shapes_with_same_path(self, graph):
         """
         Specifically designed for SHACL shapes from RML2SHACL
         Combines property shapes under the same node shape that have the same `sh:path` into a single property shape using `sh:or`.
@@ -148,10 +160,12 @@ class SHACLRewrite:
         self.rml2shacl("temp/rml.ttl", "temp/rml_shacl.ttl")
 
         shape_graph = rdflib.Graph().parse("temp/rml_shacl.ttl", format="ttl")
+        shape_graph.bind("dct", URIRef("http://purl.org/dc/terms/"))
+        shape_graph = self.addSources(shape_graph)
         shape_graph = self.filter_constraints(shape_graph)
         shape_graph = self.fix_nodeKind(shape_graph)
         shape_graph = self.replace_node_with_class(shape_graph)
-        shape_graph = self.combine_shapes_with_same_path(shape_graph)
+        shape_graph = combine_shapes_with_same_path(shape_graph)
 
         return shape_graph
 
@@ -163,4 +177,5 @@ if __name__ == "__main__":
     rewritten_graph = rewritter.rewrite_shacl("mapping_repair/dataset/rml_f03.ttl-output-shape.ttl")
     
     rewritten_graph.serialize(f"rewritten-rml_f03.ttl-output-shape.ttl", format="ttl")
+
 
