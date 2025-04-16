@@ -1,0 +1,36 @@
+{
+    "identifier": "package_eforms_10-24_v1.5",
+    "title": "Package EF10-EF24, SDK v1.5",
+    "created_at": "2024-09-20 16:41:40.090228+00:00",
+    "description": "This is the mapping suite for eForms subtype 10-24 SDK version 1.5",
+    "mapping_version": "1.0.0",
+    "ontology_version": "4.0.0",
+    "mapping_type": "eforms",
+    "metadata_constraints": {
+        "constraints": {
+            "eforms_subtype": [
+                "10",
+                "11",
+                "12",
+                "13",
+                "14",
+                "15",
+                "16",
+                "17",
+                "18",
+                "19",
+                "20",
+                "21",
+                "22",
+                "23",
+                "24"
+            ],
+            "start_date": null,
+            "end_date": null,
+            "eforms_sdk_versions": [
+                "1.5"
+            ]
+        }
+    },
+    "mapping_suite_hash_digest": "2641371fd8021f16aec76c82027c0bbdb88fd201530ee4cb27923459f91cf56a"
+}

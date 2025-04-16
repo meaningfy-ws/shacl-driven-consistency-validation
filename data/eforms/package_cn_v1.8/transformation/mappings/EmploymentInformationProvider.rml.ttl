@@ -1,0 +1,65 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+
+tedm:MG-EmploymentInformationProvider_ND-LotEmploymentLegislation a rr:TriplesMap ;
+    rdfs:label "MG-EmploymentInformationProvider" ;
+    rml:logicalSource [
+        rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:EmploymentLegislationDocumentReference" ;
+        rml:referenceFormulation ql:XPath ;
+        rml:source "data/source.xml" ;
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-301-Lot-EmployLegis TPO (hasContactPointInRole)" ;
+        rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
+        rr:objectMap [
+            rr:joinCondition [
+                rr:child "if(cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName='touchpoint' or exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'TPO-')])) then cac:IssuerParty/cac:PartyIdentification/cbc:ID else null" ;
+                rr:parent "cac:PartyIdentification/cbc:ID" ;
+            ] ;
+            rr:parentTriplesMap tedm:MG-ContactPoint_ND-Touchpoint ;
+        ] ;
+        rr:predicate epo:hasContactPointInRole ;
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-301-Lot-EmployLegis (contextualisedBy)" ;
+        rr:objectMap [
+            rr:joinCondition [
+                rr:child "../../cbc:ID" ;
+                rr:parent "cbc:ID" ;
+            ] ;
+            rr:parentTriplesMap tedm:MG-Lot_ND-Lot ;
+        ] ;
+        rr:predicate epo:contextualisedBy ;
+    ] ;
+    rr:predicateObjectMap [
+        rdfs:label "OPT-301-Lot-EmployLegis" ;
+        rdfs:comment "Connection between AgentInRole and Organization OR ContactPoint" ;
+        rr:objectMap [
+            rdfs:label "TPO (playedBy)" ;
+            rdfs:comment "Connection where IssuerParty is a TouchPoint" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:IssuerParty/cac:PartyIdentification/cbc:ID}" ;
+        ] ;
+        rr:objectMap [
+            rdfs:label "ORG (playedBy)" ;
+            rdfs:comment "Connection where IssuerParty is an Organization" ;
+            rr:joinCondition [
+                rr:child "if(cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName='organization' or exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID[starts-with(text(), 'ORG-')])) then cac:IssuerParty/cac:PartyIdentification/cbc:ID else null" ;
+                rr:parent "cac:PartyIdentification/cbc:ID" ;
+            ] ;
+            rr:parentTriplesMap tedm:MG-Organization_ND-Company ;
+        ] ;
+        rr:predicate epo:playedBy ;
+    ] ;
+    rr:subjectMap [
+        rdfs:label "ND-LotEmploymentLegislation" ;
+        rr:class epo:EmploymentInformationProvider ;
+        rml:reference "if(exists(cac:IssuerParty/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_EmploymentInformationProvider_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(cac:IssuerParty/cac:PartyIdentification/cbc:ID, cac:IssuerParty/cac:PartyIdentification/cbc:ID/@schemeName)) || '?response_type=raw') else null";
+    ] ;
+    tedm:minSDKVersion "1.5.12" .

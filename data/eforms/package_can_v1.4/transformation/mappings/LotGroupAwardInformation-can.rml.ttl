@@ -1,0 +1,112 @@
+#--- MG-LotGroupAwardInformation ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+
+tedm:MG-MonetaryValue-hasGroupFrameworkAgreementMaximumValue-LotGroupAwardInformation_ND-NoticeResultGroupFA  a rr:TriplesMap ;
+  rdfs:label "MG-MonetaryValue";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:GroupFramework" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+   rr:subjectMap
+        [
+            rdfs:label "ND-NoticeResultGroupFA";
+            rml:reference "if (exists(efbc:GroupFrameworkMaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+        ] ;
+   rr:predicateObjectMap
+        [
+            rdfs:label "BT-156-NoticeResult";
+            rdfs:comment "Group Framework Maximum Value of MG-MonetaryValue under ND-NoticeResultGroupFA";
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='gro-max-val']) and efbc:GroupFrameworkMaximumValueAmount/text() = '-1' )) then efbc:GroupFrameworkMaximumValueAmount else null" ;
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ] ;
+      rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EstimatedOverallContractAmount/@currencyID";
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:GroupFrameworkMaximumValueAmount/@currencyID";
+                ] ;
+        ]
+.
+
+tedm:MG-LotGroupAwardInformation_ND-NoticeResultGroupFA  a rr:TriplesMap ;
+  rdfs:label "MG-LotGroupAwardInformation";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:GroupFramework" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotsGroupFA";
+              rml:reference "if (exists(efbc:GroupFrameworkMaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotGroupAwardInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
+            rr:class epo:LotGroupAwardInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-156-NoticeResult";
+            rr:predicate epo:hasGroupFrameworkAgreementMaximumValue    ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasGroupFrameworkAgreementMaximumValue-LotGroupAwardInformation_ND-NoticeResultGroupFA ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ]   ;
+    rr:predicateObjectMap
+        [
+            # TODO Not in the source
+            rdfs:label "ND-NoticeResultGroupFA";
+            rdfs:comment "ND-NoticeResultGroupFA of MG-LotGroup undr ND-NoticeResult";
+            rr:predicate epo:describesLotGroup ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-LotGroup-describesLotGroup-LotGroupAwardInformation_ND-NoticeResultGroupFA ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
+.

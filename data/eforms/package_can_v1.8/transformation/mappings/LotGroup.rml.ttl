@@ -1,0 +1,643 @@
+#--- MG-LotGroup ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix	foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+
+tedm:MG-LotGroup_ND-LotsGroup a rr:TriplesMap ;
+    rdfs:label "MG-LotGroup" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotsGroup" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{cbc:ID}" ;
+            rr:class epo:LotGroup
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-137-LotsGroup" ;
+            rdfs:comment "Purpose Lot Identifier of MG-LotGroup under ND-LotsGroup" ;
+            rr:predicate adms:identifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-LotGroup_ND-LotsGroup ;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-22-Lot" ;
+            rdfs:comment "Internal Identifier of MG-Lot under ND-LotsGroup" ;
+            rr:predicate epo:hasInternalIdentifier  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-hasInternalIdentifier-LotGroup_ND-LotsGroupProcurementScope ;
+                    rr:joinCondition [
+                        rr:child "cbc:ID";
+                         rr:parent "../cbc:ID";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-27-LotsGroup";
+            rr:predicate epo:hasEstimatedValue  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasEstimatedValue-LotGroup_ND-LotsGroupValueEstimate ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../..)";
+                    ];
+                ] ;
+        ]   ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-271-LotsGroup";
+            rr:predicate epo:hasLaunchFrameworkAgreementMaximumValue  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-LotGroup_ND-LotsGroupValueEstimateExtension ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../../../../..)";
+                    ];
+                ] ;
+        ]   ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-157-LotsGroup";
+            rr:predicate epo:hasLaunchFrameworkAgreementMaximumValue  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-LotGroup_ND-LotsGroupFA ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../..)";
+                    ];
+                ] ;
+        ]   ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-539-LotsGroup, BT-540-LotsGroup, and ND-LotsGroupAwardCriterion";
+            rr:predicate epo:specifiesProcurementCriterion   ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardCriterion ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../../..)";
+                    ];
+                ] ;
+        ]   ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-541-LotsGroup-WeightNumber";
+            rr:predicate epo:specifiesProcurementCriterion   ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardWeightCriterionParameter ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../../../../../../../..)";
+                    ];
+                ] ;
+        ]   ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-5421-LotsGroup-FixedNumber";
+            rr:predicate epo:specifiesProcurementCriterion   ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardFixedCriterionParameter ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../../../../../../../..)";
+                    ];
+                ] ;
+        ]   ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5423-LotsGroup, BT-541-LotsGroup-ThresholdNumber";
+            rr:predicate epo:hasConstraint ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardThresholdCriterionParameter;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../../../../../../../../..)";
+                    ];
+                ] ;
+        ]
+.
+
+tedm:MG-Identifier-identifier-LotGroup_ND-LotsGroup a rr:TriplesMap ;
+    rdfs:comment "The identifier of a lot group" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']" ;
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotsGroupIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID";
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-137-LotsGroup-Scheme" ;
+            rdfs:comment "Scheme of MG-Identifier under ND-LotsGroup" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID/@schemeName";
+                ] ;
+        ] ;
+.
+tedm:MG-Identifier-hasInternalIdentifier-LotGroup_ND-LotsGroupProcurementScope a rr:TriplesMap ;
+    rdfs:label "MG-Identifier";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:ProcurementProject";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label  "ND-LotProcurementScope";
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotInternalIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-22-Lot" ;
+            rdfs:comment "Internal Identifier of MG-Lot under LotProcurementScope" ;
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID";
+                ] ;
+        ];
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-22-Lot-Scheme" ;
+            rdfs:comment "Scheme of MG-Identifier under ND-LotProcurementScope" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID/@schemeName";
+                ] ;
+        ] ;
+.
+
+tedm:MG-LotGroup_ND-LotsGroupProcurementScope a rr:TriplesMap ;
+    rdfs:label "MG-LotGroup";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:ProcurementProject";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label  "ND-LotsGroupProcurementScope";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{../cbc:ID}" ;
+            rr:class epo:LotGroup
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-21-LotsGroup";
+            rdfs:comment "Title of MG-LotGroup under ND-LotsGroupProcurementScope";
+            rr:predicate dct:title;
+            rr:objectMap
+                [
+                    rdfs:label "BT-21-LotsGroup-Language";
+                    rdfs:comment "Language of Title of MG-LotGroup under ND-LotsGroupProcurementScope";
+                    rml:reference "cbc:Name";
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cbc:Name/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-24-LotsGroup";
+            rdfs:comment "Description of MG-LotGroup under ND-LotsGroupProcurementScope";
+            rr:predicate dct:description ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-24-LotsGroup-Language";
+                    rdfs:comment "Language of Description of MG-LotGroup under ND-LotsGroupProcurementScope";
+                    rml:reference "cbc:Description";
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+        ] ;
+#    rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-726-Lot";
+#            rdfs:comment "Suitable For SMEs of MG-LotGroup under ND-LotsGroupProcurementScope" ;
+#            rr:predicate  epo:isSMESuitable;
+#            rr:objectMap
+#                [
+#                    rml:reference "cbc:SMESuitableIndicator";
+#                    rr:datatype xsd:boolean ;
+#
+#                ] ;
+#        ] ;
+.
+
+tedm:MG-MonetaryValue-hasEstimatedValue-LotGroup_ND-LotsGroupValueEstimate  a rr:TriplesMap ;
+    rdfs:label "MG-MonetaryValue";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:ProcurementProject/cac:RequestedTenderTotal" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotsGroupValueEstimate";
+            rml:reference "if (exists(cbc:EstimatedOverallContractAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_PurposeLotGroupEstimatedValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-27-LotsGroup";
+            rdfs:comment "Estimated Value of MG-MonetaryValue under ND-LotsGroupValueEstimate";
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EstimatedOverallContractAmount";
+                    rr:datatype xsd:decimal;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-27-LotsGroup-Currency";
+            rdfs:comment "Currency of Estimated Value of MG-MonetaryValue under ND-LotsGroupValueEstimate";
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "cbc:EstimatedOverallContractAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-LotGroup_ND-LotsGroupValueEstimateExtension  a rr:TriplesMap ;
+    rdfs:label "MG-MonetaryValue";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:ProcurementProject/cac:RequestedTenderTotal/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotsGroupValueEstimateExtension";
+            rml:reference "if (exists(efbc:FrameworkMaximumAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotsGroupValueEstimateExtension_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-271-LotsGroup";
+            rdfs:comment "Framework Maximum Value of MG-MonetaryValue under ND-LotsGroupValueEstimateExtension";
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.5.12" ;
+                    rml:reference "efbc:FrameworkMaximumAmount";
+                    rr:datatype xsd:decimal;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-271-LotsGroup-Currency";
+            rdfs:comment "Currency of Framework Maximum Value of MG-MonetaryValue under ND-LotsGroupValueEstimateExtension";
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "efbc:FrameworkMaximumAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-LotGroup_ND-LotsGroupFA  a rr:TriplesMap ;
+    rdfs:label "MG-MonetaryValue";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:TenderingProcess/cac:FrameworkAgreement" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotsGroupFA";
+            rml:reference "if (exists(cbc:EstimatedMaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotsGroupValueMaximum_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+        ] ;
+    rr:predicateObjectMap
+        [
+            # Differences across versions have no functional effect on this mapping
+            # VERINFO: SDK v1.6 from v1.3-1.5 contains only field name change, along with introduction of Currency attribute and other mapping-irrelevant changes
+            rdfs:label "BT-157-LotsGroup";
+            rdfs:comment "Group Framework Maximum Value (v1.6+), Group Framework Estimated Maximum Value (v1.3-1.5) of MG-MonetaryValue under ND-LotsGroupFA";
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EstimatedMaximumValueAmount";
+                    rr:datatype xsd:decimal;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-157-LotsGroup-Currency";
+            rdfs:comment "Currency of Group Framework Maximum Value (v1.6+), Group Framework Estimated Maximum Value (v1.3-1.5) of MG-MonetaryValue under ND-LotsGroupFA";
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "cbc:EstimatedMaximumValueAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardCriterion a rr:TriplesMap ;
+    rdfs:label "MG-AwardCriterion";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label  "ND-LotsGroupAwardCriterion";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroupAwardCriterion_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:AwardCriterion
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-539-LotGroup";
+            rdfs:comment "Award Criterion Type of MG-AwardCriterion under ND-LotAwardCriterion ";
+            rr:predicate epo:hasAwardCriterionType ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:award-criterion-type" ;
+                    rr:parentTriplesMap tedm:award-criterion-type ;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-typ']) and cbc:AwardingCriterionTypeCode[@listName='award-criterion-type']/text() = 'unpublished' )) then cbc:AwardingCriterionTypeCode[@listName='award-criterion-type'] else null" ;
+                        rr:parent "code.value"
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-540-LotsGroup";
+            rdfs:comment "Award Criterion Description of MG-AwardCriterion under ND-LotAwardCriterion";
+            rr:predicate dct:description;
+            rr:objectMap
+                [
+                    rdfs:label "BT-540-LotsGroup-Language";
+                    rdfs:comment "Language of Award Criterion Description of MG-AwardCriterion under ND-LotAwardCriterion";
+                    rml:reference "if(not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-des']) and cbc:Description/text() = 'unpublished' )) then cbc:Description else null";
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-734-LotsGroup";
+            rdfs:comment "Award Criteria Complicated of MG-AwardCriterion under ND-LotAwardCriterion";
+            rr:predicate  skos:prefLabel  ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-734-LotsGroup-Language";
+                    rdfs:comment "Language of Award Criteria Complicated of MG-AwardCriterion under ND-LotAwardCriterion";
+                    rml:reference "if(not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-nam']) and cbc:Name/text() = 'unpublished' )) then cbc:Name else null";
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cbc:Name/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardFixedCriterionParameter a rr:TriplesMap ;
+    rdfs:label "MG-AwardCriterion";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-fixed']";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label  "ND-LotsGroupAwardFixedCriterionParameter";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroupAwardCriterion_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../../../..)) || '?response_type=raw')}" ;
+            rr:class epo:AwardCriterion
+        ] ;
+    rr:predicateObjectMap
+        [
+            # TODO min SDK 1.3 and Max SDK 1.7
+            rdfs:label "BT-541-LotsGroup-FixedNumber";
+            rdfs:comment "AwardCriterionFixedNumberof MG-AwardCriterion under ND-LotsGroupAwardFixedCriterionParameter";
+            rr:predicate epo:hasFixedValue ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.8" ;
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-num']) and efbc:ParameterNumeric/text() = '-1' )) then efbc:ParameterNumeric else null";
+                    rr:datatype xsd:decimal;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.8 from v1.3-1.7 contains only node change with stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute and other mapping-irrelevant changes
+            rdfs:label "BT-5422-LotsGroup";
+            rdfs:comment "Award Criterion Number Fixed of MG-AwardCriterion under ND-LotsGroupAwardFixedCriterionParameter (v1.8+), ND-LotsGroupAwardCriterionParameter (v1.3-1.7)";
+            rr:predicate epo:hasFixedValueType ;
+            rr:objectMap
+                [
+                    rdfs:label ":at-voc:number-fixed" ;
+                    rr:parentTriplesMap tedm:number-fixed ;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-fix']) and efbc:ParameterCode/text() = 'unpublished' )) then efbc:ParameterCode else null" ;
+                        rr:parent "code.value" ;
+                    ] ;
+               ] ;
+        ] ;
+.
+tedm:MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardWeightCriterionParameter a rr:TriplesMap ;
+    rdfs:label "MG-AwardCriterion";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-weight']";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label  "ND-LotsGroupAwardCriterion";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroupAwardCriterion_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../../../..)) || '?response_type=raw')}" ;
+            rr:class epo:AwardCriterion
+        ] ;
+    rr:predicateObjectMap
+        [
+            # TODO min SDK 1.3 and Max SDK 1.7
+            rdfs:label "BT-541-LotsGroup-WeightNumber";
+            rdfs:comment "AwardCriterionWeightNumber of MG-AwardCriterion under ND-LotAwardWeightCriterionParameter";
+            rr:predicate cccev:weight ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.8" ;
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-num']) and efbc:ParameterNumeric/text() = '-1' )) then efbc:ParameterNumeric else null";
+                    rr:datatype xsd:decimal;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.8 from v1.3-1.7 contains only node change with stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute and other mapping-irrelevant changes
+            rdfs:label "BT-5421-LotsGroup";
+            rdfs:comment "Award Criterion Number Weight of MG-AwardCriterion under ND-LotAwardWeightCriterionParameter (v1.8+), ND-LotsGroupAwardCriterionParameter (v1.3-1.7)";
+            rr:predicate epo:hasWeightValueType ;
+            rr:objectMap
+                [
+                    rdfs:label ":at-voc:number-weight" ;
+                    rr:parentTriplesMap tedm:number-weight ;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-wei']) and efbc:ParameterCode/text() = 'unpublished') and exists(efbc:ParameterNumeric)) then efbc:ParameterCode else null" ;
+                        rr:parent "code.value" ;
+                    ] ;
+               ] ;
+        ] ;
+    .
+tedm:MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardThresholdCriterionParameter a rr:TriplesMap ;
+    rdfs:label "MG-Constraint";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='LotsGroup']/cac:TenderingTerms/cac:AwardingTerms/cac:AwardingCriterion/cac:SubordinateAwardingCriterion/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:AwardCriterionParameter[efbc:ParameterCode/@listName='number-threshold']";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotsGroupAwardThresholdCriterionParameter";
+            rml:reference "if (exists(efbc:ParameterCode[@listName='number-threshold'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotGroupConstraint_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../../../../..)) || '?response_type=raw') else null" ;
+            rr:class cccev:Constraint
+        ] ;
+    rr:predicateObjectMap
+        [
+            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.8 from v1.3-1.7 contains only node change with stylistic XPath changes yielding the same effective XPaths, along with introduction of List attribute and other mapping-irrelevant changes
+            rdfs:label  "BT-541-LotsGroup-ThresholdNumber";
+            rdfs:comment "Award Criterion Number Threshold of MG-Constraint under ND-LotsGroupAwardThresholdCriterionParameter (v1.8+), ND-LotsGroupAwardCriterionParameter (v1.3-1.7)";
+            rr:predicate epo:hasThresholdValue ;
+            rr:objectMap
+                [
+                    rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-num']) and efbc:ParameterNumeric/text() = '-1' )) then efbc:ParameterNumeric else null" ;
+                    rr:datatype xsd:decimal;
+                ]
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label  "BT-5423-LotsGroup";
+            rdfs:comment "Award Criterion Number Threshold of MG-Constraint under ND-LotAwardThresholdCriterionParameter";
+            rr:predicate epo:hasThresholdType ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.8" ;
+                    rdfs:label "at-voc:number-threshold" ;
+                    rr:parentTriplesMap tedm:number-threshold ;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='awa-cri-thr']) and efbc:ParameterCode/text() = 'unpublished' )) then efbc:ParameterCode else null" ;
+                        rr:parent "code.value"
+                    ] ;
+                ] ;
+            ] ;
+.

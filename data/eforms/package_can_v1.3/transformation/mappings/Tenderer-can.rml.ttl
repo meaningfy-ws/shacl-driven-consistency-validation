@@ -1,0 +1,188 @@
+#--- MG-Tenderer ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+
+tedm:MG-Tenderer_ND-TenderingParty a rr:TriplesMap ;
+    rdfs:label "MG-Tenderer";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:TenderingParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-TenderingParty" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Tenderer_{cbc:ID}" ;
+            rr:class epo:Tenderer
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-210-Tenderer and OPT-170-Tenderer " ;
+            rdfs:comment "Tendering Party ID of MG-OrganisationGroup under ND-TenderingParty" ;
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-OrganisationGroup-playedBy-Tenderer_ND-TenderingParty ;
+                   rr:joinCondition
+                        [
+                            rr:child "if(exists(efac:Tenderer[2])) then path(.) else null" ;
+                            rr:parent "path(.)" ;
+                        ] ;
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "OPT-211-Tenderer" ;
+            rdfs:comment "Tendering Party ID of MG-OrganisationGroup under ND-TenderingParty" ;
+            rr:predicate dct:title ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Name" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-300-Tenderer" ;
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Organization-playedBy-Tenderer_ND-Tenderer ;
+                    rr:joinCondition
+                    [
+                        rr:child "if(not(exists(efac:Tenderer[2]))) then path(.) else null" ;
+                        rr:parent "path(..)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Tenderer-announcesRole-ResultNotice_ND-TenderingParty a rr:TriplesMap ;
+    rdfs:label "MG-Tenderer" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:TenderingParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-TenderingParty" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Tenderer_{cbc:ID}" ;
+            rr:class epo:Tenderer
+        ] ;
+.
+
+tedm:MG-OrganisationGroup-playedBy-Tenderer_ND-TenderingParty a rr:TriplesMap ;
+    rdfs:label "MG-OrganisationGroup" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:TenderingParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-TenderingParty" ;
+            rml:reference "if(exists(efac:Tenderer[2])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_OrganisationGroup_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:OrganisationGroup
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "OPT-300-Tenderer" ;
+            rdfs:comment "TendererIDReference of MG-OrganisationGroup under ND-TenderingParty" ;
+            rr:predicate epo:hasMember ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Organization-hasMember-OrganisationGroup-playedBy-Tenderer_ND-Tenderer ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-170-Tenderer" ;
+            rdfs:comment "TenderingPartyLeader of MG-OrganisationGroup under ND-TenderingParty" ;
+            rr:predicate epo:leadBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Organization-leadBy-OrganisationGroup-playedBy-Tenderer_ND-Tenderer ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Organization-playedBy-Tenderer_ND-Tenderer a rr:TriplesMap ;
+    rdfs:label "MG-Organization" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:TenderingParty/efac:Tenderer" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Tenderer" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cbc:ID}" ;
+            rr:class org:Organization
+        ] ;
+.
+
+tedm:MG-Organization-hasMember-OrganisationGroup-playedBy-Tenderer_ND-Tenderer a rr:TriplesMap ;
+    rdfs:label "MG-Organization" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:TenderingParty/efac:Tenderer" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Tenderer" ;
+            rml:reference "if(exists(../efac:Tenderer[2])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Organization_' || cbc:ID else null" ;
+            rr:class org:Organization
+        ] ;
+ .
+
+tedm:MG-Organization-leadBy-OrganisationGroup-playedBy-Tenderer_ND-Tenderer a rr:TriplesMap ;
+    rdfs:label "MG-Organization" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:TenderingParty/efac:Tenderer" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Tenderer" ;
+            rml:reference "if(exists(../efac:Tenderer[2]) and efbc:GroupLeadIndicator='true') then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Organization_' || cbc:ID else null" ;
+            rr:class org:Organization
+        ] ;
+ .

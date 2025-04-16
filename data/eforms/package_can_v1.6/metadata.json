@@ -1,0 +1,22 @@
+{
+    "identifier": "package_eforms_29_v1.6",
+    "title": "Package EF29, SDK v1.6",
+    "created_at": "2024-09-10 01:40:44.197352+00:00",
+    "description": "This is the conceptual mapping for eForms subtype 29 and SDK version 1.6",
+    "mapping_version": "1.0.0",
+    "ontology_version": "4.0.0",
+    "mapping_type": "eforms",
+    "metadata_constraints": {
+        "constraints": {
+            "eforms_subtype": [
+                "29"
+            ],
+            "start_date": null,
+            "end_date": null,
+            "eforms_sdk_versions": [
+                "1.6"
+            ]
+        }
+    },
+    "mapping_suite_hash_digest": "8bedc2378560e8c86544fe9c4428d7e7effcb39c8529f7989ead8803a01fb87d"
+}

@@ -1,0 +1,179 @@
+#--- MG-VehicleInformation ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+
+tedm:MG-VehicleInformation_ND-StrategicProcurementInformationLotResult a rr:TriplesMap ;
+    rdfs:label "MG-VehicleInformation";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement/efac:StrategicProcurementInformation" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-StrategicProcurementInformationLotResult" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_VehicleInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:VehicleInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-StrategicProcurementInformationLotResult";
+            rr:predicate epo:concernsGreenProcurement ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-GreenProcurement-concernsGreenProcurement-VehicleInformation_ND-StrategicProcurementLotResult ;
+                   rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-735-LotResult";
+            rdfs:comment "CVD Contract Type of MG-VehicleInformation under ND-StrategicProcurementInformationLotResult";
+            rr:predicate epo:specifiesCleanVehicleDirectiveContractType  ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:cvd-contract-type" ;
+                    rr:parentTriplesMap tedm:cvd-contract-type ;
+                    rr:joinCondition [
+                        rr:child "efbc:ProcurementCategoryCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-VehicleInformation_ND-ProcurementStatistics a rr:TriplesMap ;
+    rdfs:label "MG-VehicleInformation";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement/efac:StrategicProcurementInformation/efac:ProcurementDetails/efac:StrategicProcurementStatistics" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ProcurementStatistics" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_VehicleInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:VehicleInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-156-LotResult";
+            rdfs:comment "Total Vehicle Numeric of MG-VehicleInformation under ND-ProcurementStatistics";
+            rr:predicate  epo:hasTotalVehicles  ;
+            rr:objectMap
+                [
+                    rml:reference "if (efbc:StatisticsCode='vehicles')then efbc:StatisticsNumeric else null";
+                    rr:datatype xsd:integer  ;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-156-LotResult";
+            rdfs:comment "Clean Vehicle Numeric of MG-VehicleInformation under ND-ProcurementStatistics";
+            rr:predicate  epo:hasCleanVehicles   ;
+            rr:objectMap
+                [
+                    rml:reference "if (efbc:StatisticsCode='vehicles-clean')then efbc:StatisticsNumeric else null";
+                    rr:datatype xsd:integer  ;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-156-LotResult";
+            rdfs:comment "Zero Emission Vehicle Numeric of MG-VehicleInformation under ND-ProcurementStatistics";
+            rr:predicate  epo:hasZeroEmissionVehicles    ;
+            rr:objectMap
+                [
+                    rml:reference "if (efbc:StatisticsCode='vehicles-zero-emission') then efbc:StatisticsNumeric else null";
+                    rr:datatype xsd:integer  ;
+                ] ;
+        ];
+.
+
+tedm:MG-VehicleInformation_ND-ProcurementDetailsLotResult a rr:TriplesMap ;
+    rdfs:label "MG-VehicleInformation";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement/efac:StrategicProcurementInformation/efac:ProcurementDetails" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ProcurementDetailsLotResult" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_VehicleInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:VehicleInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-StrategicProcurementInformationLotResult";
+            rr:predicate epo:concernsGreenProcurement ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-GreenProcurement-concernsGreenProcurement-VehicleInformation_ND-StrategicProcurementLotResult ;
+                   rr:joinCondition [
+                        rr:child "path(..)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.9.1" ;
+            rdfs:label "BT-723-LotResult";
+            rdfs:comment "VehicleCategory of MG-VehicleInformation under ND-StrategicProcurementInformationLotResult";
+            rr:predicate epo:specifiesCleanVehicleDirectiveVehicleCategory ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:vehicle-category" ;
+                    rr:parentTriplesMap tedm:vehicle-category ;
+                    rr:joinCondition [
+                        rr:child "efbc:AssetCategoryCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-VehicleInformation-seeAlso-LotAwardOutcome_ND-StrategicProcurementInformationLotResult  a rr:TriplesMap ;
+    rdfs:label "MG-VehicleInformation";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement/efac:StrategicProcurementInformation" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ProcurementStatistics" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_VehicleInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:VehicleInformation
+        ] ;
+.

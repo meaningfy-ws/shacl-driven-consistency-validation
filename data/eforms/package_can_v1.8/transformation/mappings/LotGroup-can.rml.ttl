@@ -1,0 +1,199 @@
+#--- MG-LotGroup ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+
+tedm:MG-LotGroup_ND-NoticeResult a rr:TriplesMap ;
+    rdfs:label "MG-LotGroup";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            # TODO Not in the source
+            rdfs:label  "ND-NoticeResult";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{../cbc:ID}" ;
+            rr:class epo:LotGroup
+        ] ;
+.
+
+tedm:MG-LotGroup-describesLotGroup-LotGroupAwardInformation_ND-NoticeResultGroupFA a rr:TriplesMap ;
+    rdfs:label "MG-LotGroup";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:GroupFramework";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            # TODO Not in the source
+            rdfs:label  "ND-NoticeResultGroupFA";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{../cbc:ID}" ;
+            rr:class epo:LotGroup
+        ] ;
+.
+
+tedm:MG-Identifier-identifier-Lot-setsGroupingContextForLot-LotGroup_ND-NoticeResultGroupFA  a rr:TriplesMap ;
+    rdfs:label "MG-Identifier";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:GroupFramework" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-NoticeResultGroupFA";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Lot_{cbc:ID}" ;
+            rr:class epo:Identifier
+        ] ;
+   rr:predicateObjectMap
+        [
+            rdfs:label "BT-556-NoticeResult";
+            rdfs:comment "GroupFrameworkValueLotIdentifier of MG-Lot under ND-NoticeResultGroupFA";
+            rr:predicate  skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='gro-max-ide']) and efac:TenderLot/cbc:ID/text() = 'unpublished' )) then efac:TenderLot/cbc:ID else null";
+                ] ;
+        ];
+.
+
+tedm:MG-Lot-setsGroupingContextForLot-LotGroup_ND-NoticeResultGroupFA  a rr:TriplesMap ;
+    rdfs:label "MG-Lot";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:GroupFramework" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-NoticeResultGroupFA";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Lot_{cbc:ID}" ;
+            rr:class epo:Lot
+        ] ;
+   rr:predicateObjectMap
+        [
+            rdfs:label "BT-556-NoticeResult";
+            rdfs:comment "GroupFrameworkValueLotIdentifier of MG-Lot under ND-NoticeResultGroupFA";
+            rr:predicate  adms:identifier ;
+            rr:objectMap
+                [
+                  rr:parentTriplesMap tedm:MG-LotGroup-describesLotGroup-LotGroupAwardInformation_ND-NoticeResult ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ];
+.
+
+tedm:MG-LotGroup_ND-NoticeResultGroupFA  a rr:TriplesMap ;
+    rdfs:label "MG-LotGroup_ND";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:GroupFramework" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-NoticeResultGroupFA";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{cbc:ID}" ;
+            rr:class epo:LotGroup
+        ] ;
+   rr:predicateObjectMap
+        [
+            rdfs:label "BT-556-NoticeResult";
+            rdfs:comment "GroupFrameworkValueLotIdentifier of MG-Lot under ND-NoticeResultGroupFA";
+            rr:predicate  epo:setsGroupingContextForLot ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-LotGroup-describesLotGroup-LotGroupAwardInformation_ND-NoticeResultGroupFA ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ];
+   rdfs:comment "this will be supported only in ePO 4.2.0, ( see GH issue #644)";
+#   rr:predicateObjectMap
+#        [
+#            rdfs:label "BT-1561-NoticeResult";
+#            rdfs:comment "GroupFrameworkValueLotIdentifier of MG-Lot under ND-NoticeResultGroupFA";
+#            rr:predicate  epo:hasApproximateFrameworkAgreementValue  ;
+#            rr:objectMap
+#                [
+#                   rr:parentTriplesMap tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-LotGroup_ND-NoticeResultGroupFA ;
+#                    rr:joinCondition[
+#                        rr:child "path(.)";
+#                        rr:parent "path(.)";
+#                    ];
+#                ] ;
+#        ];
+.
+
+# TODO this will be supported only in ePO 4.2.0, ( see GH issue #644)
+#tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-LotGroup_ND-NoticeResultGroupFA  a rr:TriplesMap ;
+#    rdfs:label "MG-MonetaryValue";
+#    rml:logicalSource
+#        [
+#            rml:source "data/source.xml" ;
+#            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:GroupFramework" ;
+#            rml:referenceFormulation ql:XPath
+#        ] ;
+#    rr:subjectMap
+#        [
+#            rdfs:label "ND-NoticeResultGroupFA";
+#            rml:reference "if (exists(efbc:GroupFrameworkReestimatedValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+#            rr:class epo:MonetaryValue
+#        ] ;
+#   rr:predicateObjectMap
+#        [
+#            # TODO to be added the the source for validation
+#            rdfs:label "BT-1561-NoticeResult";
+#            rdfs:comment "GroupFrameworkRe-estimatedValue of MG-MonetaryValue under ND-NoticeResultGroupFA";
+#            rr:predicate epo:hasAmountValue ;
+#            rr:objectMap
+#                [
+#                    # TODO min SDK 1.5 max SDK 1.6 condition
+#                    # rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='not-ree-val']) and efbc:GroupFrameworkReestimatedValueAmount/text() = '-1' )) then efbc:GroupFrameworkReestimatedValueAmount else null";
+#                    rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='gro-ree-val']) and efbc:GroupFrameworkReestimatedValueAmount/text() = '-1' )) then efbc:GroupFrameworkReestimatedValueAmount else null";
+#                    rr:datatype xsd:decimal;
+#                ] ;
+#        ];
+#    rr:predicateObjectMap
+#        [
+#            rr:predicate epo:hasCurrency ;
+#            rr:objectMap
+#                [
+#                    rml:reference "efbc:GroupFrameworkReestimatedValueAmount/@currencyID";
+#                ] ;
+#        ]
+#.

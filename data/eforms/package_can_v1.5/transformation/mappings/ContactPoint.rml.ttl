@@ -1,0 +1,250 @@
+#--- MG-ContactPoint ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix	foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+
+tedm:X-ContactPoint-Organization a rr:TriplesMap ;
+    rdfs:label "X-Organization" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "Placeholder TouchPoint Organization" ;
+            rdfs:comment "Supporting instance for connection between Agent and Organization" ;
+            rdfs:comment "Primary type declaration for MG-ContactPoint under ND-Touchpoint" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:PartyIdentification/cbc:ID}" ;
+            rr:class org:Organization
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "Same Organization" ;
+            rdfs:comment "Supporting link for connection between Agent and Organization" ;
+            rr:predicate owl:sameAs ;
+            rr:objectMap
+                [
+                    rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{../efac:Company/cac:PartyIdentification/cbc:ID}" ;
+                ]
+        ] ;
+.
+
+tedm:MG-ContactPoint_ND-Touchpoint a rr:TriplesMap ;
+    rdfs:label "MG-ContactPoint" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Touchpoint" ;
+            rdfs:comment "Primary type declaration for MG-ContactPoint under ND-Touchpoint" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_TouchPoint_{cac:PartyIdentification/cbc:ID}" ;
+            rr:class cpov:ContactPoint
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-500-Organization-TouchPoint" ;
+            rdfs:comment "Name of MG-ContactPoint of under ND-Touchpoint" ;
+            rr:predicate dct:description ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-500-Organization-TouchPoint-Language" ;
+                    rdfs:comment "Language of Name of MG-ContactPoint of under ND-Touchpoint" ;
+                    rml:reference "cac:PartyName/cbc:Name" ;
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cac:PartyName/cbc:Name/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate locn:address ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Address-address-ContactPoint_ND-TouchpointAddress ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../.)" ;
+                    ] ;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-505-Organization-TouchPoint";
+            rr:predicate epo:hasInternetAddress ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:WebsiteURI" ;
+                    rr:datatype xsd:anyURI ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Address-address-ContactPoint_ND-TouchpointAddress a rr:TriplesMap ;
+    rdfs:label "ND-TouchpointAddress" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint/cac:PostalAddress" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-TouchpointAddress" ;
+            rdfs:comment "Primary type declaration for MG-Address-address-ContactPoint under ND-TouchpointAddress" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_TouchPointAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class locn:Address
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-16, BT-510(a|b|c), BT-512, BT-513, 514-Organization-Touchpoint" ;
+            rdfs:comment "Part Name, Street, Streetline 1, Streetline 2, City, Post Code, Country Code" ;
+            rr:predicate locn:fullAddress ;
+            rr:objectMap
+                [
+                    rml:reference  "if (exists(cbc:Department) or exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line)) then replace(replace(cbc:Department || ', ' || cbc:StreetName || ', ' || cbc:AdditionalStreetName || ', ' || cac:AddressLine/cbc:Line || ', ' || cbc:CityName || ', ' || cbc:PostalZone || ', ' || cac:Country/cbc:IdentificationCode, '(, )+', ', '),  '^, |, $', '') else null" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-513-Organization-TouchPoint" ;
+            rdfs:comment "City" ;
+            rr:predicate locn:postName ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CityName" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-512-Organization-TouchPoint" ;
+            rdfs:comment "City" ;
+            rr:predicate locn:postCode  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:PostalZone" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-507-Organization-TouchPoint" ;
+            rdfs:comment "Country Subdivision" ;
+            rr:predicate epo:hasNutsCode ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts;
+                    rr:joinCondition [
+                        rr:child "cbc:CountrySubentityCode";
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-514-Organization-TouchPoint" ;
+            rr:predicate epo:hasCountryCode ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:country" ;
+                    rr:parentTriplesMap tedm:country ;
+                    rr:joinCondition [
+                        rr:child "cac:Country/cbc:IdentificationCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ]
+.
+
+# this is an example of a TMap with the same IRI as another (tedm:MG-ContactPoint_ND-Touchpoint)
+# TODO do we need this at all or can it all go into the primary?
+tedm:MG-ContactPoint_ND-TouchpointContact a rr:TriplesMap ;
+    rdfs:label "MG-ContactPoint" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:TouchPoint/cac:Contact" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-TouchpointContact" ;
+            rdfs:comment "Primary type declaration for MG-ContactPoint under ND-TouchpointContact" ;
+            rml:reference "if(exists(cbc:Name) or exists(cbc:ElectronicMail) or exists(cbc:Telephone) or exists(cbc:Telefax)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_TouchPoint_' || ../cac:PartyIdentification/cbc:ID else null" ;
+            rr:class cpov:ContactPoint
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-502-Organization-TouchPoint" ;
+            rdfs:comment "Contact Point" ;
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Name" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-506-Organization-TouchPoint" ;
+            rdfs:comment "Contact Email Address" ;
+            rr:predicate cpov:email ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ElectronicMail" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-503-Organization-TouchPoint" ;
+            rdfs:comment "Contact Telephone Number" ;
+            rr:predicate cpov:telephone ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Telephone" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-739-Organization-TouchPoint" ;
+            rdfs:comment "Contact Fax" ;
+            rr:predicate epo:hasFax ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Telefax" ;
+                ] ;
+        ] ;
+.

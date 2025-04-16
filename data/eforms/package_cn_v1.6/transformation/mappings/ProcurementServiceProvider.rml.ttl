@@ -1,0 +1,85 @@
+#--- MG-ProcurementServiceProvider ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix	foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+
+# VERINFO: v1.10+ only parent node name change (ND-Buyer)
+tedm:MG-ProcurementServiceProvider_ND-ServiceProviderParty a rr:TriplesMap ;
+    rdfs:label "MG-ProcurementServiceProvider";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ContractingParty/cac:Party/cac:ServiceProviderParty";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ServiceProviderParty" ;
+            rdfs:comment "Primary type declaration for MG-ProcurementServiceProvider under ND-ServiceProviderParty" ;
+            rml:reference "if(exists(cac:Party/cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementServiceProvider_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null";
+            rr:class epo:ProcurementServiceProvider
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-300-Procedure-SProvider" ;
+            rdfs:comment "Service Provider Technical Identifier Reference of MG-Organization-playedBy-ProcurementServiceProvider under ND-ServiceProviderParty" ;
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Organization_ND-Company ;
+                    rr:joinCondition [
+                        rr:child "cac:Party/cac:PartyIdentification/cbc:ID" ;
+                        rr:parent "cac:PartyIdentification/cbc:ID" ;
+                    ] ;
+                    # alternative: associated object linked through explicit template with deterministic IRI
+                    # rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:Party/cac:PartyIdentification/cbc:ID}" ;
+                    # rr:termType rr:IRI ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            # Differences across versions have no functional effect on this mapping
+            # VERINFO: SDK v1.10+ from 1.3-1.9 contain only node name change
+            rr:predicate epo:actsOnBehalfOf ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Buyer_ND-ContractingParty ;
+                    # TODO: Check if a join is actually needed and whether absolute or relative child should be used
+                    # rr:joinCondition [
+                    #     rr:child "path(/*/cac:ContractingParty)" ;
+                    #     rr:parent "path(.)" ;
+                    # ];
+                ] ;
+        ] ;
+        rr:predicateObjectMap
+        [
+            rdfs:label "OPT-030-Procedure-SProvider (ted-esen)" ;
+            rdfs:comment "Provided Service Type of MG-ProcurementServiceProvider under ND-ServiceProviderParty, only for eSender" ;
+            rr:predicate dct:description ;
+            rr:objectMap
+                [
+                    rml:reference "if(cbc:ServiceTypeCode[@listName='organisation-role']/text()='ted-esen') then cbc:ServiceTypeCode else null" ;
+                ] ;
+        ] ;
+.

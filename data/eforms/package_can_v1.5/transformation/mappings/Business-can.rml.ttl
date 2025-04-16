@@ -1,0 +1,309 @@
+#--- Business ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix person: <http://www.w3.org/ns/person#> .
+
+tedm:MG-Business_ND-OrganizationUboReference a rr:TriplesMap ;
+  rdfs:label "MG-Business";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:UltimateBeneficialOwner" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-OrganizationUboReference" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{../efac:Company/cac:PartyIdentification/cbc:ID}" ;
+            rr:class epo:Business
+        ] ;
+    rr:predicateObjectMap
+        [
+            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.8+ contain only rel XPath change within the same abs XPath due to node change, along with repeatable=false and other mapping-irrelevant changes
+            rdfs:label "OPT-302-Organization" ;
+            rdfs:comment "Beneficial Owner Reference of MG-Business under ND-OrganizationUboReference (v1.8+), ND-Organization (up to v1.7)" ;
+            rr:predicate epo:hasBeneficialOwner ;
+             rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-Person-hasBeneficialOwner-Business_ND-OrganizationUboReference ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ];
+    .
+
+tedm:MG-Person-hasBeneficialOwner-Business_ND-OrganizationUboReference a rr:TriplesMap ;
+  rdfs:label "MG-Person";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:UltimateBeneficialOwner" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-OrganizationUboReference" ;
+            rdfs:label "OPT-302-Organization" ;
+            rdfs:comment "Beneficial Owner Reference of MG-Person under ND-OrganizationUboReference" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Person_{cbc:ID}" ;
+            rr:class person:Person
+        ] ;
+    .
+
+tedm:MG-Business_ND-Organization a rr:TriplesMap ;
+  rdfs:label "MG-Business";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Organization" ;
+            rml:reference "if(exists(efbc:ListedOnRegulatedMarketIndicator)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Organization_' || efac:Company/cac:PartyIdentification/cbc:ID else null";
+            rr:class epo:Business
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-746-Organization";
+            rdfs:comment "Winner Listed of MG-Business under ND-Organization";
+            rr:predicate  epo:isListedCompany  ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:ListedOnRegulatedMarketIndicator" ;
+                    rr:datatype xsd:boolean ;
+                ] ;
+        ];
+    .
+
+tedm:MG-Identifier-identifier-Person_ND-UBO a rr:TriplesMap ;
+  rdfs:label "MG-Identifier";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:UltimateBeneficialOwner" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-UBO" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_BeneficialOwnerTechnicalIdentifier_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-202-UBO" ;
+            rdfs:label "Beneficial Owner Technical Identifier of MG-Identifier under ND-UBO" ;
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID";
+                ] ;
+        ];
+     rr:predicateObjectMap
+        [
+            rdfs:label "OPT-202-UBO-Scheme" ;
+            rdfs:comment "Scheme  of MG-Identifier under ND-UBO" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID/@schemeName";
+                ] ;
+            ];
+    .
+
+tedm:MG-Person_ND-UBO a rr:TriplesMap ;
+  rdfs:label "MG-Person";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:UltimateBeneficialOwner" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-UBO" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Person_{cbc:ID}" ;
+            rr:class person:Person
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-202-UBO" ;
+            rdfs:comment "Beneficial Owner Technical Identifier of MG-Person under ND-UBO";
+            rr:predicate adms:identifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Person_ND-UBO ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
+       rr:predicateObjectMap
+        [
+            rdfs:label "BT-500-UBO";
+            rdfs:comment "UBO Name of MG-Person under ND-UBO";
+            rr:predicate  foaf:familyName  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:FamilyName" ;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-160-UBO";
+            rdfs:comment "UBO Name of MG-Person under ND-UBO";
+            rr:predicate  foaf:givenName   ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:FirstName" ;
+                ] ;
+        ];
+     rr:predicateObjectMap
+                    [
+                        rdfs:label "BT-16, BT-510(a|b|c), BT-512, BT-513, 514-UBO and BT-507-UBO" ;
+                        rdfs:label "Country Subdivision f MG-Person under ND-UBO" ;
+                        rr:predicate cv:registeredAddress ;
+                        rr:objectMap
+                            [
+                                rr:parentTriplesMap tedm:MG-Address-registeredAddress-Person_ND-UBOAddress ;
+                                rr:joinCondition[
+                                    rr:child "path(.)";
+                                    rr:parent "path(..)"
+                    ];
+                            ] ;
+                        ] ;
+    .
+
+tedm:MG-Address-registeredAddress-Person_ND-UBOAddress a rr:TriplesMap ;
+  rdfs:label "MG-Address";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:UltimateBeneficialOwner/cac:ResidenceAddress" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-UBOAddress" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_UBOAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class locn:Address
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-507-UBO" ;
+            rdfs:comment "Country Subdivision f MG-Address under ND-UBOAddress";
+            rr:predicate epo:hasNutsCode ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:nuts" ;
+                    rr:parentTriplesMap tedm:nuts ;
+                    rr:joinCondition [
+                        rr:child "cbc:CountrySubentityCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-16, BT-510(a|b|c), BT-512, BT-513, 514-UBO" ;
+            rdfs:comment " Street, Streetline 1, Streetline 2, UBO City, UBO Post Code, UBO Country Code" ;
+            rr:predicate locn:fullAddress ;
+            rr:objectMap
+                [
+                    rml:reference  "if (exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line)) then replace(replace(cbc:Department || ', ' || cbc:StreetName || ', ' || cbc:AdditionalStreetName || ', ' || cac:AddressLine/cbc:Line || ', ' || cbc:CityName || ', ' || cbc:PostalZone || ', ' || cac:Country/cbc:IdentificationCode, '(, )+', ', '),  '^, |, $', '') else null" ;
+                ] ;
+        ] ;
+      rr:predicateObjectMap
+        [
+            rdfs:label "BT-513-UBO" ;
+            rr:predicate locn:postName ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CityName" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-512-UBO" ;
+            rr:predicate locn:postCode  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:PostalZone" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-514-UBO";
+            rr:predicate epo:hasCountryCode ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:country" ;
+                    rr:parentTriplesMap tedm:country ;
+                    rr:joinCondition [
+                        rr:child "cac:Country/cbc:IdentificationCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Person_ND-UBONationality a rr:TriplesMap ;
+  rdfs:label "MG-Person";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:UltimateBeneficialOwner/efac:Nationality" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-UBONationality" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Person_{../cbc:ID}" ;
+            rr:class person:Person
+        ] ;
+     rr:predicateObjectMap
+        [
+            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.8+ contain only rel XPath change within the same abs XPath due to node change, along with repeatable=false and other mapping-irrelevant changes
+            rdfs:label "BT-706-UBO";
+            rdfs:comment "Winner Owner Nationality of MG-Person under ND-UBONationality (v1.8+), ND-UBO (up to v1.7)" ;
+            rr:predicate epo:hasNationality  ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:country" ;
+                    rr:parentTriplesMap tedm:country ;
+                    rr:joinCondition [
+                        rr:child "cbc:NationalityID" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    .

@@ -1,0 +1,600 @@
+#--- Root ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix	foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix person: <http://www.w3.org/ns/person#> .
+# to be copied in the appropriate mapping suite, together with all related imports, if it is the case.
+tedm:technical_mapping_cn_v19
+  a owl:Ontology ;
+  #owl:imports 	tedm:contracting_authority, tedm:object, tedm:procedure, tedm:award_of_contract, tedm:complementary_information, tedm:annexe_d1, tedm:notice;
+  dct:description "This module provides the mapping definitions for the eForm subtypes 10-24 for SDK v1.9 against ePO 4.0.0"@en ;
+  rdfs:label "TED-SWS mapping of eForm subtypes 10-24 SDK v1.9 ePO 4.0.0"@en ;
+  dct:date "2024-02-15"^^xsd:date
+.
+
+# this is an example of an MG with the same template of another (MG-Notice) required for conditional assertions
+tedm:MG-CompetitionNotice_ND-Root
+    a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            # this is an example of a complex multi-element condition for instantiation of a subject not suitable as a condition below the iterator
+            rml:iterator "if(/*/cbc:NoticeTypeCode/@listName='competition' or /*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode=('10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24') or exists(/ContractNotice)) then /* else null" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rdfs:comment "Primary type declaration for MG-Notice under ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:class epo-not:CompetitionNotice
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-04-notice" ;
+            rdfs:comment "Procedure Identifier of MG-Procedure-announcesProcedure-CompetitionNotice under ND-Root" ;
+            rr:predicate epo:announcesProcedure ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Procedure_ND-ProcedureProcurementScope
+                ] ;
+        ] ;
+    # this is an example of a (backpropagated) association that is not represented by a BT/field
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-Buyer-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-Buyer-announcesRole-CompetitionNotice under ND-ContractingParty" ;
+            rr:predicate epo-not:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Buyer_ND-ContractingParty
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-ProcurementServiceProvider-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-ProcurementServiceProvider-announcesRole-CompetitionNotice under ND-ServiceProviderParty" ;
+            rr:predicate epo-not:announcesRole ;
+            rr:objectMap
+                [
+                    # Differences across versions have no functional effect on this mapping
+                    # VERINFO: SDK v1.10+ from 1.3-1.9 contain only node name change
+                    rr:parentTriplesMap tedm:MG-ProcurementServiceProvider_ND-ServiceProviderParty
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-LeadBuyer-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-LeadBuyer-announcesRole-CompetitionNotice under ND-Organization" ;
+            rr:predicate epo-not:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-LeadBuyer_ND-Organization
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-AwardingCentralPurchasingBody-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-AwardingCentralPurchasingBody-announcesRole-CompetitionNotice under ND-Organization" ;
+            rr:predicate epo-not:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-AwardingCentralPurchasingBody_ND-Organization
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-AcquiringCentralPurchasingBody-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-AcquiringCentralPurchasingBody-announcesRole-CompetitionNotice under ND-Organization" ;
+            rr:predicate epo-not:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-AcquiringCentralPurchasingBody_ND-Organization
+                ] ;
+        ] ;
+    # we don't need to add the condition from OPT-301-Lot-*
+    # as the roles will always be there (only the predicates of the roles are conditioned)
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-TaxInformationProvider-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-TaxInformationProvider-announcesRole-CompetitionNotice under ND-LotFiscalLegislation" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-TaxInformationProvider_ND-LotFiscalLegislation ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-EnvironmentalProtectionInformationProvider-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-EnvironmentalProtectionInformationProvider-announcesRole-CompetitionNotice under ND-LotEnvironmentalLegislation" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislation ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-EmploymentInformationProvider-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-EmploymentInformationProvider-announcesRole-CompetitionNotice under ND-LotEmploymentLegislation" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-EmploymentInformationProvider_ND-LotEmploymentLegislation ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-TenderReceiver-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-TenderReceiver-announcesRole-CompetitionNotice under ND-TenderRecipient" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-TenderReceiver_ND-TenderRecipient ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap [
+            rdfs:label   "MG-TenderProcessor-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-TenderProcessor-announcesRole-CompetitionNotice under ND-LotTenderingTerms" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-TenderProcessor_ND-LotTenderingTerms ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap [
+            rdfs:label "MG-ProcurementProcedureInformationProvider-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-ProcurementProcedureInformationProvider-announcesRole-CompetitionNotice under ND-LotTenderingTerms" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcurementProcedureInformationProvider_ND-LotTenderingTerms ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap [
+            rdfs:label "MG-OfflineAccessProvider-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-OfflineAccessProvider-announcesRole-CompetitionNotice under ND-LotTenderingTerms" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-OfflineAccessProvider_ND-LotTenderingTerms ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-Reviewer-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-Reviewer-announcesRole-CompetitionNotice under ND-LotReviewTerms" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Reviewer_ND-LotReviewTerms ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label   "MG-ReviewProcedureInformationProvider-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-ReviewProcedureInformationProvider-announcesRole-CompetitionNotice under ND-LotReviewTerms" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ReviewProcedureInformationProvider_ND-LotReviewTerms ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-Mediator-announcesRole-CompetitionNotice" ;
+            rdfs:comment "MG-Mediator-announcesRole-CompetitionNotice under ND-LotReviewTerms" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Mediator_ND-LotReviewTerms ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-Lot-announcesLot-CompetitionNotice" ;
+            rdfs:comment "MG-Lot-announcesLot-CompetitionNotice under ND-Lot" ;
+            rr:predicate epo:announcesLot ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Lot_ND-Lot
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-46-Lot" ;
+            rdfs:comment "JuryMemberName of MG-CompetitionNotice under ND-AwardingTermsJuryMember" ;
+            rr:predicate epo:announcesRole ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Notice_ND-Root
+    a rr:TriplesMap ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root" ;
+            rdfs:comment "Primary type declaration for MG-Notice under ND-Root" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:class epo:Notice
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-02-notice" ;
+            rdfs:comment "Notice Type of MG-Notice under ND-Root" ;
+            rr:predicate epo:hasNoticeType ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:notice-type" ;
+                    rr:parentTriplesMap tedm:notice-type ;
+                    rr:joinCondition [
+                        rr:child "cbc:NoticeTypeCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-03-notice" ;
+            rdfs:comment "Form Type of MG-Notice under ND-Root" ;
+            rr:predicate epo:hasFormType ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:form-type" ;
+                    rr:parentTriplesMap tedm:form-type ;
+                    rr:joinCondition [
+                        rr:child "cbc:NoticeTypeCode/@listName" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-04-notice" ;
+            rdfs:comment "Procedure Identifier of MG-Procedure-refersToProcedure-Notice under ND-Root" ;
+            rr:predicate epo:refersToProcedure ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Procedure_ND-ProcedureProcurementScope
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPP-090-Procedure";
+            rdfs:comment "Previous Notice Identifier of MG-Notice under ND-PreviousNoticeReference (v1.8+), ND-ProcedureTenderingProcess (v1.3-1.7)" ;
+            rr:predicate epo:refersToPrevious ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference ;
+                    # rr:joinCondition [
+                    #     rr:child "path(.)";
+                    #     rr:parent "path(.)";
+                    # ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:comment "The identifier of MG-Notice under ND-Root" ;
+            rr:predicate adms:identifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Notice_ND-Root
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            # TODO: we may have to concatenate this with ID, confirm with OP with example
+            rdfs:label "BT-757-notice" ;
+            rdfs:comment "Notice Version of MG-Notice under ND-Root" ;
+            rr:predicate epo:hasVersion ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:VersionID" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-702(a)-notice" ;
+            rdfs:comment "Notice Official Language of MG-Notice under ND-Root" ;
+            rr:predicate epo:hasOfficialLanguage ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:language" ;
+                    rr:parentTriplesMap tedm:language ;
+                    # we look up as complete IRI for full coverage -- if we don't find one we don't map
+                    rr:joinCondition [
+                        rr:child "cbc:NoticeLanguageCode" ;
+                        rr:parent "op_code" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-702(b)-notice" ;
+            rdfs:comment "Notice Official Language of MG-Notice under ND-Root" ;
+            rr:predicate epo:hasOfficialLanguage ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:language" ;
+                    rr:parentTriplesMap tedm:language ;
+                    rr:joinCondition [
+                        rr:child "cac:AdditionalNoticeLanguage/cbc:ID" ;
+                        rr:parent "op_code" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-05(a)-notice and BT-05(b)-notice" ;
+            rdfs:comment "Notice Dispatch Date and Notice Dispatch Time of MG-Notice under ND-Root" ;
+            rr:predicate epo:hasESenderDispatchDate ;
+            rr:objectMap
+                [
+                    # here we combine values across (relative) XPaths/fields stripping out the time zone from the first
+                    # it handles the case where there is no time zone indicated in the date time, just in case validation failed on a notice
+                    # however, it won't handle the case if there are other malformations
+                    rml:reference "if(exists(cbc:IssueDate) and exists(cbc:IssueTime) and matches(cbc:IssueDate, '[+\\-]\\d\\d:\\d\\d|Z')) then replace(cbc:IssueDate, '...:..|Z', '') || 'T' || cbc:IssueTime else if(exists(cbc:IssueDate) and exists(cbc:IssueTime)) then cbc:IssueDate || 'T' || cbc:IssueTime else if(exists(cbc:IssueDate)) then cbc:IssueDate else null" ;
+                    rr:datatype xsd:dateTime ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPP-070-notice" ;
+            rdfs:comment "Notice Subtype of MG-Notice under ND-Root" ;
+            rr:predicate rdf:type ;
+            rr:objectMap
+                [
+                    rml:reference "'http://data.europa.eu/a4g/ontology#Notice' || ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeSubType/cbc:SubTypeCode" ;
+                    rr:termType rr:IRI ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPP-010-notice" ;
+            rdfs:comment "Notice Publication Number of MG-Notice under ND-Root" ;
+            rr:predicate epo:hasNoticePublicationNumber ;
+            rr:objectMap
+                [
+                    rml:reference "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:NoticePublicationID[@schemeName='ojs-notice-id']" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPP-011-notice" ;
+            rdfs:comment "OJEU Identifier of MG-Notice under ND-Root" ;
+            rr:predicate epo:hasOJSIssueNumber ;
+            rr:objectMap
+                [
+                    rml:reference "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:GazetteID[@schemeName='ojs-id']" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPP-012-notice" ;
+            rdfs:comment "OJEU Publication Date of MG-Notice under ND-Root" ;
+            rr:predicate epo:hasPublicationDate ;
+            rr:objectMap
+                [
+                    rml:reference "ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Publication/efbc:PublicationDate" ;
+                    rr:datatype xsd:date ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "MG-Lot-refersToLot-Notice" ;
+            rdfs:comment "MG-Lot-refersToLot-Notice under ND-Lot" ;
+            rr:predicate epo:refersToLot ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Lot_ND-Lot
+                ] ;
+        ] ;
+.
+
+# this is an example of a composition instance
+# (subject is a child dependent on its parent,
+# i.e. Identifier dependent on Notice)
+tedm:MG-Identifier-identifier-Notice_ND-Root a rr:TriplesMap ;
+    rdfs:comment "The identifier of a notice" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cbc:ID[@schemeName='notice-id']";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "BT-701-notice" ;
+            # TODO can this become a template since the iterator is already on the required element?
+            rml:reference "if (exists(/*/cbc:ID[@schemeName='notice-id'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_NoticeIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference ".";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-701-notice-Scheme" ;
+            rdfs:comment "Scheme of MG-Identifier for MG-Notice under ND-Root" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "./@schemeName";
+                ] ;
+        ] ;
+.
+
+tedm:MG-Person-playedBy-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a rr:TriplesMap ;
+    rdfs:label "MG-Person";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:TechnicalCommitteePerson" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-AwardingTermsJuryMember" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Person_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class person:Person;
+
+        ] ;
+     rr:predicateObjectMap
+        [
+            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.8 from v1.3-1.7 contains rel XPath change within the same abs XPath due to node change, along with repeatable=false
+            rdfs:label "BT-46-Lot" ;
+            rdfs:comment "JuryMemberName of MG-Person under ND-AwardingTermsJuryMember (v1.8+), ND-AwardingTerms (v1.3-1.7)" ;
+            rr:predicate foaf:familyName ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:FamilyName";
+                ] ;
+        ] ;
+.
+
+tedm:MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember a rr:TriplesMap ;
+    rdfs:label "MG-JuryMember";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:AwardingTerms/cac:TechnicalCommitteePerson" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-AwardingTermsJuryMember" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_JuryMember_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:JuryMember;
+
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-46-Lot" ;
+            rdfs:comment "JuryMemberName of MG-JuryMember under ND-AwardingTermsJuryMember" ;
+            rr:predicate epo:playedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Person-playedBy-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ] ;
+.
+
+# this is an external reference (another notice)
+tedm:MG-Notice-refersToPrevious-Notice_ND-ProcedureTenderingProcess owl:sameAs tedm:MG-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference .
+tedm:MG-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference a rr:TriplesMap ;
+    rdfs:label "MG-Notice" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingProcess/cac:NoticeDocumentReference" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PreviousNoticeReference" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(cbc:ID, ' ', '-' ), '/' , '-')}_Notice" ;
+            rr:class epo:Notice
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPP-090-Procedure (object)";
+            rdfs:comment "Previous Notice Identifier of MG-Notice under ND-PreviousNoticeReference (v1.8+), ND-ProcedureTenderingProcess (v1.3-1.7)";
+            rr:predicate adms:identifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference ;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ];
+.
+
+tedm:MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-ProcedureTenderingProcess owl:sameAs tedm:MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference .
+tedm:MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference a rr:TriplesMap ;
+    rdfs:label "MG-Identifier" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingProcess/cac:NoticeDocumentReference" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PreviousNoticeReference" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(cbc:ID, ' ', '-' ), '/' , '-') || '_PreviousNoticeIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(cbc:ID) || '?response_type=raw') else null" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.8 onwards contain only node change with relative XPath change yielding the same effective XPath, along with introduction of Scheme attribute and other mapping-irrelevant changes
+            rdfs:label "OPP-090-Procedure (value)" ;
+            rdfs:comment "Previous Notice Identifier of MG-Notice under ND-PreviousNoticeReference (v1.8+), ND-ProcedureTenderingProcess (v1.3-1.7)" ;
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID" ;
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "OPP-090-Procedure-Scheme" ;
+            rdfs:comment "Scheme of MG-Identifier under ND-PreviousNoticeReference (v1.8+), ND-ProcedureTenderingProcess (v1.3-1.7)" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID/@schemeName" ;
+                ] ;
+        ] ;
+.
+
+##--- Function Parameters ---
+
+tedm:idlab-fn_executes_lookup rr:predicate fno:executes ; rr:objectMap [ rr:constant idlab-fn:lookup ] .
+tedm:idlab-fn_inputFile_language rr:predicate idlab-fn:inputFile ; rr:objectMap [ rr:constant "transformation/resources/language.csv" ] .
+tedm:idlab-fn_fromColumn_code rr:predicate idlab-fn:fromColumn ; rr:objectMap [ rr:constant "3" ] . # op_code
+tedm:idlab-fn_toColumn_code rr:predicate idlab-fn:toColumn ; rr:objectMap [ rr:constant "1" ] . # code_ted

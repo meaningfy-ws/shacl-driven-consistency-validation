@@ -1,0 +1,98 @@
+#--- MG-AwardDecision ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+
+# This will instantiate AwardDecisions independent of any connection. Whether
+# or not there is a connection depends on whether a SettledContract is
+# referenced from a LotResult, i.e. tedm:MG-AwardDecision_ND-LotResult
+tedm:MG-AwardDecision_ND-SettledContract a rr:TriplesMap ;
+    rdfs:label "MG-AwardDecision" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-SettledContract" ;
+            rml:reference "if(exists(cbc:AwardDate)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AwardDecision_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(cbc:AwardDate) || '?response_type=raw') else null" ;
+            rr:class epo:AwardDecision
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-1451-Contract" ;
+            rdfs:comment "Winner Decision Date of MG-AwardDecision under ND-SettledContract" ;
+            rr:predicate epo:hasAwardDecisionDate ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:AwardDate" ;
+                    rr:datatype xsd:date ;
+                ] ;
+        ] ;
+    .
+
+# this MG is the equivalent of (hence declared as owl:sameAs below)
+# MG-AwardDecision-announcesAwardDecision-ResultNotice_ND-LotResult in the CM
+# but here in the TM we do not need to implement that
+tedm:MG-AwardDecision_ND-LotResult a rr:TriplesMap ;
+    rdfs:label "MG-AwardDecision" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotResult" ;
+            # if there exists at least a SettledContract with an AwardDate
+            # under the LotResult matching a definition of an existing
+            # SettledContract of the notice, use the date of the first such
+            # referenced SettledContract. otherwise, if there is only one
+            # SettledContract with a valid reference but no AwardDate, use the
+            # ID of that SettleContract. Failing that, pick the ID of this
+            # LotResult.
+            #
+            # ASSUMPTION: all SettledContract AwardDates under the LotResult
+            # are the same date
+            rml:reference "'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_AwardDecision_' || (if(exists(/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract[cbc:ID/text() = //efac:SettledContract/cbc:ID/text()]/cbc:AwardDate)) then unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri((/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract[cbc:ID/text() = //efac:SettledContract/cbc:ID/text()]/cbc:AwardDate)[1]) || '?response_type=raw') else if (exists(efac:SettledContract/cbc:ID) and not(exists(efac:SettledContract[2]/cbc:ID))) then encode-for-uri(efac:SettledContract/cbc:ID) else encode-for-uri(cbc:ID))" ;
+            rr:class epo:AwardDecision
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:comprisesAwardOutcome ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-LotAwardOutcome-comprisesAwardOutcome-AwardDecision-LotResult ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-AwardDecision-announcesAwardDecision-ResultNotice_ND-LotResult owl:sameAs tedm:MG-AwardDecision_ND-LotResult .

@@ -1,0 +1,378 @@
+#--- MG-LotAwardOutcome ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+
+tedm:MG-LotAwardOutcome_ND-LotResult  a rr:TriplesMap ;
+  rdfs:label "MG-LotAwardOutcome";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotResult" ;
+            rdfs:label " OPT-322-LotResult ";
+            rdfs:comment "LotResultTechnicalIdentifier of MG-LotAwardOutcome under ND-LotResult" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotAwardOutcome_{cbc:ID}" ;
+            rr:class epo:LotAwardOutcome
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-142-LotResult";
+            rdfs:comment "Winner Chosen of MG-LotAwardOutcome under ND-LotResult";
+            rr:predicate epo:hasAwardStatus ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:winner-selection-status" ;
+                    rr:parentTriplesMap tedm:winner-selection-status ;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='win-cho']) and cbc:TenderResultCode/text() = 'unpublished')) then cbc:TenderResultCode else null" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-144-LotResult";
+            rdfs:comment "Not Awarded Reason of MG-LotAwardOutcome under ND-LotResult";
+            rr:predicate epo:hasNonAwardJustification ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:non-award-justification" ;
+                    rr:parentTriplesMap tedm:non-award-justification;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(efac:DecisionReason/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='no-awa-rea']) and efac:DecisionReason/efbc:DecisionReasonCode/text() = 'unpublished' )) then efac:DecisionReason/efbc:DecisionReasonCode else null" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-13713-LotResult";
+            rr:predicate  epo:concernsLot   ;
+             rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-Lot-concernsLot-LotAwardOutcome_ND-LotResult ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ] ;
+        ];
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-660-LotResult";
+            rr:predicate  epo:hasApproximateFrameworkAgreementValue    ;
+             rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-LotAwardOutcome_ND-LotResultFAValues;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(..)";
+                    ];
+                ] ;
+        ];
+
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-709-LotResult";
+            rdfs:comment "Framework Maximum Value of MG-MonetaryValue under ND-LotResultFAValues";
+            rr:predicate  epo:hasFrameworkAgreementMaximumValue     ;
+             rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-MonetaryValue-hasFrameworkAgreementMaximumValue-LotAwardOutcome_ND-LotResultFAValues;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(..)";
+                    ];
+                ] ;
+        ];
+.
+
+tedm:MG-MonetaryValue-hasApproximateFrameworkAgreementValue-LotAwardOutcome_ND-LotResultFAValues  a rr:TriplesMap ;
+  rdfs:label "MG-MonetaryValue";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:FrameworkAgreementValues" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+   rr:subjectMap
+        [
+            rdfs:label "ND-LotResultFAValues";
+            rml:reference "if (exists(efbc:ReestimatedValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+        ] ;
+   rr:predicateObjectMap
+        [
+            # Differences across versions have no functional effect on this mapping
+            # VERINFO: SDK v1.6 contains only node name change
+            tedm:minSDKVersion "1.6" ;
+            rdfs:label "BT-660-LotResult";
+            rdfs:comment "Framework Re-estimated Value (Framework Estimated Value up to v1.5) of MG-MonetaryValue under ND-LotResultFAValues";
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='ree-val']) and efbc:ReestimatedValueAmount/text() = '-1' )) then efbc:ReestimatedValueAmount else null";
+                    rr:datatype xsd:decimal;
+                ] ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-709-LotResult-Currency";
+            rdfs:comment "Currency of Framework Maximum Value of MG-MonetaryValue under ND-LotResultFAValues";
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='ree-val']) and efbc:ReestimatedValueAmount/text() = '-1' )) then efbc:ReestimatedValueAmount/@currencyID else null";
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    .
+
+tedm:MG-MonetaryValue-hasFrameworkAgreementMaximumValue-LotAwardOutcome_ND-LotResultFAValues  a rr:TriplesMap ;
+  rdfs:label "MG-MonetaryValue";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:FrameworkAgreementValues" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+   rr:subjectMap
+        [
+            rdfs:label "ND-LotResultFAValues";
+            rml:reference "if (exists(cbc:MaximumValueAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_FrameworkAgreementMaximumMonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+        ] ;
+   rr:predicateObjectMap
+        [
+            rdfs:label "BT-709-LotResult" ;
+            rdfs:comment "Framework Maximum Value of MG-MonetaryValue under ND-LotResultFAValues" ;
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='max-val']) and cbc:MaximumValueAmount/text() = '-1' )) then cbc:MaximumValueAmount else null" ;
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-709-LotResult-Currency";
+            rdfs:comment "Currency of Framework Maximum Value of MG-MonetaryValue under ND-LotResultFAValues";
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='max-val']) and cbc:MaximumValueAmount/text() = '-1' )) then cbc:MaximumValueAmount/@currencyID  else null";
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    .
+tedm:MG-LotAwardOutcome-summarisesInformationForAwardOutcome-SubmissionStatisticalInformation_ND-LotResult a rr:TriplesMap ;
+  rdfs:label "MG-LotAwardOutcome";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotResult" ;
+            rml:reference "if(exists(cbc:LowerTenderAmount) or exists(cbc:HigherTenderAmount) or exists(efac:ReceivedSubmissionsStatistics)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotAwardOutcome_' || cbc:ID else null";
+            rr:class epo:LotAwardOutcome
+        ] ;
+    .
+
+tedm:MG-LotAwardOutcome_ND-LotResultTenderReference  a rr:TriplesMap ;
+  rdfs:label "MG-LotAwardOutcome";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:LotTender" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotResultTenderReference" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotAwardOutcome_{../cbc:ID}" ;
+            rr:class epo:LotAwardOutcome
+        ] ;
+     rr:predicateObjectMap
+        [
+            # Differences across versions have no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.8 onwards contain node change yielding the same effective XPaths
+            rdfs:label "OPT-320-LotResult" ;
+            rdfs:comment "Tender Identifier Reference of MG-otAwardOutcome under ND-LotResultTenderReference (v1.8+), ND-LotResult (up to v1.7)" ;
+            rr:predicate epo:comprisesTenderAwardOutcome ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-TenderAwardOutcome-comprisesTenderAwardOutcome-LotAwardOutcome_ND-LotResultTenderReference ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
+.
+
+tedm:MG-LotAwardOutcome_ND-StrategicProcurementLotResult  a rr:TriplesMap ;
+  rdfs:label "MG-LotAwardOutcome";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:StrategicProcurement/efac:StrategicProcurementInformation" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-StrategicProcurementInformationLotResult" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotAwardOutcome_{../../cbc:ID}" ;
+            rr:class epo:LotAwardOutcome
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "ND-StrategicProcurementInformationLotResult" ;
+            rr:predicate rdfs:seeAlso ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-VehicleInformation-seeAlso-LotAwardOutcome_ND-StrategicProcurementInformationLotResult ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
+    .
+
+  tedm:MG-LotAwardOutcome_ND-FinancingParty  a rr:TriplesMap ;
+  rdfs:label "MG-LotAwardOutcome";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/cac:FinancingParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-FinancingParty" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotAwardOutcome_{../cbc:ID}" ;
+            rr:class epo:LotAwardOutcome
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:comment "ND-FinancingParty of MG-LotAwardOutcome, this relationship will be represented differently in future EPO versions" ;
+            rr:predicate rdfs:seeAlso ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-BudgetProvider-seeAlso-LotAwardOutcome_ND-FinancingParty ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
+    .
+
+tedm:MG-LotAwardOutcome_ND-BuyerReviewComplainants  a rr:TriplesMap ;
+    rdfs:label "MG-LotAwardOutcome" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:AppealRequestsStatistics[efbc:StatisticsCode/@listName='review-type']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-BuyerReviewComplainants";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotAwardOutcome_{../cbc:ID}" ;
+            rr:class epo:LotAwardOutcome
+        ] ;
+     rr:predicateObjectMap
+        [
+            rr:predicate rdfs:seeAlso ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-ReviewRequestSummary-seeAlso-LotAwardOutcome_ND-BuyerReviewComplainants ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
+    .
+
+tedm:MG-LotAwardOutcome-comprisesAwardOutcome-AwardDecision-LotResult a rr:TriplesMap ;
+    rdfs:label "MG-LotAwardOutcome" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotResult" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotAwardOutcome_{cbc:ID}" ;
+            rr:class epo:LotAwardOutcome
+        ] ;
+    .
+
+tedm:MG-LotAwardOutcome_ND-PayerParty a rr:TriplesMap ;
+  rdfs:label "MG-LotAwardOutcome";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/cac:PayerParty" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-PayerParty" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotAwardOutcome_{../cbc:ID}" ;
+            rr:class epo:LotAwardOutcome
+        ] ;
+     rr:predicateObjectMap
+        [
+            rr:predicate rdfs:seeAlso ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-PaymentExecutor-seeAlso-LotAwardOutcome_ND-PayerParty ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
+    .

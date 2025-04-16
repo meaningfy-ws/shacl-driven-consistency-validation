@@ -1,0 +1,324 @@
+#--- MG-Organization ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix	foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+
+# This is a catch-all TriplesMap to map several related nodes (we group into one representative node)
+tedm:MG-Organization_ND-Company a rr:TriplesMap ;
+    rdfs:label "MG-Organization" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Company" ;
+            rdfs:comment "Primary type declaration for MG-Organization under ND-Company" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Organization_{cac:PartyIdentification/cbc:ID}" ;
+            rr:class org:Organization
+        ] ;
+    rr:predicateObjectMap
+        [
+            rr:predicate epo:hasPrimaryContactPoint ;
+            rr:objectMap
+                [
+                    rdfs:label "ND-CompanyContact" ;
+                    rr:parentTriplesMap tedm:MG-ContactPoint-hasPrimaryContactPoint-Organization_ND-CompanyContact ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../.)" ;
+                    ] ;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "Aggregate Address" ;
+            rdfs:comment "Aggregate values of MG-Address under ND-CompanyAddress" ;
+            rr:predicate cv:registeredAddress ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Address-registeredAddress-Organization_ND-CompanyAddress ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(../.)" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-500-Organization-Company" ;
+            rdfs:comment "Organisation Name of MG-Organization under ND-Company" ;
+            rr:predicate epo:hasLegalName ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-500-Organization-Company-Language" ;
+                    rdfs:comment "Language of Organisation Name of MG-Organization under ND-Company" ;
+                    rml:reference "cac:PartyName/cbc:Name" ;
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cac:PartyName/cbc:Name/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-200-Organization-Company" ;
+            rdfs:comment "Organisation Technical Identifier of MG-Organization under ND-Company" ;
+            rr:predicate adms:identifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Organization_ND-Company ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.8 from v1.3-1.7 contains only node change with stylistic XPath changes yielding the same effective XPaths, along with only relative XPath change, repeatable=false and other mapping-irrelevant changes
+            rdfs:label "BT-501-Organization-Company" ;
+            rdfs:comment "Organisation Identifier of MG-Organization under ND-CompanyLegalEntity (v1.8+), ND-Company (v1.3-1.7)" ;
+            rr:predicate epo:hasLegalIdentifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-hasLegalIdentifier-Organization_ND-Company ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ] ;
+                ]
+        ] ;
+.
+
+tedm:MG-Identifier-identifier-Organization_ND-Company a rr:TriplesMap ;
+    rdfs:label "MG-Identifier" ;
+    rdfs:comment "The identifier of an organization" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company" ;
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-Company" ;
+            rml:reference "if (exists(cac:PartyIdentification/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Identifier_' || cac:PartyIdentification/cbc:ID else null" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "identifier" ;
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "cac:PartyIdentification/cbc:ID" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-200-Organization-Company-Scheme" ;
+            rdfs:comment "Scheme of MG-Identifier for MG-Organization under ND-Company" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "cac:PartyIdentification/cbc:ID/@schemeName";
+                ] ;
+        ] ;
+.
+
+tedm:MG-Identifier-hasLegalIdentifier-Organization_ND-Company a rr:TriplesMap ;
+    rdfs:label "MG-Identifier" ;
+    rdfs:comment "The legal identifier of an organization" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PartyLegalEntity" ;
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-Company" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_OrganisationIdentifier_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(cbc:CompanyID)) || '?response_type=raw')}" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "legal identifier" ;
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CompanyID" ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Address-registeredAddress-Organization_ND-CompanyAddress a rr:TriplesMap ;
+    rdfs:label "MG-Address" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:PostalAddress" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-CompanyAddress" ;
+            rdfs:comment "Primary type declaration for Address-registeredAddress-Organization under ND-CompanyAddress" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_CompanyAddress_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class locn:Address
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-16, BT-510(a|b|c), BT-512, BT-513, 514-Organization-Company" ;
+            rdfs:comment "Organisation Part Name, Street, Streetline 1, Streetline 2, Organisation City, Organisation Post Code, Organisation Country Code" ;
+            rr:predicate locn:fullAddress ;
+            rr:objectMap
+                [
+                    rml:reference  "if (exists(cbc:Department) or exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line)) then replace(replace(cbc:Department || ', ' || cbc:StreetName || ', ' || cbc:AdditionalStreetName || ', ' || cac:AddressLine/cbc:Line || ', ' || cbc:CityName || ', ' || cbc:PostalZone || ', ' || cac:Country/cbc:IdentificationCode, '(, )+', ', '),  '^, |, $', '') else null" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-513-Organization-Company" ;
+            rr:predicate locn:postName ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CityName" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-512-Organization-Company" ;
+            rr:predicate locn:postCode  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:PostalZone" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-507-Organization-Company" ;
+            rr:predicate epo:hasNutsCode ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts ;
+                    rr:joinCondition [
+                        rr:child "cbc:CountrySubentityCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-514-Organization-Company";
+            rr:predicate epo:hasCountryCode ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:country" ;
+                    rr:parentTriplesMap tedm:country ;
+                    rr:joinCondition [
+                        rr:child "cac:Country/cbc:IdentificationCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-ContactPoint-hasPrimaryContactPoint-Organization_ND-CompanyContact a rr:TriplesMap ;
+    rdfs:label "MG-ContactPoint-hasPrimaryContactPoint-Organization";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:Organizations/efac:Organization/efac:Company/cac:Contact" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-CompanyContact" ;
+            rdfs:comment "Primary type declaration for MG-ContactPoint-hasPrimaryContactPoint-Organization under ND-CompanyContact" ;
+            rml:reference "if(exists(cbc:Name) or exists(cbc:ElectronicMail) or exists(cbc:Telephone) or exists(cbc:Telefax)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_CompanyContactPoint_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class cpov:ContactPoint
+
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-502-Organization-Company" ;
+            rr:predicate epo:hasContactName ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Name" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-506-Organization-Company";
+            rr:predicate cpov:email ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ElectronicMail" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-503-Organization-Company" ;
+            rr:predicate cpov:telephone ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Telephone" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-739-Organization-Company" ;
+            rr:predicate epo:hasFax ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:Telefax" ;
+                ] ;
+        ] ;
+    # this is an example of a predicate with an XPath at the parent
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-505-Organization-Company" ;
+            rr:predicate epo:hasInternetAddress ;
+            rr:objectMap
+                [
+                    rml:reference "../cbc:WebsiteURI" ;
+                    rr:datatype xsd:anyURI ;
+                ] ;
+        ] ;
+.

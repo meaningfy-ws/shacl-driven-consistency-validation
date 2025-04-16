@@ -1,0 +1,486 @@
+#--- MG-Tender ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+
+tedm:MG-Identifier-identifier-Tender_ND-LotTender  a rr:TriplesMap ;
+  rdfs:label "MG-Identifier";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rml:reference "if (exists(efac:TenderReference/cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_TenderIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-3201-Tender";
+            rdfs:comment "Tender Identifier of MG-Identifier under ND-LotTender";
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "efac:TenderReference/cbc:ID";
+                ] ;
+        ];
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-3201-Tender-Scheme" ;
+            rdfs:comment "Scheme of Tender Identifier of MG-Identifier under ND-LotTender" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "efac:TenderReference/cbc:ID/@schemeName";
+                ] ;
+        ] ;
+.
+
+tedm:MG-TenderAwardOutcome_ND-LotTender  a rr:TriplesMap ;
+  rdfs:label "MG-TenderAwardOutcome";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rml:reference "if (exists(cbc:RankCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_TenderAwardOutcome_' || cbc:ID else null" ;
+            rr:class epo:TenderAwardOutcome
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-171-Tender";
+            rdfs:comment "Tender Rank of MG-TenderAwardOutcome under ND-LotTender";
+            rr:predicate  epo:hasAwardRank ;
+            rr:objectMap
+                [
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='ten-ran']) and cbc:RankCode/text() = '-1' )) then cbc:RankCode else null";
+                    rr:datatype xsd:integer  ;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-171-Tender";
+            rdfs:comment "Tender Rank of MG-TenderAwardOutcome under ND-NoticeResult";
+            rr:predicate epo:concernsTender ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Tender-concernsTender-TenderAwardOutcome_ND-LotTender ;
+                    rr:joinCondition[
+                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='ten-ran']) and cbc:RankCode/text() = '-1' )) then path(.) else null";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
+.
+
+tedm:MG-Tender-concernsTender-TenderAwardOutcome_ND-LotTender  a rr:TriplesMap ;
+  rdfs:label "MG-Tender";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Tender_{cbc:ID}" ;
+            rr:class epo:Tender
+        ] ;
+.
+
+tedm:MG-Tender_ND-LotTender  a rr:TriplesMap ;
+  rdfs:label "MG-Tender";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Tender_{cbc:ID}" ;
+            rr:class epo:Tender
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-193-Tender";
+            rdfs:comment "Tender Variant of MG-Tender under ND-LotTender";
+            rr:predicate  epo:isVariant ;
+            rr:objectMap
+                [
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='win-ten-var']) and efbc:TenderVariantIndicator/text() = '0' )) then efbc:TenderVariantIndicator else null" ;
+                    rr:datatype xsd:boolean ;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-720-Tender";
+            rdfs:comment " Tender Value of MG-MonetaryValue under ND-LotTender";
+            rr:predicate  epo:hasFinancialOfferValue  ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasFinancialOfferValue-Tender_ND-LotTender ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "OPT-310-Tender";
+            rdfs:comment "Tendering Party ID Reference of MG-Tender under ND-LotTender";
+            rr:predicate  epo:isSubmitedBy ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Tenderer-isSubmitedBy-Tender_ND-LotTender ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-SubcontractedContract and BT-553-Tender" ;
+            rr:predicate epo:foreseesSubcontracting  ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-SubcontractingEstimate-foreseesSubcontracting-Tender_ND-LotTender ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-554-Tender and BT-555-Tender" ;
+            rr:predicate epo:foreseesSubcontracting  ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-SubcontractingEstimate-foreseesSubcontracting-Tender_ND-SubcontractedContract ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(..)"
+                    ];
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-13714-Tender";
+            rdfs:comment "Tender Lot Identifier of MG-Tender under ND-LotTender";
+            rr:predicate  epo:isSubmittedForLot ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Lot-isSubmittedForLot-Tender_ND-LotTender ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-13714-Tender";
+            rdfs:comment "Tender Lot Identifier of MG-Tender under ND-LotTender";
+            rr:predicate  epo:isSubjectToGrouping ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-LotGroup-isSubjectToGrouping-Tender_ND-LotTender ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ];
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-3201-Tender" ;
+            rdfs:comment "Tender Identifier of MG-Identifier under ND-LotTender";
+            rr:predicate adms:identifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Tender_ND-LotTender ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
+.
+
+tedm:MG-MonetaryValue-hasFinancialOfferValue-Tender_ND-LotTender  a rr:TriplesMap ;
+  rdfs:label "MG-MonetaryValue";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rml:reference "if (exists(cac:LegalMonetaryTotal/cbc:PayableAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-720-Tender";
+            rdfs:comment " Tender Value of MG-MonetaryValue under ND-LotTender";
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='win-ten-val']) and cac:LegalMonetaryTotal/cbc:PayableAmount/text() = '-1' )) then cac:LegalMonetaryTotal/cbc:PayableAmount else null" ;
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-720-Tender-Currency";
+            rdfs:comment "Currency of Tender Value of MG-MonetaryValue under ND-LotTender";
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "cac:LegalMonetaryTotal/cbc:PayableAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Tenderer-isSubmitedBy-Tender_ND-LotTender  a rr:TriplesMap ;
+  rdfs:label "MG-Tenderer";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Tenderer_{efac:TenderingParty/cbc:ID}" ;
+            rr:class epo:Tenderer
+        ] ;
+    .
+
+tedm:MG-SubcontractingEstimate-foreseesSubcontracting-Tender_ND-LotTender  a rr:TriplesMap ;
+  rdfs:label "MG-SubcontractingEstimate";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rml:reference "if (exists(efac:SubcontractingTerm[efbc:TermCode/@listName='applicability']/efbc:TermAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_SubcontractingEstimate_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:SubcontractingEstimate
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-553-Tender" ;
+            rdfs:comment "Subcontracting Value  of MG-SubcontractingEstimate under ND-LotTender" ;
+            rr:predicate epo:hasSubcontractingEstimatedValue   ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-MonetaryValue-hasSubcontractingEstimatedValue-SubcontractingEstimate-foreseesSubcontracting-Tender_ND-SubcontractedContract ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(..)"
+                    ];
+                ] ;
+        ] ;
+    .
+
+tedm:MG-Tender_ND-SubcontractedContract  a rr:TriplesMap ;
+  rdfs:label "MG-Tender";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender/efac:SubcontractingTerm[efbc:TermCode/@listName='applicability']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Tender" ;
+            rml:reference "if(exists(efbc:TermCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Tender_' || ../cbc:ID else null";
+            rr:class epo:Tender ;
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-773-Tender";
+            rdfs:comment "Subcontracting of MG-SubcontractingEstimate under ND-SubcontractedActivity";
+            rr:predicate  epo:hasSubcontracting    ;
+             rr:objectMap
+                [
+                    rdfs:label "at-voc:applicability" ;
+                    rr:parentTriplesMap tedm:applicability ;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='sub-con']) and efbc:TermCode/text() = 'unpublished' )) then efbc:TermCode else null" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+
+        ];
+    .
+
+tedm:MG-Lot-isSubmittedForLot-Tender_ND-LotTender  a rr:TriplesMap ;
+  rdfs:label "MG-Lot";
+  rdfs:label "BT-13714-Tender" ;
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+             rdfs:label "ND-LotTender" ;
+             rml:reference "if (exists(efac:TenderLot/cbc:ID[starts-with(text(), 'LOT-')])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_Lot_' || efac:TenderLot/cbc:ID else null" ;
+             rr:class epo:Lot
+        ] ;
+    .
+tedm:MG-LotGroup-isSubjectToGrouping-Tender_ND-LotTender  a rr:TriplesMap ;
+  rdfs:label "MG-LotGroup";
+  rdfs:label "BT-13714-Tender" ;
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotTender" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rml:reference "if (exists(efac:TenderLot/cbc:ID[starts-with(text(), 'GLO-')])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_LotGroup_' || efac:TenderLot/cbc:ID else null" ;
+            rr:class epo:LotGroup
+        ] ;
+    .
+tedm:MG-Tender-includesTender-Contract_ND-SettledContractTenderReference  a rr:TriplesMap ;
+    rdfs:label "MG-Tender";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:SettledContract/efac:LotTender" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Tender_{cbc:ID}" ;
+            rr:class epo:Tender
+        ] ;
+.
+
+tedm:MG-Tender-concernsTender-TenderAwardOutcome-comprisesTenderAwardOutcome-LotAwardOutcome_ND-LotResultTenderReference  a rr:TriplesMap ;
+  rdfs:label "MG-Tender";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:LotTender" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotTender" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Tender_{cbc:ID}" ;
+            rr:class epo:Tender
+        ] ;
+.
+
+tedm:MG-TenderAwardOutcome-comprisesTenderAwardOutcome-LotAwardOutcome_ND-LotResultTenderReference  a rr:TriplesMap ;
+  rdfs:label "MG-TenderAwardOutcome";
+       rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:LotTender" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotResultTenderReference" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_TenderAwardOutcome_' || cbc:ID else null" ;
+            rr:class epo:TenderAwardOutcome
+        ] ;
+     rr:predicateObjectMap
+        [
+            # Differences across versions have no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.8 onwards contain node change yielding the same effective XPaths
+            rdfs:label "OPT-320-LotResult" ;
+            rdfs:comment "Tender Identifier Reference of MG-otAwardOutcome under ND-LotResultTenderReference (v1.8+), ND-LotResult (up to v1.7)" ;
+            rr:predicate epo:concernsTender ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-Tender-concernsTender-TenderAwardOutcome-comprisesTenderAwardOutcome-LotAwardOutcome_ND-LotResultTenderReference ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
+.
+
+tedm:MG-Tender_ND-SubContractor  a rr:TriplesMap ;
+    rdfs:label "MG-Tender" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:TenderingParty/efac:SubContractor" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-SubContractor";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Tender_{../../efac:LotTender/cbc:ID}" ;
+            rr:class epo:Tender
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "ND-SubContractor" ;
+            rr:predicate epo:specifiesSubcontractors   ;
+            rr:objectMap
+                [
+                   rr:parentTriplesMap tedm:MG-Subcontractor-specifiesSubcontractors-Tender_ND-SubContractor ;
+                    rr:joinCondition[
+                        rr:child "path(.)";
+                        rr:parent "path(.)"
+                    ];
+                ] ;
+        ] ;
+.

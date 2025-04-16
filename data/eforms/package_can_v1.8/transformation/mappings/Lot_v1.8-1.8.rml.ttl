@@ -1,0 +1,59 @@
+#--- MG-Lot version-specific SDK v1.8-1.8 ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix	foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+
+tedm:MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocOfficialLanguage a rr:TriplesMap ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotDocOfficialLanguage";
+            rml:reference "if (exists(cbc:LanguageID[../cbc:DocumentStatusCode/text()='official'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcurementDocument_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(concat(path(..), cbc:ID/text())) || '?response_type=raw') else null" ;
+            rr:class epo:ProcurementDocument
+        ] ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProjectLot[cbc:ID/@schemeName='Lot']/cac:TenderingTerms/cac:CallForTendersDocumentReference";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-708-Lot (value)";
+            rdfs:comment "Documents Official Language of MG-ProcurementDocument under ND-LotProcurementDocument";
+            rr:predicate epo:hasOfficialLanguage  ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.8" ;
+                    tedm:maxSDKVersion "1.8" ;
+                    rdfs:label "at-voc:language" ;
+                    rdfs:comment "Documents Official Language of MG-ProcurementDocument under ND-LotProcurementDocument";
+                    rr:parentTriplesMap tedm:languageJSON ;
+                    rr:joinCondition [
+                        rr:child "cbc:LanguageID[../cbc:DocumentStatusCode/text()='official']" ;
+                        rr:parent "op_code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+

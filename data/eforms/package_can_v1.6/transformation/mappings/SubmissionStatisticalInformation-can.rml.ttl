@@ -1,0 +1,314 @@
+#---MG-SubmissionStatisticalInformation ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+
+tedm:MG-SubmissionStatisticalInformation_ND-ReceivedSubmissions a rr:TriplesMap ;
+    rdfs:label "MG-SubmissionStatisticalInformation" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult/efac:ReceivedSubmissionsStatistics" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ReceivedSubmissions" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_SubmissionStatisticalInformation_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:SubmissionStatisticalInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-759-LotResult (tenders)" ;
+            rdfs:comment "Received Submissions Count of MG-SubmissionStatisticalInformation under ND-ReceivedSubmissions" ;
+            rr:predicate epo:hasReceivedTenders ;
+            rr:objectMap
+                [
+                   rml:reference "if((not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='rec-sub-cou']) and efbc:StatisticsNumeric/text() = '-1' ) and efbc:StatisticsCode/text() = 'tenders')) then efbc:StatisticsNumeric else null" ;
+                   rr:datatype xsd:integer ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-759-LotResult (part-req)" ;
+            rdfs:comment "Received Submissions Count of MG-SubmissionStatisticalInformation under ND-ReceivedSubmissions" ;
+            rr:predicate epo:hasReceivedParticipationRequests ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='rec-sub-cou']) and efbc:StatisticsNumeric/text() = '-1')  and efbc:StatisticsCode/text() = 'part-req') then efbc:StatisticsNumeric else null" ;
+                    rr:datatype xsd:integer ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-759-LotResult (t-esubm)" ;
+            rdfs:comment "Received Submissions Count of MG-SubmissionStatisticalInformation under ND-ReceivedSubmissions" ;
+            rr:predicate epo:hasElectronicTenders ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='rec-sub-cou']) and efbc:StatisticsNumeric/text() = '-1')  and efbc:StatisticsCode/text() = 't-esubm') then efbc:StatisticsNumeric else null" ;
+                    rr:datatype xsd:integer ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-759-LotResult (t-med)" ;
+            rdfs:comment "Received Submissions Count of MG-SubmissionStatisticalInformation under ND-ReceivedSubmissions";
+            rr:predicate epo:hasMediumTenderPerLots ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='rec-sub-cou']) and efbc:StatisticsNumeric/text() = '-1')  and efbc:StatisticsCode/text() = 't-med') then efbc:StatisticsNumeric else null" ;
+                    rr:datatype xsd:integer ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-759-LotResult (t-micro)" ;
+            rdfs:comment "Received Submissions Count of MG-SubmissionStatisticalInformation under ND-ReceivedSubmissions";
+            rr:predicate epo:hasReceivedMicroTenders ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='rec-sub-cou']) and efbc:StatisticsNumeric/text() = '-1')  and efbc:StatisticsCode/text() = ('t-micro')) then efbc:StatisticsNumeric else null" ;
+                    rr:datatype xsd:integer ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-759-LotResult (t-no-eea)" ;
+            rdfs:comment "Received Submissions Count of MG-SubmissionStatisticalInformation under ND-ReceivedSubmissions";
+            rr:predicate epo:hasNonEEAReceivedTenders ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='rec-sub-cou']) and efbc:StatisticsNumeric/text() = '-1')  and efbc:StatisticsCode/text() = ('t-no-eea')) then efbc:StatisticsNumeric else null" ;
+                    rr:datatype xsd:integer ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-759-LotResult (t-no-verif)" ;
+            rdfs:comment "Received Submissions Count of MG-SubmissionStatisticalInformation under ND-ReceivedSubmissions";
+            rr:predicate epo:hasUnverifiedTenders ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='rec-sub-cou']) and efbc:StatisticsNumeric/text() = '-1')  and efbc:StatisticsCode/text() = ('t-no-verif')) then efbc:StatisticsNumeric else null" ;
+                    rr:datatype xsd:integer ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-759-LotResult (t-oth-eea)" ;
+            rdfs:comment "Received Submissions Count of MG-SubmissionStatisticalInformation under ND-ReceivedSubmissions" ;
+            rr:predicate epo:hasEEAReceivedTenders ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='rec-sub-cou']) and efbc:StatisticsNumeric/text() = '-1')  and efbc:StatisticsCode/text() = ('t-oth-eea')) then efbc:StatisticsNumeric else null" ;
+                    rr:datatype xsd:integer ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-759-LotResult (t-small)" ;
+            rdfs:comment "Received Submissions Count of MG-SubmissionStatisticalInformation under ND-ReceivedSubmissions" ;
+            rr:predicate epo:hasReceivedSmallTenders ;
+            rr:objectMap
+                [
+                   rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='rec-sub-cou']) and efbc:StatisticsNumeric/text() = '-1')  and efbc:StatisticsCode/text() = ('t-small')) then efbc:StatisticsNumeric else null" ;
+                    rr:datatype xsd:integer ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-759-LotResult (t-sme)" ;
+            rdfs:comment "Received Submissions Count of MG-SubmissionStatisticalInformation under ND-ReceivedSubmissions" ;
+            rr:predicate epo:hasSMEReceivedTenders ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='rec-sub-cou']) and efbc:StatisticsNumeric/text() = '-1')  and efbc:StatisticsCode/text() = ('t-sme')) then efbc:StatisticsNumeric else null" ;
+                    rr:datatype xsd:integer ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-759-LotResult (t-verif-inad)" ;
+            rdfs:comment "Received Submissions Count of MG-SubmissionStatisticalInformation under ND-ReceivedSubmissions" ;
+            rr:predicate epo:hasInadmissibleTenders ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='rec-sub-cou']) and efbc:StatisticsNumeric/text() = '-1')  and efbc:StatisticsCode/text() = ('t-verif-inad')) then efbc:StatisticsNumeric else null" ;
+                    rr:datatype xsd:integer ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-759-LotResult (t-verif-inad-low)" ;
+            rdfs:comment "Received Submissions Count of MG-SubmissionStatisticalInformation under ND-ReceivedSubmissions" ;
+            rr:predicate epo:hasAbnormallyLowTenders ;
+            rr:objectMap
+                [
+                    rml:reference "if (not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='rec-sub-cou']) and efbc:StatisticsNumeric/text() = '-1') and efbc:StatisticsCode/text() = ('t-verif-inad-low')) then efbc:StatisticsNumeric else null" ;
+                    rr:datatype xsd:integer ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-709-LotResult" ;
+            rdfs:comment "Tender Value Highest of MG-MonetaryValue under ND-LotResult" ;
+            rr:predicate epo:hasHighestReceivedTenderValue ;
+             rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasHighestReceivedTenderValue-SubmissionStatisticalInformation_ND-LotResult ;
+                    rr:joinCondition [
+                        rr:child "path(..)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-709-LotResult" ;
+            rdfs:comment "Tender Value Lowest of MG-MonetaryValue under ND-LotResult" ;
+            rr:predicate epo:hasLowestReceivedTenderValue ;
+             rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasLowestReceivedTenderValue-SubmissionStatisticalInformation_ND-LotResult ;
+                    rr:joinCondition[
+                        rr:child "path(..)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-SubmissionStatisticalInformation_ND-LotResult a rr:TriplesMap ;
+    rdfs:label "MG-SubmissionStatisticalInformation";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotResult" ;
+            rml:reference "if(exists(cbc:LowerTenderAmount) or exists(cbc:HigherTenderAmount) or exists(efac:ReceivedSubmissionsStatistics)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_SubmissionStatisticalInformation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
+            rr:class epo:SubmissionStatisticalInformation
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ND-LotResult";
+            rr:predicate epo:summarisesInformationForAwardOutcome ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-LotAwardOutcome-summarisesInformationForAwardOutcome-SubmissionStatisticalInformation_ND-LotResult ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(.)" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-MonetaryValue-hasHighestReceivedTenderValue-SubmissionStatisticalInformation_ND-LotResult a rr:TriplesMap ;
+    rdfs:label "MG-MonetaryValue" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotResult" ;
+            rml:reference "if (exists(cbc:HigherTenderAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-711-LotResult" ;
+            rdfs:comment "Tender Value Highest of MG-MonetaryValue under ND-LotResult" ;
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='ten-val-hig']) and cbc:HigherTenderAmount/text() = '-1' )) then cbc:HigherTenderAmount else null" ;
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-711-LotResult-Currency" ;
+            rdfs:comment "Currency of Tender Value Highest of MG-MonetaryValue under ND-LotResult" ;
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='ten-val-hig']) and cbc:HigherTenderAmount/text() = '-1' )) then cbc:HigherTenderAmount/@currencyID  else null" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    .
+
+tedm:MG-MonetaryValue-hasLowestReceivedTenderValue-SubmissionStatisticalInformation_ND-LotResult  a rr:TriplesMap ;
+    rdfs:label "MG-MonetaryValue";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:NoticeResult/efac:LotResult" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotResult" ;
+            rml:reference "if (exists(cbc:LowerTenderAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValueLowestReceivedTenderValue_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(.)) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-710-LotResult" ;
+            rdfs:comment "Tender Value lowest of MG-MonetaryValue under ND-LotResult" ;
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='ten-val-low']) and cbc:LowerTenderAmount/text() = '-1' )) then cbc:LowerTenderAmount else null" ;
+                    rr:datatype xsd:decimal ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-711-LotResult-Currency" ;
+            rdfs:comment "Currency of Tender Value Lowest of MG-MonetaryValue under ND-LotResult" ;
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='ten-val-low']) and cbc:LowerTenderAmount/text() = '-1' )) then cbc:LowerTenderAmount/@currencyID else null" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.

@@ -1,0 +1,1288 @@
+#--- MG-Procedure ---
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rr: <http://www.w3.org/ns/r2rml#> .
+@prefix rml: <http://semweb.mmlab.be/ns/rml#> .
+@prefix ql: <http://semweb.mmlab.be/ns/ql#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix tedm: <http://data.europa.eu/a4g/mapping/sf-rml/> .
+@prefix epd: <http://data.europa.eu/a4g/resource/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#>.
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix cccev: <http://data.europa.eu/m8g/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix time: <http://www.w3.org/2006/time#>.
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix fnml:   <http://semweb.mmlab.be/ns/fnml#> .
+@prefix fno: <https://w3id.org/function/ontology#> .
+@prefix idlab-fn: <http://example.com/idlab/function/> .
+
+tedm:MG-Procedure_ND-Root a rr:TriplesMap ;
+    rdfs:label "MG-Procedure";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-Root";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Procedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:Procedure
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-01-notice" ;
+            rdfs:comment "Procedure Legal Basis of MG-Procedure under ND-Root" ;
+            rr:predicate epo:hasLegalBasis ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:legal-basis" ;
+                    rr:parentTriplesMap tedm:legal-basis ;
+                    rr:joinCondition [
+                        rr:child "cbc:RegulatoryDomain" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-04-notice (object)" ;
+            rdfs:comment "Procedure Identifier of MG-Procedure under ND-Root" ;
+            rr:predicate adms:identifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-identifier-Procedure-refersToProcedure-Notice_ND-Root ;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            # TODO: To be revisited for Result Notices. Perhaps we will need an XPath condition.
+            rdfs:label "ND-Lot" ;
+            rdfs:comment "Aggregation relationship between Procedure and Lot" ;
+            rr:predicate epo:hasProcurementScopeDividedIntoLot ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Lot_ND-Lot ;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ProcedureTerm" ;
+            rdfs:comment "Composition relationship between Procedure and ProcedureTerm" ;
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotFiscalLegislation ;
+                    rr:joinCondition [
+                        rr:child  "path(.)" ;
+                        rr:parent "path(../../..)" ;
+                    ] ;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ProcedureTerm" ;
+            rdfs:comment "Composition relationship between Procedure and ProcedureTerm" ;
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotEnvironmentalLegislation ;
+                    rr:joinCondition [
+                        rr:child  "path(.)" ;
+                        rr:parent "path(../../..)" ;
+                    ] ;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ProcedureTerm" ;
+            rdfs:comment "Composition relationship between Procedure and ProcedureTerm" ;
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotEmploymentLegislation ;
+                    rr:joinCondition [
+                        rr:child  "path(.)" ;
+                        rr:parent "path(../../..)" ;
+                    ] ;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ProcedureTerm" ;
+            rdfs:comment "Composition relationship between Procedure and ProcedureTerm" ;
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotReviewTerms ;
+                    rr:joinCondition [
+                        rr:child  "path(.)" ;
+                        rr:parent "path(../../..)" ;
+                    ] ;
+                ]
+        ] ;
+.
+
+tedm:MG-Identifier-identifier-Procedure-refersToProcedure-Notice_ND-Root a rr:TriplesMap ;
+    rdfs:comment "The identifier of a procedure" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "MG-Identifier" ;
+            rdfs:comment "Type declaration for MG-Identifier under ND-ProcedureProcurementScope" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ContractFolderID";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-04-notice-Scheme" ;
+            rdfs:comment "Scheme of MG-Identifier for MG-Procedure under ND-Root" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ContractFolderID/@schemeName";
+                ] ;
+        ] ;
+.
+
+tedm:MG-Procedure_ND-LocalLegalBasisWithID a rr:TriplesMap ;
+    rdfs:label "MG-Procedure";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[not(cbc:ID/text()=('CrossBorderLaw','LocalLegalBasis'))]";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LocalLegalBasisWithID";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Procedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:Procedure
+        ] ;
+    # currently unmappable according to feedback and instead combined in the next one BT-01(d)-Procedure
+    # rr:predicateObjectMap
+    #     [
+    #         # TODO min SDK 1.3 max SDK 1.3 (when mappable)
+    #         # TODO min SDK 1.4 max SDK 1.7 (when mappable)
+    #         rdfs:label "BT-01(c)-Procedure";
+    #         rdfs:comment "Procedure Legal Basis (ID) of MG-Procedure under ND-LocalLegalBasisWithID ";
+    #         rr:predicate epo:hasLegalBasis ;
+    #         rr:objectMap
+    #             [
+    #                 tedm:minSDKVersion "1.8" ;
+    #                 rml:reference "cbc:ID";
+    #             ] ;
+    #     ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-01(d)-Procedure";
+            rdfs:comment "Procedure Legal Basis (Description) of MG-Procedure under ND-LocalLegalBasisWithID ";
+            rr:predicate epo:hasLegalBasisDescription  ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-01(d)-Procedure-Language";
+                    rdfs:comment "Language of Procedure Legal Basis (Description) of MG-Procedure under ND-LocalLegalBasisWithID ";
+                    rml:reference "if(exists(cbc:DocumentDescription)) then (if(exists(cbc:ID)) then cbc:ID || (if(exists(cbc:ID/@schemeName)) then ' [' || cbc:ID/@schemeName || ']' else '') || ' / ' else '') || cbc:DocumentDescription else null";
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cbc:DocumentDescription/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+            rr:objectMap
+                [
+                    rml:reference "if(not(exists(cbc:DocumentDescription))) then (if(exists(cbc:ID)) then cbc:ID || (if(exists(cbc:ID/@schemeName)) then ' [' || cbc:ID/@schemeName || ']' else '') else null) else null";
+                ] ;
+        ]
+.
+
+tedm:MG-Procedure_ND-LocalLegalBasisNoID a rr:TriplesMap ;
+    rdfs:label "MG-Procedure";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[cbc:ID/text()='LocalLegalBasis']";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LocalLegalBasisNoID";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Procedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:Procedure
+        ] ;
+    # currently unmappable according to feedback but makes no sense with the next one mapped
+    # rr:predicateObjectMap
+    #     [
+    #         # TODO min SDK 1.4 max SDK 1.7 (when mappable)
+    #         rdfs:label "BT-01(e)-Procedure";
+    #         rdfs:comment "Procedure Legal Basis (NoID) of MG-Procedure under ND-LocalLegalBasisNoID";
+    #         rr:predicate epo:hasLegalBasis ;
+    #         rr:objectMap
+    #            [
+    #                 tedm:minSDKVersion "1.8" ;
+    #                 rml:reference "cbc:ID";
+    #            ] ;
+    #     ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-01(f)-Procedure";
+            rdfs:comment "Procedure Legal Basis (NoID Description) of MG-Procedure under ND-LocalLegalBasisNoID";
+            rr:predicate epo:hasLegalBasisDescription ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.4" ;
+                    rdfs:label "BT-01(f)-Procedure-Language";
+                    rdfs:comment "Language of Procedure Legal Basis (NoID Description) of MG-Procedure under ND-LocalLegalBasisNoID";
+                    rml:reference "cbc:DocumentDescription";
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cbc:DocumentDescription/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+        ]
+.
+
+# TODO MG missing in CM
+tedm:MG-Procedure_ND-CrossBorderLaw a rr:TriplesMap ;
+    rdfs:label "MG-Procedure";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[cbc:ID/text()='CrossBorderLaw']";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-CrossBorderLaw";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Procedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:Procedure
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ProcedureTerm";
+            rdfs:comment "Composition relationship between Procedure and ProcedureTerm";
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-CrossBorderLaw;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ]
+        ] ;
+.
+
+# TODO min SDK 1.3 max SDK 1.3 required only for BT-01(c)-Procedure which is unmappable
+# tedm:MG-Procedure_ND-ProcedureTerms a rr:TriplesMap ;
+#     rdfs:label "MG-Procedure";
+#     rml:logicalSource
+#         [
+#             rml:source "data/source.xml" ;
+#             rml:iterator "/*/cac:TenderingTerms";
+#             rml:referenceFormulation ql:XPath
+#         ] ;
+#     rr:subjectMap
+#         [
+#             rdfs:label "ND-ProcedureTerms";
+#             rdfs:comment "Primary type declaration of MG-Procedure under ND-ProcedureTerms";
+#             rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Procedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+#             rr:class epo:Procedure
+#         ] ;
+# .
+
+# TODO MG missing in CM
+tedm:MG-Procedure_ND-LotDistribution a rr:TriplesMap ;
+    rdfs:label "MG-Procedure";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingTerms/cac:LotDistribution";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotDistribution";
+            rdfs:comment "Primary type declaration of MG-Procedure under ND-LotDistribution";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Procedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:Procedure
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ProcedureTerm";
+            rdfs:comment "Composition relationship between Procedure and ProcedureTerm";
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotDistribution;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ]
+        ] ;
+.
+
+tedm:MG-LotGroup-definesLotGroup-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-GroupComposition a rr:TriplesMap ;
+    rdfs:label "MG-LotGroup";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingTerms/cac:LotDistribution/cac:LotsGroup/cac:ProcurementProjectLotReference";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-GroupComposition";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_LotGroup_{../cbc:LotsGroupID}" ;
+            rr:class epo:LotGroup
+        ] ;
+    rr:predicateObjectMap
+        [
+            # VERINFO: SDK v1.8+ from v1.3-1.7 contains only node change with rel XPath changes yielding the same effective XPaths, along with repeatable=false, introduction of Scheme attribute and other mapping-irrelevant changes
+            rdfs:label "BT-1375-Procedure";
+            rdfs:comment "Group Lot Identifier of MG-LotGroup under ND-GroupComposition (v1.3-1.7), ND-GroupCompositionLotReference (v1.8+)";
+            rr:predicate epo:setsGroupingContextForLot;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.8" ;
+                    # while there is the Mapping Group tedm:MG-Lot-setsGroupingContextForLot-LotGroup-definesLotGroup-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-GroupCompositionLotReference
+                    # there is no point in creating a new TriplesMap as there are no new properties to instantiate and so we link to what's already defined
+                    rr:parentTriplesMap tedm:MG-Lot_ND-Lot ;
+                    rr:joinCondition [
+                        rr:child "cbc:ID";
+                        rr:parent "cbc:ID";
+                    ];
+                ] ;
+        ]
+.
+
+tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotDistribution a rr:TriplesMap ;
+    rdfs:label "MG-ProcedureTerm";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingTerms/cac:LotDistribution";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-LotDistribution";
+            rdfs:comment "Primary type declaration of MG-ProcedureTerm under ND-LotDistribution";
+            # TODO check if reference (the conditions) is needed
+            # rml:reference "if (exists(cbc:MaximumLotsSubmittedNumeric) or exists(cbc:MaximumLotsAwardedNumeric)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcedureTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ProcedureTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            # VERINFO: SDK v1.3-1.5 type was broader 'number', data and xsd type still compatible for 1.6+
+            rdfs:label "BT-31-Procedure";
+            rdfs:comment "Lots Max Allowed of MG-ProcedureTerm under ND-LotDistribution";
+            rr:predicate epo:hasMaximumLotSubmissionAllowed ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.6" ;
+                    rml:reference "cbc:MaximumLotsSubmittedNumeric";
+                    rr:datatype xsd:integer
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            # VERINFO: SDK v1.3-1.5 type was broader 'number', data and xsd type still compatible for 1.6+
+            rdfs:label "BT-33-Procedure";
+            rdfs:comment "Lots Max Awarded of MG-ProcedureTerm under ND-LotDistribution";
+            rr:predicate epo:hasMaximumNumberOfLotsToBeAwarded ;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.6" ;
+                    rml:reference "cbc:MaximumLotsAwardedNumeric";
+                    rr:datatype xsd:integer
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            # VERINFO: across SDK versions only introduction of Scheme attribute and mapping-irrelevant changes
+            rdfs:label "BT-330-Procedure";
+            rdfs:comment "Group Identifier of MG-ProcedureTerm under ND-LotDistribution";
+            rr:predicate epo:definesLotGroup;
+            rr:objectMap
+                [
+                    tedm:minSDKVersion "1.6" ;
+                    rr:parentTriplesMap tedm:MG-LotGroup-definesLotGroup-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-GroupComposition ;
+                    # this is an example of a joinCondition with a child element that is a descendant
+                    rr:joinCondition [
+                        rr:child "cac:LotsGroup/cbc:LotsGroupID";
+                        rr:parent "../cbc:LotsGroupID";
+                    ];
+                ] ;
+        ]
+.
+
+tedm:MG-Procedure_ND-ProcedureProcurementScope a rr:TriplesMap ;
+    rdfs:label "MG-Procedure";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ProcedureProcurementScope" ;
+            rdfs:comment "Primary type declaration for MG-Procedure under ND-ProcedureProcurementScope" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Procedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:Procedure
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-22-Procedure" ;
+            rdfs:comment "Internal Identifier of MG-Procedure under ND-ProcedureProcurementScope" ;
+            rr:predicate epo:hasInternalIdentifier ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Identifier-hasInternalIdentifier-Procedure_ND-ProcedureProcurementScope ;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-21-Procedure" ;
+            rdfs:comment "Title of MG-Procedure under ND-ProcedureProcurementScope" ;
+            rr:predicate dct:title ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-21-Procedure-Language" ;
+                    rdfs:comment "Language of Title of MG-Procedure under ND-ProcedureProcurementScope" ;
+                    rml:reference "cbc:Name" ;
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cbc:Name/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-24-Procedure" ;
+            rdfs:comment "Description of MG-Procedure under ND-ProcedureProcurementScope" ;
+            rr:predicate dct:description ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-24-Procedure-Language" ;
+                    rdfs:comment "Language of Description of MG-Procedure under ND-ProcedureProcurementScope" ;
+                    rml:reference "cbc:Description" ;
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-300-Procedure" ;
+            rdfs:comment "Additional Information of MG-Procedure under ND-ProcedureProcurementScope" ;
+            rr:predicate epo:hasAdditionalInformation ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-300-Procedure-Language" ;
+                    rdfs:comment "Language of Additional Information of MG-Procedure under ND-ProcedureProcurementScope" ;
+                    rml:reference "cbc:Note";
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cbc:Note/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-23-Procedure (object)" ;
+            rdfs:comment "Connection of MG-Procedure to MG-ContractTerm under ND-ProcedureProcurementScope" ;
+            rr:predicate epo:foreseesContractSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedureProcurementScope ;
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:labe "BT-531-Procedure (object)" ;
+            rdfs:comment "Connection of MG-Procedure to MG-ContractTerm under ND-ProcedureProcurementScope" ;
+            rr:predicate epo:foreseesContractSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedureContractAdditionalNature ;
+                    rr:joinCondition [
+                        rr:child "path(.)" ;
+                        rr:parent "path(..)" ;
+                    ] ;
+                ]
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-27-Procedure";
+            rr:predicate epo:hasEstimatedValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasEstimatedValue-Procedure_ND-ProcedureValueEstimate;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ] ;
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-271-Procedure";
+            rdfs:comment "Estimated Value of MG-MonetaryValue under ND-ProcedureValueEstimate";
+            rr:predicate epo:hasLaunchFrameworkAgreementMaximumValue ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Procedure_ND-ProcedureValueEstimateExtension;
+                     rr:joinCondition [
+                         rr:child "path(.)";
+                         rr:parent "path(../../../../..)";
+                     ];
+                ] ;
+        ];
+     rr:predicateObjectMap
+        [
+            rdfs:label "BT-263-Procedure";
+            rdfs:comment "Additional Classification Code of MG-Purpose under ND-ProcedureMainClassificationCode";
+            rr:predicate epo:hasPurpose ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Purpose-hasPurpose-Procedure_ND-ProcedureAdditionalCommodityClassification;
+                     rr:joinCondition [
+                         rr:child "path(.)";
+                         rr:parent "path(../.)";
+                     ];
+                ] ;
+        ];
+rr:predicateObjectMap
+        [
+            rdfs:label "BT-262-Procedure";
+            rdfs:comment "Main Classification Code of MG-Purpose under ND-ProcedureMainClassificationCode";
+            rr:predicate epo:hasPurpose ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Purpose-hasPurpose-Procedure_ND-ProcedureMainClassificationCode;
+                     rr:joinCondition [
+                         rr:child "path(.)";
+                         rr:parent "path(../.)";
+                     ];
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(a)-Procedure, BT-5101(b)-Procedure, BT-5101(c)-Procedure, BT-5131-Procedure and BT-5121-Procedure";
+            rr:predicate epo:foreseesContractSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../..)";
+                    ];
+                ]
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-728-Procedure";
+            rr:predicate epo:foreseesContractSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformanceAdditionalInformation;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(../.)";
+                    ];
+                ]
+        ]
+.
+
+tedm:MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedureProcurementScope a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ProcedureProcurementScope" ;
+            rdfs:comment "Primary type declaration for MG-ContractTerm under ND-ProcedureProcurementScope" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcurementProjectContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ContractTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-23-Procedure (value)" ;
+            rdfs:comment "Main Nature of MG-ContractTerm under ND-ProcedurePlacePerformanceAdditionalInformation" ;
+            rr:predicate epo:hasContractNatureType ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:contract-nature" ;
+                    rr:parentTriplesMap tedm:contract-nature ;
+                    rr:joinCondition [
+                        rr:child "cbc:ProcurementTypeCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ]
+.
+
+tedm:MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedureContractAdditionalNature a rr:TriplesMap ;
+    # predicate mappings are in versioned files (Procedure_v1.3-1.7|1.8+)
+    rdfs:label "MG-ContractTerm" ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ProcedureProcurementScope" ;
+            rdfs:comment "Primary type declaration for MG-ContractTerm under ND-ProcedureProcurementScope" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcurementProjectContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:ContractTerm
+        ] ;
+.
+
+tedm:MG-Identifier-hasInternalIdentifier-Procedure_ND-ProcedureProcurementScope a rr:TriplesMap ;
+    rdfs:comment "The identifier of a procedure" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            # TODO decide on labeling scheme for composition links like this
+            rdfs:label "MG-Identifier" ;
+            rdfs:comment "Type declaration for MG-Identifier under ND-ProcedureProcurementScope" ;
+            rml:reference "if (exists(cbc:ID)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureIdentifier_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class adms:Identifier
+        ] ;
+    rr:predicateObjectMap
+        [
+
+            rr:predicate skos:notation ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-22-Procedure-Scheme" ;
+            rdfs:comment "Scheme of MG-Identifier for MG-Procedure under ND-ProcedureProcurementScope" ;
+            rr:predicate epo:hasScheme ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:ID/@schemeName";
+                ] ;
+        ] ;
+.
+
+# this is an example of a TMap which has the same subject IRI as another (tedm:MG-Procedure_ND-ProcedureProcurementScope)
+tedm:MG-Procedure_ND-ProcedureTenderingProcess a rr:TriplesMap ;
+    rdfs:label "MG-Procedure" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingProcess" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            # this is an example of a template/IRI that hashes on the parent path
+            rdfs:label "ND-ProcedureTenderingProcess" ;
+            rdfs:comment "Type declaration for MG-Procedure under ND-ProcedureTenderingProcess" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Procedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:Procedure
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-88-Procedure" ;
+            rdfs:comment "Procedure Features of MG-Procedure under ND-ProcedureTenderingProcess" ;
+            rr:predicate epo:hasMainFeature ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-88-Procedure-Language" ;
+                    rdfs:comment "Language of Procedure Features of MG-Procedure under ND-ProcedureTenderingProcess" ;
+                    rml:reference "if(not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='pro-fea']) and cbc:Description/text() = 'unpublished' )) then cbc:Description else null";
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-105-Procedure" ;
+            rdfs:comment "Procedure Type of MG-Procedure under ND-ProcedureTenderingProcess" ;
+            rr:predicate epo:hasProcedureType ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:procurement-procedure-type" ;
+                    rr:parentTriplesMap tedm:procurement-procedure-type ;
+                    rr:joinCondition [
+                        rr:child "if(not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='pro-typ']) and cbc:ProcedureCode/text() = 'unpublished' )) then cbc:ProcedureCode else null" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "ProcedureTerm";
+            rdfs:comment "Composition relationship between Procedure and ProcedureTerm";
+            rr:predicate epo:isSubjectToProcedureSpecificTerm ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-ProcedureTerm_ND-ProcedureTenderingProcess;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ]
+        ] ;
+.
+
+# this is an example of a TMap which has the same subject IRI as two others (tedm:MG-Procedure_ND-ProcedureProcurementScope and tedm:MG-Procedure_ND-TenderingProcess)
+tedm:MG-Procedure_ND-AcceleratedProcedure a rr:TriplesMap ;
+    rdfs:label "MG-Procedure" ;
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingProcess/cac:ProcessJustification[cbc:ProcessReasonCode/@listName='accelerated-procedure']" ;
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            # this is an example of a subject IRI with a hash on the grandparent
+            rdfs:label "ND-AcceleratedProcedure" ;
+            rdfs:comment "Type declaration for MG-Procedure under ND-AcceleratedProcedure" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_Procedure_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(../..)) || '?response_type=raw')}" ;
+            rr:class epo:Procedure
+        ] ;
+    rr:predicateObjectMap
+        [
+            # Differences across versions are practically superficial and have little to no functional effect on this mapping even though different iterators can be interpreted
+            # VERINFO: SDK v1.6 from v1.3-1.5 contains only node change with stylistic XPath changes yielding the same effective XPaths
+            # VERINFO: SDK v1.8+ from 1.7 contain only stylistic XPath changes (removing redundant predicate), introduction of List attribute and other mapping-irrelevant changes
+            rdfs:label "BT-106-Procedure" ;
+            rdfs:comment "Procedure Accelerated of MG-Procedure under ND-AcceleratedProcedure (v1.6+), ND-AcceleratedProcedureJustification (v1.3-1.5)" ;
+            rr:predicate epo:isAccelerated ;
+            rr:objectMap
+                [
+                    # this is an example of a version-specific mapping that has no difference
+                    # with its other counterparts due to non-functional changes in the XPath
+                    rml:reference "if(not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='pro-acc']) and cbc:ProcessReasonCode/text() = '0' )) then cbc:ProcessReasonCode else null" ;
+                    rr:datatype xsd:boolean
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-1351-Procedure" ;
+            rdfs:comment "Procedure Accelerated Justification of MG-Procedure under ND-AcceleratedProcedure" ;
+            rr:predicate epo:hasAcceleratedProcedureJustification ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-1351-Procedure-Language" ;
+                    rdfs:comment "Language of Procedure Accelerated Justification of MG-Procedure under ND-AcceleratedProcedure" ;
+                    rml:reference "cbc:ProcessReason" ;
+                    rml:reference "if(not(exists(ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension/efac:FieldsPrivacy[efbc:FieldIdentifierCode/text()='pro-acc-jus']) and cbc:ProcessReason/text() = 'unpublished' )) then cbc:ProcessReason else null" ;
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cbc:ProcessReason/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-MonetaryValue-hasEstimatedValue-Procedure_ND-ProcedureValueEstimate a rr:TriplesMap ;
+    rdfs:label "MG-MonetaryValue";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:RequestedTenderTotal";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rml:reference "if (exists(cbc:EstimatedOverallContractAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_MonetaryValueProcedure_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class  epo:MonetaryValue;
+        ] ;
+
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-27-Procedure";
+            rdfs:comment  "Estimated Value of MG-MonetaryValue under ND-ProcedureValueEstimate";
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:EstimatedOverallContractAmount";
+                    rr:datatype xsd:decimal;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-27-Procedure-Currency";
+            rdfs:comment "Currency of Estimated Value of MG-MonetaryValue under ND-ProcedureValueEstimate";
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "cbc:EstimatedOverallContractAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Procedure_ND-ProcedureValueEstimateExtension a rr:TriplesMap ;
+    rdfs:label "MG-MonetaryValue";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:RequestedTenderTotal/ext:UBLExtensions/ext:UBLExtension/ext:ExtensionContent/efext:EformsExtension";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-ProcedureValueEstimateExtension";
+            rml:reference "if (exists(efbc:FrameworkMaximumAmount)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedureValueEstimateExtension_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class epo:MonetaryValue
+        ] ;
+    rr:predicateObjectMap
+        [
+            tedm:minSDKVersion "1.5.12" ;
+            rdfs:label "BT-271-Procedure";
+            rdfs:comment "Framework Maximum Value of MG-MonetaryValue under ND-ProcedureValueEstimateExtension";
+            rr:predicate epo:hasAmountValue ;
+            rr:objectMap
+                [
+                    rml:reference "efbc:FrameworkMaximumAmount";
+                    rr:datatype xsd:decimal;
+                ] ;
+        ];
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-271-Procedure-Currency";
+            rdfs:comment "Currency of Framework Maximum Value of MG-MonetaryValue under ND-ProcedureValueEstimateExtension";
+            rr:predicate epo:hasCurrency ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:currency" ;
+                    rr:parentTriplesMap tedm:currency ;
+                    rr:joinCondition [
+                        rr:child "efbc:FrameworkMaximumAmount/@currencyID" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+ .
+
+tedm:MG-Purpose-hasPurpose-Procedure_ND-ProcedureMainClassificationCode a rr:TriplesMap ;
+    rdfs:label "MG-Purpose";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:MainCommodityClassification";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ProcedureMainClassificationCode" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcedurePurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:Purpose
+        ] ;
+ rr:predicateObjectMap
+        [
+            rdfs:label "BT-262-Procedure";
+            rdfs:comment "Main Classification Code of MG-Purpose under ND-ProcedureMainClassificationCode";
+            rr:predicate epo:hasMainClassification  ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:cpv";
+                    rr:parentTriplesMap tedm:cpv ;
+                    rr:joinCondition [
+                        rr:child  "if(exists(cbc:ItemClassificationCode[@listName='cpv'])) then cbc:ItemClassificationCode else null";
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Purpose-hasPurpose-Procedure_ND-ProcedureAdditionalCommodityClassification a rr:TriplesMap ;
+    rdfs:label "MG-Purpose";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:AdditionalCommodityClassification";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-ProcedureMainClassificationCode" ;
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcedurePurpose_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            rr:class epo:Purpose
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-263-Procedure";
+            rdfs:comment "Additional Classification Code of MG-Purpose under ND-ProcedureMainClassificationCode";
+            rr:predicate  epo:hasAdditionalClassification   ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:cpv";
+                    rr:parentTriplesMap tedm:cpv ;
+                    rr:joinCondition [
+                        rr:child  "if(exists(cbc:ItemClassificationCode[@listName='cpv'])) then cbc:ItemClassificationCode else null";
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance a rr:TriplesMap ;
+    rdfs:label "MG-Address";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:RealizedLocation/cac:Address";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-ProcedurePlacePerformance";
+            # WARNING this does not work in conjunction w/ a joinCondition in rmlmapper v6.3+, likely related to the null case
+            rml:reference "if(exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone) or exists(cac:Country/cbc:IdentificationCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ProcedurePlacePerformance_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class locn:Address
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(a|b|c)-, BT-5121-, BT-5131-, 5141-Procedure" ;
+            rdfs:comment "Place Performance Street, Place Performance Streetline 1, Place Performance Streetline 2, Place Performance City, Place Performance Post Code, Place Performance Country Code" ;
+            rr:predicate locn:fullAddress ;
+            rr:objectMap
+                [
+                    rml:reference  "if (exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line)) then replace(replace(cbc:StreetName || ', ' || cbc:AdditionalStreetName || ', ' || cac:AddressLine/cbc:Line || ', ' || cbc:CityName || ', ' || cbc:PostalZone || ', ' || cac:Country/cbc:IdentificationCode, '(, )+', ', '),  '^, |, $', '') else null" ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5131-Procedure";
+            rdfs:comment "Place Performance City of MG-Address under ND-ProcedurePlacePerformance";
+            rr:predicate locn:postName  ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:CityName";
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5121-Procedure";
+            rdfs:comment "Place Performance Post Code of MG-Address under ND-ProcedurePlacePerformance";
+            rr:predicate locn:postCode ;
+            rr:objectMap
+                [
+                    rml:reference "cbc:PostalZone";
+                ] ;
+        ];
+      rr:predicateObjectMap
+        [
+           rdfs:label "BT-5071-Procedure";
+            rdfs:comment "Place Performance Country Subdivision of MG-Location under ND-LotPerformanceAddress";
+            rr:predicate epo:hasNutsCode ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:nuts ;
+                    rr:joinCondition [
+                        rr:child "cbc:CountrySubentityCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5141-Procedure of MG-Address under ND-LotPerformanceAddress";
+            rdfs:comment "Place Performance Country Code";
+            rr:predicate epo:hasCountryCode ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:country" ;
+                    rr:parentTriplesMap tedm:country ;
+                    rr:joinCondition [
+                        rr:child "cac:Country/cbc:IdentificationCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance a rr:TriplesMap ;
+    rdfs:label "MG-Location";
+    rdfs:comment "This is an iterator for the location it has the same xpath with the ND-ProcedurePlacePerformanceAdditionalInformation as this one goes through the ContractTerm";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:RealizedLocation/cac:Address";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            # we check for the elements of a linked Address as otherwise this Location should not be instantiated either
+            rml:reference "if (exists(cbc:StreetName) or exists(cbc:AdditionalStreetName) or exists(cac:AddressLine/cbc:Line) or exists(cbc:CityName) or exists(cbc:PostalZone) or exists(cac:Country/cbc:IdentificationCode)) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractLocation_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw') else null" ;
+            rr:class dct:Location
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(a|b|c)-, BT-5131-, BT-5121-Procedure";
+            rdfs:comment "Address of Location" ;
+            rr:predicate locn:address ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance;
+                    # WARNING this does not work in conjunction w/ the parent's conditional reference in rmlmapper v6.3+
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5141-Procedure of MG-Location under ND-LotPerformanceAddress";
+            rdfs:comment "Place Performance Country Code";
+            rr:predicate epo:hasCountryCode  ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:country" ;
+                    rr:parentTriplesMap tedm:country ;
+                    rr:joinCondition [
+                        rr:child "cac:Country/cbc:IdentificationCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5071-Procedure";
+            rdfs:comment "Place Performance Country Subdivision of MG-Address under ND-LotPerformanceAddress";
+            rr:predicate epo:hasNutsCode  ;
+             rr:objectMap
+                [
+                    rdfs:label "at-voc:nuts";
+                    rr:parentTriplesMap tedm:nuts ;
+                    rr:joinCondition [
+                        rr:child "cbc:CountrySubentityCode" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ]
+.
+
+tedm:MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm";
+     rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:RealizedLocation/cac:Address";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-ProcedurePlacePerformance";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcurementProjectContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw')}" ;
+            # TODO check if we need these conditions to instantiate a ContractTerm
+            # rml:reference "if (exists(cbc:ProcurementTypeCode[@listName='contract-nature']) or exists(descendant::cbc:ProcurementTypeCode[@listName='contract-nature'])) then 'http://data.europa.eu/a4g/resource/id_' || replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-') || '_ContractTerm_' || unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path(..)) || '?response_type=raw') else null" ;
+            rr:class epo:ContractTerm;
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-5101(a|b|c)-, BT-5131-, BT-5121-Procedure";
+            rdfs:comment "Location of ContractTerm";
+            rr:predicate epo:definesSpecificPlaceOfPerformance ;
+            rr:objectMap
+                [
+                    rr:parentTriplesMap tedm:MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance;
+                    rr:joinCondition [
+                        rr:child "path(.)";
+                        rr:parent "path(.)";
+                    ];
+                ]
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-727-Procedure";
+            rdfs:comment "Place Performance Services Other of MG-ContractTerm under ND-ProcedurePlacePerformance";
+            rr:predicate epo:hasBroadPlaceOfPerformance ;
+            rr:objectMap
+                [
+                    rdfs:label "at-voc:other-place-service";
+                    rr:parentTriplesMap tedm:other-place-service ;
+                    rr:joinCondition [
+                        rr:child "cbc:Region" ;
+                        rr:parent "code.value" ;
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformanceAdditionalInformation a rr:TriplesMap ;
+    rdfs:label "MG-ContractTerm";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:ProcurementProject/cac:RealizedLocation";
+            rml:referenceFormulation ql:XPath
+        ];
+    rr:subjectMap
+        [
+            rdfs:label "ND-ProcedurePlacePerformanceAdditionalInformation";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcurementProjectContractTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ContractTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-728-Procedure";
+            rdfs:comment "Place Performance Additional Information of MG-ContractTerm under D-ProcedurePlacePerformanceAdditionalInformation";
+            rr:predicate epo:hasPlaceOfPerformanceAdditionalInformation ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-728-Procedure-Language";
+                    rdfs:comment "Language of Place Performance Additional Information of MG-ContractTerm under ND-ProcedurePlacePerformanceAdditionalInformation";
+                    rml:reference "cbc:Description";
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cbc:Description/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+        ] ;
+.
+
+tedm:MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-CrossBorderLaw a rr:TriplesMap ;
+    rdfs:label "MG-ProcedureTerm";
+    rml:logicalSource
+        [
+            rml:source "data/source.xml" ;
+            rml:iterator "/*/cac:TenderingTerms/cac:ProcurementLegislationDocumentReference[cbc:ID/text()='CrossBorderLaw']";
+            rml:referenceFormulation ql:XPath
+        ] ;
+    rr:subjectMap
+        [
+            rdfs:label "ND-CrossBorderLaw";
+            rdfs:comment "Primary type declaration of MG-ProcedureTerm under ND-CrossBorderLaw";
+            rr:template "http://data.europa.eu/a4g/resource/id_{replace(replace(/*/cbc:ID[@schemeName='notice-id'], ' ', '-' ), '/' , '-')}_ProcedureTerm_{unparsed-text('https://digest-api.ted-data.eu/api/v1/hashing/fn/uuid/' || encode-for-uri(path()) || '?response_type=raw')}" ;
+            rr:class epo:ProcedureTerm
+        ] ;
+    rr:predicateObjectMap
+        [
+            rdfs:label "BT-09(b)-Procedure";
+            rdfs:comment "Cross Border Law Description of MG-ProcedureTerm under ND-CrossBorderLaw";
+            rr:predicate epo:hasCrossBorderLaw ;
+            rr:objectMap
+                [
+                    rdfs:label "BT-09(b)-Procedure-Language";
+                    rdfs:comment "Language of Cross Border Law Description of MG-ProcedureTerm under ND-CrossBorderLaw";
+                    rml:reference "cbc:DocumentDescription";
+                    rml:languageMap [
+                        fnml:functionValue [
+                            rr:predicateObjectMap [
+                                rr:predicate idlab-fn:str ;
+                                rr:objectMap [ rml:reference "cbc:DocumentDescription/@languageID" ]
+                            ] ,
+                            tedm:idlab-fn_executes_lookup ,
+                            tedm:idlab-fn_inputFile_language ,
+                            tedm:idlab-fn_fromColumn_code ,
+                            tedm:idlab-fn_toColumn_code
+                        ]
+                    ] ;
+                ] ;
+        ] ;
+.
