@@ -50,9 +50,12 @@ class CMtoSHACL():
                 p_list = self.parsePropertyPath(Property)
             
             if len(c_list) != len(p_list):
-                print("The length of the rule is not consistent: ", Class, Property)
-                print("class list: ", c_list)
-                print("property list: ", p_list)
+                if len(p_list) == 2 and p_list[0] == RDF.type:
+                    pass
+                else:
+                    print("The length of the rule is not consistent: ", Class, Property)
+                    print("class list: ", c_list)
+                    print("property list: ", p_list)
             else:
                 for index in range(len(c_list) - 1):
                     c = c_list[index]
