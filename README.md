@@ -38,3 +38,17 @@ To validate RDF graph
 ```
 $ python main.py --validation_shacl SHACL_PATH --validation_rdf RDF_PATH --validation_report OUTPUT_REPORT_PATH
 ```
+
+## Data Analysis
+
+The summary statistics of mapping suites in the Standard Forms and eForms repositories, 
+including the average number of conceptual mapping rules, 
+RML Triple Maps and Predicate-Object Maps, and classes and properties 
+defined in OWL (O), Conceptual Mapping (C), and RML (R) 
+are located at data/report.txt. 
+
+To reproduce the statistics result, run the following command:
+
+```
+$ python data_analysis.py 
+```
