@@ -1,4 +1,4 @@
-from src.cm2shacl import CMtoSHACL
+from src.cm2shacl.cm2shacl import CMtoSHACL
 import argparse
 import pyshacl
 from rdflib import Graph
