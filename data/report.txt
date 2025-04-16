@@ -1,36 +1,34 @@
 ==== Per Suite Statistics ====
 
 Standard Forms:
-package_F03: TM=120, POM=108, RML Class=46, RML Prop=147
-package_F06: TM=122, POM=109, RML Class=46, RML Prop=151
-package_F13: TM=123, POM=109, RML Class=46, RML Prop=149
-package_F20: TM=142, POM=128, RML Class=48, RML Prop=153
-package_F21: TM=120, POM=108, RML Class=46, RML Prop=147
-package_F22: TM=122, POM=109, RML Class=46, RML Prop=150
-package_F23: TM=120, POM=107, RML Class=46, RML Prop=146
-package_F25: TM=120, POM=107, RML Class=46, RML Prop=146
+package_F03: Rules=377, CM Class=41, CM Prop=129, TM=120, POM=108, RML Class=46, RML Prop=147
+package_F06: Rules=367, CM Class=41, CM Prop=129, TM=122, POM=109, RML Class=46, RML Prop=151
+package_F13: Rules=227, CM Class=31, CM Prop=73, TM=123, POM=109, RML Class=46, RML Prop=149
+package_F20: Rules=266, CM Class=38, CM Prop=78, TM=142, POM=128, RML Class=48, RML Prop=153
+package_F21: Rules=441, CM Class=51, CM Prop=143, TM=120, POM=108, RML Class=46, RML Prop=147
+package_F22: Rules=441, CM Class=50, CM Prop=143, TM=122, POM=109, RML Class=46, RML Prop=150
+package_F23: Rules=361, CM Class=44, CM Prop=117, TM=120, POM=107, RML Class=46, RML Prop=146
+package_F25: Rules=267, CM Class=39, CM Prop=102, TM=120, POM=107, RML Class=46, RML Prop=146
 
 EForms:
-package_can_part3: TM=0, POM=0, RML Class=0, RML Prop=0
-package_can_v1.10: TM=333, POM=298, RML Class=88, RML Prop=282
-package_can_v1.3: TM=334, POM=299, RML Class=88, RML Prop=282
-package_can_v1.4: TM=334, POM=299, RML Class=88, RML Prop=282
-package_can_v1.5: TM=334, POM=299, RML Class=88, RML Prop=282
-package_can_v1.6: TM=334, POM=299, RML Class=88, RML Prop=282
-package_can_v1.7: TM=332, POM=297, RML Class=88, RML Prop=282
-package_can_v1.8: TM=332, POM=297, RML Class=88, RML Prop=282
-package_can_v1.9: TM=333, POM=298, RML Class=88, RML Prop=282
-package_cn_part5: TM=0, POM=0, RML Class=0, RML Prop=0
-package_cn_v1.10: TM=225, POM=223, RML Class=66, RML Prop=210
-package_cn_v1.3: TM=226, POM=224, RML Class=66, RML Prop=210
-package_cn_v1.4: TM=226, POM=224, RML Class=66, RML Prop=210
-package_cn_v1.5: TM=226, POM=224, RML Class=66, RML Prop=210
-package_cn_v1.6: TM=226, POM=224, RML Class=66, RML Prop=210
-package_cn_v1.7: TM=224, POM=222, RML Class=66, RML Prop=210
-package_cn_v1.8: TM=224, POM=222, RML Class=66, RML Prop=210
-package_cn_v1.9: TM=225, POM=223, RML Class=66, RML Prop=210
+package_can_v1.10: Rules=770, CM Class=82, CM Prop=236, TM=333, POM=298, RML Class=88, RML Prop=282
+package_can_v1.3: Rules=708, CM Class=81, CM Prop=225, TM=334, POM=299, RML Class=88, RML Prop=282
+package_can_v1.4: Rules=712, CM Class=81, CM Prop=226, TM=334, POM=299, RML Class=88, RML Prop=282
+package_can_v1.5: Rules=674, CM Class=81, CM Prop=222, TM=334, POM=299, RML Class=88, RML Prop=282
+package_can_v1.6: Rules=728, CM Class=81, CM Prop=226, TM=334, POM=299, RML Class=88, RML Prop=282
+package_can_v1.7: Rules=727, CM Class=81, CM Prop=226, TM=332, POM=297, RML Class=88, RML Prop=282
+package_can_v1.8: Rules=752, CM Class=81, CM Prop=232, TM=332, POM=297, RML Class=88, RML Prop=282
+package_can_v1.9: Rules=770, CM Class=82, CM Prop=236, TM=333, POM=298, RML Class=88, RML Prop=282
+package_cn_v1.10: Rules=748, CM Class=79, CM Prop=227, TM=225, POM=223, RML Class=66, RML Prop=210
+package_cn_v1.3: Rules=704, CM Class=77, CM Prop=219, TM=226, POM=224, RML Class=66, RML Prop=210
+package_cn_v1.4: Rules=708, CM Class=77, CM Prop=220, TM=226, POM=224, RML Class=66, RML Prop=210
+package_cn_v1.5: Rules=722, CM Class=78, CM Prop=221, TM=226, POM=224, RML Class=66, RML Prop=210
+package_cn_v1.6: Rules=724, CM Class=78, CM Prop=221, TM=226, POM=224, RML Class=66, RML Prop=210
+package_cn_v1.7: Rules=723, CM Class=78, CM Prop=220, TM=224, POM=222, RML Class=66, RML Prop=210
+package_cn_v1.8: Rules=730, CM Class=77, CM Prop=222, TM=224, POM=222, RML Class=66, RML Prop=210
+package_cn_v1.9: Rules=748, CM Class=79, CM Prop=227, TM=225, POM=223, RML Class=66, RML Prop=210
 
 ==== Summary ====
 
-Standard Forms: Suites=8, Avg TM=123.6, Avg POM=110.6, Avg RML Class=46.2, Avg RML Prop=148.6, OWL Class=173, OWL Prop=483
-EForms: Suites=18, Avg TM=248.2, Avg POM=231.8, Avg RML Class=68.4, Avg RML Prop=218.7, OWL Class=270, OWL Prop=557
+Standard Forms: Suites=8, Avg Rules=343.4, Avg TM=123.6, Avg POM=110.6, Avg CM Class=41.9, Avg CM Prop=114.2, Avg RML Class=46.2, Avg RML Prop=148.6, OWL Class=173, OWL Prop=483
+EForms: Suites=16, Avg Rules=728.0, Avg TM=279.2, Avg POM=260.8, Avg CM Class=79.6, Avg CM Prop=225.4, Avg RML Class=77.0, Avg RML Prop=246.0, OWL Class=270, OWL Prop=557
