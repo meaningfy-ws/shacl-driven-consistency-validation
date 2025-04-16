@@ -3,7 +3,7 @@ import json
 from rdflib import Graph, URIRef, RDF, Namespace
 from collections import defaultdict
 from typing import Dict, List, Tuple, Set
-from rdflib.namespace import DCTERMS, OWL, RDF, RDFS, SH
+from rdflib.namespace import DCTERMS, OWL, RDF, RDFS, SH, XSD
 
 class consistencyValidator:
     def __init__(self, source_files: Dict[str, str]):
@@ -64,48 +64,50 @@ class consistencyValidator:
                 "constraints": defaultdict(set)
             })
 
-            for ns in g.subjects(RDF.type, SH.NodeShape):
-                for cls in g.objects(ns, SH.targetClass):
-                    focus_nodes.add(cls)
+            for ns,_,cls in g.triples((None, SH.targetClass, None)):
+                focus_nodes.add(cls)
 
-                    # Track dct:source at the NodeShape level
-                    node_sources = [str(s) for s in g.objects(ns, DCTERMS.source)]
+                # Track dct:source at the NodeShape level
+                node_sources = [str(s) for s in g.objects(ns, DCTERMS.source)]
 
-                    # 1. Handle directly attached sh:property
-                    for ps in g.objects(ns, SH.property):
-                        path = next(g.objects(ps, SH.path), None)
-                        if path:
-                            class_props[cls].add(path)
-                            constraint = self._extract_constraint(g, ps)
-                            constraint_map[(cls, path)].add(constraint)
+                # 1. Handle directly attached sh:property
+                ps_list = list(g.objects(ns, SH.property))
+                if len(ps_list) == 0:
+                    ps_list = [ns]
+                for ps in ps_list:
+                    path = next(g.objects(ps, SH.path), None)
+                    if path:
+                        class_props[cls].add(path)
+                        constraint = self._extract_constraint(g, ps)
+                        constraint_map[(cls, path)].add(constraint)
 
-                            # property path source
-                            for s in g.objects(ps, DCTERMS.source):
-                                self.shape_sources[src]["property_paths"][(cls, path)].add(str(s))
-                            # constraint source
-                            for s in g.objects(ps, DCTERMS.source):
-                                self.shape_sources[src]["constraints"][(cls, path, constraint)].add(str(s))
+                        # property path source
+                        for s in g.objects(ps, DCTERMS.source):
+                            self.shape_sources[src]["property_paths"][(cls, path)].add(str(s))
+                        # constraint source
+                        for s in g.objects(ps, DCTERMS.source):
+                            self.shape_sources[src]["constraints"][(cls, path, constraint)].add(str(s))
 
-                    # 2. Handle sh:or → [ sh:property ... ]
-                    for or_list in g.objects(ns, SH["or"]):
-                        for or_item in self._parse_rdf_list(g, or_list):
-                            for ps in g.objects(or_item, SH.property):
-                                path = next(g.objects(ps, SH.path), None)
-                                if path:
-                                    class_props[cls].add(path)
-                                    constraint = self._extract_constraint(g, ps)
-                                    constraint_map[(cls, path)].add(constraint)
+                # 2. Handle sh:or → [ sh:property ... ]
+                for or_list in g.objects(ns, SH["or"]):
+                    for or_item in self._parse_rdf_list(g, or_list):
+                        for ps in g.objects(or_item, SH.property):
+                            path = next(g.objects(ps, SH.path), None)
+                            if path:
+                                class_props[cls].add(path)
+                                constraint = self._extract_constraint(g, ps)
+                                constraint_map[(cls, path)].add(constraint)
 
-                                    # property path source
-                                    for s in g.objects(ps, DCTERMS.source):
-                                        self.shape_sources[src]["property_paths"][(cls, path)].add(str(s))
-                                    # constraint source
-                                    for s in g.objects(ps, DCTERMS.source):
-                                        self.shape_sources[src]["constraints"][(cls, path, constraint)].add(str(s))
+                                # property path source
+                                for s in g.objects(ps, DCTERMS.source):
+                                    self.shape_sources[src]["property_paths"][(cls, path)].add(str(s))
+                                # constraint source
+                                for s in g.objects(ps, DCTERMS.source):
+                                    self.shape_sources[src]["constraints"][(cls, path, constraint)].add(str(s))
 
-                    # record node shape dct:source
-                    for s in node_sources:
-                        self.shape_sources[src]["focus_nodes"][cls].add(s)
+                # record node shape dct:source
+                for s in node_sources:
+                    self.shape_sources[src]["focus_nodes"][cls].add(s)
 
             self.source_fns[src] = focus_nodes
             self.source_pvs[src] = dict(class_props)
@@ -247,14 +249,156 @@ class consistencyValidator:
                     sources = self.shape_sources.get(src, {}).get("property_paths", {}).get((cls,prop),[])
                     entry["presentIn"][src] = sorted(sources)
                 else:
-                    entry["missingIn"][src] = []
+                    entry["missingIn"][src] = sorted(self.shape_sources[src]["focus_nodes"][cls])
 
             result["propertyValueDiffer"].append(entry)
 
         return result
 
-
     def check_pvci(self) -> Dict:
+        """
+        Detect Property Value Constraint Inconsistency (PVCI).
+        OWL is treated as an upper bound: other sources can define fewer constraints, but not more.
+        """
+        has_owl = "OWL" in self.source_pvs
+        all_sources = list(self.source_pvs.keys())
+        non_owl_sources = [s for s in all_sources if s != "OWL"]
+        shared_classes = set.intersection(*[set(pvs.keys()) for pvs in self.source_pvs.values()])
+        
+        all_pvci_reports = []
+
+        for cls in sorted(shared_classes):
+            shared_props = set.intersection(*[
+                set(self.source_pvs[src].get(cls, set())) for src in self.source_pvs
+            ])
+            for prop in sorted(shared_props):
+                constraints_by_src = {
+                    src: self.source_pvcs.get(src, {}).get((cls, prop), set())
+                    for src in self.sources
+                }
+                all_constraints = set().union(*constraints_by_src.values())
+
+                # OWL as upper bound
+                # if has_owl:
+                #     owl_constraints = constraints_by_src.get("OWL", set())
+                #     for src in non_owl_sources:
+                #         extra_constraints = constraints_by_src[src] - owl_constraints
+                #         for constraint in extra_constraints:
+                #             # if constraint[0] == str(RDF.langString) or constraint[0] == str(XSD.anyURI):
+                #             #     pass
+
+                #             all_pvci_reports.append({
+                #                 "focusNode": str(cls),
+                #                 "propertyValue": str(prop),
+                #                 "constraintDiffer": [{
+                #                     "constraint": list(constraint),
+                #                     "presentIn": {
+                #                         src: sorted(self.shape_sources.get(src, {}).get("constraints", {}).get((cls,prop,constraint), []))
+                #                     },
+                #                     "missingIn": {
+                #                         "OWL": []
+                #                     }
+                #                 }]
+                #             })
+                if has_owl:
+                    owl_constraints = constraints_by_src.get("OWL", set())
+
+                    # 记录所有非OWL来源的 extra constraints: constraint -> list of sources
+                    constraint_to_sources = {}
+                    for src in non_owl_sources:
+                        extra_constraints = constraints_by_src[src] - owl_constraints
+                        for constraint in extra_constraints:
+                            constraint_to_sources.setdefault(constraint, []).append(src)
+
+                    # 合并输出：每个 constraint 只报告一次 presentIn，避免重复
+                    for constraint, src_list in constraint_to_sources.items():
+                        present_in = {}
+                        for src in src_list:
+                            present_in[src] = sorted(self.shape_sources.get(src, {}).get("constraints", {}).get((cls, prop, constraint), []))
+                        all_pvci_reports.append({
+                            "focusNode": str(cls),
+                            "propertyValue": str(prop),
+                            "constraintDiffer": [{
+                                "constraint": list(constraint),
+                                "presentIn": present_in,
+                                "missingIn": {
+                                    "OWL": []
+                                }
+                            }]
+                        })
+
+
+                    # Check consistency among non-OWL sources (must be mutually equal)
+                    for i in range(len(non_owl_sources)):
+                        for j in range(i + 1, len(non_owl_sources)):
+                            src_i, src_j = non_owl_sources[i], non_owl_sources[j]
+                            if constraints_by_src[src_i] != constraints_by_src[src_j]:
+                                all_unique = constraints_by_src[src_i].union(constraints_by_src[src_j])
+                                shared = constraints_by_src[src_i].intersection(constraints_by_src[src_j])
+                                diff = all_unique - shared
+                                for constraint in diff:
+                                    present_in = {}
+                                    missing_in = {}
+                                    for src in [src_i, src_j]:
+                                        if constraint in constraints_by_src[src]:
+                                            dct = self.shape_sources.get(src, {}).get("constraints", {}).get((cls,prop,constraint), [])
+                                            present_in[src] = sorted(dct)
+                                        else:
+                                            dct = self.shape_sources.get(src, {}).get("property_paths", {}).get((cls,prop),[])
+                                            missing_in[src] = sorted(dct)
+                                    # if constraint[0] == str(RDF.langString) or constraint[0] == str(XSD.anyURI):
+                                    #     pass
+
+                                    all_pvci_reports.append({
+                                        "focusNode": str(cls),
+                                        "propertyValue": str(prop),
+                                        "constraintDiffer": [{
+                                            "constraint": list(constraint),
+                                            "presentIn": present_in,
+                                            "missingIn": missing_in
+                                        }]
+                                    })
+                else:
+                    # No OWL, compare all sources mutually
+                    for i in range(len(all_sources)):
+                        for j in range(i + 1, len(all_sources)):
+                            src_i, src_j = all_sources[i], all_sources[j]
+                            if constraints_by_src[src_i] != constraints_by_src[src_j]:
+                                all_unique = constraints_by_src[src_i].union(constraints_by_src[src_j])
+                                shared = constraints_by_src[src_i].intersection(constraints_by_src[src_j])
+                                diff = all_unique - shared
+                                for constraint in diff:
+                                    present_in = {}
+                                    missing_in = {}
+                                    for src in [src_i, src_j]:
+                                        if constraint in constraints_by_src[src]:
+                                            dct = self.shape_sources.get(src, {}).get("constraints", {}).get((cls,prop,constraint), [])
+                                            present_in[src] = sorted(dct)
+                                        else:
+                                            dct = self.shape_sources.get(src, {}).get("property_paths", {}).get((cls,prop),[])
+                                            missing_in[src] = sorted(dct)
+                                    # if constraint[0] == str(RDF.langString) or constraint[0] == str(XSD.anyURI):
+                                    #     pass
+                                    all_pvci_reports.append({
+                                        "focusNode": str(cls),
+                                        "propertyValue": str(prop),
+                                        "constraintDiffer": [{
+                                            "constraint": list(constraint),
+                                            "presentIn": present_in,
+                                            "missingIn": missing_in
+                                        }]
+                                    })
+
+        if not all_pvci_reports:
+            return None
+
+        return {
+            "type": "PVCI",
+            "propertyConstraintDiffer": all_pvci_reports
+        }
+
+
+    def check_pvci_(self) -> Dict:
         """
         Detect Property Value Constraint Inconsistency (PVCI).
         Reports constraint-level differences with presentIn/missingIn + dct:source support.
@@ -293,7 +437,11 @@ class consistencyValidator:
                             missing_in[src] = []
 
                     # Only report if constraint not universally present
+                    
                     if len(present_in) != len(self.sources):
+                        # if constraint[0] == str(RDF.langString) or constraint[0] == str(XSD.anyURI):
+                        #     pass
+                        
                         all_pvci_reports.append({
                             "focusNode": str(cls),
                             "propertyValue": str(prop),
@@ -342,6 +490,7 @@ def main():
     report = validator.validate()
     with open(args.output, 'w') as f:
         json.dump(report, f, indent=2)
+    print(f"Validation report written to {args.output}")
 
 if __name__ == "__main__":
     main()

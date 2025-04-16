@@ -124,7 +124,6 @@ class RMLtoSHACL:
         Transform the given SubjectMap into the corresponding SHACL shapes and 
         store them in the self.SHACL's rdflib graph. 
         """
-
         po_dict = subjectmap.po_dict
 
         # Start of class and targetNode shacl mapping
@@ -220,13 +219,16 @@ class RMLtoSHACL:
         self.RML.parseFile(rml_mapping_file)
 
         for _, triples_map in self.RML.tm_model_dict.items():
-            subject_shape_node = self.createNodeShape(triples_map, self.SHACL.graph)
-            for pom in triples_map.poms:
-                try:
-                    self.transformPOM(subject_shape_node, pom, self.SHACL.graph)
-                except:
-                    print("TriplesMap", triples_map.iri)
-                    print("Error in transformPOM", pom, "\n\n")
+            try:
+                subject_shape_node = self.createNodeShape(triples_map, self.SHACL.graph)
+                for pom in triples_map.poms:
+                    try:
+                        self.transformPOM(subject_shape_node, pom, self.SHACL.graph)
+                    except:
+                        print("TriplesMap", triples_map.iri)
+                        print("Error in transformPOM", pom, "\n\n")
+            except:
+                print("Error in createNodeShape", triples_map.iri, "\n\n")
 
         self.writeShapeToFile(outputfileName)
 

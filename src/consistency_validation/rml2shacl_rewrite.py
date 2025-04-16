@@ -5,11 +5,12 @@ from rdflib.namespace import SH, RDF, RDFS, XSD
 from rdflib import Namespace, URIRef, Literal, BNode
 from collections import defaultdict
 from .rml2shacl.RMLtoShacl import RMLtoSHACL
-from ..utils import combine_shapes_with_same_path
+from src.cm2shacl.utils import combine_shapes_with_same_path
+import argparse
 
-class SHACLRewrite:
+class RML2SHACLRewrite:
     def __init__(self):
-        preserved_constraints_file = "src/consistency/preserved_constraints.txt"
+        preserved_constraints_file = "src/consistency_validation/preserved_constraints.txt"
         self.preserved_constraints = self.load_preserved_constraints(preserved_constraints_file)
         self.dctsource = URIRef("http://purl.org/dc/terms/source")
 
@@ -167,15 +168,26 @@ class SHACLRewrite:
         shape_graph = self.replace_node_with_class(shape_graph)
         shape_graph = combine_shapes_with_same_path(shape_graph)
 
+        shape_graph.remove((None, SH.datatype, XSD.anyURI))
+
         return shape_graph
 
 
 if __name__ == "__main__":
+    
+    # Argparse for command line arguments
+    parser = argparse.ArgumentParser(description='RML to SHACL rewrite')
+    parser.add_argument("-rml", "--rml_file", help='RML file location', type=str)
+    parser.add_argument("-o", "--output_file", help='output file location', type=str, default="temp/rml_shacl_rewrite.ttl")
+    args = parser.parse_args()
 
-    rewritter = SHACLRewrite()
+    rewritter = RML2SHACLRewrite()
+    rewritter_graph = rewritter.rewrite_shacl(args.rml_file)
+    rewritter_graph.serialize(destination=args.output_file, format="ttl")
+    print(f"Generated and rewritten SHACL shapes saved to: {args.output_file}")
     
-    rewritten_graph = rewritter.rewrite_shacl("mapping_repair/dataset/rml_f03.ttl-output-shape.ttl")
+    # rewritten_graph = rewritter.rewrite_shacl("mapping_repair/dataset/rml_f03.ttl-output-shape.ttl")
     
-    rewritten_graph.serialize(f"rewritten-rml_f03.ttl-output-shape.ttl", format="ttl")
+    # rewritten_graph.serialize(f"rewritten-rml_f03.ttl-output-shape.ttl", format="ttl")
 
 
