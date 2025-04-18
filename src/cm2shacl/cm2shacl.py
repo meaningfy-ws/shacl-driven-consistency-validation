@@ -3,6 +3,7 @@ from rdflib import Graph, URIRef, Literal, Namespace, BNode
 from rdflib.namespace import RDF, RDFS,XSD, SH
 from pyshacl import validate
 import re
+from rdflib.collection import Collection
 
 from .data_load import dataLoader
 from .utils import json_load, combine_shapes_with_same_path
@@ -29,41 +30,82 @@ class CMtoSHACL():
         
     def translate(self):
         # load the data
-        self.metaData_info, self.Class_path, self.Property_path, self.Field_XPath, self.controlled_list_c1, self.field_id = self.dL.load()
+        self.metaData_info, self.Class_path, self.Property_path, self.Field_XPath, self.controlled_list_c1, self.controlled_list_c2, self.field_id = self.dL.load()
         self.controlled_list_c1 = self.controlled_list_c1["CL1"]
+        self.controlled_list_c2 = self.controlled_list_c2["CL2"]
 
         # loop through the rules
-        num = 0
+        multi_list = []
         for XPath, Class, Property, ID in zip(self.Field_XPath, self.Class_path, self.Property_path, self.field_id):
-            num += 1
-            print(f"Processing Rule {num}...")
+            # print(f"Processing Rule {num}...")
             # print(f"C: {Class}, P: {Property}")
-            if 'FILTER' in Property or num == 551: #TODO: to be fixed Lot and FILTER
+            # if 'FILTER' in Property or num == 551: #TODO: to be fixed Lot and FILTER
+            if 'FILTER' in Property: #TODO: to be fixed Lot and FILTER
                 continue
-            if "{" in Property and "UNION" in Property:
+            if ("OR" in Class) and ("{" in Property) and ("UNION" in Property):
+                Class = [i for i in Class.split("OR")]
+                Property = [i.replace("{","").replace("}","").strip() for i in Property.split("UNION")] 
+                # Cartesian Product
+                for i in range(len(Class)):
+                    c_list = self.parseClassPath(Class[i], XPath)
+                    p_list = self.parsePropertyPath(Property[i])
+                    multi_list.append((c_list, p_list))
+            elif ("OR" in Class) and ("{" not in Property) and ("UNION" not in Property):
+                Class = [i for i in Class.split("OR")]
+                p_list = self.parsePropertyPath(Property)
+                for c in Class:
+                    c_list = self.parseClassPath(c, XPath)
+                    multi_list.append((c_list, p_list))
+            elif ("OR" not in Class) and ("{" in Property) and ("UNION" in Property):
                 Property = [i.replace("{","").replace("}","").strip() for i in Property.split("UNION")]
+                c_list = self.parseClassPath(Class, XPath)
                 for p in Property:
-                    c_list = self.parseClassPath(Class, XPath)
                     p_list = self.parsePropertyPath(p)
+                    multi_list.append((c_list, p_list))
             else:
                 c_list = self.parseClassPath(Class, XPath)
                 p_list = self.parsePropertyPath(Property)
             
-            if len(c_list) != len(p_list):
-                if len(p_list) == 2 and p_list[0] == RDF.type:
-                    pass
-                else:
-                    print("The length of the rule is not consistent: ", Class, Property)
-                    print("class list: ", c_list)
-                    print("property list: ", p_list)
-            else:
-                for index in range(len(c_list) - 1):
-                    c = c_list[index]
-                    p = p_list[index]
-                    if index == len(c_list)-2:
-                        self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1], ID, True)
+            if multi_list == []:
+                if len(c_list) != len(p_list) and len(p_list)>=2 and p_list[-2] == RDF.type:
+                    p_list = p_list[:-2]
+                    p_list.append("?value")
+                if len(c_list) != len(p_list):
+                    if len(p_list) == 2 and p_list[0] == RDF.type:
+                        print("The length of the rule is not consistent: ", ID)
                     else:
-                        self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1], ID)
+                        print("The length of the rule is not consistent: ", ID)
+                        print("class list: ", c_list)
+                        print("property list: ", p_list)
+                else:
+                    for index in range(len(c_list) - 1):
+                        c = c_list[index]
+                        p = p_list[index]
+                        if index == len(c_list)-2:
+                            self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1], ID, True)
+                        else:
+                            self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1], ID)
+            else:
+                for c_list, p_list in multi_list:
+                    if len(c_list) != len(p_list) and p_list[-2] == RDF.type:
+                        p_list = p_list[:-2]
+                        p_list.append("?value")
+                    if len(c_list) != len(p_list):
+                        if len(p_list) == 2 and p_list[0] == RDF.type:
+                            pass
+                        else:
+                            print("2The length of the rule is not consistent: ", ID)
+                            print("class list: ", c_list)
+                            print("property list: ", p_list)
+                    else:
+                        for index in range(len(c_list) - 1):
+                            c = c_list[index]
+                            p = p_list[index]
+                            if index == len(c_list)-2:
+                                self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1], ID, True)
+                            else:
+                                self.addNodePropertyShape(c, p, c_list[index+1], p_list[index+1], ID)
+                multi_list = []
 
         #self.addSHACLin()
         # self.addSHACLconstraints()
@@ -173,7 +215,12 @@ class CMtoSHACL():
                 if next_p.startswith("http"):
                     self.g.add((bn, RDF.first, URIRef(next_p)))
                 else:
-                    self.g.add((bn, RDF.first, Literal(next_p)))
+                    if next_p == "true":
+                        self.g.add((bn, RDF.first, Literal(True)))
+                    elif next_p == "false":
+                        self.g.add((bn, RDF.first, Literal(False)))
+                    else:
+                        self.g.add((bn, RDF.first, Literal(next_p)))
                 self.g.add((bn, RDF.rest, RDF.nil))
                 #TODO to be added nodeKind
 
@@ -186,7 +233,7 @@ class CMtoSHACL():
             self.g.add((k,SH["in"],bn))
             for i in v[:-1]:
                 if i == "true" or i == "false":
-                    i = Literal(i, datatype=XSD.boolean)
+                    i = Literal(True) if i == "true" else Literal(False)
                 else:
                     i = Literal(i)
                 self.g.add((bn,RDF.first,i))
@@ -299,14 +346,16 @@ class CMtoSHACL():
         return property_path_clean
 
     def controlledClassReplace(self, c, list_type, XPath):
-        class_XPath_fragment = XPath.split("/")[1]
         if list_type == "CL1":
+            class_XPath_fragment = XPath.split("/")[1]
             c = self.controlled_list_c1.get(class_XPath_fragment, c)
         elif list_type == "CL2":
-            c = c #TODO: DOUBLE CHECK CL2 CONTROLLED LIST
+            class_XPath_fragment = XPath.split("/")[-1]
+            c = self.controlled_list_c2.get(class_XPath_fragment, c)
         return c 
 
     def wordToURL(self, word):
+        word = word.strip()
         if word == "?value" or word == "true" or word == "false":
             return word
         
@@ -359,6 +408,7 @@ class CMtoSHACL():
         # write comments to the beginning of the file
         with open(file_name, 'r') as original: data = original.read()
         with open(file_name, 'w') as modified: modified.write(f"{self.metaData_info}\n" + data)
+        print(f"SHACL file written to {file_name}")
 
 
     def evaluate_file(self, args):
@@ -372,13 +422,12 @@ class CMtoSHACL():
         self.translate()
 
         # validate the SHACL
-        shaclValidation = Graph()
-        shaclValidation.parse("https://www.w3.org/ns/shacl-shacl")
+        # shaclValidation = Graph()
+        # shaclValidation.parse("https://www.w3.org/ns/shacl-shacl")
 
-        r = validate(self.g, shacl_graph=shaclValidation)
-        if not r[0]:
-            print(r[2])
-
+        # r = validate(self.g, shacl_graph=shaclValidation)
+        # if not r[0]:
+        #     print(r[2])
         if args.output_file:
             self.writeShapeToFile(args.output_file)
         else:
