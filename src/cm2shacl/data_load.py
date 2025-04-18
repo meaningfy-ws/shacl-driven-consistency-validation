@@ -18,7 +18,7 @@ class dataLoader():
 
         # load the data
         self.sheet_names = {}
-        for i in ["metadata_sheet_name", "rules_sheet_name", "cl1_sheet_name"]:
+        for i in ["metadata_sheet_name", "rules_sheet_name", "cl1_sheet_name", "cl2_sheet_name"]:
             self.sheet_names[i] = self.config.get(self.cm_version, i)
 
         self.workbook = load_workbook(self.file_path, data_only=True)
@@ -35,13 +35,17 @@ class dataLoader():
         else: raise ValueError("Rules Information is not provided in the configuration file")
         
         if self.sheet_names['cl1_sheet_name'] != "":
-            cl1 = self.load_controlled_list(self.sheet_names['cl1_sheet_name'])
+            cl1 = self.load_controlled_list_cl1(self.sheet_names['cl1_sheet_name'])
         else: cl1 = {"CL1":{}}
+
+        if self.sheet_names['cl2_sheet_name'] != "":
+            cl2 = self.load_controlled_list_cl2(self.sheet_names['cl2_sheet_name'])
+        else: cl2 = {"CL2":{}}
 
         # release the memory
         del self.workbook
 
-        return metaData_info, class_paths, property_paths, field_XPaths, cl1, field_id
+        return metaData_info, class_paths, property_paths, field_XPaths, cl1, cl2, field_id
 
     def _split_cell(self, cell):
         match = re.match(r"([A-Z]+)([0-9]+)", cell, re.I)
@@ -174,7 +178,7 @@ class dataLoader():
         return class_paths, property_paths, field_XPaths, field_ids
 
 
-    def load_controlled_list(self, sheet_name):
+    def load_controlled_list_cl1(self, sheet_name):
         xml_path_fragment_cell = self.config[self.cm_version].get('XML_PATH_Fragment', '')
         mapping_reference_cell = self.config[self.cm_version].get('Mapping_Reference', '')
 
@@ -183,3 +187,13 @@ class dataLoader():
 
         cl1Df_dict = dict(zip(xml_path_fragment, mapping_reference))
         return {'CL1':cl1Df_dict}
+    
+    def load_controlled_list_cl2(self, sheet_name):
+        xml_path_fragment_cell = self.config[self.cm_version].get('XML_PATH_Fragment', '')
+        mapping_reference_cell = self.config[self.cm_version].get('Mapping_Reference', '')
+
+        xml_path_fragment = self._get_column_values(sheet_name, xml_path_fragment_cell) if xml_path_fragment_cell != '' else []
+        mapping_reference = self._get_column_values(sheet_name, mapping_reference_cell) if mapping_reference_cell != '' else []
+
+        cl2Df_dict = dict(zip(xml_path_fragment, mapping_reference))
+        return {'CL2':cl2Df_dict}

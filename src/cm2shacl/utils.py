@@ -36,7 +36,6 @@ def combine_shapes_with_same_path(graph):
     """
     Combines property shapes under the same node shape that have the same `sh:path` into a single property shape using `sh:or`.
     """
-    print("Combining shapes with the same path")
     # Collect all field identifiers
     dctsource = URIRef("http://purl.org/dc/terms/source")
     dctsource_dict = defaultdict(list)
@@ -52,7 +51,6 @@ def combine_shapes_with_same_path(graph):
             sources.append(o)
             dctsource_dict[s] = sources
             graph.remove((s, p, o))
-
     node_shapes = graph.subjects(RDF.type, SH.NodeShape)
 
     for ns in node_shapes:
