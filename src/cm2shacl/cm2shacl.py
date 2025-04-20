@@ -111,8 +111,10 @@ class CMtoSHACL():
         # self.addSHACLconstraints()
         # self.addDisjunctionShapes()
         self.g = combine_shapes_with_same_path(self.g)
-        self.g.remove((None, SH["datatype"], RDF.langString))
-        self.g.remove((None, SH["datatype"], XSD.anyURI))                
+        #self.g.remove((None, SH["datatype"], RDF.langString))
+        self.g.remove((None, SH["datatype"], XSD.anyURI))      
+        self.g.remove((None, SH["datatype"], URIRef("http://www.w3.org/1999/02/22-rdf-syntax-ns#plainLiteral"))) 
+        self.g.remove((None, SH["datatype"], RDF.PlainLiteral))         
 
     def _addNodePropertyShape(self, c, p, next_c, next_p, ID, is_last=False):
         c = URIRef(c)
