@@ -3,7 +3,9 @@ import json
 from rdflib import Graph, URIRef, RDF, Namespace
 from collections import defaultdict
 from typing import Dict, List, Tuple, Set
+import logging
 from rdflib.namespace import DCTERMS, OWL, RDF, RDFS, SH, XSD
+
 
 class consistencyValidator:
     def __init__(self, source_files: Dict[str, str]):
@@ -176,7 +178,7 @@ class consistencyValidator:
 
         for cls in sorted(diff_classes):
             entry = {
-                "class": str(cls),
+                "focusNode": str(cls),
                 "presentIn": {},
                 "missingIn": {}
             }
@@ -277,29 +279,6 @@ class consistencyValidator:
                     for src in self.sources
                 }
                 all_constraints = set().union(*constraints_by_src.values())
-
-                # OWL as upper bound
-                # if has_owl:
-                #     owl_constraints = constraints_by_src.get("OWL", set())
-                #     for src in non_owl_sources:
-                #         extra_constraints = constraints_by_src[src] - owl_constraints
-                #         for constraint in extra_constraints:
-                #             # if constraint[0] == str(RDF.langString) or constraint[0] == str(XSD.anyURI):
-                #             #     pass
-
-                #             all_pvci_reports.append({
-                #                 "focusNode": str(cls),
-                #                 "propertyValue": str(prop),
-                #                 "constraintDiffer": [{
-                #                     "constraint": list(constraint),
-                #                     "presentIn": {
-                #                         src: sorted(self.shape_sources.get(src, {}).get("constraints", {}).get((cls,prop,constraint), []))
-                #                     },
-                #                     "missingIn": {
-                #                         "OWL": []
-                #                     }
-                #                 }]
-                #             })
                 if has_owl:
                     owl_constraints = constraints_by_src.get("OWL", set())
 
@@ -318,13 +297,11 @@ class consistencyValidator:
                         all_pvci_reports.append({
                             "focusNode": str(cls),
                             "propertyValue": str(prop),
-                            "constraintDiffer": [{
-                                "constraint": list(constraint),
-                                "presentIn": present_in,
-                                "missingIn": {
-                                    "OWL": []
+                            "constraint": list(constraint),
+                            "presentIn": present_in,
+                            "missingIn": {
+                                "OWL": []
                                 }
-                            }]
                         })
 
 
@@ -352,11 +329,9 @@ class consistencyValidator:
                                     all_pvci_reports.append({
                                         "focusNode": str(cls),
                                         "propertyValue": str(prop),
-                                        "constraintDiffer": [{
-                                            "constraint": list(constraint),
-                                            "presentIn": present_in,
-                                            "missingIn": missing_in
-                                        }]
+                                        "constraint": list(constraint),
+                                        "presentIn": present_in,
+                                        "missingIn": missing_in
                                     })
                 else:
                     # No OWL, compare all sources mutually
@@ -382,11 +357,9 @@ class consistencyValidator:
                                     all_pvci_reports.append({
                                         "focusNode": str(cls),
                                         "propertyValue": str(prop),
-                                        "constraintDiffer": [{
-                                            "constraint": list(constraint),
-                                            "presentIn": present_in,
-                                            "missingIn": missing_in
-                                        }]
+                                        "constraint": list(constraint),
+                                        "presentIn": present_in,
+                                        "missingIn": missing_in
                                     })
 
         if not all_pvci_reports:
@@ -394,7 +367,7 @@ class consistencyValidator:
 
         return {
             "type": "PVCI",
-            "propertyConstraintDiffer": all_pvci_reports
+            "constraintDiffer": all_pvci_reports
         }
 
 
@@ -445,11 +418,9 @@ class consistencyValidator:
                         all_pvci_reports.append({
                             "focusNode": str(cls),
                             "propertyValue": str(prop),
-                            "constraintDiffer": [{
-                                "constraint": list(constraint),
-                                "presentIn": present_in,
-                                "missingIn": missing_in
-                            }]
+                            "constraint": list(constraint),
+                            "presentIn": present_in,
+                            "missingIn": missing_in
                         })
 
         if not all_pvci_reports:
@@ -457,7 +428,7 @@ class consistencyValidator:
 
         return {
             "type": "PVCI",
-            "propertyConstraintDiffer": all_pvci_reports
+            "constraintDiffer": all_pvci_reports
         }
 
 
