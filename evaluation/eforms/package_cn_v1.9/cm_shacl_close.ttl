@@ -1,0 +1,2019 @@
+# The SHACL shapes graph is automatic translated from the Conceptual Mapping below: 
+        # Identifier: package_eforms_10-24_v1.9, 
+        # Description: This is the mapping suite for eForms subtype 10-24 SDK version 1.9,
+        # Mapping Version: 1.0.0
+        # EPO version: 4.0.0.
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+epo:Candidate a sh:NodeShape ;
+    dcterms:source "I280/J280" ;
+    sh:class epo:Candidate ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I280/J280" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:Candidate .
+
+epo:ChangeInformation a sh:NodeShape ;
+    dcterms:source "I450/J450" ;
+    sh:class epo:ChangeInformation ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I457/J457" ;
+            sh:class <http://www.w3.org/ns/adms#Identifier> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:relatesToEFormSectionIdentifier ],
+        [ dcterms:source "I452/J452" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasChangeJustification ],
+        [ dcterms:source "I458/J458" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasChangeDescription ],
+        [ dcterms:source "I460/J460" ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasProcurementDocumentChangeDate ],
+        [ dcterms:source "I450/J450" ;
+            sh:class epo:Notice ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:concernsNotice ],
+        [ dcterms:source "I453/J453" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasChangeReasonDescription ],
+        [ dcterms:source "I454/J454" ;
+            sh:class epo:Notice ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:refersToPreviousNotice ],
+        [ dcterms:source "I459/J459" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isProcurementDocumentChanged ] ;
+    sh:targetClass epo:ChangeInformation .
+
+epo:CompetitionNotice a sh:NodeShape ;
+    dcterms:source "I8/J8" ;
+    sh:class epo:CompetitionNotice ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I8/J8" ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:announcesProcedure ],
+        [ dcterms:source "I110/J110" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:announcesLot ],
+        [ dcterms:source "I207/J207",
+                "I209/J209",
+                "I210/J210",
+                "I211/J211",
+                "I214/J214",
+                "I216/J216",
+                "I217/J217",
+                "I218/J218",
+                "I221/J221",
+                "I223/J223",
+                "I224/J224",
+                "I225/J225",
+                "I25/J25",
+                "I271/J271",
+                "I272/J272",
+                "I327/J327",
+                "I330/J330",
+                "I331/J331",
+                "I332/J332",
+                "I333/J333",
+                "I335/J335",
+                "I336/J336",
+                "I337/J337",
+                "I35/J35",
+                "I390/J390",
+                "I392/J392",
+                "I393/J393",
+                "I394/J394",
+                "I395/J395",
+                "I397/J397",
+                "I398/J398",
+                "I399/J399",
+                "I403/J403",
+                "I405/J405",
+                "I406/J406",
+                "I407/J407",
+                "I408/J408",
+                "I410/J410",
+                "I411/J411",
+                "I412/J412",
+                "I413/J413",
+                "I415/J415",
+                "I416/J416",
+                "I417/J417",
+                "I489/J489",
+                "I491/J491",
+                "I493/J493" ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:AwardingCentralPurchasingBody ] [ sh:class epo:ProcurementServiceProvider ] [ sh:class epo:JuryMember ] [ sh:class epo:TenderReceiver ] [ sh:class epo:ProcurementProcedureInformationProvider ] [ sh:class epo:ReviewProcedureInformationProvider ] [ sh:class epo:TenderProcessor ] [ sh:class epo:OfflineAccessProvider ] [ sh:class epo:Mediator ] [ sh:class epo:Reviewer ] [ sh:class epo:EmploymentInformationProvider ] [ sh:class epo:AcquiringCentralPurchasingBody ] [ sh:class epo:Buyer ] [ sh:class epo:EnvironmentalProtectionInformationProvider ] [ sh:class epo:TaxInformationProvider ] [ sh:class epo:LeadBuyer ] ) ;
+            sh:path epo:announcesRole ] ;
+    sh:targetClass epo:CompetitionNotice .
+
+epo:ProcurementProcessInformation a sh:NodeShape ;
+    dcterms:source "I93/J93" ;
+    sh:class epo:ProcurementProcessInformation ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I94/J94" ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:concernsProcedure ],
+        [ dcterms:source "I339/J339",
+                "I93/J93" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isToBeRelaunched ],
+        [ dcterms:source "I340/J340" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:concernsLot ] ;
+    sh:targetClass epo:ProcurementProcessInformation .
+
+epo:ResultNotice a sh:NodeShape ;
+    dcterms:source "I26/J26" ;
+    sh:class epo:ResultNotice ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I26/J26",
+                "I36/J36" ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:Buyer ] [ sh:class epo:ProcurementServiceProvider ] ) ;
+            sh:path epo:refersToRole ] ;
+    sh:targetClass epo:ResultNotice .
+
+epo:VehicleInformation a sh:NodeShape ;
+    dcterms:source "I307/J307" ;
+    sh:class epo:VehicleInformation ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I307/J307" ;
+            sh:class epo:GreenProcurement ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:concernsGreenProcurement ],
+        [ dcterms:source "I308/J308" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:specifiesCleanVehicleDirectiveContractType ] ;
+    sh:targetClass epo:VehicleInformation .
+
+epo:AccessTerm a sh:NodeShape ;
+    dcterms:source "I350/J350" ;
+    sh:class epo:AccessTerm ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I386/J386" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasRestrictedAccessURL ],
+        [ dcterms:source "I379/J379",
+                "I382/J382" ;
+            sh:class epo:ProcurementDocument ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:involvesProcurementDocument ],
+        [ dcterms:source "I384/J384" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasDocumentRestrictionJustification ],
+        [ dcterms:source "I391/J391" ;
+            sh:class epo:ProcurementProcedureInformationProvider ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesProcurementProcedureInformationProvider ],
+        [ dcterms:source "I350/J350",
+                "I351/J351" ;
+            sh:datatype xsd:dateTime ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAdditionalInformationDeadline ],
+        [ dcterms:source "I396/J396" ;
+            sh:class epo:OfflineAccessProvider ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesOfflineAccessProvider ],
+        [ dcterms:source "I385/J385" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasPublicAccessURL ],
+        [ dcterms:source "I383/J383" ;
+            sh:datatype xsd:boolean ;
+            sh:in ( true ) ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isProcurementDocumentRestricted ] ;
+    sh:targetClass epo:AccessTerm .
+
+epo:AcquiringCentralPurchasingBody a sh:NodeShape ;
+    dcterms:source "I492/J492" ;
+    sh:class epo:AcquiringCentralPurchasingBody ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I492/J492" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:AcquiringCentralPurchasingBody .
+
+epo:AdHocChannel a sh:NodeShape ;
+    dcterms:source "I388/J388" ;
+    sh:class epo:AdHocChannel ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I389/J389" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAddressURL ],
+        [ dcterms:source "I388/J388" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ] ;
+    sh:targetClass epo:AdHocChannel .
+
+epo:AwardEvaluationTerm a sh:NodeShape ;
+    dcterms:source "I262/J262" ;
+    sh:class epo:AwardEvaluationTerm ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I263/J263" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAwardCriteriaOrderJustification ],
+        [ dcterms:source "I262/J262" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAwardCriteriaEvaluationFormula ] ;
+    sh:targetClass epo:AwardEvaluationTerm .
+
+epo:AwardingCentralPurchasingBody a sh:NodeShape ;
+    dcterms:source "I490/J490" ;
+    sh:class epo:AwardingCentralPurchasingBody ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I490/J490" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:AwardingCentralPurchasingBody .
+
+epo:DesignContestRegimeTerm a sh:NodeShape ;
+    dcterms:source "I268/J268" ;
+    sh:class epo:DesignContestRegimeTerm ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I268/J268" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasFollowupContract ],
+        [ dcterms:source "I274/J274",
+                "I275/J275" ;
+            sh:class epo:Prize ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesPrize ],
+        [ dcterms:source "I269/J269" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isJuryDecisionBinding ] ;
+    sh:targetClass epo:DesignContestRegimeTerm .
+
+epo:DynamicPurchaseSystemTechnique a sh:NodeShape ;
+    dcterms:source "I198/J198" ;
+    sh:class epo:DynamicPurchaseSystemTechnique ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I198/J198" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasDPSScope ] ;
+    sh:targetClass epo:DynamicPurchaseSystemTechnique .
+
+epo:EAuctionTechnique a sh:NodeShape ;
+    dcterms:source "I182/J182" ;
+    sh:class epo:EAuctionTechnique ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I184/J184" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source "I182/J182",
+                "I183/J183" ;
+            sh:in ( <http://publications.europa.eu/resource/authority/usage/n-used> <http://publications.europa.eu/resource/authority/usage/used> ) ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasUsage ] ;
+    sh:targetClass epo:EAuctionTechnique .
+
+epo:ExclusionGround a sh:NodeShape ;
+    dcterms:source "I88/J88" ;
+    sh:class epo:ExclusionGround ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I89/J89" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source "I88/J88" ;
+            sh:nodeKind sh:IRI ;
+            sh:path dcterms:type ] ;
+    sh:targetClass epo:ExclusionGround .
+
+epo:FrameworkAgreementTerm a sh:NodeShape ;
+    dcterms:source "I196/J196" ;
+    sh:class epo:FrameworkAgreementTerm ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I201/J201" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDurationExtensionJustification ],
+        [ dcterms:source "I200/J200" ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMaximumParticipantsNumber ],
+        [ dcterms:source "I204/J204" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBuyerCategoryDescription ],
+        [ dcterms:source "I196/J196" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasFrameworkAgreementType ] ;
+    sh:targetClass epo:FrameworkAgreementTerm .
+
+epo:Fund a sh:NodeShape ;
+    dcterms:source "I192/J192" ;
+    sh:class epo:Fund ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I193/J193" ;
+            sh:class <http://www.w3.org/ns/adms#Identifier> ;
+            sh:nodeKind sh:IRI ;
+            sh:path <http://www.w3.org/ns/adms#identifier> ],
+        [ dcterms:source "I192/J192" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasFundProgramme ],
+        [ dcterms:source "I194/J194" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ] ;
+    sh:targetClass epo:Fund .
+
+epo:InnovativeProcurement a sh:NodeShape ;
+    dcterms:source "I142/J142" ;
+    sh:class epo:InnovativeProcurement ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I142/J142" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:fulfillsRequirement ] ;
+    sh:targetClass epo:InnovativeProcurement .
+
+epo:JuryMember a sh:NodeShape ;
+    dcterms:source "I271/J271" ;
+    sh:class epo:JuryMember ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I271/J271" ;
+            sh:class <http://www.w3.org/ns/person#Person> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source "I272/J272" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ] ;
+    sh:targetClass epo:JuryMember .
+
+epo:LeadBuyer a sh:NodeShape ;
+    dcterms:source "I488/J488" ;
+    sh:class epo:LeadBuyer ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I488/J488" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:LeadBuyer .
+
+epo:LotGroup a sh:NodeShape ;
+    dcterms:source "I105/J105" ;
+    sh:class epo:LotGroup ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I423/J423" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source "I426/J426" ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasEstimatedValue ],
+        [ dcterms:source "I105/J105" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:setsGroupingContextForLot ],
+        [ dcterms:source "I434/J434",
+                "I435/J435",
+                "I436/J436",
+                "I439/J439",
+                "I440/J440",
+                "I442/J442",
+                "I443/J443",
+                "I445/J445",
+                "I446/J446",
+                "I447/J447" ;
+            sh:class epo:AwardCriterion ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:specifiesProcurementCriterion ],
+        [ dcterms:source "I422/J422" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:title ],
+        [ dcterms:source "I428/J428",
+                "I430/J430" ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasLaunchFrameworkAgreementMaximumValue ],
+        [ dcterms:source "I421/J421" ;
+            sh:class <http://www.w3.org/ns/adms#Identifier> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasInternalIdentifier ],
+        [ dcterms:source "I419/J419" ;
+            sh:class <http://www.w3.org/ns/adms#Identifier> ;
+            sh:nodeKind sh:IRI ;
+            sh:path <http://www.w3.org/ns/adms#identifier> ] ;
+    sh:targetClass epo:LotGroup .
+
+epo:MultipleStageProcedureTerm a sh:NodeShape ;
+    dcterms:source "I241/J241" ;
+    sh:class epo:MultipleStageProcedureTerm ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I244/J244" ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMaximumNumberOfCandidates ],
+        [ dcterms:source "I241/J241" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasSuccessiveReduction ],
+        [ dcterms:source "I344/J344" ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEstimatedInvitationToTenderDate ],
+        [ dcterms:source "I345/J345" ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEstimatedInvitationToExpressInterestDate ],
+        [ dcterms:source "I245/J245" ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMinimumNumberOfCandidates ],
+        [ dcterms:source "I264/J264" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasNoNegotiationNecessary ] ;
+    sh:targetClass epo:MultipleStageProcedureTerm .
+
+epo:NonDisclosureAgreementTerm a sh:NodeShape ;
+    dcterms:source "I310/J310" ;
+    sh:class epo:NonDisclosureAgreementTerm ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I310/J310" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isNonDisclosureAgreementRequired ],
+        [ dcterms:source "I311/J311" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ] ;
+    sh:targetClass epo:NonDisclosureAgreementTerm .
+
+epo:OpeningTerm a sh:NodeShape ;
+    dcterms:source "I363/J363" ;
+    sh:class epo:OpeningTerm ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I363/J363",
+                "I364/J364" ;
+            sh:datatype xsd:dateTime ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasOpeningDateTime ],
+        [ dcterms:source "I365/J365" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasOpeningDescription ],
+        [ dcterms:source "I367/J367" ;
+            sh:class <http://www.w3.org/ns/locn#Address> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesOpeningPlace ] ;
+    sh:targetClass epo:OpeningTerm .
+
+epo:ParticipationCondition a sh:NodeShape ;
+    dcterms:source "I287/J287" ;
+    sh:class epo:ParticipationCondition ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I287/J287" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasReservedProcurement ] ;
+    sh:targetClass epo:ParticipationCondition .
+
+epo:Period a sh:NodeShape ;
+    dcterms:source "I168/J168" ;
+    sh:class epo:Period ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I175/J175" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasTimePeriod ],
+        [ dcterms:source "I168/J168" ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBeginning ],
+        [ dcterms:source "I169/J169" ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEnd ] ;
+    sh:targetClass epo:Period .
+
+epo:PlannedProcurementPart a sh:NodeShape ;
+    dcterms:source "I116/J116" ;
+    sh:class epo:PlannedProcurementPart ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I116/J116" ;
+            sh:class <http://www.w3.org/ns/adms#Identifier> ;
+            sh:nodeKind sh:IRI ;
+            sh:path <http://www.w3.org/ns/adms#identifier> ] ;
+    sh:targetClass epo:PlannedProcurementPart .
+
+epo:PlanningNotice a sh:NodeShape ;
+    dcterms:source "I115/J115" ;
+    sh:class epo:PlanningNotice ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I115/J115" ;
+            sh:class <http://www.w3.org/ns/adms#Identifier> ;
+            sh:nodeKind sh:IRI ;
+            sh:path <http://www.w3.org/ns/adms#identifier> ],
+        [ dcterms:source "I116/J116" ;
+            sh:class epo:PlannedProcurementPart ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:announcesPlannedProcurementPart ] ;
+    sh:targetClass epo:PlanningNotice .
+
+epo:Prize a sh:NodeShape ;
+    dcterms:source "I274/J274" ;
+    sh:class epo:Prize ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I274/J274" ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasPrizeRank ],
+        [ dcterms:source "I275/J275" ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPrizeValue ] ;
+    sh:targetClass epo:Prize .
+
+epo:ProcedureTerm a sh:NodeShape ;
+    dcterms:source "I92/J92" ;
+    sh:class epo:ProcedureTerm ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I106/J106" ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMaximumLotSubmissionAllowed ],
+        [ dcterms:source "I208/J208",
+                "I215/J215",
+                "I222/J222" ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:EmploymentInformationProvider ] [ sh:class epo:EnvironmentalProtectionInformationProvider ] [ sh:class epo:TaxInformationProvider ] ) ;
+            sh:path epo:definesInformationProvider ],
+        [ dcterms:source "I414/J414" ;
+            sh:class epo:Mediator ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesMediator ],
+        [ dcterms:source "I96/J96" ;
+            sh:datatype xsd:boolean ;
+            sh:in ( true ) ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isSubmissionForAllLotsRequired ],
+        [ dcterms:source "I102/J102",
+                "I103/J103",
+                "I105/J105" ;
+            sh:class epo:LotGroup ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesLotGroup ],
+        [ dcterms:source "I92/J92" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasCrossBorderLaw ],
+        [ dcterms:source "I107/J107" ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMaximumNumberOfLotsToBeAwarded ] ;
+    sh:targetClass epo:ProcedureTerm .
+
+epo:ProcurementCriterion a sh:NodeShape ;
+    dcterms:source "I300/J300" ;
+    sh:class epo:ProcurementCriterion ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I300/J300" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPerformingStaffQualificationInformation ] ;
+    sh:targetClass epo:ProcurementCriterion .
+
+epo:ProcurementDocument a sh:NodeShape ;
+    dcterms:source "I379/J379" ;
+    sh:class epo:ProcurementDocument ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I379/J379" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasOfficialLanguage ],
+        [ dcterms:source "I382/J382" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasUnofficialLanguage ] ;
+    sh:targetClass epo:ProcurementDocument .
+
+epo:Quantity a sh:NodeShape ;
+    dcterms:source "I124/J124" ;
+    sh:class epo:Quantity ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I124/J124" ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasQuantityValue ],
+        [ dcterms:source "I125/J125" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasUnitCode ] ;
+    sh:targetClass epo:Quantity .
+
+epo:ReviewTerm a sh:NodeShape ;
+    dcterms:source "I402/J402" ;
+    sh:class epo:ReviewTerm ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I409/J409" ;
+            sh:class epo:ReviewProcedureInformationProvider ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesReviewProcedureInformationProvider ],
+        [ dcterms:source "I404/J404" ;
+            sh:class epo:Reviewer ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesReviewer ],
+        [ dcterms:source "I402/J402" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReviewDeadlineInformation ] ;
+    sh:targetClass epo:ReviewTerm .
+
+epo:SecurityClearanceTerm a sh:NodeShape ;
+    dcterms:source "I301/J301" ;
+    sh:class epo:SecurityClearanceTerm ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I303/J303" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isSecurityClearanceRequired ],
+        [ dcterms:source "I304/J304" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source "I301/J301" ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDeadline ] ;
+    sh:targetClass epo:SecurityClearanceTerm .
+
+epo:SelectionCriterion a sh:NodeShape ;
+    dcterms:source "I230/J230" ;
+    sh:class epo:SelectionCriterion ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I234/J234" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isUsedForCandidateRestriction ],
+        [ dcterms:source "I236/J236" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasWeightValueType ],
+        [ dcterms:source "I233/J233" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasSelectionCriteriaUsage ],
+        [ dcterms:source "I230/J230" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasSelectionCriterionType ],
+        [ dcterms:source "I231/J231" ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:prefLabel ],
+        [ dcterms:source "I239/J239",
+                "I240/J240" ;
+            sh:class <http://data.europa.eu/m8g/Constraint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasConstraint ],
+        [ dcterms:source "I232/J232" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source "I237/J237" ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://data.europa.eu/m8g/weight> ] ;
+    sh:targetClass epo:SelectionCriterion .
+
+epo:SocialProcurement a sh:NodeShape ;
+    dcterms:source "I140/J140" ;
+    sh:class epo:SocialProcurement ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I140/J140" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:fulfillsRequirement ] ;
+    sh:targetClass epo:SocialProcurement .
+
+epo:StrategicProcurement a sh:NodeShape ;
+    dcterms:source "I147/J147" ;
+    sh:class epo:StrategicProcurement ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I147/J147" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasStrategicProcurementDescription ],
+        [ dcterms:source "I149/J149" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:includesAccessibilityCriterion ],
+        [ dcterms:source "I150/J150" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasNonAccessibilityCriterionJustification ] ;
+    sh:targetClass epo:StrategicProcurement .
+
+epo:SubcontractTerm a sh:NodeShape ;
+    dcterms:source "I322/J322" ;
+    sh:class epo:SubcontractTerm ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I322/J322" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasSubcontractingObligation ],
+        [ dcterms:source "I324/J324" ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMinimumSubcontractorsProposedObligation ],
+        [ dcterms:source "I323/J323" ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasSubcontractorsProposedAboveObligation ] ;
+    sh:targetClass epo:SubcontractTerm .
+
+epo:SubmissionTerm a sh:NodeShape ;
+    dcterms:source "I185/J185" ;
+    sh:class epo:SubmissionTerm ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I329/J329" ;
+            sh:class epo:TenderReceiver ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesTenderReceiver ],
+        [ dcterms:source "I320/J320" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasTenderSubcontractingInformation ],
+        [ dcterms:source "I185/J185" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEAuctionURL ],
+        [ dcterms:source "I283/J283" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasLateSubmissionPermission ],
+        [ dcterms:source "I372/J372" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasSubmissionURL ],
+        [ dcterms:source "I370/J370" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasGuaranteeDescription ],
+        [ dcterms:source "I352/J352",
+                "I353/J353",
+                "I354/J354",
+                "I355/J355",
+                "I356/J356" ;
+            sh:class epo:SpecificDuration ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasTenderValidityDuration ],
+        [ dcterms:source "I347/J347",
+                "I348/J348" ;
+            sh:datatype xsd:dateTime ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReceiptParticipationRequestDeadline ],
+        [ dcterms:source "I313/J313" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasECataloguePermission ],
+        [ dcterms:source "I284/J284" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLateSubmissionInformationDescription ],
+        [ dcterms:source "I342/J342",
+                "I343/J343" ;
+            sh:datatype xsd:dateTime ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReceiptTenderDeadline ],
+        [ dcterms:source "I361/J361" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasLanguage ],
+        [ dcterms:source "I291/J291",
+                "I292/J292" ;
+            sh:datatype xsd:boolean ;
+            sh:in ( false true ) ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isMultipleTenderSubmissionAllowed ],
+        [ dcterms:source "I371/J371" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasESubmissionPermission ],
+        [ dcterms:source "I358/J358",
+                "I359/J359" ;
+            sh:datatype xsd:dateTime ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReceiptExpressionDeadline ],
+        [ dcterms:source "I288/J288" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasVariantPermission ],
+        [ dcterms:source "I375/J375" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasNonElectronicSubmissionDescription ],
+        [ dcterms:source "I315/J315" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isAdvancedElectronicSignatureRequired ],
+        [ dcterms:source "I374/J374" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNonElectronicSubmissionJustification ],
+        [ dcterms:source "I369/J369" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isGuaranteeRequired ],
+        [ dcterms:source "I334/J334" ;
+            sh:class epo:TenderProcessor ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesTenderProcessor ] ;
+    sh:targetClass epo:SubmissionTerm .
+
+dcterms:Location a sh:NodeShape ;
+    dcterms:source "I71/J71" ;
+    sh:class dcterms:Location ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I153/J153",
+                "I154/J154",
+                "I155/J155",
+                "I156/J156",
+                "I157/J157",
+                "I158/J158",
+                "I159/J159",
+                "I161/J161",
+                "I163/J163",
+                "I164/J164",
+                "I71/J71",
+                "I72/J72",
+                "I73/J73",
+                "I74/J74",
+                "I75/J75",
+                "I76/J76",
+                "I77/J77",
+                "I79/J79",
+                "I81/J81",
+                "I82/J82" ;
+            sh:class <http://www.w3.org/ns/locn#Address> ;
+            sh:nodeKind sh:IRI ;
+            sh:path <http://www.w3.org/ns/locn#address> ],
+        [ dcterms:source "I162/J162",
+                "I80/J80" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCountryCode ],
+        [ dcterms:source "I160/J160",
+                "I78/J78" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNutsCode ] ;
+    sh:targetClass dcterms:Location .
+
+<http://www.w3.org/ns/person#Person> a sh:NodeShape ;
+    dcterms:source "I271/J271" ;
+    sh:class <http://www.w3.org/ns/person#Person> ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I271/J271" ;
+            sh:nodeKind sh:Literal ;
+            sh:path foaf:familyName ] ;
+    sh:targetClass <http://www.w3.org/ns/person#Person> .
+
+epo:AwardCriterion a sh:NodeShape ;
+    dcterms:source "I249/J249" ;
+    sh:class epo:AwardCriterion ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I254/J254",
+                "I440/J440" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasWeightValueType ],
+        [ dcterms:source "I257/J257",
+                "I443/J443" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasFixedValueType ],
+        [ dcterms:source "I253/J253",
+                "I439/J439" ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://data.europa.eu/m8g/weight> ],
+        [ dcterms:source "I256/J256",
+                "I442/J442" ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasFixedValue ],
+        [ dcterms:source "I250/J250",
+                "I436/J436" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source "I249/J249",
+                "I435/J435" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAwardCriterionType ],
+        [ dcterms:source "I261/J261",
+                "I447/J447" ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:prefLabel ],
+        [ dcterms:source "I259/J259",
+                "I260/J260",
+                "I445/J445",
+                "I446/J446" ;
+            sh:class <http://data.europa.eu/m8g/Constraint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasConstraint ] ;
+    sh:targetClass epo:AwardCriterion .
+
+epo:ContractTerm a sh:NodeShape ;
+    dcterms:source "I56/J56" ;
+    sh:class epo:ContractTerm ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I151/J151",
+                "I153/J153",
+                "I154/J154",
+                "I155/J155",
+                "I156/J156",
+                "I157/J157",
+                "I158/J158",
+                "I159/J159",
+                "I160/J160",
+                "I161/J161",
+                "I162/J162",
+                "I163/J163",
+                "I164/J164",
+                "I71/J71",
+                "I72/J72",
+                "I73/J73",
+                "I74/J74",
+                "I75/J75",
+                "I76/J76",
+                "I77/J77",
+                "I78/J78",
+                "I79/J79",
+                "I80/J80",
+                "I81/J81",
+                "I82/J82" ;
+            sh:class dcterms:Location ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesSpecificPlaceOfPerformance ],
+        [ dcterms:source "I123/J123",
+                "I58/J58" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAdditionalContractNature ],
+        [ dcterms:source "I326/J326" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasPaymentArrangement ],
+        [ dcterms:source "I177/J177" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasOptionsDescription ],
+        [ dcterms:source "I170/J170",
+                "I171/J171",
+                "I172/J172",
+                "I173/J173",
+                "I174/J174" ;
+            sh:class epo:SpecificDuration ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesContractDuration ],
+        [ dcterms:source "I317/J317" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEOrdering ],
+        [ dcterms:source "I297/J297" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasPerformanceConditions ],
+        [ dcterms:source "I180/J180" ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMaximumNumberOfRenewals ],
+        [ dcterms:source "I168/J168",
+                "I169/J169",
+                "I175/J175" ;
+            sh:class epo:Period ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesContractPeriod ],
+        [ dcterms:source "I318/J318" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEPayment ],
+        [ dcterms:source "I299/J299" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasEInvoicingPermission ],
+        [ dcterms:source "I179/J179" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasRenewalDescription ],
+        [ dcterms:source "I165/J165",
+                "I83/J83" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasBroadPlaceOfPerformance ],
+        [ dcterms:source "I166/J166",
+                "I84/J84" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasPlaceOfPerformanceAdditionalInformation ],
+        [ dcterms:source "I267/J267" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLegalFormRequirement ],
+        [ dcterms:source "I121/J121",
+                "I56/J56" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContractNatureType ],
+        [ dcterms:source "I294/J294" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasReservedExecution ] ;
+    sh:targetClass epo:ContractTerm .
+
+epo:EmploymentInformationProvider a sh:NodeShape ;
+    dcterms:source "I221/J221" ;
+    sh:class epo:EmploymentInformationProvider ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I222/J222",
+                "I223/J223",
+                "I225/J225" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source "I221/J221" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source "I224/J224" ;
+            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ] ;
+    sh:targetClass epo:EmploymentInformationProvider .
+
+epo:EnvironmentalProtectionInformationProvider a sh:NodeShape ;
+    dcterms:source "I214/J214" ;
+    sh:class epo:EnvironmentalProtectionInformationProvider ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I215/J215",
+                "I216/J216",
+                "I218/J218" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source "I214/J214" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source "I217/J217" ;
+            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ] ;
+    sh:targetClass epo:EnvironmentalProtectionInformationProvider .
+
+epo:GreenProcurement a sh:NodeShape ;
+    dcterms:source "I136/J136" ;
+    sh:class epo:GreenProcurement ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I136/J136",
+                "I138/J138" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:fulfillsRequirement ],
+        [ dcterms:source "I306/J306" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:usesCleanVehicleDirective ] ;
+    sh:targetClass epo:GreenProcurement .
+
+epo:Mediator a sh:NodeShape ;
+    dcterms:source "I413/J413" ;
+    sh:class epo:Mediator ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I413/J413" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source "I414/J414",
+                "I415/J415",
+                "I417/J417" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source "I416/J416" ;
+            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ] ;
+    sh:targetClass epo:Mediator .
+
+epo:OfflineAccessProvider a sh:NodeShape ;
+    dcterms:source "I395/J395" ;
+    sh:class epo:OfflineAccessProvider ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I395/J395" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source "I396/J396",
+                "I397/J397",
+                "I399/J399" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source "I398/J398" ;
+            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ] ;
+    sh:targetClass epo:OfflineAccessProvider .
+
+epo:ProcurementProcedureInformationProvider a sh:NodeShape ;
+    dcterms:source "I390/J390" ;
+    sh:class epo:ProcurementProcedureInformationProvider ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I390/J390" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source "I393/J393" ;
+            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ],
+        [ dcterms:source "I391/J391",
+                "I392/J392",
+                "I394/J394" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:ProcurementProcedureInformationProvider .
+
+epo:ProcurementServiceProvider a sh:NodeShape ;
+    dcterms:source "I37/J37" ;
+    sh:class epo:ProcurementServiceProvider ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I40/J40" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source "I37/J37" ;
+            sh:class epo:Buyer ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:actsOnBehalfOf ],
+        [ dcterms:source "I39/J39" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:ProcurementServiceProvider .
+
+epo:Purpose a sh:NodeShape ;
+    dcterms:source "I65/J65" ;
+    sh:class epo:Purpose ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I131/J131",
+                "I65/J65" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasMainClassification ],
+        [ dcterms:source "I134/J134",
+                "I68/J68" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAdditionalClassification ],
+        [ dcterms:source "I124/J124",
+                "I125/J125" ;
+            sh:class epo:Quantity ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasTotalQuantity ] ;
+    sh:targetClass epo:Purpose .
+
+epo:ReviewProcedureInformationProvider a sh:NodeShape ;
+    dcterms:source "I408/J408" ;
+    sh:class epo:ReviewProcedureInformationProvider ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I408/J408" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source "I411/J411" ;
+            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ],
+        [ dcterms:source "I409/J409",
+                "I410/J410",
+                "I412/J412" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:ReviewProcedureInformationProvider .
+
+epo:Reviewer a sh:NodeShape ;
+    dcterms:source "I403/J403" ;
+    sh:class epo:Reviewer ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I404/J404",
+                "I405/J405",
+                "I407/J407" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source "I403/J403" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source "I406/J406" ;
+            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ] ;
+    sh:targetClass epo:Reviewer .
+
+epo:SpecificDuration a sh:NodeShape ;
+    dcterms:source "I170/J170" ;
+    sh:class epo:SpecificDuration ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I171/J171",
+                "I172/J172",
+                "I173/J173",
+                "I174/J174",
+                "I353/J353",
+                "I354/J354",
+                "I355/J355",
+                "I356/J356" ;
+            sh:class time:TemporalUnit ;
+            sh:in ( time:unitWeek time:unitMonth time:unitDay time:unitYear ) ;
+            sh:nodeKind sh:IRI ;
+            sh:path time:unitType ],
+        [ dcterms:source "I170/J170",
+                "I352/J352" ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path time:numericDuration ] ;
+    sh:targetClass epo:SpecificDuration .
+
+epo:TaxInformationProvider a sh:NodeShape ;
+    dcterms:source "I207/J207" ;
+    sh:class epo:TaxInformationProvider ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I210/J210" ;
+            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ],
+        [ dcterms:source "I208/J208",
+                "I209/J209",
+                "I211/J211" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source "I207/J207" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ] ;
+    sh:targetClass epo:TaxInformationProvider .
+
+epo:TenderProcessor a sh:NodeShape ;
+    dcterms:source "I333/J333" ;
+    sh:class epo:TenderProcessor ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I333/J333" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source "I334/J334",
+                "I335/J335",
+                "I337/J337" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source "I336/J336" ;
+            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ] ;
+    sh:targetClass epo:TenderProcessor .
+
+epo:TenderReceiver a sh:NodeShape ;
+    dcterms:source "I327/J327" ;
+    sh:class epo:TenderReceiver ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I327/J327" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source "I329/J329",
+                "I330/J330",
+                "I332/J332" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source "I331/J331" ;
+            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ] ;
+    sh:targetClass epo:TenderReceiver .
+
+<http://data.europa.eu/m8g/Constraint> a sh:NodeShape ;
+    dcterms:source "I239/J239" ;
+    sh:class <http://data.europa.eu/m8g/Constraint> ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I239/J239",
+                "I260/J260",
+                "I446/J446" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasThresholdType ],
+        [ dcterms:source "I240/J240",
+                "I259/J259",
+                "I445/J445" ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasThresholdValue ] ;
+    sh:targetClass <http://data.europa.eu/m8g/Constraint> .
+
+epo:Buyer a sh:NodeShape ;
+    dcterms:source "I28/J28" ;
+    sh:class epo:Buyer ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I30/J30",
+                "I31/J31" ;
+            sh:datatype xsd:boolean ;
+            sh:in ( false true ) ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isContractingEntity ],
+        [ dcterms:source "I28/J28",
+                "I29/J29",
+                "I32/J32",
+                "I33/J33" ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source "I34/J34" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBuyerProfile ] ;
+    sh:targetClass epo:Buyer .
+
+epo:Notice a sh:NodeShape ;
+    dcterms:source "I5/J5" ;
+    sh:class epo:Notice ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I23/J23" ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasPublicationDate ],
+        [ dcterms:source "I6/J6" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasFormType ],
+        [ dcterms:source "I10/J10" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasVersion ],
+        [ dcterms:source "I109/J109" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:refersToLot ],
+        [ dcterms:source "I22/J22" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasOJSIssueNumber ],
+        [ dcterms:source "I13/J13",
+                "I14/J14" ;
+            sh:datatype xsd:dateTime ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasESenderDispatchDate ],
+        [ dcterms:source "I114/J114",
+                "I115/J115",
+                "I116/J116",
+                "I43/J43" ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:PlanningNotice ] [ sh:class epo:Notice ] ) ;
+            sh:path epo:refersToPrevious ],
+        [ dcterms:source "I7/J7" ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:refersToProcedure ],
+        [ dcterms:source "I43/J43",
+                "I454/J454",
+                "I9/J9" ;
+            sh:class <http://www.w3.org/ns/adms#Identifier> ;
+            sh:nodeKind sh:IRI ;
+            sh:path <http://www.w3.org/ns/adms#identifier> ],
+        [ dcterms:source "I11/J11",
+                "I12/J12" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasOfficialLanguage ],
+        [ dcterms:source "I21/J21" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasNoticePublicationNumber ],
+        [ dcterms:source "I5/J5" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNoticeType ] ;
+    sh:targetClass epo:Notice .
+
+epo:Procedure a sh:NodeShape ;
+    dcterms:source "I7/J7" ;
+    sh:class epo:Procedure ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I102/J102",
+                "I103/J103",
+                "I105/J105",
+                "I106/J106",
+                "I107/J107",
+                "I208/J208",
+                "I215/J215",
+                "I222/J222",
+                "I414/J414",
+                "I92/J92",
+                "I96/J96" ;
+            sh:class epo:ProcedureTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:isSubjectToProcedureSpecificTerm ],
+        [ dcterms:source "I98/J98" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isAccelerated ],
+        [ dcterms:source "I95/J95" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasProcedureType ],
+        [ dcterms:source "I513/J513" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMainFeature ],
+        [ dcterms:source "I53/J53" ;
+            sh:class <http://www.w3.org/ns/adms#Identifier> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasInternalIdentifier ],
+        [ dcterms:source "I44/J44" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasLegalBasis ],
+        [ dcterms:source "I54/J54" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:title ],
+        [ dcterms:source "I56/J56",
+                "I58/J58",
+                "I71/J71",
+                "I72/J72",
+                "I73/J73",
+                "I74/J74",
+                "I75/J75",
+                "I76/J76",
+                "I77/J77",
+                "I78/J78",
+                "I79/J79",
+                "I80/J80",
+                "I81/J81",
+                "I82/J82",
+                "I83/J83",
+                "I84/J84" ;
+            sh:class epo:ContractTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:foreseesContractSpecificTerm ],
+        [ dcterms:source "I111/J111" ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasProcurementScopeDividedIntoLot ],
+        [ dcterms:source "I99/J99" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAcceleratedProcedureJustification ],
+        [ dcterms:source "I7/J7" ;
+            sh:class <http://www.w3.org/ns/adms#Identifier> ;
+            sh:nodeKind sh:IRI ;
+            sh:path <http://www.w3.org/ns/adms#identifier> ],
+        [ dcterms:source "I65/J65",
+                "I68/J68" ;
+            sh:class epo:Purpose ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPurpose ],
+        [ dcterms:source "I47/J47",
+                "I48/J48",
+                "I51/J51" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLegalBasisDescription ],
+        [ dcterms:source "I60/J60" ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasEstimatedValue ],
+        [ dcterms:source "I100/J100" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAdditionalInformation ],
+        [ dcterms:source "I55/J55" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source "I62/J62" ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasLaunchFrameworkAgreementMaximumValue ] ;
+    sh:targetClass epo:Procedure .
+
+<http://www.w3.org/ns/locn#Address> a sh:NodeShape ;
+    dcterms:source "I71/J71" ;
+    sh:class <http://www.w3.org/ns/locn#Address> ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I158/J158",
+                "I478/J478",
+                "I505/J505",
+                "I76/J76" ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://www.w3.org/ns/locn#postCode> ],
+        [ dcterms:source "I163/J163",
+                "I481/J481",
+                "I507/J507",
+                "I81/J81" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCountryCode ],
+        [ dcterms:source "I156/J156",
+                "I476/J476",
+                "I504/J504",
+                "I74/J74" ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://www.w3.org/ns/locn#postName> ],
+        [ dcterms:source "I153/J153",
+                "I154/J154",
+                "I155/J155",
+                "I157/J157",
+                "I159/J159",
+                "I164/J164",
+                "I367/J367",
+                "I470/J470",
+                "I473/J473",
+                "I474/J474",
+                "I475/J475",
+                "I477/J477",
+                "I479/J479",
+                "I482/J482",
+                "I498/J498",
+                "I501/J501",
+                "I502/J502",
+                "I503/J503",
+                "I71/J71",
+                "I72/J72",
+                "I73/J73",
+                "I75/J75",
+                "I77/J77",
+                "I82/J82" ;
+            sh:nodeKind sh:Literal ;
+            sh:or ( [ ] [ ] [ ] ) ;
+            sh:path <http://www.w3.org/ns/locn#fullAddress> ],
+        [ dcterms:source "I161/J161",
+                "I480/J480",
+                "I506/J506",
+                "I79/J79" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNutsCode ] ;
+    sh:targetClass <http://www.w3.org/ns/locn#Address> .
+
+epo:MonetaryValue a sh:NodeShape ;
+    dcterms:source "I60/J60" ;
+    sh:class epo:MonetaryValue ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I128/J128",
+                "I206/J206",
+                "I275/J275",
+                "I426/J426",
+                "I428/J428",
+                "I430/J430",
+                "I60/J60",
+                "I62/J62" ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/m8g/ContactPoint> a sh:NodeShape ;
+    dcterms:source "I471/J471" ;
+    sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I496/J496" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source "I485/J485",
+                "I510/J510" ;
+            sh:nodeKind sh:Literal ;
+            sh:or ( [ ] [ ] ) ;
+            sh:path <http://data.europa.eu/m8g/email> ],
+        [ dcterms:source "I487/J487",
+                "I512/J512" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasFax ],
+        [ dcterms:source "I486/J486",
+                "I511/J511" ;
+            sh:nodeKind sh:Literal ;
+            sh:path <http://data.europa.eu/m8g/telephone> ],
+        [ dcterms:source "I471/J471",
+                "I499/J499" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasInternetAddress ],
+        [ dcterms:source "I498/J498",
+                "I501/J501",
+                "I502/J502",
+                "I503/J503",
+                "I504/J504",
+                "I505/J505",
+                "I506/J506",
+                "I507/J507" ;
+            sh:class <http://www.w3.org/ns/locn#Address> ;
+            sh:nodeKind sh:IRI ;
+            sh:path <http://www.w3.org/ns/locn#address> ],
+        [ dcterms:source "I484/J484",
+                "I509/J509" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasContactName ] ;
+    sh:targetClass <http://data.europa.eu/m8g/ContactPoint> .
+
+<http://www.w3.org/ns/adms#Identifier> a sh:NodeShape ;
+    dcterms:source "I7/J7" ;
+    sh:class <http://www.w3.org/ns/adms#Identifier> ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I112/J112",
+                "I115/J115",
+                "I116/J116",
+                "I118/J118",
+                "I193/J193",
+                "I419/J419",
+                "I421/J421",
+                "I43/J43",
+                "I454/J454",
+                "I457/J457",
+                "I464/J464",
+                "I468/J468",
+                "I53/J53",
+                "I7/J7",
+                "I9/J9" ;
+            sh:nodeKind sh:Literal ;
+            sh:or ( [ ] [ ] ) ;
+            sh:path skos:notation ] ;
+    sh:targetClass <http://www.w3.org/ns/adms#Identifier> .
+
+epo:Lot a sh:NodeShape ;
+    dcterms:source "I87/J87" ;
+    sh:class epo:Lot ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I128/J128" ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasEstimatedValue ],
+        [ dcterms:source "I185/J185",
+                "I196/J196",
+                "I199/J199",
+                "I200/J200",
+                "I201/J201",
+                "I204/J204",
+                "I241/J241",
+                "I244/J244",
+                "I245/J245",
+                "I262/J262",
+                "I263/J263",
+                "I264/J264",
+                "I268/J268",
+                "I269/J269",
+                "I274/J274",
+                "I275/J275",
+                "I283/J283",
+                "I284/J284",
+                "I288/J288",
+                "I291/J291",
+                "I292/J292",
+                "I301/J301",
+                "I303/J303",
+                "I304/J304",
+                "I310/J310",
+                "I311/J311",
+                "I313/J313",
+                "I315/J315",
+                "I320/J320",
+                "I328/J328",
+                "I329/J329",
+                "I334/J334",
+                "I342/J342",
+                "I343/J343",
+                "I344/J344",
+                "I345/J345",
+                "I347/J347",
+                "I348/J348",
+                "I350/J350",
+                "I351/J351",
+                "I352/J352",
+                "I353/J353",
+                "I354/J354",
+                "I355/J355",
+                "I356/J356",
+                "I358/J358",
+                "I359/J359",
+                "I361/J361",
+                "I363/J363",
+                "I364/J364",
+                "I365/J365",
+                "I367/J367",
+                "I369/J369",
+                "I370/J370",
+                "I371/J371",
+                "I372/J372",
+                "I373/J373",
+                "I374/J374",
+                "I375/J375",
+                "I379/J379",
+                "I382/J382",
+                "I383/J383",
+                "I384/J384",
+                "I385/J385",
+                "I386/J386",
+                "I391/J391",
+                "I396/J396",
+                "I400/J400",
+                "I402/J402",
+                "I404/J404",
+                "I409/J409" ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:AwardEvaluationTerm ] [ sh:class epo:DesignContestRegimeTerm ] [ sh:class epo:NonDisclosureAgreementTerm ] [ sh:class epo:AccessTerm ] [ sh:class epo:FrameworkAgreementTerm ] [ sh:class epo:SecurityClearanceTerm ] [ sh:class epo:ReviewTerm ] [ sh:class epo:OpeningTerm ] [ sh:class epo:SubmissionTerm ] [ sh:class epo:MultipleStageProcedureTerm ] ) ;
+            sh:path epo:isSubjectToLotSpecificTerm ],
+        [ dcterms:source "I181/J181",
+                "I182/J182",
+                "I183/J183",
+                "I184/J184",
+                "I198/J198" ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:EAuctionTechnique ] [ sh:class epo:DynamicPurchaseSystemTechnique ] ) ;
+            sh:path epo:usesTechnique ],
+        [ dcterms:source "I230/J230",
+                "I231/J231",
+                "I232/J232",
+                "I233/J233",
+                "I234/J234",
+                "I236/J236",
+                "I237/J237",
+                "I239/J239",
+                "I240/J240",
+                "I249/J249",
+                "I250/J250",
+                "I253/J253",
+                "I254/J254",
+                "I256/J256",
+                "I257/J257",
+                "I259/J259",
+                "I260/J260",
+                "I261/J261",
+                "I287/J287",
+                "I300/J300",
+                "I87/J87",
+                "I88/J88",
+                "I89/J89" ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:ExclusionGround ] [ sh:class epo:ParticipationCondition ] [ sh:class epo:AwardCriterion ] [ sh:class epo:SelectionCriterion ] [ sh:class epo:ProcurementCriterion ] ) ;
+            sh:path epo:specifiesProcurementCriterion ],
+        [ dcterms:source "I120/J120" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source "I191/J191",
+                "I192/J192",
+                "I193/J193",
+                "I194/J194" ;
+            sh:class epo:Fund ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:isFundedBy ],
+        [ dcterms:source "I188/J188",
+                "I189/J189" ;
+            sh:datatype xsd:boolean ;
+            sh:in ( false true ) ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isUsingEUFunds ],
+        [ dcterms:source "I121/J121",
+                "I123/J123",
+                "I151/J151",
+                "I153/J153",
+                "I154/J154",
+                "I155/J155",
+                "I156/J156",
+                "I157/J157",
+                "I158/J158",
+                "I159/J159",
+                "I160/J160",
+                "I161/J161",
+                "I162/J162",
+                "I163/J163",
+                "I164/J164",
+                "I165/J165",
+                "I166/J166",
+                "I168/J168",
+                "I169/J169",
+                "I170/J170",
+                "I171/J171",
+                "I172/J172",
+                "I173/J173",
+                "I174/J174",
+                "I175/J175",
+                "I177/J177",
+                "I179/J179",
+                "I180/J180",
+                "I267/J267",
+                "I294/J294",
+                "I297/J297",
+                "I299/J299",
+                "I317/J317",
+                "I318/J318",
+                "I322/J322",
+                "I323/J323",
+                "I324/J324",
+                "I326/J326" ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:SubcontractTerm ] [ sh:class epo:ContractTerm ] ) ;
+            sh:path epo:foreseesContractSpecificTerm ],
+        [ dcterms:source "I228/J228" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAdditionalInformation ],
+        [ dcterms:source "I126/J126" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isSMESuitable ],
+        [ dcterms:source "I290/J290" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasRecurrenceDescription ],
+        [ dcterms:source "I112/J112" ;
+            sh:class <http://www.w3.org/ns/adms#Identifier> ;
+            sh:nodeKind sh:IRI ;
+            sh:path <http://www.w3.org/ns/adms#identifier> ],
+        [ dcterms:source "I118/J118" ;
+            sh:class <http://www.w3.org/ns/adms#Identifier> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasInternalIdentifier ],
+        [ dcterms:source "I119/J119" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:title ],
+        [ dcterms:source "I136/J136",
+                "I138/J138",
+                "I140/J140",
+                "I142/J142",
+                "I144/J144",
+                "I145/J145",
+                "I146/J146",
+                "I147/J147",
+                "I149/J149",
+                "I150/J150",
+                "I305/J305",
+                "I306/J306" ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:SocialProcurement ] [ sh:class epo:StrategicProcurement ] [ sh:class epo:InnovativeProcurement ] [ sh:class epo:GreenProcurement ] ) ;
+            sh:path epo:fulfillsStrategicProcurement ],
+        [ dcterms:source "I289/J289" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isRecurrent ],
+        [ dcterms:source "I124/J124",
+                "I125/J125",
+                "I129/J129",
+                "I131/J131",
+                "I134/J134" ;
+            sh:class epo:Purpose ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPurpose ],
+        [ dcterms:source "I388/J388",
+                "I389/J389" ;
+            sh:class epo:AdHocChannel ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:usesChannel ],
+        [ dcterms:source "I186/J186" ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isCoveredByGPA ],
+        [ dcterms:source "I206/J206" ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasLaunchFrameworkAgreementMaximumValue ] ;
+    sh:targetClass epo:Lot .
+
+org:Organization a sh:NodeShape ;
+    dcterms:source "I29/J29" ;
+    sh:class org:Organization ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source "I280/J280" ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:title ],
+        [ dcterms:source "I32/J32",
+                "I33/J33" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasMainActivity ],
+        [ dcterms:source "I468/J468" ;
+            sh:class <http://www.w3.org/ns/adms#Identifier> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasLegalIdentifier ],
+        [ dcterms:source "I465/J465" ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLegalName ],
+        [ dcterms:source "I29/J29" ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasBuyerLegalType ],
+        [ dcterms:source "I471/J471",
+                "I483/J483",
+                "I484/J484",
+                "I485/J485",
+                "I486/J486",
+                "I487/J487" ;
+            sh:class <http://data.europa.eu/m8g/ContactPoint> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPrimaryContactPoint ],
+        [ dcterms:source "I464/J464" ;
+            sh:class <http://www.w3.org/ns/adms#Identifier> ;
+            sh:nodeKind sh:IRI ;
+            sh:path <http://www.w3.org/ns/adms#identifier> ],
+        [ dcterms:source "I469/J469",
+                "I470/J470",
+                "I473/J473",
+                "I474/J474",
+                "I475/J475",
+                "I476/J476",
+                "I477/J477",
+                "I478/J478",
+                "I479/J479",
+                "I480/J480",
+                "I481/J481",
+                "I482/J482" ;
+            sh:class <http://www.w3.org/ns/locn#Address> ;
+            sh:nodeKind sh:IRI ;
+            sh:path <http://data.europa.eu/m8g/registeredAddress> ] ;
+    sh:targetClass org:Organization .
+

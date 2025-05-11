@@ -1,0 +1,1264 @@
+[
+  {
+    "type": "FNI",
+    "focusNodeDiffer": [
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#AccessTerm",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/AccessTerm"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Business",
+        "presentIn": {
+          "CM": [
+            "G113/H113"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "RML": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Contract",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Contract"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#FrameworkAgreementTerm",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTerm",
+            "http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTermLot"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#MultipleStageProcedureTerm",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedureTerm"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#OrganisationGroup",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/BuyerOrganisationGroup"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#PlannedProcurementPart",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/PlannedProcurementPart"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ProcedureTerm",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/ProcedureTerm"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ProcessPlanningTerm",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermLot"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ProcurementProcedureInformationProvider",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProvider",
+            "http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProviderIdem"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ProcurementProcessInformation",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcessInformation"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#SubcontractingEstimate",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/SubcontractingEstimate"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#SubmissionTerm",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/SubmissionTerm"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#TenderReceiver",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiver",
+            "http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverIdem"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/m8g/Channel",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/ElectronicCommunicationChannel"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": []
+        }
+      }
+    ]
+  },
+  {
+    "type": "PVI",
+    "propertyValueDiffer": [
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#AwardCriterion",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasAwardCriterionType",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionCost",
+            "http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionPrice",
+            "http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionQuality"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G59/H59"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#AwardCriterion",
+        "propertyPath": "http://data.europa.eu/m8g/name",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionCost",
+            "http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionQuality"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G59/H59"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#AwardCriterion",
+        "propertyPath": "http://data.europa.eu/m8g/weight",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterion",
+            "http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionCost",
+            "http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionPrice",
+            "http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionQuality"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G59/H59"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Buyer",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#contextualisedBy",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyer",
+            "http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyerCP",
+            "http://data.europa.eu/a4g/mapping/sf-rml/Buyer",
+            "http://data.europa.eu/a4g/mapping/sf-rml/BuyerCP"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G7/H7"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ContractTerm",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasEInvoicing",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/ContractTermProcedure"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G33/H33"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ContractTerm",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasEOrdering",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/ContractTermProcedure"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G33/H33"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ContractTerm",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasEPayment",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/ContractTermProcedure"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G33/H33"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ContractTerm",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasOptions",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLot"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G33/H33"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ContractTerm",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasOptionsDescription",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLot"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G33/H33"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Lot",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasEstimatedValue",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Lot"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G48/H48"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Lot",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#isSubjectToLotSpecificTerm",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Lot"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G48/H48"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#LotAwardOutcome",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasBargainPrice",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcome"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G81/H81"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#LotAwardOutcome",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasNonAwardedContractNumber",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcome"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G81/H81"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#LotAwardOutcome",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasNonAwardedContractTitle",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcome"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G81/H81"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Mediator",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#contextualisedBy",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Mediator"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G138/H138"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Notice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#announcesContract",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "G3/H3"
+          ],
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Notice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#announcesNoticeAwardInformation",
+        "presentIn": {
+          "CM": [
+            "G42/H42",
+            "G43/H43",
+            "G44/H44",
+            "G45/H45"
+          ],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Notice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#announcesPlannedProcurementPart",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "G3/H3"
+          ],
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Notice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#announcesRole",
+        "presentIn": {
+          "CM": [
+            "G127/H127",
+            "G137/H137",
+            "G148/H148",
+            "G6/H6"
+          ],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Notice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#announcesTender",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "G3/H3"
+          ],
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Notice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#refersToContractToBeModified",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "G3/H3"
+          ],
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Notice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#refersToLot",
+        "presentIn": {
+          "CM": [
+            "G46/H46"
+          ],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Notice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#refersToProcedure",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G3/H3"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Procedure",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasAcceleratedProcedureJustification",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Procedure"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G29/H29"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Procedure",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasMainFeature",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Procedure"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G29/H29"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Procedure",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#isAccelerated",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Procedure"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G29/H29"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Procedure",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#isJointProcurement",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Procedure"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G29/H29"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Procedure",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#usesChannel",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Procedure"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G29/H29"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Procedure",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#usesTechnique",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Procedure"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G29/H29"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ResultNotice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#announcesContract",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G41/H41"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ResultNotice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#announcesPlannedProcurementPart",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "G41/H41"
+          ],
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ResultNotice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#announcesRole",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G41/H41"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ResultNotice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#announcesTender",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G41/H41"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ResultNotice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasDispatchDate",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "G41/H41"
+          ],
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ResultNotice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasID",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "G41/H41"
+          ],
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ResultNotice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasLegalBasis",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "G41/H41"
+          ],
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ResultNotice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasPublicationDate",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "G41/H41"
+          ],
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ResultNotice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#refersToContractToBeModified",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "G41/H41"
+          ],
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ResultNotice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#refersToLot",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G41/H41"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ResultNotice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#refersToPrevious",
+        "presentIn": {
+          "CM": [
+            "G74/H74"
+          ],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ResultNotice",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#refersToProcedure",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "G41/H41"
+          ],
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ReviewProcedureInformationProvider",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#contextualisedBy",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProvider"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G149/H149"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Reviewer",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#contextualisedBy",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Reviewer"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G128/H128"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#SpecificDuration",
+        "propertyPath": "http://www.w3.org/2006/time#unitType",
+        "presentIn": {
+          "CM": [
+            "G62/H62",
+            "G63/H63"
+          ],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Duration"
+          ]
+        },
+        "missingIn": {
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#SubmissionStatisticalInformation",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasHighestReceivedTenderValue",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/SubmissionStatisticalInformation"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G93/H93"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#SubmissionStatisticalInformation",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasLowestReceivedTenderValue",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/SubmissionStatisticalInformation"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G93/H93"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Tender",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#foreseesSubcontracting",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Tender"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G119/H119"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Tender",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasItemCountryOfOrigin",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Tender"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G119/H119"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Tender",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#isSubmittedForLot",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Tender"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G119/H119"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Winner",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#contextualisedBy",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Winner"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G101/H101"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://purl.org/dc/terms/Location",
+        "propertyPath": "http://www.w3.org/ns/locn#address",
+        "presentIn": {
+          "CM": [
+            "G55/H55"
+          ],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocation"
+          ]
+        },
+        "missingIn": {
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://www.w3.org/ns/org#Organization",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasBusinessSize",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisation"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "G7/H7"
+          ],
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://www.w3.org/ns/org#Organization",
+        "propertyPath": "http://data.europa.eu/m8g/registeredAddress",
+        "presentIn": {
+          "CM": [
+            "G10/H10",
+            "G103/H103",
+            "G104/H104",
+            "G105/H105",
+            "G106/H106",
+            "G107/H107",
+            "G11/H11",
+            "G12/H12",
+            "G129/H129",
+            "G13/H13",
+            "G130/H130",
+            "G131/H131",
+            "G132/H132",
+            "G139/H139",
+            "G140/H140",
+            "G141/H141",
+            "G142/H142",
+            "G150/H150",
+            "G151/H151",
+            "G152/H152",
+            "G153/H153",
+            "G9/H9"
+          ],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisation",
+            "http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisation",
+            "http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisation",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisation",
+            "http://data.europa.eu/a4g/mapping/sf-rml/Organisation",
+            "http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisation",
+            "http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisation",
+            "http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisation"
+          ]
+        },
+        "missingIn": {
+          "OWL": []
+        }
+      }
+    ]
+  },
+  {
+    "type": "PVCI",
+    "constraintDiffer": [
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Identifier",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#hasIdentifierValue",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#datatype",
+          "http://www.w3.org/2001/XMLSchema#string"
+        ],
+        "presentIn": {
+          "CM": [
+            "G102/H102",
+            "G30/H30",
+            "G49/H49",
+            "G8/H8",
+            "G80/H80"
+          ]
+        },
+        "missingIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisationIdentifier",
+            "http://data.europa.eu/a4g/mapping/sf-rml/ContractIdentifier",
+            "http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationIdentifier",
+            "http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisationIdentifier",
+            "http://data.europa.eu/a4g/mapping/sf-rml/LotIdentifier",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationIdentifier",
+            "http://data.europa.eu/a4g/mapping/sf-rml/NoticeIdentifier",
+            "http://data.europa.eu/a4g/mapping/sf-rml/OrganisationIdentifier",
+            "http://data.europa.eu/a4g/mapping/sf-rml/PreviousNoticeIdentifier",
+            "http://data.europa.eu/a4g/mapping/sf-rml/ProcedureIdentifier",
+            "http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationIdentifier",
+            "http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationIdentifier",
+            "http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationIdentifier"
+          ],
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Notice",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#hasPublicationDate",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#datatype",
+          "http://www.w3.org/2001/XMLSchema#string"
+        ],
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Notice"
+          ],
+          "CM": [
+            "G4/H4"
+          ]
+        },
+        "missingIn": {
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Period",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#hasBeginning",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#datatype",
+          "http://www.w3.org/2001/XMLSchema#date"
+        ],
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedurePeriod",
+            "http://data.europa.eu/a4g/mapping/sf-rml/Period"
+          ],
+          "CM": [
+            "G64/H64"
+          ]
+        },
+        "missingIn": {
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Period",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#hasEnd",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#datatype",
+          "http://www.w3.org/2001/XMLSchema#date"
+        ],
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedurePeriod",
+            "http://data.europa.eu/a4g/mapping/sf-rml/Period"
+          ],
+          "CM": [
+            "G65/H65"
+          ]
+        },
+        "missingIn": {
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Procedure",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#isSubjectToProcedureSpecificTerm",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#class",
+          "http://data.europa.eu/a4g/ontology#FrameworkAgreementTerm"
+        ],
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Procedure"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G147/H147",
+            "G160/H160",
+            "G162/H162",
+            "G163/H163",
+            "G164/H164",
+            "G165/H165",
+            "G169/H169"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Procedure",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#isSubjectToProcedureSpecificTerm",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#class",
+          "http://data.europa.eu/a4g/ontology#ProcedureTerm"
+        ],
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Procedure"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G147/H147",
+            "G160/H160",
+            "G162/H162",
+            "G163/H163",
+            "G164/H164",
+            "G165/H165",
+            "G169/H169"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Procedure",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#isSubjectToProcedureSpecificTerm",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#class",
+          "http://data.europa.eu/a4g/ontology#AccessTerm"
+        ],
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Procedure"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G147/H147",
+            "G160/H160",
+            "G162/H162",
+            "G163/H163",
+            "G164/H164",
+            "G165/H165",
+            "G169/H169"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Procedure",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#isSubjectToProcedureSpecificTerm",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#class",
+          "http://data.europa.eu/a4g/ontology#SubmissionTerm"
+        ],
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Procedure"
+          ],
+          "OWL": []
+        },
+        "missingIn": {
+          "CM": [
+            "G147/H147",
+            "G160/H160",
+            "G162/H162",
+            "G163/H163",
+            "G164/H164",
+            "G165/H165",
+            "G169/H169"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Winner",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#playedBy",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#class",
+          "http://data.europa.eu/a4g/ontology#Business"
+        ],
+        "presentIn": {
+          "OWL": [],
+          "CM": [
+            "G101/H101",
+            "G102/H102",
+            "G103/H103",
+            "G104/H104",
+            "G105/H105",
+            "G106/H106",
+            "G107/H107",
+            "G108/H108",
+            "G109/H109",
+            "G110/H110",
+            "G111/H111",
+            "G112/H112",
+            "G113/H113"
+          ]
+        },
+        "missingIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/Winner"
+          ]
+        }
+      }
+    ]
+  }
+]

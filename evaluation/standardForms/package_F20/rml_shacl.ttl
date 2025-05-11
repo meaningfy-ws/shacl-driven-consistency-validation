@@ -1,0 +1,2232 @@
+@prefix cv: <http://data.europa.eu/m8g/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix epo: <http://data.europa.eu/a4g/ontology#> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/AccessTerm/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AccessTerm> ;
+    sh:class epo:AccessTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AccessTerm> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isProcurementDocumentRestricted ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AccessTerm> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasPublicAccessURL ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AccessTerm> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasRestrictedAccessURL ] ;
+    sh:targetClass epo:AccessTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyer/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyer> ;
+    sh:class epo:Buyer ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyer> ;
+            sh:class cv:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyer> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyer> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBuyerProfile ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyer> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:Buyer .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyerCP/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyerCP> ;
+    sh:class epo:Buyer ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyerCP> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyerCP> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBuyerProfile ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyerCP> ;
+            sh:class cv:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalBuyerCP> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:Buyer .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/AdditionalContactPoint/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalContactPoint> ;
+    sh:class cv:ContactPoint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:telephone ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasInternetAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasFax ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasContactName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:email ] ;
+    sh:targetClass cv:ContactPoint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisation> ;
+    sh:class org:Organization ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisation> ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisation> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path cv:registeredAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisation> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLegalName ] ;
+    sh:targetClass org:Organization .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisationAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisationAddress> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:thoroughfare ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisationAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCountryCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisationAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/nuts/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNutsCode ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisationIdentifier/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisationIdentifier> ;
+    sh:class epo:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AdditionalOrganisationIdentifier> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterion/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterion> ;
+    sh:class epo:AwardCriterion ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterion> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:description ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterion> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:weight ] ;
+    sh:targetClass epo:AwardCriterion .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionCost/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionCost> ;
+    sh:class epo:AwardCriterion ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionCost> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:weight ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionCost> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAwardCriterionType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionCost> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:name ] ;
+    sh:targetClass epo:AwardCriterion .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionPrice/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionPrice> ;
+    sh:class epo:AwardCriterion ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionPrice> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAwardCriterionType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionPrice> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:weight ] ;
+    sh:targetClass epo:AwardCriterion .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionQuality/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionQuality> ;
+    sh:class epo:AwardCriterion ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionQuality> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:name ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionQuality> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAwardCriterionType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/AwardCriterionQuality> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:weight ] ;
+    sh:targetClass epo:AwardCriterion .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/Buyer/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Buyer> ;
+    sh:class epo:Buyer ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Buyer> ;
+            sh:class cv:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Buyer> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Buyer> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Buyer> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBuyerProfile ] ;
+    sh:targetClass epo:Buyer .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/BuyerCP/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/BuyerCP> ;
+    sh:class epo:Buyer ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/BuyerCP> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/BuyerCP> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/BuyerCP> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBuyerProfile ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/BuyerCP> ;
+            sh:class cv:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ] ;
+    sh:targetClass epo:Buyer .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/BuyerConcessionRevenueMonetaryValue/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/BuyerConcessionRevenueMonetaryValue> ;
+    sh:class epo:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/BuyerConcessionRevenueMonetaryValue> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/BuyerConcessionRevenueMonetaryValue> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/BuyerOrganisationGroup/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/BuyerOrganisationGroup> ;
+    sh:class epo:OrganisationGroup ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/BuyerOrganisationGroup> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/mainActivity/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasMainActivity ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/BuyerOrganisationGroup> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasMember ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/BuyerOrganisationGroup> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMainActivityDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/BuyerOrganisationGroup> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/buyerLegalType/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasBuyerLegalType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/BuyerOrganisationGroup> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBuyerLegalTypeDescription ] ;
+    sh:targetClass epo:OrganisationGroup .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ConcessionEstimate/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ConcessionEstimate> ;
+    sh:class epo:ConcessionEstimate ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ConcessionEstimate> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasEstimatedUserConcessionRevenue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ConcessionEstimate> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasEstimatedBuyerConcessionRevenue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ConcessionEstimate> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasCalculationMethod ] ;
+    sh:targetClass epo:ConcessionEstimate .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContactPoint/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContactPoint> ;
+    sh:class cv:ContactPoint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasInternetAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:telephone ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasContactName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:email ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasFax ] ;
+    sh:targetClass cv:ContactPoint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/Contract/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Contract> ;
+    sh:class epo:Contract ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Contract> ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Contract> ;
+            sh:class epo:LotAwardOutcome ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:resultsFromLotAwardOutcome ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Contract> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasContractConclusionDate ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Contract> ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:includesLot ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Contract> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasTitle ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Contract> ;
+            sh:nodeKind sh:Literal ;
+            sh:path rdfs:comment ] ;
+    sh:targetClass epo:Contract .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractIdentifier/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractIdentifier> ;
+    sh:class epo:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractIdentifier> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractModification> ;
+    sh:class epo:ContractModification ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractModification> ;
+            sh:class epo:Notice ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:describesNotice ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractModification> ;
+            sh:class epo:ElementModificationDescription ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasElementModification ] ;
+    sh:targetClass epo:ContractModification .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLot/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLot> ;
+    sh:class epo:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLot> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasOptionsDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLot> ;
+            sh:class epo:SpecificDuration ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesContractDuration ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLot> ;
+            sh:class epo:Period ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesContractPeriod ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLot> ;
+            sh:class dcterms:Location ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesSpecificPlaceOfPerformance ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLot> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasOptions ] ;
+    sh:targetClass epo:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocation> ;
+    sh:class dcterms:Location ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocation> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path locn:address ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocation> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/nuts/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNutsCode ] ;
+    sh:targetClass dcterms:Location .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocationAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocationAddress> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:fullAddress ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocationAddressModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocationAddressModification> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocationAddressModification> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:fullAddress ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocationModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocationModification> ;
+    sh:class dcterms:Location ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocationModification> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/nuts/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNutsCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotLocationModification> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path locn:address ] ;
+    sh:targetClass dcterms:Location .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotModification> ;
+    sh:class epo:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotModification> ;
+            sh:class epo:SpecificDuration ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesContractDuration ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotModification> ;
+            sh:class dcterms:Location ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesSpecificPlaceOfPerformance ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermLotModification> ;
+            sh:class epo:Period ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:definesContractPeriod ] ;
+    sh:targetClass epo:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractTermProcedure/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermProcedure> ;
+    sh:class epo:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermProcedure> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/contractNature/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContractNatureType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermProcedure> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEOrdering ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermProcedure> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEPayment ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractTermProcedure> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEInvoicing ] ;
+    sh:targetClass epo:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPoint/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPoint> ;
+    sh:class cv:ContactPoint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:telephone ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasContactName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasInternetAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasFax ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:email ] ;
+    sh:targetClass cv:ContactPoint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPointModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPointModification> ;
+    sh:class cv:ContactPoint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPointModification> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:telephone ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPointModification> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasFax ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPointModification> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasContactName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPointModification> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasInternetAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorContactPointModification> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:email ] ;
+    sh:targetClass cv:ContactPoint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisation> ;
+    sh:class org:Organization ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisation> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLegalName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisation> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path cv:registeredAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisation> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasBusinessSize ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisation> ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisation> ;
+            sh:class cv:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPrimaryContactPoint ] ;
+    sh:targetClass org:Organization .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddress> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:thoroughfare ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCountryCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/nuts/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNutsCode ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddressModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddressModification> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddressModification> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCountryCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddressModification> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:thoroughfare ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddressModification> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/nuts/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNutsCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddressModification> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationAddressModification> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postName ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationFromResults/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationFromResults> ;
+    sh:nodeKind sh:IRI .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationFromResultsAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationFromResultsAddress> ;
+    sh:nodeKind sh:IRI .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationFromResultsContactPoint/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationFromResultsContactPoint> ;
+    sh:nodeKind sh:IRI .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationFromResultsIdentifier/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationFromResultsIdentifier> ;
+    sh:nodeKind sh:IRI .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationIdentifier/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationIdentifier> ;
+    sh:class epo:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationIdentifier> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationIdentifierModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationIdentifierModification> ;
+    sh:class epo:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationIdentifierModification> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationModification> ;
+    sh:class org:Organization ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationModification> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLegalName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationModification> ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationModification> ;
+            sh:class cv:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPrimaryContactPoint ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationModification> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasBusinessSize ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ContractorOrganisationModification> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path cv:registeredAddress ] ;
+    sh:targetClass org:Organization .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/DirectAwardTerm/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/DirectAwardTerm> ;
+    sh:class epo:DirectAwardTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass epo:DirectAwardTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/Duration/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Duration> ;
+    sh:class epo:SpecificDuration ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Duration> ;
+            sh:nodeKind sh:IRI ;
+            sh:path time:unitType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Duration> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path time:numericDuration ] ;
+    sh:targetClass epo:SpecificDuration .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/DurationModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/DurationModification> ;
+    sh:class epo:SpecificDuration ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/DurationModification> ;
+            sh:nodeKind sh:IRI ;
+            sh:path time:unitType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/DurationModification> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path time:numericDuration ] ;
+    sh:targetClass epo:SpecificDuration .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ElectronicCommunicationChannel/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ElectronicCommunicationChannel> ;
+    sh:class cv:Channel ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ElectronicCommunicationChannel> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:isAdhocChannel ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ElectronicCommunicationChannel> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasURL ] ;
+    sh:targetClass cv:Channel .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ElementConfidentialityDescription/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ElementConfidentialityDescription> ;
+    sh:nodeKind sh:IRI .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ElementModificationDescription/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ElementModificationDescription> ;
+    sh:class epo:ElementModificationDescription ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ElementModificationDescription> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasModificationJustification ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ElementModificationDescription> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasModificationReasonDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ElementModificationDescription> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasModificationDescription ] ;
+    sh:targetClass epo:ElementModificationDescription .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTerm/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTerm> ;
+    sh:class epo:FrameworkAgreementTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTerm> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDurationExtensionJustification ] ;
+    sh:targetClass epo:FrameworkAgreementTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTermLot/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTermLot> ;
+    sh:class epo:FrameworkAgreementTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTermLot> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDurationExtensionJustification ] ;
+    sh:targetClass epo:FrameworkAgreementTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTermLotModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTermLotModification> ;
+    sh:class epo:FrameworkAgreementTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/FrameworkAgreementTermLotModification> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDurationExtensionJustification ] ;
+    sh:targetClass epo:FrameworkAgreementTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/Fund/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Fund> ;
+    sh:class epo:Fund ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Fund> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDescription ] ;
+    sh:targetClass epo:Fund .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderContactPoint/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderContactPoint> ;
+    sh:class cv:ContactPoint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasInternetAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:email ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:telephone ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasContactName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasFax ] ;
+    sh:targetClass cv:ContactPoint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisation> ;
+    sh:class org:Organization ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisation> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path cv:registeredAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisation> ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisation> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLegalName ] ;
+    sh:targetClass org:Organization .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisationAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisationAddress> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisationAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/nuts/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNutsCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:thoroughfare ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisationAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCountryCode ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisationIdentifier/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisationIdentifier> ;
+    sh:class epo:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/InformationProviderOrganisationIdentifier> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/Lot/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Lot> ;
+    sh:class epo:Lot ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Lot> ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:FrameworkAgreementTerm ] [ sh:class epo:MultipleStageProcedureTerm ] ) ;
+            sh:path epo:isSubjectToLotSpecificTerm ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Lot> ;
+            sh:class epo:AwardCriterion ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:specifiesAwardCriterion ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Lot> ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Lot> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Lot> ;
+            sh:class epo:Purpose ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPurpose ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Lot> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasEstimatedValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Lot> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasTitle ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Lot> ;
+            sh:class epo:ContractTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:foreseesContractSpecificTerm ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Lot> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isUsingEUFunds ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Lot> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAdditionalInformation ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Lot> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasRestatedEstimatedValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Lot> ;
+            sh:class epo:Fund ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:isFundedBy ] ;
+    sh:targetClass epo:Lot .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcome/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcome> ;
+    sh:class epo:LotAwardOutcome ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcome> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAwardDecisionDate ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcome> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAwardedValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcome> ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:describesLot ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcome> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasBargainPrice ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcome> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasNonAwardedContractTitle ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcome> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAwardStatus ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcome> ;
+            sh:class epo:TenderAwardOutcome ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:comprisesTenderAwardOutcome ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcome> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNonAwardJustification ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcome> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasNonAwardedContractNumber ] ;
+    sh:targetClass epo:LotAwardOutcome .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeAwardedMonetaryValue/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeAwardedMonetaryValue> ;
+    sh:class epo:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeAwardedMonetaryValue> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeAwardedMonetaryValue> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeAwardedMonetaryValueModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeAwardedMonetaryValueModification> ;
+    sh:class epo:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeAwardedMonetaryValueModification> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeAwardedMonetaryValueModification> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeBargainMonetaryValue/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeBargainMonetaryValue> ;
+    sh:class epo:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeBargainMonetaryValue> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeBargainMonetaryValue> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeModification> ;
+    sh:class epo:LotAwardOutcome ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeModification> ;
+            sh:class epo:TenderAwardOutcome ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:comprisesTenderAwardOutcome ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeModification> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAwardedValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotAwardOutcomeModification> ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:describesLot ] ;
+    sh:targetClass epo:LotAwardOutcome .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/LotIdentifier/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotIdentifier> ;
+    sh:class epo:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotIdentifier> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/LotModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotModification> ;
+    sh:class epo:Lot ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotModification> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasEstimatedValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotModification> ;
+            sh:class epo:ContractTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:foreseesContractSpecificTerm ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotModification> ;
+            sh:class epo:FrameworkAgreementTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:isSubjectToLotSpecificTerm ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotModification> ;
+            sh:class epo:Purpose ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPurpose ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotModification> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotModification> ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:containsModificationsOf ] ;
+    sh:targetClass epo:Lot .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/LotPurpose/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotPurpose> ;
+    sh:class epo:Purpose ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotPurpose> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/cpv/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAdditionalClassification ] ;
+    sh:targetClass epo:Purpose .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/LotPurposeModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotPurposeModification> ;
+    sh:class epo:Purpose ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/LotPurposeModification> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/cpv/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasAdditionalClassification ] ;
+    sh:targetClass epo:Purpose .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MainMonetaryValueLot/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MainMonetaryValueLot> ;
+    sh:class epo:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MainMonetaryValueLot> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MainMonetaryValueLot> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/Mediator/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Mediator> ;
+    sh:class epo:Mediator ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Mediator> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Mediator> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:Mediator .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint> ;
+    sh:class cv:ContactPoint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:telephone ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasFax ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasInternetAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:email ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasContactName ] ;
+    sh:targetClass cv:ContactPoint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisation> ;
+    sh:class org:Organization ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisation> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLegalName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisation> ;
+            sh:class cv:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPrimaryContactPoint ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisation> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path cv:registeredAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisation> ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ] ;
+    sh:targetClass org:Organization .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationAddress> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCountryCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:thoroughfare ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationIdentifier/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationIdentifier> ;
+    sh:class epo:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MediatorOrganisationIdentifier> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueLot/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueLot> ;
+    sh:class epo:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueLot> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueLot> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueProcedure/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueProcedure> ;
+    sh:class epo:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueProcedure> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueProcedure> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueSubmissionHighest/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueSubmissionHighest> ;
+    sh:class epo:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueSubmissionHighest> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueSubmissionHighest> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueSubmissionLowest/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueSubmissionLowest> ;
+    sh:class epo:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueSubmissionLowest> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MonetaryValueSubmissionLowest> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedurePeriod/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedurePeriod> ;
+    sh:class epo:Period ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedurePeriod> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEnd ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedurePeriod> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBeginning ] ;
+    sh:targetClass epo:Period .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedureTerm/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedureTerm> ;
+    sh:class epo:MultipleStageProcedureTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedureTerm> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasQualificationSystemRenewalDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedureTerm> ;
+            sh:class epo:IndefiniteDuration ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasQualificationSystemDuration ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MultipleStageProcedureTerm> ;
+            sh:class epo:Period ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasQualificationSystemPeriod ] ;
+    sh:targetClass epo:MultipleStageProcedureTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/Notice/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Notice> ;
+    sh:class epo:Notice ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Notice> ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:Mediator ] [ sh:class epo:Reviewer ] [ sh:class epo:TenderReceiver ] [ sh:class epo:Buyer ] [ sh:class epo:Winner ] [ sh:class epo:ProcurementProcedureInformationProvider ] [ sh:class epo:ReviewProcedureInformationProvider ] ) ;
+            sh:path epo:announcesRole ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Notice> ;
+            sh:class epo:PlannedProcurementPart ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:announcesPlannedProcurementPart ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Notice> ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Notice> ;
+            sh:class epo:Contract ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:announcesContract ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Notice> ;
+            sh:class epo:Contract ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:refersToContractToBeModified ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Notice> ;
+            sh:class epo:NoticeAwardInformation ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:announcesNoticeAwardInformation ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Notice> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/legalBasis/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasLegalBasis ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Notice> ;
+            sh:datatype xsd:string ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasPublicationDate ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Notice> ;
+            sh:class epo:Notice ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:refersToPrevious ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Notice> ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:refersToLot ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Notice> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:refersToProcedure ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Notice> ;
+            sh:class epo:Tender ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:announcesTender ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Notice> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDispatchDate ] ;
+    sh:targetClass epo:ContractModificationNotice,
+        epo:Notice .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/NoticeAwardInformation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/NoticeAwardInformation> ;
+    sh:class epo:NoticeAwardInformation ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/NoticeAwardInformation> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasProcurementLowestReceivedTenderValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/NoticeAwardInformation> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasProcurementHighestReceivedTenderValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/NoticeAwardInformation> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasTotalAwardedValue ] ;
+    sh:targetClass epo:NoticeAwardInformation .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/NoticeIdentifier/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/NoticeIdentifier> ;
+    sh:class epo:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/NoticeIdentifier> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/Organisation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Organisation> ;
+    sh:class org:Organization ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Organisation> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMainActivityDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Organisation> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/mainActivity/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasMainActivity ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Organisation> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLegalName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Organisation> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBuyerLegalTypeDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Organisation> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/buyerLegalType/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasBuyerLegalType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Organisation> ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Organisation> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path cv:registeredAddress ] ;
+    sh:targetClass org:Organization .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/OrganisationAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/OrganisationAddress> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/OrganisationAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/nuts/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNutsCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/OrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/OrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:thoroughfare ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/OrganisationAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCountryCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/OrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postName ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/OrganisationIdentifier/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/OrganisationIdentifier> ;
+    sh:class epo:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/OrganisationIdentifier> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/Period/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Period> ;
+    sh:class epo:Period ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Period> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBeginning ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Period> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEnd ] ;
+    sh:targetClass epo:Period .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/PeriodModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/PeriodModification> ;
+    sh:class epo:Period ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/PeriodModification> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEnd ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/PeriodModification> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasBeginning ] ;
+    sh:targetClass epo:Period .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/PlannedProcurementPart/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/PlannedProcurementPart> ;
+    sh:class epo:PlannedProcurementPart ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/PlannedProcurementPart> ;
+            sh:class epo:ProcessPlanningTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:isSubjectToTerm ] ;
+    sh:targetClass epo:PlannedProcurementPart .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/PreviousNotice/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/PreviousNotice> ;
+    sh:class epo:Notice ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/PreviousNotice> ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ] ;
+    sh:targetClass epo:Notice .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/PreviousNoticeIdentifier/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/PreviousNoticeIdentifier> ;
+    sh:class epo:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/PreviousNoticeIdentifier> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/PreviousProcedure/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/PreviousProcedure> ;
+    sh:class epo:Procedure ;
+    sh:nodeKind sh:IRI ;
+    sh:targetClass epo:Procedure .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/Procedure/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+    sh:class epo:Procedure ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:EAuctionTechniqueUsage ] [ sh:class epo:DynamicPurchaseSystemTechniqueUsage ] [ sh:class epo:FrameworkAgreementTechniqueUsage ] ) ;
+            sh:path epo:usesTechnique ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo:ProcedureTerm ] [ sh:class epo:ReviewTerm ] [ sh:class epo:FrameworkAgreementTerm ] [ sh:class epo:AccessTerm ] [ sh:class epo:SubmissionTerm ] ) ;
+            sh:path epo:isSubjectToProcedureSpecificTerm ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMainFeature ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAdditionalInformation ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:class epo:Purpose ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPurpose ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isJointProcurement ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasTitle ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isAccelerated ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasProcedureType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isCoveredByGPA ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasEstimatedValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasProcurementScopeDividedIntoLot ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAcceleratedProcedureJustification ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:class epo:ContractTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:foreseesContractSpecificTerm ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Procedure> ;
+            sh:class cv:Channel ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:usesChannel ] ;
+    sh:targetClass epo:Procedure .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ProcedureIdentifier/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedureIdentifier> ;
+    sh:class epo:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedureIdentifier> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ProcedureModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedureModification> ;
+    sh:class epo:Procedure ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedureModification> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:containsModificationsOf ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedureModification> ;
+            sh:class epo:Purpose ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPurpose ] ;
+    sh:targetClass epo:Procedure .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ProcedurePurpose/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedurePurpose> ;
+    sh:class epo:Purpose ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedurePurpose> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/cpv/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasMainClassification ] ;
+    sh:targetClass epo:Purpose .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ProcedurePurposeModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedurePurposeModification> ;
+    sh:class epo:Purpose ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedurePurposeModification> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/cpv/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasMainClassification ] ;
+    sh:targetClass epo:Purpose .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ProcedureTerm/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedureTerm> ;
+    sh:class epo:ProcedureTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedureTerm> ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMaximumLotSubmissionAllowed ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedureTerm> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isOneLotOnlyAllowed ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedureTerm> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLotAwardCombination ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedureTerm> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isSubmissionForAllLotsAllowed ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedureTerm> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasNationalProcedureRules ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedureTerm> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isAwardedByCPB ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedureTerm> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasCrossBorderLaw ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcedureTerm> ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasMaximumNumberOfLotsToBeAwarded ] ;
+    sh:targetClass epo:ProcedureTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermLot/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermLot> ;
+    sh:class epo:ProcessPlanningTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcessPlanningTermLot> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEstimatedContractNoticePublicationDate ] ;
+    sh:targetClass epo:ProcessPlanningTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ProcurementHighestReceivedTenderValue/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementHighestReceivedTenderValue> ;
+    sh:class epo:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementHighestReceivedTenderValue> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementHighestReceivedTenderValue> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ProcurementLowestReceivedTenderValue/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementLowestReceivedTenderValue> ;
+    sh:class epo:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementLowestReceivedTenderValue> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementLowestReceivedTenderValue> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ProcurementMonetaryValue/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementMonetaryValue> ;
+    sh:class epo:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementMonetaryValue> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementMonetaryValue> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProvider/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProvider> ;
+    sh:class epo:ProcurementProcedureInformationProvider ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProvider> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProvider> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProvider> ;
+            sh:class cv:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ] ;
+    sh:targetClass epo:ProcurementProcedureInformationProvider .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProviderIdem/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProviderIdem> ;
+    sh:class epo:ProcurementProcedureInformationProvider ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProviderIdem> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProviderIdem> ;
+            sh:class cv:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcedureInformationProviderIdem> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ] ;
+    sh:targetClass epo:ProcurementProcedureInformationProvider .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcessInformation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcessInformation> ;
+    sh:class epo:ProcurementProcessInformation ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcessInformation> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:concernsProcedure ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcessInformation> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isDPSTerminated ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ProcurementProcessInformation> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:isCompetitionTerminated ] ;
+    sh:targetClass epo:ProcurementProcessInformation .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/PublicationProvision/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/PublicationProvision> ;
+    sh:nodeKind sh:IRI .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProvider/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProvider> ;
+    sh:class epo:ReviewProcedureInformationProvider ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProvider> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProvider> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:ReviewProcedureInformationProvider .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint> ;
+    sh:class cv:ContactPoint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:telephone ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasFax ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:email ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasInternetAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasContactName ] ;
+    sh:targetClass cv:ContactPoint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisation> ;
+    sh:class org:Organization ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisation> ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisation> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLegalName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisation> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path cv:registeredAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisation> ;
+            sh:class cv:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPrimaryContactPoint ] ;
+    sh:targetClass org:Organization .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationAddress> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCountryCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:thoroughfare ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postCode ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationIdentifier/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationIdentifier> ;
+    sh:class epo:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewProcedureInformationProviderOrganisationIdentifier> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ReviewTerm/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewTerm> ;
+    sh:class epo:ReviewTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewTerm> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReviewDeadlineInformation ] ;
+    sh:targetClass epo:ReviewTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/Reviewer/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Reviewer> ;
+    sh:class epo:Reviewer ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Reviewer> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Reviewer> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:Reviewer .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint> ;
+    sh:class cv:ContactPoint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasFax ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:telephone ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:email ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasInternetAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasContactName ] ;
+    sh:targetClass cv:ContactPoint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisation> ;
+    sh:class org:Organization ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisation> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path cv:registeredAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisation> ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisation> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLegalName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisation> ;
+            sh:class cv:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPrimaryContactPoint ] ;
+    sh:targetClass org:Organization .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationAddress> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:thoroughfare ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCountryCode ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationIdentifier/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationIdentifier> ;
+    sh:class epo:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/ReviewerOrganisationIdentifier> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/SubcontractingEstimate/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubcontractingEstimate> ;
+    sh:class epo:SubcontractingEstimate ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubcontractingEstimate> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEstimatedPercentage ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubcontractingEstimate> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubcontractingEstimate> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasSubcontractingEstimatedValue ] ;
+    sh:targetClass epo:SubcontractingEstimate .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/SubcontractingEstimatedValueMonetaryValue/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubcontractingEstimatedValueMonetaryValue> ;
+    sh:class epo:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubcontractingEstimatedValueMonetaryValue> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubcontractingEstimatedValueMonetaryValue> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/SubmissionStatisticalInformation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionStatisticalInformation> ;
+    sh:class epo:SubmissionStatisticalInformation ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionStatisticalInformation> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasLowestReceivedTenderValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionStatisticalInformation> ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReceivedNonEUTenders ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionStatisticalInformation> ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasElectronicTenders ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionStatisticalInformation> ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReceivedSMETenders ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionStatisticalInformation> ;
+            sh:class epo:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasHighestReceivedTenderValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionStatisticalInformation> ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReceivedTenders ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionStatisticalInformation> ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasEUReceivedTenders ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionStatisticalInformation> ;
+            sh:class epo:LotAwardOutcome ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:summarisesInformationForLotAwardOutcome ] ;
+    sh:targetClass epo:SubmissionStatisticalInformation .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/SubmissionStatisticalInformationFromResults/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionStatisticalInformationFromResults> ;
+    sh:nodeKind sh:IRI .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/SubmissionTerm/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionTerm> ;
+    sh:class epo:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionTerm> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasSubmissionURL ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionTerm> ;
+            sh:datatype xsd:string ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReceiptExpressionDeadline ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionTerm> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLanguage ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/SubmissionTerm> ;
+            sh:datatype xsd:string ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasReceiptDeadline ] ;
+    sh:targetClass epo:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/Tender/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Tender> ;
+    sh:class epo:Tender ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Tender> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasItemCountryOfOrigin ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Tender> ;
+            sh:class epo:ConcessionEstimate ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:foreseesConcession ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Tender> ;
+            sh:class epo:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:isSubmittedForLot ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Tender> ;
+            sh:class epo:SubcontractingEstimate ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:foreseesSubcontracting ] ;
+    sh:targetClass epo:Tender .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/TenderAwardOutcome/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderAwardOutcome> ;
+    sh:class epo:TenderAwardOutcome ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderAwardOutcome> ;
+            sh:class epo:Winner ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:indicatesAwardOfLotToWinner ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderAwardOutcome> ;
+            sh:class epo:Tender ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:describesTender ] ;
+    sh:targetClass epo:TenderAwardOutcome .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/TenderAwardOutcomeModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderAwardOutcomeModification> ;
+    sh:class epo:TenderAwardOutcome ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderAwardOutcomeModification> ;
+            sh:class epo:Winner ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:indicatesAwardOfLotToWinner ] ;
+    sh:targetClass epo:TenderAwardOutcome .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiver/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiver> ;
+    sh:class epo:TenderReceiver ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiver> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiver> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiver> ;
+            sh:class cv:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ] ;
+    sh:targetClass epo:TenderReceiver .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverIdem/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverIdem> ;
+    sh:class epo:TenderReceiver ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverIdem> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverIdem> ;
+            sh:class cv:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasContactPointInRole ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverIdem> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ] ;
+    sh:targetClass epo:TenderReceiver .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisation> ;
+    sh:class org:Organization ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisation> ;
+            sh:class epo:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasID ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisation> ;
+            sh:class cv:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasPrimaryContactPoint ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisation> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path cv:registeredAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisation> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasLegalName ] ;
+    sh:targetClass org:Organization .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationAddress> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:thoroughfare ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/nuts/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasNutsCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCountryCode ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationContactPoint/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationContactPoint> ;
+    sh:class cv:ContactPoint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasInternetAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasContactName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:email ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasFax ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationContactPoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cv:telephone ] ;
+    sh:targetClass cv:ContactPoint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationIdentifier/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationIdentifier> ;
+    sh:class epo:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/TenderReceiverOrganisationIdentifier> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasIdentifierValue ] ;
+    sh:targetClass epo:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/UserConcessionRevenueMonetaryValue/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/UserConcessionRevenueMonetaryValue> ;
+    sh:class epo:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/UserConcessionRevenueMonetaryValue> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo:hasAmountValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/UserConcessionRevenueMonetaryValue> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:hasCurrency ] ;
+    sh:targetClass epo:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/Winner/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Winner> ;
+    sh:class epo:Winner ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Winner> ;
+            sh:class epo:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Winner> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:Winner .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/WinnerFromResults/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/WinnerFromResults> ;
+    sh:nodeKind sh:IRI .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/WinnerModification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/WinnerModification> ;
+    sh:class epo:Winner ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/WinnerModification> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo:playedBy ] ;
+    sh:targetClass epo:Winner .
+
+[] sh:path epo:hasModificationReasonDescription .
+
+[] sh:path epo:hasModificationJustification .
+
+[] sh:path epo:hasModificationJustification .
+
+[] sh:path epo:hasIdentifierValue .
+
+[] sh:path epo:announcesRole .
+
+[] sh:path epo:announcesRole .
+
+[] sh:path epo:announcesRole .
+
+[] sh:path epo:hasMember .
+
+[] sh:path epo:announcesRole .
+
+[] sh:path epo:announcesRole .
+
+[] sh:path epo:announcesRole .
+
+[] sh:path epo:announcesRole .
+
+[] sh:path epo:announcesRole .
+
+[] sh:path epo:announcesRole .
+
+[] sh:path epo:announcesRole .
+
+[] sh:path epo:announcesRole .
+
+[] sh:path epo:announcesRole .
+
+[] sh:path epo:isProcurementDocumentRestricted .
+
+[] sh:path epo:isProcurementDocumentRestricted .
+
+[] sh:path epo:hasAwardDecisionDate .
+
+[] sh:path epo:hasAwardDecisionDate .
+
+[] sh:path epo:hasItemCountryOfOrigin .
+
+[] sh:path epo:hasItemCountryOfOrigin .
+
+[] sh:path epo:hasMainActivity .
+
+[] sh:path epo:hasMainActivityDescription .
+
+[] sh:path epo:hasMainActivity .
+
+[] sh:path epo:hasMainActivityDescription .
+
+[] sh:path epo:specifiesAwardCriterion .
+
+[] sh:path epo:specifiesAwardCriterion .
+
+[] sh:path epo:specifiesAwardCriterion .
+
+[] sh:path epo:isSubjectToLotSpecificTerm .
+
+[] sh:path epo:specifiesAwardCriterion .
+
+[] sh:path epo:isSubjectToLotSpecificTerm .
+
+[] sh:path epo:usesTechnique .
+
+[] sh:path epo:isSubjectToProcedureSpecificTerm .
+
+[] sh:path epo:hasMember .
+
+[] sh:path epo:isSubjectToProcedureSpecificTerm .
+
+[] sh:path epo:isSubjectToProcedureSpecificTerm .
+
+[] sh:path epo:usesTechnique .
+
+[] sh:path epo:usesTechnique .
+
+[] sh:path epo:isSubjectToProcedureSpecificTerm .
+
+[] sh:path epo:isSubjectToProcedureSpecificTerm .
+
+[] sh:path epo:hasMainActivityDescription .
+
+[] sh:path epo:hasMainActivity .
+
+[] sh:path epo:hasMainActivity .
+
+[] sh:path epo:hasMainActivityDescription .
+

@@ -1,0 +1,541 @@
+[
+  {
+    "type": "FNI",
+    "focusNodeDiffer": [
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Candidate",
+        "presentIn": {
+          "OWL": [],
+          "CM": [
+            "I259/J259"
+          ]
+        },
+        "missingIn": {
+          "RML": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Fund",
+        "presentIn": {
+          "OWL": [],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Fund-isFundedBy-Lot_ND-Funding"
+          ]
+        },
+        "missingIn": {
+          "CM": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ResultNotice",
+        "presentIn": {
+          "OWL": [],
+          "CM": [
+            "I26/J26"
+          ]
+        },
+        "missingIn": {
+          "RML": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#VehicleInformation",
+        "presentIn": {
+          "OWL": [],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-VehicleInformation_ND-StrategicProcurementInformationLot"
+          ]
+        },
+        "missingIn": {
+          "CM": []
+        }
+      }
+    ]
+  },
+  {
+    "type": "PVI",
+    "propertyValueDiffer": [
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#AwardCriterion",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasConstraint",
+        "presentIn": {
+          "OWL": [],
+          "CM": [
+            "I238/J238",
+            "I241/J241",
+            "I413/J413",
+            "I416/J416"
+          ]
+        },
+        "missingIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardCriterion",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardFixedCriterionParameter",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardWeightCriterionParameter",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardCriterion",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardFixedCriterionParameter",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardWeightCriterionParameter"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#GreenProcurement",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#usesCleanVehicleDirective",
+        "presentIn": {
+          "OWL": [],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-StrategicProcurementLot"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "I130/J130"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#JuryMember",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#contextualisedBy",
+        "presentIn": {
+          "OWL": [],
+          "CM": [
+            "I252/J252"
+          ]
+        },
+        "missingIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Lot",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#isFundedBy",
+        "presentIn": {
+          "OWL": [],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "I86/J86"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#LotGroup",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasConstraint",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup_ND-LotsGroup"
+          ]
+        },
+        "missingIn": {
+          "OWL": [],
+          "CM": [
+            "I390/J390"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#MonetaryValue",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasCurrency",
+        "presentIn": {
+          "OWL": [],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-LotGroup_ND-LotsGroupValueEstimate",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-Lot_ND-LotValueEstimate",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-Procedure_ND-ProcedureValueEstimate",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-LotGroup_ND-LotsGroupFA",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-LotGroup_ND-LotsGroupValueEstimateExtension",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Lot_ND-LotValueEstimateExtension",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Procedure_ND-ProcedureValueEstimateExtension"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "I58/J58"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ProcurementProcessInformation",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#isCompetitionTerminated",
+        "presentIn": {
+          "OWL": [],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcessInformation_ND-ProcedureTenderingProcess"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "I95/J95"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://www.w3.org/ns/adms#Identifier",
+        "propertyPath": "http://data.europa.eu/a4g/ontology#hasScheme",
+        "presentIn": {
+          "OWL": [],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-LotGroup_ND-LotsGroupProcurementScope",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-Lot_ND-LotProcurementScope",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-Procedure_ND-ProcedureProcurementScope",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-LotGroup_ND-LotsGroup",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Lot_ND-Lot",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Notice_ND-Root",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Organization_ND-Company",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Procedure-refersToProcedure-Notice_ND-Root"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "I7/J7"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://www.w3.org/ns/org#Organization",
+        "propertyPath": "http://purl.org/dc/terms/title",
+        "presentIn": {
+          "OWL": [],
+          "CM": [
+            "I259/J259"
+          ]
+        },
+        "missingIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Organization-playedBy-Buyer_ND-ServiceProvider",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Organization_ND-Company",
+            "http://data.europa.eu/a4g/mapping/sf-rml/X-ContactPoint-Organization"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://www.w3.org/ns/org#Organization",
+        "propertyPath": "http://www.w3.org/2002/07/owl#sameAs",
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/X-ContactPoint-Organization"
+          ]
+        },
+        "missingIn": {
+          "OWL": [],
+          "CM": [
+            "I29/J29"
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "type": "PVCI",
+    "constraintDiffer": [
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ChangeInformation",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#hasProcurementDocumentChangeDate",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#datatype",
+          "http://www.w3.org/2001/XMLSchema#date"
+        ],
+        "presentIn": {
+          "CM": [
+            "I429/J429"
+          ],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-ChangeInformation_ND-Change"
+          ]
+        },
+        "missingIn": {
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#EnvironmentalProtectionInformationProvider",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#playedBy",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#class",
+          "http://www.w3.org/ns/org#Organization"
+        ],
+        "presentIn": {
+          "OWL": [],
+          "CM": [
+            "I200/J200",
+            "I201/J201",
+            "I203/J203"
+          ]
+        },
+        "missingIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislation"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Lot",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#isSubjectToLotSpecificTerm",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#class",
+          "http://www.w3.org/ns/locn#Address"
+        ],
+        "presentIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot"
+          ]
+        },
+        "missingIn": {
+          "OWL": [],
+          "CM": [
+            "I175/J175",
+            "I180/J180",
+            "I182/J182",
+            "I183/J183",
+            "I184/J184",
+            "I189/J189",
+            "I226/J226",
+            "I229/J229",
+            "I230/J230",
+            "I243/J243",
+            "I244/J244",
+            "I245/J245",
+            "I249/J249",
+            "I250/J250",
+            "I254/J254",
+            "I255/J255",
+            "I262/J262",
+            "I263/J263",
+            "I267/J267",
+            "I270/J270",
+            "I271/J271",
+            "I277/J277",
+            "I279/J279",
+            "I280/J280",
+            "I282/J282",
+            "I283/J283",
+            "I284/J284",
+            "I285/J285",
+            "I290/J290",
+            "I299/J299",
+            "I300/J300",
+            "I305/J305",
+            "I313/J313",
+            "I314/J314",
+            "I315/J315",
+            "I316/J316",
+            "I318/J318",
+            "I319/J319",
+            "I321/J321",
+            "I322/J322",
+            "I323/J323",
+            "I324/J324",
+            "I325/J325",
+            "I326/J326",
+            "I327/J327",
+            "I329/J329",
+            "I330/J330",
+            "I331/J331",
+            "I333/J333",
+            "I334/J334",
+            "I335/J335",
+            "I337/J337",
+            "I339/J339",
+            "I340/J340",
+            "I341/J341",
+            "I342/J342",
+            "I343/J343",
+            "I344/J344",
+            "I345/J345",
+            "I346/J346",
+            "I347/J347",
+            "I349/J349",
+            "I352/J352",
+            "I353/J353",
+            "I354/J354",
+            "I356/J356",
+            "I357/J357",
+            "I362/J362",
+            "I367/J367",
+            "I371/J371",
+            "I373/J373",
+            "I375/J375",
+            "I380/J380"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Mediator",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#playedBy",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#class",
+          "http://www.w3.org/ns/org#Organization"
+        ],
+        "presentIn": {
+          "OWL": [],
+          "CM": [
+            "I385/J385",
+            "I386/J386",
+            "I388/J388"
+          ]
+        },
+        "missingIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Mediator_ND-LotReviewTerms"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#OfflineAccessProvider",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#playedBy",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#class",
+          "http://www.w3.org/ns/org#Organization"
+        ],
+        "presentIn": {
+          "OWL": [],
+          "CM": [
+            "I367/J367",
+            "I368/J368",
+            "I370/J370"
+          ]
+        },
+        "missingIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-OfflineAccessProvider_ND-LotTenderingTerms"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Period",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#hasBeginning",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#datatype",
+          "http://www.w3.org/2001/XMLSchema#date"
+        ],
+        "presentIn": {
+          "CM": [
+            "I158/J158"
+          ],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Period-definesContractPeriod-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration"
+          ]
+        },
+        "missingIn": {
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#Period",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#hasEnd",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#datatype",
+          "http://www.w3.org/2001/XMLSchema#date"
+        ],
+        "presentIn": {
+          "CM": [
+            "I159/J159"
+          ],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Period-definesContractPeriod-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration"
+          ]
+        },
+        "missingIn": {
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#ProcurementProcedureInformationProvider",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#playedBy",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#class",
+          "http://www.w3.org/ns/org#Organization"
+        ],
+        "presentIn": {
+          "OWL": [],
+          "CM": [
+            "I362/J362",
+            "I363/J363",
+            "I365/J365"
+          ]
+        },
+        "missingIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcedureInformationProvider_ND-LotTenderingTerms"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#SecurityClearanceTerm",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#hasDeadline",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#datatype",
+          "http://www.w3.org/2001/XMLSchema#date"
+        ],
+        "presentIn": {
+          "CM": [
+            "I277/J277"
+          ],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-SecurityClearanceTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms"
+          ]
+        },
+        "missingIn": {
+          "OWL": []
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/a4g/ontology#SpecificDuration",
+        "propertyValue": "http://www.w3.org/2006/time#unitType",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#class",
+          "http://www.w3.org/2006/time#TemporalUnit"
+        ],
+        "presentIn": {
+          "OWL": [],
+          "CM": [
+            "I161/J161",
+            "I162/J162",
+            "I163/J163",
+            "I164/J164",
+            "I324/J324",
+            "I325/J325",
+            "I326/J326",
+            "I327/J327"
+          ]
+        },
+        "missingIn": {
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-SpecificDuration-definesContractDuration-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-SpecificDuration-hasTenderValidityDuration-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms"
+          ]
+        }
+      },
+      {
+        "focusNode": "http://data.europa.eu/m8g/Constraint",
+        "propertyValue": "http://data.europa.eu/a4g/ontology#hasThresholdValue",
+        "constraint": [
+          "http://www.w3.org/ns/shacl#nodeKind",
+          "http://www.w3.org/ns/shacl#IRI"
+        ],
+        "presentIn": {
+          "OWL": [],
+          "RML": [
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardThresholdCriterionParameter",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardThresholdCriterionParameter",
+            "http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageCriterionParameter"
+          ]
+        },
+        "missingIn": {
+          "CM": [
+            "I225/J225",
+            "I238/J238",
+            "I413/J413"
+          ]
+        }
+      }
+    ]
+  }
+]

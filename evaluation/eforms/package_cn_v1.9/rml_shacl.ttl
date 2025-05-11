@@ -1,0 +1,2660 @@
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix cpov: <http://data.europa.eu/m8g/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix epo-not: <http://data.europa.eu/a4g/ontology#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix org: <http://www.w3.org/ns/org#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix person: <http://www.w3.org/ns/person#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress> ;
+    sh:class dcterms:Location ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/nuts/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasNutsCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path locn:address ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasCountryCode ] ;
+    sh:targetClass dcterms:Location .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotInfoRequestPeriod/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotInfoRequestPeriod> ;
+    sh:class epo-not:AccessTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotInfoRequestPeriod> ;
+            sh:datatype xsd:dateTime ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAdditionalInformationDeadline ] ;
+    sh:targetClass epo-not:AccessTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument> ;
+    sh:class epo-not:AccessTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument> ;
+            sh:class epo-not:ProcurementDocument ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:involvesProcurementDocument ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasPublicAccessURL ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/communication-justification/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasDocumentRestrictionJustification ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isProcurementDocumentRestricted ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotProcurementDocument> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasRestrictedAccessURL ] ;
+    sh:targetClass epo-not:AccessTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms> ;
+    sh:class epo-not:AccessTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms> ;
+            sh:class epo-not:OfflineAccessProvider ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesOfflineAccessProvider ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms> ;
+            sh:class epo-not:ProcurementProcedureInformationProvider ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesProcurementProcedureInformationProvider ] ;
+    sh:targetClass epo-not:AccessTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-AcquiringCentralPurchasingBody_ND-Organization/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AcquiringCentralPurchasingBody_ND-Organization> ;
+    sh:class epo-not:AcquiringCentralPurchasingBody ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AcquiringCentralPurchasingBody_ND-Organization> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ] ;
+    sh:targetClass epo-not:AcquiringCentralPurchasingBody .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-AdHocChannel-usesChannel-Lot_ND-LotTenderingProcess/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AdHocChannel-usesChannel-Lot_ND-LotTenderingProcess> ;
+    sh:class epo-not:AdHocChannel ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AdHocChannel-usesChannel-Lot_ND-LotTenderingProcess> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAddressURL ] ;
+    sh:targetClass epo-not:AdHocChannel .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-AdHocChannel-usesChannel-Lot_ND-LotTenderingProcessExtension/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AdHocChannel-usesChannel-Lot_ND-LotTenderingProcessExtension> ;
+    sh:class epo-not:AdHocChannel ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AdHocChannel-usesChannel-Lot_ND-LotTenderingProcessExtension> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ] ;
+    sh:targetClass epo-not:AdHocChannel .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-ContactPoint_ND-TouchpointAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-ContactPoint_ND-TouchpointAddress> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-ContactPoint_ND-TouchpointAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-ContactPoint_ND-TouchpointAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasCountryCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-ContactPoint_ND-TouchpointAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-ContactPoint_ND-TouchpointAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/nuts/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasNutsCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-ContactPoint_ND-TouchpointAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:fullAddress ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:fullAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasCountryCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/nuts/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasNutsCode ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasCountryCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:fullAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-address-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/nuts/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasNutsCode ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-definesOpeningPlace-OpeningTerm-isSubjectToLotSpecificTerm-Lot_ND-PublicOpeningPlace/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-definesOpeningPlace-OpeningTerm-isSubjectToLotSpecificTerm-Lot_ND-PublicOpeningPlace> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-definesOpeningPlace-OpeningTerm-isSubjectToLotSpecificTerm-Lot_ND-PublicOpeningPlace> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:fullAddress ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-registeredAddress-Organization_ND-CompanyAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-registeredAddress-Organization_ND-CompanyAddress> ;
+    sh:class locn:Address ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-registeredAddress-Organization_ND-CompanyAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-registeredAddress-Organization_ND-CompanyAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/nuts/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasNutsCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-registeredAddress-Organization_ND-CompanyAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:fullAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-registeredAddress-Organization_ND-CompanyAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasCountryCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Address-registeredAddress-Organization_ND-CompanyAddress> ;
+            sh:nodeKind sh:Literal ;
+            sh:path locn:postCode ] ;
+    sh:targetClass locn:Address .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardCriterion/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardCriterion> ;
+    sh:class epo-not:AwardCriterion ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardCriterion> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardCriterion> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/award-criterion-type/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasAwardCriterionType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardCriterion> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:prefLabel ] ;
+    sh:targetClass epo-not:AwardCriterion .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardFixedCriterionParameter/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardFixedCriterionParameter> ;
+    sh:class epo-not:AwardCriterion ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardFixedCriterionParameter> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/number-fixed/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasFixedValueType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardFixedCriterionParameter> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasFixedValue ] ;
+    sh:targetClass epo-not:AwardCriterion .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardWeightCriterionParameter/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardWeightCriterionParameter> ;
+    sh:class epo-not:AwardCriterion ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardWeightCriterionParameter> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path cpov:weight ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardWeightCriterionParameter> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/number-weight/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasWeightValueType ] ;
+    sh:targetClass epo-not:AwardCriterion .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardCriterion/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardCriterion> ;
+    sh:class epo-not:AwardCriterion ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardCriterion> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardCriterion> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:prefLabel ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardCriterion> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/award-criterion-type/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasAwardCriterionType ] ;
+    sh:targetClass epo-not:AwardCriterion .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardFixedCriterionParameter/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardFixedCriterionParameter> ;
+    sh:class epo-not:AwardCriterion ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardFixedCriterionParameter> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasFixedValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardFixedCriterionParameter> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/number-fixed/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasFixedValueType ] ;
+    sh:targetClass epo-not:AwardCriterion .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardWeightCriterionParameter/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardWeightCriterionParameter> ;
+    sh:class epo-not:AwardCriterion ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardWeightCriterionParameter> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/number-weight/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasWeightValueType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardWeightCriterionParameter> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path cpov:weight ] ;
+    sh:targetClass epo-not:AwardCriterion .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardEvaluationTerm-isSubjectToLotSpecificTerm-Lot_ND-LotAwardCriteria/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardEvaluationTerm-isSubjectToLotSpecificTerm-Lot_ND-LotAwardCriteria> ;
+    sh:class epo-not:AwardEvaluationTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardEvaluationTerm-isSubjectToLotSpecificTerm-Lot_ND-LotAwardCriteria> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAwardCriteriaEvaluationFormula ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardEvaluationTerm-isSubjectToLotSpecificTerm-Lot_ND-LotAwardCriteria> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAwardCriteriaOrderJustification ] ;
+    sh:targetClass epo-not:AwardEvaluationTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardingCentralPurchasingBody_ND-Organization/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardingCentralPurchasingBody_ND-Organization> ;
+    sh:class epo-not:AwardingCentralPurchasingBody ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-AwardingCentralPurchasingBody_ND-Organization> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ] ;
+    sh:targetClass epo-not:AwardingCentralPurchasingBody .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Buyer_ND-ContractingParty/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Buyer_ND-ContractingParty> ;
+    sh:class epo-not:Buyer ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Buyer_ND-ContractingParty> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isContractingEntity ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Buyer_ND-ContractingParty> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasBuyerProfile ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Buyer_ND-ContractingParty> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ] ;
+    sh:targetClass epo-not:Buyer .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ChangeInformation_ND-Change/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ChangeInformation_ND-Change> ;
+    sh:class epo-not:ChangeInformation ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ChangeInformation_ND-Change> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasChangeDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ChangeInformation_ND-Change> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:relatesToEFormSectionIdentifier ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ChangeInformation_ND-Change> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isProcurementDocumentChanged ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ChangeInformation_ND-Change> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasProcurementDocumentChangeDate ] ;
+    sh:targetClass epo-not:ChangeInformation .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ChangeInformation_ND-ChangeReason/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ChangeInformation_ND-ChangeReason> ;
+    sh:class epo-not:ChangeInformation ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ChangeInformation_ND-ChangeReason> ;
+            sh:class epo-not:Notice ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:refersToPreviousNotice ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ChangeInformation_ND-ChangeReason> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/change-corrig-justification/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasChangeJustification ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ChangeInformation_ND-ChangeReason> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasChangeReasonDescription ] ;
+    sh:targetClass epo-not:ChangeInformation .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-CompetitionNotice_ND-Root/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-CompetitionNotice_ND-Root> ;
+    sh:class epo-not:CompetitionNotice ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-CompetitionNotice_ND-Root> ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo-not:Reviewer ] [ sh:class epo-not:EnvironmentalProtectionInformationProvider ] [ sh:class epo-not:JuryMember ] [ sh:class epo-not:TaxInformationProvider ] [ sh:class epo-not:Buyer ] [ sh:class epo-not:AwardingCentralPurchasingBody ] [ sh:class epo-not:EmploymentInformationProvider ] [ sh:class epo-not:ProcurementServiceProvider ] [ sh:class epo-not:TenderReceiver ] [ sh:class epo-not:ReviewProcedureInformationProvider ] [ sh:class epo-not:Mediator ] [ sh:class epo-not:TenderProcessor ] [ sh:class epo-not:AcquiringCentralPurchasingBody ] [ sh:class epo-not:LeadBuyer ] [ sh:class epo-not:OfflineAccessProvider ] [ sh:class epo-not:ProcurementProcedureInformationProvider ] ) ;
+            sh:path epo-not:announcesRole ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-CompetitionNotice_ND-Root> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:announcesLot ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-CompetitionNotice_ND-Root> ;
+            sh:class epo-not:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:announcesProcedure ] ;
+    sh:targetClass epo-not:CompetitionNotice .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardThresholdCriterionParameter/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardThresholdCriterionParameter> ;
+    sh:class cpov:Constraint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardThresholdCriterionParameter> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasThresholdValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-LotGroup_ND-LotsGroupAwardThresholdCriterionParameter> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/number-threshold/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasThresholdType ] ;
+    sh:targetClass cpov:Constraint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardThresholdCriterionParameter/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardThresholdCriterionParameter> ;
+    sh:class cpov:Constraint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardThresholdCriterionParameter> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/number-threshold/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasThresholdType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-AwardCriterion-specifiesProcurementCriterion-Lot_ND-LotAwardThresholdCriterionParameter> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasThresholdValue ] ;
+    sh:targetClass cpov:Constraint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageThresholdCriterionParameter/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageThresholdCriterionParameter> ;
+    sh:class cpov:Constraint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageThresholdCriterionParameter> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/number-threshold/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasThresholdType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Constraint-hasConstraint-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageThresholdCriterionParameter> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasThresholdValue ] ;
+    sh:targetClass cpov:Constraint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint-hasPrimaryContactPoint-Organization_ND-CompanyContact/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint-hasPrimaryContactPoint-Organization_ND-CompanyContact> ;
+    sh:class cpov:ContactPoint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint-hasPrimaryContactPoint-Organization_ND-CompanyContact> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasInternetAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint-hasPrimaryContactPoint-Organization_ND-CompanyContact> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cpov:telephone ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint-hasPrimaryContactPoint-Organization_ND-CompanyContact> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasFax ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint-hasPrimaryContactPoint-Organization_ND-CompanyContact> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cpov:email ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint-hasPrimaryContactPoint-Organization_ND-CompanyContact> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasContactName ] ;
+    sh:targetClass cpov:ContactPoint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint_ND-Touchpoint/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint_ND-Touchpoint> ;
+    sh:class cpov:ContactPoint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint_ND-Touchpoint> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path locn:address ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint_ND-Touchpoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasInternetAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint_ND-Touchpoint> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ] ;
+    sh:targetClass cpov:ContactPoint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint_ND-TouchpointContact/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint_ND-TouchpointContact> ;
+    sh:class cpov:ContactPoint ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint_ND-TouchpointContact> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasContactName ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint_ND-TouchpointContact> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasFax ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint_ND-TouchpointContact> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cpov:telephone ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContactPoint_ND-TouchpointContact> ;
+            sh:nodeKind sh:Literal ;
+            sh:path cpov:email ] ;
+    sh:targetClass cpov:ContactPoint .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-ExecutionRequirements/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-ExecutionRequirements> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-ExecutionRequirements> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasPerformanceConditions ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotContractAdditionalNature/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotContractAdditionalNature> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotContractAdditionalNature> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/contract-nature/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasAdditionalContractNature ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotEInvoicing/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotEInvoicing> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotEInvoicing> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/permission/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasEInvoicingPermission ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPerformanceAddress> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/other-place-service/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasBroadPlaceOfPerformance ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPlacePerformance/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPlacePerformance> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotPlacePerformance> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasPlaceOfPerformanceAdditionalInformation ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotProcurementScope/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotProcurementScope> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotProcurementScope> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/contract-nature/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasContractNatureType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotProcurementScope> ;
+            sh:class dcterms:Location ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesSpecificPlaceOfPerformance ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotProcurementScope> ;
+            sh:class epo-not:SpecificDuration ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesContractDuration ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotProcurementScope> ;
+            sh:class epo-not:Period ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesContractPeriod ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotReservedExecution/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotReservedExecution> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotReservedExecution> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/applicability/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasReservedExecution ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-OptionsAndRenewals/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-OptionsAndRenewals> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-OptionsAndRenewals> ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasMaximumNumberOfRenewals ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-OptionsAndRenewals> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasOptionsDescription ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-OptionsDescription/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-OptionsDescription> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-OptionsDescription> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasRenewalDescription ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-PaymentTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-PaymentTerms> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-PaymentTerms> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasPaymentArrangement ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-PostAwardProcess/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-PostAwardProcess> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-PostAwardProcess> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasEOrdering ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-PostAwardProcess> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasEPayment ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-TendererLegalForm/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-TendererLegalForm> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Lot_ND-TendererLegalForm> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasLegalFormRequirement ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedureContractAdditionalNature/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedureContractAdditionalNature> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedureContractAdditionalNature> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/contract-nature/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasAdditionalContractNature ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/other-place-service/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasBroadPlaceOfPerformance ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance> ;
+            sh:class dcterms:Location ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesSpecificPlaceOfPerformance ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformanceAdditionalInformation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformanceAdditionalInformation> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformanceAdditionalInformation> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasPlaceOfPerformanceAdditionalInformation ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedureProcurementScope/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedureProcurementScope> ;
+    sh:class epo-not:ContractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedureProcurementScope> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/contract-nature/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasContractNatureType ] ;
+    sh:targetClass epo-not:ContractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-AwardingTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-AwardingTerms> ;
+    sh:class epo-not:DesignContestRegimeTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-AwardingTerms> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isJuryDecisionBinding ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-AwardingTerms> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasFollowupContract ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-AwardingTerms> ;
+            sh:class epo-not:Prize ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesPrize ] ;
+    sh:targetClass epo-not:DesignContestRegimeTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-DynamicPurchaseSystemTechnique-usesTechnique-Lot_ND-LotTenderingProcess/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-DynamicPurchaseSystemTechnique-usesTechnique-Lot_ND-LotTenderingProcess> ;
+    sh:class epo-not:DynamicPurchaseSystemTechnique ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-DynamicPurchaseSystemTechnique-usesTechnique-Lot_ND-LotTenderingProcess> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/dps-usage/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasDPSScope ] ;
+    sh:targetClass epo-not:DynamicPurchaseSystemTechnique .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-EAuctionTechnique-usesTechnique-Lot_ND-AuctionTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-EAuctionTechnique-usesTechnique-Lot_ND-AuctionTerms> ;
+    sh:class epo-not:EAuctionTechnique ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-EAuctionTechnique-usesTechnique-Lot_ND-AuctionTerms> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-EAuctionTechnique-usesTechnique-Lot_ND-AuctionTerms> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasUsage ] ;
+    sh:targetClass epo-not:EAuctionTechnique .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-EmploymentInformationProvider_ND-LotEmploymentLegislation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-EmploymentInformationProvider_ND-LotEmploymentLegislation> ;
+    sh:class epo-not:EmploymentInformationProvider ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-EmploymentInformationProvider_ND-LotEmploymentLegislation> ;
+            sh:class cpov:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasContactPointInRole ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-EmploymentInformationProvider_ND-LotEmploymentLegislation> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-EmploymentInformationProvider_ND-LotEmploymentLegislation> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:contextualisedBy ] ;
+    sh:targetClass epo-not:EmploymentInformationProvider .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislation> ;
+    sh:class epo-not:EnvironmentalProtectionInformationProvider ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislation> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislation> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-EnvironmentalProtectionInformationProvider_ND-LotEnvironmentalLegislation> ;
+            sh:class cpov:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasContactPointInRole ] ;
+    sh:targetClass epo-not:EnvironmentalProtectionInformationProvider .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds> ;
+    sh:class epo-not:ExclusionGround ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/criterion/shape> ;
+            sh:nodeKind sh:IRI,
+                sh:Literal ;
+            sh:path dcterms:type ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ExclusionGround-specifiesProcurementCriterion-Lot_ND-ExclusionGrounds> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ] ;
+    sh:targetClass epo-not:ExclusionGround .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-FrameworkAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-FA/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-FrameworkAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-FA> ;
+    sh:class epo-not:FrameworkAgreementTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-FrameworkAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-FA> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasDurationExtensionJustification ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-FrameworkAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-FA> ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasMaximumParticipantsNumber ] ;
+    sh:targetClass epo-not:FrameworkAgreementTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-FrameworkAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-FABuyerCategories/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-FrameworkAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-FABuyerCategories> ;
+    sh:class epo-not:FrameworkAgreementTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-FrameworkAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-FABuyerCategories> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasBuyerCategoryDescription ] ;
+    sh:targetClass epo-not:FrameworkAgreementTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-FrameworkAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingProcess/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-FrameworkAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingProcess> ;
+    sh:class epo-not:FrameworkAgreementTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-FrameworkAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingProcess> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/framework-agreement/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasFrameworkAgreementType ] ;
+    sh:targetClass epo-not:FrameworkAgreementTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Fund-isFundedBy-Lot_ND-Funding/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Fund-isFundedBy-Lot_ND-Funding> ;
+    sh:class epo-not:Fund ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Fund-isFundedBy-Lot_ND-Funding> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Fund-isFundedBy-Lot_ND-Funding> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path adms:identifier ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Fund-isFundedBy-Lot_ND-Funding> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/EU-programme/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasFundProgramme ] ;
+    sh:targetClass epo-not:Fund .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-LotEnvironmentalImpactType/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-LotEnvironmentalImpactType> ;
+    sh:class epo-not:GreenProcurement ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-LotEnvironmentalImpactType> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/environmental-impact/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:fulfillsRequirement ] ;
+    sh:targetClass epo-not:GreenProcurement .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-LotGreenCriteria/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-LotGreenCriteria> ;
+    sh:class epo-not:GreenProcurement ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-LotGreenCriteria> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/green-public-procurement-criteria/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:fulfillsRequirement ] ;
+    sh:targetClass epo-not:GreenProcurement .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-StrategicProcurementLot/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-StrategicProcurementLot> ;
+    sh:class epo-not:GreenProcurement ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-GreenProcurement-fulfillsStrategicProcurement-Lot_ND-StrategicProcurementLot> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:usesCleanVehicleDirective ] ;
+    sh:targetClass epo-not:GreenProcurement .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-LotGroup_ND-LotsGroupProcurementScope/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-LotGroup_ND-LotsGroupProcurementScope> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-LotGroup_ND-LotsGroupProcurementScope> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasScheme ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-LotGroup_ND-LotsGroupProcurementScope> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-Lot_ND-LotProcurementScope/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-Lot_ND-LotProcurementScope> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-Lot_ND-LotProcurementScope> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasScheme ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-Lot_ND-LotProcurementScope> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-Procedure_ND-ProcedureProcurementScope/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-Procedure_ND-ProcedureProcurementScope> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-Procedure_ND-ProcedureProcurementScope> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasInternalIdentifier-Procedure_ND-ProcedureProcurementScope> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasScheme ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasLegalIdentifier-Organization_ND-Company/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasLegalIdentifier-Organization_ND-Company> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-hasLegalIdentifier-Organization_ND-Company> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Fund-isFundedBy-Lot_ND-Funding/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Fund-isFundedBy-Lot_ND-Funding> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Fund-isFundedBy-Lot_ND-Funding> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-LotGroup_ND-LotsGroup/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-LotGroup_ND-LotsGroup> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-LotGroup_ND-LotsGroup> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasScheme ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-LotGroup_ND-LotsGroup> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Lot_ND-Lot/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Lot_ND-Lot> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Lot_ND-Lot> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Lot_ND-Lot> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasScheme ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasScheme ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Notice_ND-Root/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Notice_ND-Root> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Notice_ND-Root> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Notice_ND-Root> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasScheme ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Organization_ND-Company/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Organization_ND-Company> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Organization_ND-Company> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasScheme ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Organization_ND-Company> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasScheme ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Procedure-refersToProcedure-Notice_ND-Root/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Procedure-refersToProcedure-Notice_ND-Root> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Procedure-refersToProcedure-Notice_ND-Root> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-identifier-Procedure-refersToProcedure-Notice_ND-Root> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasScheme ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-relatesToEFormSectionIdentifier-ChangeInformation_ND-ChangedSection/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-relatesToEFormSectionIdentifier-ChangeInformation_ND-ChangedSection> ;
+    sh:class adms:Identifier ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Identifier-relatesToEFormSectionIdentifier-ChangeInformation_ND-ChangedSection> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:notation ] ;
+    sh:targetClass adms:Identifier .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-InnovativeProcurement-fulfillsStrategicProcurement-Lot_ND-LotInnovativeAcquisitionType/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-InnovativeProcurement-fulfillsStrategicProcurement-Lot_ND-LotInnovativeAcquisitionType> ;
+    sh:class epo-not:InnovativeProcurement ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-InnovativeProcurement-fulfillsStrategicProcurement-Lot_ND-LotInnovativeAcquisitionType> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/innovative-acquisition/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:fulfillsRequirement ] ;
+    sh:targetClass epo-not:InnovativeProcurement .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember> ;
+    sh:class epo-not:JuryMember ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember> ;
+            sh:class person:Person ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ] ;
+    sh:targetClass epo-not:JuryMember .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-LeadBuyer_ND-Organization/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-LeadBuyer_ND-Organization> ;
+    sh:class epo-not:LeadBuyer ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-LeadBuyer_ND-Organization> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ] ;
+    sh:targetClass epo-not:LeadBuyer .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance> ;
+    sh:class dcterms:Location ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/nuts/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasNutsCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/country/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasCountryCode ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Location-definesSpecificPlaceOfPerformance-ContractTerm-foreseesContractSpecificTerm-Procedure_ND-ProcedurePlacePerformance> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path locn:address ] ;
+    sh:targetClass dcterms:Location .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup-definesLotGroup-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-GroupComposition/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup-definesLotGroup-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-GroupComposition> ;
+    sh:class epo-not:LotGroup ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup-definesLotGroup-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-GroupComposition> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:setsGroupingContextForLot ] ;
+    sh:targetClass epo-not:LotGroup .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup_ND-LotsGroup/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup_ND-LotsGroup> ;
+    sh:class epo-not:LotGroup ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup_ND-LotsGroup> ;
+            sh:class epo-not:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasLaunchFrameworkAgreementMaximumValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup_ND-LotsGroup> ;
+            sh:class epo-not:AwardCriterion ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:specifiesProcurementCriterion ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup_ND-LotsGroup> ;
+            sh:class cpov:Constraint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasConstraint ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup_ND-LotsGroup> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path adms:identifier ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup_ND-LotsGroup> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasInternalIdentifier ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup_ND-LotsGroup> ;
+            sh:class epo-not:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasEstimatedValue ] ;
+    sh:targetClass epo-not:LotGroup .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup_ND-LotsGroupProcurementScope/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup_ND-LotsGroupProcurementScope> ;
+    sh:class epo-not:LotGroup ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup_ND-LotsGroupProcurementScope> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-LotGroup_ND-LotsGroupProcurementScope> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:title ] ;
+    sh:targetClass epo-not:LotGroup .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot> ;
+    sh:class epo-not:Lot ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot> ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class locn:Address ] [ sh:class epo-not:ReviewTerm ] [ sh:class epo-not:MultipleStageProcedureTerm ] [ sh:class epo-not:OpeningTerm ] [ sh:class epo-not:NonDisclosureAgreementTerm ] [ sh:class epo-not:AccessTerm ] [ sh:class epo-not:AwardEvaluationTerm ] [ sh:class epo-not:DesignContestRegimeTerm ] [ sh:class epo-not:FrameworkAgreementTerm ] [ sh:class epo-not:SecurityClearanceTerm ] [ sh:class epo-not:SubmissionTerm ] ) ;
+            sh:path epo-not:isSubjectToLotSpecificTerm ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot> ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo-not:SocialProcurement ] [ sh:class epo-not:InnovativeProcurement ] [ sh:class epo-not:StrategicProcurement ] [ sh:class epo-not:GreenProcurement ] ) ;
+            sh:path epo-not:fulfillsStrategicProcurement ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot> ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo-not:EAuctionTechnique ] [ sh:class epo-not:DynamicPurchaseSystemTechnique ] ) ;
+            sh:path epo-not:usesTechnique ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot> ;
+            sh:class epo-not:AdHocChannel ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:usesChannel ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot> ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo-not:ContractTerm ] [ sh:class epo-not:SubcontractTerm ] ) ;
+            sh:path epo-not:foreseesContractSpecificTerm ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot> ;
+            sh:nodeKind sh:IRI ;
+            sh:or ( [ sh:class epo-not:ParticipationCondition ] [ sh:class epo-not:ProcurementCriterion ] [ sh:class epo-not:AwardCriterion ] [ sh:class epo-not:ExclusionGround ] [ sh:class epo-not:SelectionCriterion ] ) ;
+            sh:path epo-not:specifiesProcurementCriterion ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path adms:identifier ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot> ;
+            sh:class epo-not:Purpose ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasPurpose ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot> ;
+            sh:class epo-not:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasLaunchFrameworkAgreementMaximumValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot> ;
+            sh:class epo-not:Fund ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:isFundedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-Lot> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasInternalIdentifier ] ;
+    sh:targetClass epo-not:Lot .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotProcurementScope/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotProcurementScope> ;
+    sh:class epo-not:Lot ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotProcurementScope> ;
+            sh:class epo-not:Purpose ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasPurpose ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotProcurementScope> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAdditionalInformation ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotProcurementScope> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:title ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotProcurementScope> ;
+            sh:class epo-not:ContractTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:foreseesContractSpecificTerm ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotProcurementScope> ;
+            sh:class epo-not:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasEstimatedValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotProcurementScope> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isSMESuitable ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotProcurementScope> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ] ;
+    sh:targetClass epo-not:Lot .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotTenderingProcess/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotTenderingProcess> ;
+    sh:class epo-not:Lot ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotTenderingProcess> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isCoveredByGPA ] ;
+    sh:targetClass epo-not:Lot .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotTenderingTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotTenderingTerms> ;
+    sh:class epo-not:Lot ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotTenderingTerms> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isUsingEUFunds ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotTenderingTerms> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasRecurrenceDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Lot_ND-LotTenderingTerms> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isRecurrent ] ;
+    sh:targetClass epo-not:Lot .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Mediator_ND-LotReviewTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Mediator_ND-LotReviewTerms> ;
+    sh:class epo-not:Mediator ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Mediator_ND-LotReviewTerms> ;
+            sh:class cpov:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasContactPointInRole ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Mediator_ND-LotReviewTerms> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Mediator_ND-LotReviewTerms> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ] ;
+    sh:targetClass epo-not:Mediator .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-LotGroup_ND-LotsGroupValueEstimate/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-LotGroup_ND-LotsGroupValueEstimate> ;
+    sh:class epo-not:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-LotGroup_ND-LotsGroupValueEstimate> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasCurrency ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-LotGroup_ND-LotsGroupValueEstimate> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAmountValue ] ;
+    sh:targetClass epo-not:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-Lot_ND-LotValueEstimate/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-Lot_ND-LotValueEstimate> ;
+    sh:class epo-not:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-Lot_ND-LotValueEstimate> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasCurrency ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-Lot_ND-LotValueEstimate> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAmountValue ] ;
+    sh:targetClass epo-not:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-Procedure_ND-ProcedureValueEstimate/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-Procedure_ND-ProcedureValueEstimate> ;
+    sh:class epo-not:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-Procedure_ND-ProcedureValueEstimate> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAmountValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasEstimatedValue-Procedure_ND-ProcedureValueEstimate> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasCurrency ] ;
+    sh:targetClass epo-not:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-LotGroup_ND-LotsGroupFA/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-LotGroup_ND-LotsGroupFA> ;
+    sh:class epo-not:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-LotGroup_ND-LotsGroupFA> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasCurrency ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-LotGroup_ND-LotsGroupFA> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAmountValue ] ;
+    sh:targetClass epo-not:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-LotGroup_ND-LotsGroupValueEstimateExtension/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-LotGroup_ND-LotsGroupValueEstimateExtension> ;
+    sh:class epo-not:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-LotGroup_ND-LotsGroupValueEstimateExtension> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasCurrency ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-LotGroup_ND-LotsGroupValueEstimateExtension> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAmountValue ] ;
+    sh:targetClass epo-not:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Lot_ND-LotValueEstimateExtension/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Lot_ND-LotValueEstimateExtension> ;
+    sh:class epo-not:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Lot_ND-LotValueEstimateExtension> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAmountValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Lot_ND-LotValueEstimateExtension> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasCurrency ] ;
+    sh:targetClass epo-not:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Procedure_ND-ProcedureValueEstimateExtension/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Procedure_ND-ProcedureValueEstimateExtension> ;
+    sh:class epo-not:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Procedure_ND-ProcedureValueEstimateExtension> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAmountValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasLaunchFrameworkAgreementMaximumValue-Procedure_ND-ProcedureValueEstimateExtension> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/currency/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasCurrency ] ;
+    sh:targetClass epo-not:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize> ;
+    sh:class epo-not:MonetaryValue ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MonetaryValue-hasPrizeValue-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAmountValue ] ;
+    sh:targetClass epo-not:MonetaryValue .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-AwardingTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-AwardingTerms> ;
+    sh:class epo-not:MultipleStageProcedureTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-AwardingTerms> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasNoNegotiationNecessary ] ;
+    sh:targetClass epo-not:MultipleStageProcedureTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingProcess/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingProcess> ;
+    sh:class epo-not:MultipleStageProcedureTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingProcess> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasEstimatedInvitationToExpressInterestDate ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingProcess> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasSuccessiveReduction ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingProcess> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasEstimatedInvitationToTenderDate ] ;
+    sh:targetClass epo-not:MultipleStageProcedureTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-SecondStage/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-SecondStage> ;
+    sh:class epo-not:MultipleStageProcedureTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-SecondStage> ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasMaximumNumberOfCandidates ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-MultipleStageProcedureTerm-isSubjectToLotSpecificTerm-Lot_ND-SecondStage> ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasMinimumNumberOfCandidates ] ;
+    sh:targetClass epo-not:MultipleStageProcedureTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-NonDisclosureAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-NDA/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-NonDisclosureAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-NDA> ;
+    sh:class epo-not:NonDisclosureAgreementTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-NonDisclosureAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-NDA> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isNonDisclosureAgreementRequired ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-NonDisclosureAgreementTerm-isSubjectToLotSpecificTerm-Lot_ND-NDA> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ] ;
+    sh:targetClass epo-not:NonDisclosureAgreementTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice-concernsNotice-ChangeInformation_ND-Changes/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice-concernsNotice-ChangeInformation_ND-Changes> ;
+    sh:class epo-not:ChangeInformation ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice-concernsNotice-ChangeInformation_ND-Changes> ;
+            sh:class epo-not:Notice ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:concernsNotice ] ;
+    sh:targetClass epo-not:ChangeInformation .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference> ;
+    sh:class epo-not:Notice ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice-refersToPrevious-Notice_ND-PreviousNoticeReference> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path adms:identifier ] ;
+    sh:targetClass epo-not:Notice .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes> ;
+    sh:class epo-not:Notice ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice-refersToPreviousNotice-ChangeInformation_ND-Changes> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path adms:identifier ] ;
+    sh:targetClass epo-not:Notice .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-LotPreviousPlanning/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-LotPreviousPlanning> ;
+    sh:class epo-not:Notice ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-LotPreviousPlanning> ;
+            sh:class epo-not:PlanningNotice ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:refersToPrevious ] ;
+    sh:targetClass epo-not:Notice .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-Root/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-Root> ;
+    sh:class epo-not:Notice ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-Root> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/language/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasOfficialLanguage ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-Root> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasNoticePublicationNumber ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-Root> ;
+            sh:class epo-not:Notice ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:refersToPrevious ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-Root> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasPublicationDate ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-Root> ;
+            sh:datatype xsd:dateTime ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasESenderDispatchDate ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-Root> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/form-type/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasFormType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-Root> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasVersion ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-Root> ;
+            sh:class epo-not:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:refersToProcedure ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-Root> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/notice-type/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasNoticeType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-Root> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:refersToLot ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-Root> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasOJSIssueNumber ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Notice_ND-Root> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path adms:identifier ] ;
+    sh:targetClass epo-not:Notice .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-OfflineAccessProvider_ND-LotTenderingTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-OfflineAccessProvider_ND-LotTenderingTerms> ;
+    sh:class epo-not:OfflineAccessProvider ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-OfflineAccessProvider_ND-LotTenderingTerms> ;
+            sh:class cpov:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasContactPointInRole ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-OfflineAccessProvider_ND-LotTenderingTerms> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-OfflineAccessProvider_ND-LotTenderingTerms> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ] ;
+    sh:targetClass epo-not:OfflineAccessProvider .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-OpeningTerm-isSubjectToLotSpecificTerm-Lot_ND-PublicOpening/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-OpeningTerm-isSubjectToLotSpecificTerm-Lot_ND-PublicOpening> ;
+    sh:class epo-not:OpeningTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-OpeningTerm-isSubjectToLotSpecificTerm-Lot_ND-PublicOpening> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesOpeningPlace ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-OpeningTerm-isSubjectToLotSpecificTerm-Lot_ND-PublicOpening> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasOpeningDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-OpeningTerm-isSubjectToLotSpecificTerm-Lot_ND-PublicOpening> ;
+            sh:datatype xsd:dateTime ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasOpeningDateTime ] ;
+    sh:targetClass epo-not:OpeningTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Organization-playedBy-Buyer_ND-ServiceProvider/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Organization-playedBy-Buyer_ND-ServiceProvider> ;
+    sh:class org:Organization ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Organization-playedBy-Buyer_ND-ServiceProvider> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/main-activity/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasMainActivity ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Organization-playedBy-Buyer_ND-ServiceProvider> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/buyerLegalType/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasBuyerLegalType ] ;
+    sh:targetClass org:Organization .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Organization_ND-Company/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Organization_ND-Company> ;
+    sh:class org:Organization ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Organization_ND-Company> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasLegalIdentifier ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Organization_ND-Company> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path adms:identifier ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Organization_ND-Company> ;
+            sh:class locn:Address ;
+            sh:nodeKind sh:IRI ;
+            sh:path cpov:registeredAddress ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Organization_ND-Company> ;
+            sh:class cpov:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasPrimaryContactPoint ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Organization_ND-Company> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasLegalName ] ;
+    sh:targetClass org:Organization .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ParticipationCondition-specifiesProcurementCriterion-Lot_ND-LotReservedParticipation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ParticipationCondition-specifiesProcurementCriterion-Lot_ND-LotReservedParticipation> ;
+    sh:class epo-not:ParticipationCondition ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ParticipationCondition-specifiesProcurementCriterion-Lot_ND-LotReservedParticipation> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/reserved-procurement/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasReservedProcurement ] ;
+    sh:targetClass epo-not:ParticipationCondition .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Period-definesContractPeriod-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Period-definesContractPeriod-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration> ;
+    sh:class epo-not:Period ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Period-definesContractPeriod-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasEnd ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Period-definesContractPeriod-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/timeperiod/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasTimePeriod ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Period-definesContractPeriod-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasBeginning ] ;
+    sh:targetClass epo-not:Period .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Person-playedBy-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Person-playedBy-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember> ;
+    sh:class person:Person ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Person-playedBy-JuryMember-announcesRole-CompetitionNotice_ND-AwardingTermsJuryMember> ;
+            sh:nodeKind sh:Literal ;
+            sh:path foaf:familyName ] ;
+    sh:targetClass person:Person .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning> ;
+    sh:class epo-not:PlannedProcurementPart ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-PlannedProcurementPart-announcesPlannedProcurementPart-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path adms:identifier ] ;
+    sh:targetClass epo-not:PlannedProcurementPart .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning> ;
+    sh:class epo-not:PlanningNotice ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning> ;
+            sh:class epo-not:PlannedProcurementPart ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:announcesPlannedProcurementPart ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-PlanningNotice-refersToPrevious-Notice_ND-LotPreviousPlanning> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path adms:identifier ] ;
+    sh:targetClass epo-not:PlanningNotice .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize> ;
+    sh:class epo-not:Prize ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize> ;
+            sh:class epo-not:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasPrizeValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Prize-definesPrize-DesignContestRegimeTerm-isSubjectToLotSpecificTerm-Lot_ND-Prize> ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasPrizeRank ] ;
+    sh:targetClass epo-not:Prize .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-CrossBorderLaw/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-CrossBorderLaw> ;
+    sh:class epo-not:ProcedureTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-CrossBorderLaw> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasCrossBorderLaw ] ;
+    sh:targetClass epo-not:ProcedureTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotDistribution/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotDistribution> ;
+    sh:class epo-not:ProcedureTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotDistribution> ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasMaximumNumberOfLotsToBeAwarded ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotDistribution> ;
+            sh:class epo-not:LotGroup ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesLotGroup ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotDistribution> ;
+            sh:datatype xsd:integer ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasMaximumLotSubmissionAllowed ] ;
+    sh:targetClass epo-not:ProcedureTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotEmploymentLegislation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotEmploymentLegislation> ;
+    sh:class epo-not:ProcedureTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotEmploymentLegislation> ;
+            sh:class epo-not:EmploymentInformationProvider ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesInformationProvider ] ;
+    sh:targetClass epo-not:ProcedureTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotEnvironmentalLegislation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotEnvironmentalLegislation> ;
+    sh:class epo-not:ProcedureTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotEnvironmentalLegislation> ;
+            sh:class epo-not:EnvironmentalProtectionInformationProvider ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesInformationProvider ] ;
+    sh:targetClass epo-not:ProcedureTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotFiscalLegislation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotFiscalLegislation> ;
+    sh:class epo-not:ProcedureTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotFiscalLegislation> ;
+            sh:class epo-not:TaxInformationProvider ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesInformationProvider ] ;
+    sh:targetClass epo-not:ProcedureTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotReviewTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotReviewTerms> ;
+    sh:class epo-not:ProcedureTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm-isSubjectToProcedureSpecificTerm-Procedure_ND-LotReviewTerms> ;
+            sh:class epo-not:Mediator ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesMediator ] ;
+    sh:targetClass epo-not:ProcedureTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm_ND-ProcedureTenderingProcess/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm_ND-ProcedureTenderingProcess> ;
+    sh:class epo-not:ProcedureTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcedureTerm_ND-ProcedureTenderingProcess> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isSubmissionForAllLotsRequired ] ;
+    sh:targetClass epo-not:ProcedureTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-AcceleratedProcedure/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-AcceleratedProcedure> ;
+    sh:class epo-not:Procedure ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-AcceleratedProcedure> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isAccelerated ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-AcceleratedProcedure> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAcceleratedProcedureJustification ] ;
+    sh:targetClass epo-not:Procedure .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-CrossBorderLaw/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-CrossBorderLaw> ;
+    sh:class epo-not:Procedure ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-CrossBorderLaw> ;
+            sh:class epo-not:ProcedureTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:isSubjectToProcedureSpecificTerm ] ;
+    sh:targetClass epo-not:Procedure .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-LocalLegalBasisNoID/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-LocalLegalBasisNoID> ;
+    sh:class epo-not:Procedure ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-LocalLegalBasisNoID> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasLegalBasisDescription ] ;
+    sh:targetClass epo-not:Procedure .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-LocalLegalBasisWithID/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-LocalLegalBasisWithID> ;
+    sh:class epo-not:Procedure ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-LocalLegalBasisWithID> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasLegalBasisDescription ] ;
+    sh:targetClass epo-not:Procedure .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-LotDistribution/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-LotDistribution> ;
+    sh:class epo-not:Procedure ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-LotDistribution> ;
+            sh:class epo-not:ProcedureTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:isSubjectToProcedureSpecificTerm ] ;
+    sh:targetClass epo-not:Procedure .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureProcurementScope/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureProcurementScope> ;
+    sh:class epo-not:Procedure ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureProcurementScope> ;
+            sh:class epo-not:Purpose ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasPurpose ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureProcurementScope> ;
+            sh:class epo-not:ContractTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:foreseesContractSpecificTerm ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureProcurementScope> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:title ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureProcurementScope> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasInternalIdentifier ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureProcurementScope> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureProcurementScope> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasAdditionalInformation ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureProcurementScope> ;
+            sh:class epo-not:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasLaunchFrameworkAgreementMaximumValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureProcurementScope> ;
+            sh:class epo-not:MonetaryValue ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasEstimatedValue ] ;
+    sh:targetClass epo-not:Procedure .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureTenderingProcess/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureTenderingProcess> ;
+    sh:class epo-not:Procedure ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureTenderingProcess> ;
+            sh:class epo-not:ProcedureTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:isSubjectToProcedureSpecificTerm ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureTenderingProcess> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasMainFeature ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-ProcedureTenderingProcess> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/procurement-procedure-type/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasProcedureType ] ;
+    sh:targetClass epo-not:Procedure .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-Root/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-Root> ;
+    sh:class epo-not:Procedure ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-Root> ;
+            sh:class epo-not:ProcedureTerm ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:isSubjectToProcedureSpecificTerm ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-Root> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasProcurementScopeDividedIntoLot ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-Root> ;
+            sh:class adms:Identifier ;
+            sh:nodeKind sh:IRI ;
+            sh:path adms:identifier ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Procedure_ND-Root> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/legal-basis/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasLegalBasis ] ;
+    sh:targetClass epo-not:Procedure .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementCriterion-specifiesProcurementCriterion-Lot_ND-LotTenderingTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementCriterion-specifiesProcurementCriterion-Lot_ND-LotTenderingTerms> ;
+    sh:class epo-not:ProcurementCriterion ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementCriterion-specifiesProcurementCriterion-Lot_ND-LotTenderingTerms> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/requirement-stage/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasPerformingStaffQualificationInformation ] ;
+    sh:targetClass epo-not:ProcurementCriterion .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocAllNonOfficialLanguages/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocAllNonOfficialLanguages> ;
+    sh:class epo-not:ProcurementDocument ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocAllNonOfficialLanguages> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/languageJSON/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasUnofficialLanguage ] ;
+    sh:targetClass epo-not:ProcurementDocument .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocOfficialLanguage/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocOfficialLanguage> ;
+    sh:class epo-not:ProcurementDocument ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementDocument-involvesProcurementDocument-AccessTerm-isSubjectToLotSpecificTerm-Lot_ND-LotDocOfficialLanguage> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/languageJSON/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasOfficialLanguage ] ;
+    sh:targetClass epo-not:ProcurementDocument .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcedureInformationProvider_ND-LotTenderingTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcedureInformationProvider_ND-LotTenderingTerms> ;
+    sh:class epo-not:ProcurementProcedureInformationProvider ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcedureInformationProvider_ND-LotTenderingTerms> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcedureInformationProvider_ND-LotTenderingTerms> ;
+            sh:class cpov:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasContactPointInRole ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcedureInformationProvider_ND-LotTenderingTerms> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ] ;
+    sh:targetClass epo-not:ProcurementProcedureInformationProvider .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcessInformation_ND-LotTenderingProcessExtension/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcessInformation_ND-LotTenderingProcessExtension> ;
+    sh:class epo-not:ProcurementProcessInformation ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcessInformation_ND-LotTenderingProcessExtension> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:concernsLot ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcessInformation_ND-LotTenderingProcessExtension> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isToBeRelaunched ] ;
+    sh:targetClass epo-not:ProcurementProcessInformation .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcessInformation_ND-ProcedureTenderingProcess/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcessInformation_ND-ProcedureTenderingProcess> ;
+    sh:class epo-not:ProcurementProcessInformation ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcessInformation_ND-ProcedureTenderingProcess> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isCompetitionTerminated ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcessInformation_ND-ProcedureTenderingProcess> ;
+            sh:class epo-not:Procedure ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:concernsProcedure ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementProcessInformation_ND-ProcedureTenderingProcess> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isToBeRelaunched ] ;
+    sh:targetClass epo-not:ProcurementProcessInformation .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementServiceProvider_ND-ServiceProviderParty/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementServiceProvider_ND-ServiceProviderParty> ;
+    sh:class epo-not:ProcurementServiceProvider ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementServiceProvider_ND-ServiceProviderParty> ;
+            sh:class epo-not:Buyer ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:actsOnBehalfOf ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementServiceProvider_ND-ServiceProviderParty> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ProcurementServiceProvider_ND-ServiceProviderParty> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ] ;
+    sh:targetClass epo-not:ProcurementServiceProvider .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Lot_ND-LotAdditionalClassification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Lot_ND-LotAdditionalClassification> ;
+    sh:class epo-not:Purpose ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Lot_ND-LotAdditionalClassification> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/cpv/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasAdditionalClassification ] ;
+    sh:targetClass epo-not:Purpose .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Lot_ND-LotMainClassification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Lot_ND-LotMainClassification> ;
+    sh:class epo-not:Purpose ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Lot_ND-LotMainClassification> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/cpv/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasMainClassification ] ;
+    sh:targetClass epo-not:Purpose .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Lot_ND-LotProcurementScope/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Lot_ND-LotProcurementScope> ;
+    sh:class epo-not:Purpose ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Lot_ND-LotProcurementScope> ;
+            sh:class epo-not:Quantity ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasTotalQuantity ] ;
+    sh:targetClass epo-not:Purpose .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Procedure_ND-ProcedureAdditionalCommodityClassification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Procedure_ND-ProcedureAdditionalCommodityClassification> ;
+    sh:class epo-not:Purpose ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Procedure_ND-ProcedureAdditionalCommodityClassification> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/cpv/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasAdditionalClassification ] ;
+    sh:targetClass epo-not:Purpose .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Procedure_ND-ProcedureMainClassificationCode/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Procedure_ND-ProcedureMainClassificationCode> ;
+    sh:class epo-not:Purpose ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Purpose-hasPurpose-Procedure_ND-ProcedureMainClassificationCode> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/cpv/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasMainClassification ] ;
+    sh:targetClass epo-not:Purpose .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Quantity-hasTotalQuantity-Purpose-hasPurpose-Lot_ND-LotProcurementScope/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Quantity-hasTotalQuantity-Purpose-hasPurpose-Lot_ND-LotProcurementScope> ;
+    sh:class epo-not:Quantity ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Quantity-hasTotalQuantity-Purpose-hasPurpose-Lot_ND-LotProcurementScope> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasQuantityValue ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Quantity-hasTotalQuantity-Purpose-hasPurpose-Lot_ND-LotProcurementScope> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/measurement-unit/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasUnitCode ] ;
+    sh:targetClass epo-not:Quantity .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ReviewProcedureInformationProvider_ND-LotReviewTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ReviewProcedureInformationProvider_ND-LotReviewTerms> ;
+    sh:class epo-not:ReviewProcedureInformationProvider ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ReviewProcedureInformationProvider_ND-LotReviewTerms> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ReviewProcedureInformationProvider_ND-LotReviewTerms> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ReviewProcedureInformationProvider_ND-LotReviewTerms> ;
+            sh:class cpov:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasContactPointInRole ] ;
+    sh:targetClass epo-not:ReviewProcedureInformationProvider .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ReviewTerm-isSubjectToLotSpecificTerm-Lot_ND-LotReviewTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ReviewTerm-isSubjectToLotSpecificTerm-Lot_ND-LotReviewTerms> ;
+    sh:class epo-not:ReviewTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ReviewTerm-isSubjectToLotSpecificTerm-Lot_ND-LotReviewTerms> ;
+            sh:class epo-not:ReviewProcedureInformationProvider ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesReviewProcedureInformationProvider ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ReviewTerm-isSubjectToLotSpecificTerm-Lot_ND-LotReviewTerms> ;
+            sh:class epo-not:Reviewer ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesReviewer ] ;
+    sh:targetClass epo-not:ReviewTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-ReviewTerm-isSubjectToLotSpecificTerm-Lot_ND-ReviewPresentationPeriod/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ReviewTerm-isSubjectToLotSpecificTerm-Lot_ND-ReviewPresentationPeriod> ;
+    sh:class epo-not:ReviewTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-ReviewTerm-isSubjectToLotSpecificTerm-Lot_ND-ReviewPresentationPeriod> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasReviewDeadlineInformation ] ;
+    sh:targetClass epo-not:ReviewTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-Reviewer_ND-LotReviewTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Reviewer_ND-LotReviewTerms> ;
+    sh:class epo-not:Reviewer ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Reviewer_ND-LotReviewTerms> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Reviewer_ND-LotReviewTerms> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-Reviewer_ND-LotReviewTerms> ;
+            sh:class cpov:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasContactPointInRole ] ;
+    sh:targetClass epo-not:Reviewer .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SecurityClearanceTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SecurityClearanceTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms> ;
+    sh:class epo-not:SecurityClearanceTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SecurityClearanceTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms> ;
+            sh:datatype xsd:date ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasDeadline ] ;
+    sh:targetClass epo-not:SecurityClearanceTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SecurityClearanceTerm-isSubjectToLotSpecificTerm-Lot_ND-SecurityClearanceTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SecurityClearanceTerm-isSubjectToLotSpecificTerm-Lot_ND-SecurityClearanceTerms> ;
+    sh:class epo-not:SecurityClearanceTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SecurityClearanceTerm-isSubjectToLotSpecificTerm-Lot_ND-SecurityClearanceTerms> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SecurityClearanceTerm-isSubjectToLotSpecificTerm-Lot_ND-SecurityClearanceTerms> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isSecurityClearanceRequired ] ;
+    sh:targetClass epo-not:SecurityClearanceTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageWeightCriterionParameter/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageWeightCriterionParameter> ;
+    sh:class epo-not:SelectionCriterion ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageWeightCriterionParameter> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path cpov:weight ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SecondStageWeightCriterionParameter> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/number-weight/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasWeightValueType ] ;
+    sh:targetClass epo-not:SelectionCriterion .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteria/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteria> ;
+    sh:class epo-not:SelectionCriterion ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteria> ;
+            sh:class cpov:Constraint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasConstraint ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteria> ;
+            sh:nodeKind sh:Literal ;
+            sh:path skos:prefLabel ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteria> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/selection-criterion/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasSelectionCriterionType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteria> ;
+            sh:nodeKind sh:Literal ;
+            sh:path dcterms:description ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteria> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isUsedForCandidateRestriction ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SelectionCriterion-specifiesProcurementCriterion-Lot_ND-SelectionCriteria> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/usage/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasSelectionCriteriaUsage ] ;
+    sh:targetClass epo-not:SelectionCriterion .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SocialProcurement-fulfillsStrategicProcurement-Lot_ND-LotSocialObjectiveType/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SocialProcurement-fulfillsStrategicProcurement-Lot_ND-LotSocialObjectiveType> ;
+    sh:class epo-not:SocialProcurement ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SocialProcurement-fulfillsStrategicProcurement-Lot_ND-LotSocialObjectiveType> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/social-objective/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:fulfillsRequirement ] ;
+    sh:targetClass epo-not:SocialProcurement .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SpecificDuration-definesContractDuration-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SpecificDuration-definesContractDuration-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration> ;
+    sh:class epo-not:SpecificDuration ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SpecificDuration-definesContractDuration-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/temporal_unit/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path time:unitType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SpecificDuration-definesContractDuration-ContractTerm-foreseesContractSpecificTerm-Lot_ND-LotDuration> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path time:numericDuration ] ;
+    sh:targetClass epo-not:SpecificDuration .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SpecificDuration-hasTenderValidityDuration-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SpecificDuration-hasTenderValidityDuration-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms> ;
+    sh:class epo-not:SpecificDuration ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SpecificDuration-hasTenderValidityDuration-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/temporal_unit/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path time:unitType ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SpecificDuration-hasTenderValidityDuration-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path time:numericDuration ] ;
+    sh:targetClass epo-not:SpecificDuration .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-StrategicProcurement-fulfillsStrategicProcurement-Lot-Lot_ND-AccessibilityJustification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-StrategicProcurement-fulfillsStrategicProcurement-Lot-Lot_ND-AccessibilityJustification> ;
+    sh:class epo-not:StrategicProcurement ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-StrategicProcurement-fulfillsStrategicProcurement-Lot-Lot_ND-AccessibilityJustification> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/accessibility/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:includesAccessibilityCriterion ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-StrategicProcurement-fulfillsStrategicProcurement-Lot-Lot_ND-AccessibilityJustification> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasNonAccessibilityCriterionJustification ] ;
+    sh:targetClass epo-not:StrategicProcurement .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-StrategicProcurement-fulfillsStrategicProcurement-Lot_ND-StrategicProcurementType/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-StrategicProcurement-fulfillsStrategicProcurement-Lot_ND-StrategicProcurementType> ;
+    sh:class epo-not:StrategicProcurement ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-StrategicProcurement-fulfillsStrategicProcurement-Lot_ND-StrategicProcurementType> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasStrategicProcurementDescription ] ;
+    sh:targetClass epo-not:StrategicProcurement .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubcontractTerm-foreseesContractSpecificTerm-Lot_ND-SubcontractingObligation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubcontractTerm-foreseesContractSpecificTerm-Lot_ND-SubcontractingObligation> ;
+    sh:class epo-not:SubcontractTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubcontractTerm-foreseesContractSpecificTerm-Lot_ND-SubcontractingObligation> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/subcontracting-obligation/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasSubcontractingObligation ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubcontractTerm-foreseesContractSpecificTerm-Lot_ND-SubcontractingObligation> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasMinimumSubcontractorsProposedObligation ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubcontractTerm-foreseesContractSpecificTerm-Lot_ND-SubcontractingObligation> ;
+            sh:datatype xsd:decimal ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasSubcontractorsProposedAboveObligation ] ;
+    sh:targetClass epo-not:SubcontractTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-AuctionTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-AuctionTerms> ;
+    sh:class epo-not:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-AuctionTerms> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasEAuctionURL ] ;
+    sh:targetClass epo-not:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-FinancialGuarantee/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-FinancialGuarantee> ;
+    sh:class epo-not:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-FinancialGuarantee> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasGuaranteeDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-FinancialGuarantee> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isGuaranteeRequired ] ;
+    sh:targetClass epo-not:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-InterestExpressionReceptionPeriod/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-InterestExpressionReceptionPeriod> ;
+    sh:class epo-not:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-InterestExpressionReceptionPeriod> ;
+            sh:datatype xsd:dateTime ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasReceiptExpressionDeadline ] ;
+    sh:targetClass epo-not:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation> ;
+    sh:class epo-not:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasLateSubmissionInformationDescription ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LateTendererInformation> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/missing-info-submission/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasLateSubmissionPermission ] ;
+    sh:targetClass epo-not:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotECatalog/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotECatalog> ;
+    sh:class epo-not:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotECatalog> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/permission/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasECataloguePermission ] ;
+    sh:targetClass epo-not:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotESignature/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotESignature> ;
+    sh:class epo-not:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotESignature> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isAdvancedElectronicSignatureRequired ] ;
+    sh:targetClass epo-not:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotSubmissionLanguage/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotSubmissionLanguage> ;
+    sh:class epo-not:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotSubmissionLanguage> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/languageJSON/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasLanguage ] ;
+    sh:targetClass epo-not:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingProcess/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingProcess> ;
+    sh:class epo-not:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingProcess> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/permission/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasESubmissionPermission ] ;
+    sh:targetClass epo-not:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms> ;
+    sh:class epo-not:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms> ;
+            sh:datatype xsd:boolean ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:isMultipleTenderSubmissionAllowed ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms> ;
+            sh:class epo-not:TenderProcessor ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesTenderProcessor ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms> ;
+            sh:class epo-not:SpecificDuration ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasTenderValidityDuration ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-LotTenderingTerms> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/permission/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasVariantPermission ] ;
+    sh:targetClass epo-not:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-NonEsubmission/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-NonEsubmission> ;
+    sh:class epo-not:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-NonEsubmission> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/communication-justification/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasNonElectronicSubmissionJustification ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-NonEsubmission> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasNonElectronicSubmissionDescription ] ;
+    sh:targetClass epo-not:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-ParticipationRequestPeriod/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-ParticipationRequestPeriod> ;
+    sh:class epo-not:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-ParticipationRequestPeriod> ;
+            sh:datatype xsd:dateTime ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasReceiptParticipationRequestDeadline ] ;
+    sh:targetClass epo-not:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-SubcontractingIndication/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-SubcontractingIndication> ;
+    sh:class epo-not:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-SubcontractingIndication> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/subcontracting-indication/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasTenderSubcontractingInformation ] ;
+    sh:targetClass epo-not:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-SubmissionDeadline/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-SubmissionDeadline> ;
+    sh:class epo-not:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-SubmissionDeadline> ;
+            sh:datatype xsd:dateTime ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasReceiptTenderDeadline ] ;
+    sh:targetClass epo-not:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-TenderRecipient/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-TenderRecipient> ;
+    sh:class epo-not:SubmissionTerm ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-TenderRecipient> ;
+            sh:nodeKind sh:Literal ;
+            sh:path epo-not:hasSubmissionURL ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-SubmissionTerm-isSubjectToLotSpecificTerm-Lot_ND-TenderRecipient> ;
+            sh:class epo-not:TenderReceiver ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:definesTenderReceiver ] ;
+    sh:targetClass epo-not:SubmissionTerm .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-TaxInformationProvider_ND-LotFiscalLegislation/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-TaxInformationProvider_ND-LotFiscalLegislation> ;
+    sh:class epo-not:TaxInformationProvider ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-TaxInformationProvider_ND-LotFiscalLegislation> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-TaxInformationProvider_ND-LotFiscalLegislation> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-TaxInformationProvider_ND-LotFiscalLegislation> ;
+            sh:class cpov:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasContactPointInRole ] ;
+    sh:targetClass epo-not:TaxInformationProvider .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-TenderProcessor_ND-LotTenderingTerms/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-TenderProcessor_ND-LotTenderingTerms> ;
+    sh:class epo-not:TenderProcessor ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-TenderProcessor_ND-LotTenderingTerms> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-TenderProcessor_ND-LotTenderingTerms> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:contextualisedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-TenderProcessor_ND-LotTenderingTerms> ;
+            sh:class cpov:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasContactPointInRole ] ;
+    sh:targetClass epo-not:TenderProcessor .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-TenderReceiver_ND-TenderRecipient/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-TenderReceiver_ND-TenderRecipient> ;
+    sh:class epo-not:TenderReceiver ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-TenderReceiver_ND-TenderRecipient> ;
+            sh:class cpov:ContactPoint ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:hasContactPointInRole ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-TenderReceiver_ND-TenderRecipient> ;
+            sh:class org:Organization ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:playedBy ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-TenderReceiver_ND-TenderRecipient> ;
+            sh:class epo-not:Lot ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:contextualisedBy ] ;
+    sh:targetClass epo-not:TenderReceiver .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/MG-VehicleInformation_ND-StrategicProcurementInformationLot/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-VehicleInformation_ND-StrategicProcurementInformationLot> ;
+    sh:class epo-not:VehicleInformation ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-VehicleInformation_ND-StrategicProcurementInformationLot> ;
+            sh:class epo-not:GreenProcurement ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:concernsGreenProcurement ],
+        [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/MG-VehicleInformation_ND-StrategicProcurementInformationLot> ;
+            sh:node <http://data.europa.eu/a4g/mapping/sf-rml/cvd-contract-type/shape> ;
+            sh:nodeKind sh:IRI ;
+            sh:path epo-not:specifiesCleanVehicleDirectiveContractType ] ;
+    sh:targetClass epo-not:VehicleInformation .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/X-ContactPoint-Organization/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/X-ContactPoint-Organization> ;
+    sh:class org:Organization ;
+    sh:nodeKind sh:IRI ;
+    sh:property [ dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/X-ContactPoint-Organization> ;
+            sh:nodeKind sh:IRI ;
+            sh:path owl:sameAs ] ;
+    sh:targetClass org:Organization .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/direct-award-justification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/direct-award-justification> ;
+    sh:nodeKind sh:IRI .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/economic-operator-size/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/economic-operator-size> ;
+    sh:nodeKind sh:IRI .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/irregularity-type/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/irregularity-type> ;
+    sh:nodeKind sh:IRI .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/non-award-justification/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/non-award-justification> ;
+    sh:nodeKind sh:IRI .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/vehicle-category/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/vehicle-category> ;
+    sh:nodeKind sh:IRI .
+
+<http://data.europa.eu/a4g/mapping/sf-rml/winner-selection-status/shape> a sh:NodeShape ;
+    dcterms:source <http://data.europa.eu/a4g/mapping/sf-rml/winner-selection-status> ;
+    sh:nodeKind sh:IRI .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:hasOfficialLanguage .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:hasOfficialLanguage .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:hasMainActivity .
+
+[] sh:path epo-not:hasMainActivity .
+
+[] sh:path epo-not:announcesRole .
+
+[] sh:path epo-not:hasGuaranteeDescription .
+
+[] sh:path epo-not:specifiesProcurementCriterion .
+
+[] sh:path epo-not:hasLaunchFrameworkAgreementMaximumValue .
+
+[] sh:path epo-not:isContractingEntity .
+
+[] sh:path epo-not:isContractingEntity .
+
+[] sh:path epo-not:hasPurpose .
+
+[] sh:path epo-not:hasPurpose .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:hasConstraint .
+
+[] sh:path epo-not:specifiesProcurementCriterion .
+
+[] sh:path epo-not:specifiesProcurementCriterion .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:specifiesProcurementCriterion .
+
+[] sh:path epo-not:specifiesProcurementCriterion .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:fulfillsStrategicProcurement .
+
+[] sh:path epo-not:hasLaunchFrameworkAgreementMaximumValue .
+
+[] sh:path epo-not:usesChannel .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:specifiesProcurementCriterion .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:fulfillsStrategicProcurement .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:fulfillsStrategicProcurement .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:specifiesProcurementCriterion .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:fulfillsStrategicProcurement .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:usesTechnique .
+
+[] sh:path epo-not:usesChannel .
+
+[] sh:path epo-not:specifiesProcurementCriterion .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:hasPurpose .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:specifiesProcurementCriterion .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:specifiesProcurementCriterion .
+
+[] sh:path epo-not:fulfillsStrategicProcurement .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:usesTechnique .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:specifiesProcurementCriterion .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:fulfillsStrategicProcurement .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:fulfillsStrategicProcurement .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:foreseesContractSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:specifiesProcurementCriterion .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:isSubjectToLotSpecificTerm .
+
+[] sh:path epo-not:hasPurpose .
+
+[] sh:path epo-not:isSubjectToProcedureSpecificTerm .
+
+[] sh:path epo-not:isSubjectToProcedureSpecificTerm .
+
+[] sh:path epo-not:isSubjectToProcedureSpecificTerm .
+
+[] sh:path epo-not:involvesProcurementDocument .
+
