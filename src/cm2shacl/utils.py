@@ -56,19 +56,19 @@ def combine_shapes_with_same_path(graph):
             path = graph.value(ps, SH.path)
             if path:
                 path_dict[path].append(ps)
-            # graph.remove((ps, SH.path, path))
+            graph.remove((ps, SH.path, path))
             graph.remove((ns, SH.property, ps))
 
         # Add refined property shapes
         for path, shapes in path_dict.items():
             if len(shapes) == 1:
                 graph.add((ns, SH.property, shapes[0]))
-                # graph.add((shapes[0], SH.path, path))
+                graph.add((shapes[0], SH.path, path))
                 for src in dctsource_dict[shapes[0]]:
                     graph.add((shapes[0], dctsource, src))
                 continue
             
-            graph.remove((ps, SH.path, path))
+            # graph.remove((ps, SH.path, path))
             
             # Merge sh:in values
             in_values = set()

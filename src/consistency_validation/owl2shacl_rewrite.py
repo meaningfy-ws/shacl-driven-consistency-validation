@@ -76,11 +76,16 @@ def enhance_shacl_with_owl(shacl_path, owl_path, output_path):
                 inner_node = collection[0]
                 for p, o in g.predicate_objects(inner_node):
                     to_add.append((ps, p, o))
-                to_remove.append((ps, SH["or"], or_list))
-    for t in to_remove:
-        g.remove(t)
-    for t in to_add:
-        g.add(t)
+                    collection = Collection(g, o)
+                    for item in collection:
+                        pass  # Just to initialize the collection
+                    collection.clear()
+                    g.remove((ps, SH["or"], o))
+    #             to_remove.append((ps, SH["or"], or_list))
+    # for t in to_remove:
+    #     g.remove(t)
+    # for t in to_add:
+    #     g.add(t)
 
     # Step 2: 基于 path 添加对应的 targetClass（来自 domain）
     for ps, _, p in g.triples((None, SH.path, None)):
@@ -112,14 +117,14 @@ def enhance_shacl_with_owl(shacl_path, owl_path, output_path):
         g.remove((ps, SH.datatype, RDFS.Literal))
         g.add((ps, SH.nodeKind, SH.Literal))
 
-    #step 6: rewrite datattype
+    # #step 6: rewrite datattype
     for ps, _, nk in g.triples((None, SH.nodeKind, None)):
         if nk == SH.BlankNodeOrIRI:
             g.remove((ps, SH.nodeKind, nk))
             g.add((ps, SH.nodeKind, SH.IRI))
-        elif nk == SH.IRIOrLiteral:
-            g.remove((ps, SH.nodeKind, nk))
-            g.add((ps, SH.nodeKind, SH.Literal))
+        # elif nk == SH.IRIOrLiteral:
+        #     g.remove((ps, SH.nodeKind, nk))
+        #     g.add((ps, SH.nodeKind, SH.Literal))
     
     for s, _, _ in g.triples((None, SH["class"], None)):
         g.add((s, SH.nodeKind, SH.IRI))
