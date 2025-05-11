@@ -1,2 +1,12 @@
 __pycache__
 TED/
+output/
+test_data/
+validation/
+sparql/
+rdf/
+resources/
+evaluation_*.py
+config_deprecated.ini
+
+.DS_Store
