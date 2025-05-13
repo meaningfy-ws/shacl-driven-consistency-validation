@@ -90,7 +90,7 @@ class consistencyValidator:
 
     def check_fni(self) -> Dict:
         """
-        Detect Focus Node Inconsistency (FNI) across all sources.
+        Detect Focus Node Inconsistency (TCI) across all sources.
         Generates detailed report using 'focusNodeDiffer', with 'presentIn' and 'missingIn' for each class.
         """
         owl_classes = self.source_fns.get("OWL", set())
@@ -124,13 +124,13 @@ class consistencyValidator:
             return None
 
         result = {
-            "type": "FNI",
-            "focusNodeDiffer": []
+            "type": "TCI",
+            "differ": []
         }
 
         for cls in sorted(diff_classes):
             entry = {
-                "focusNode": str(cls),
+                "targetClass": str(cls),
                 "presentIn": {},
                 "missingIn": {}
             }
@@ -143,13 +143,13 @@ class consistencyValidator:
                         entry["presentIn"][src] = []
                 else:
                     entry["missingIn"][src] = []
-            result["focusNodeDiffer"].append(entry)
+            result["differ"].append(entry)
 
         return result
 
     def check_pvi(self) -> Dict:
         """
-        Detect Property Value Inconsistency (PVI) across shared focus nodes in all sources.
+        Detect Property Value Inconsistency (PPI) across shared focus nodes in all sources.
         Generates detailed report using 'propertyValueDiffer', with 'presentIn' and 'missingIn' for each (focusNode, propertyPath) pair.
         """
         owl_pvs = self.source_pvs.get("OWL", {})
@@ -187,13 +187,13 @@ class consistencyValidator:
             return None
 
         result = {
-            "type": "PVI",
-            "propertyValueDiffer": []
+            "type": "PPI",
+            "differ": []
         }
 
         for cls, prop in sorted(diff_pairs):
             entry = {
-                "focusNode": str(cls),
+                "targetClass": str(cls),
                 "propertyPath": str(prop),
                 "presentIn": {},
                 "missingIn": {}
@@ -205,7 +205,7 @@ class consistencyValidator:
                 else:
                     entry["missingIn"][src] = sorted(self.shape_sources[src]["focus_nodes"][cls])
 
-            result["propertyValueDiffer"].append(entry)
+            result["differ"].append(entry)
 
         return result
 
@@ -219,18 +219,15 @@ class consistencyValidator:
             # constraint_type -> value -> present_sources
             constraint_presence = defaultdict(lambda: defaultdict(set))
 
-            # 填充每个 constraint type 和 value 的出现情况
             for src in all_sources:
                 c_dict = self.source_pvcs[src].get(cls_path, {})
                 for c_type in [SH.datatype, SH.nodeKind, SH["class"]]:
                     for val in c_dict.get(c_type, set()):
                         constraint_presence[c_type][val].add(src)
 
-            # 遍历所有 constraint type 和所有值，计算每个值的 presentIn / missingIn
             for c_type, val_map in constraint_presence.items():
                 for val, present_set in val_map.items():
                     if len(present_set) != len(all_sources):
-                        # 存在缺失
                         presentIn = {src: sorted(self.shape_sources.get(src, {}).get("property_paths", {}).get((cls,prop),[])) for src in present_set}
                         missingIn = {src: sorted(self.shape_sources.get(src, {}).get("property_paths", {}).get((cls,prop),[])) for src in set(all_sources) - present_set}
 
@@ -238,14 +235,14 @@ class consistencyValidator:
                             continue
 
                         all_reports.append({
-                            "focusNode": str(cls),
+                            "targetClass": str(cls),
                             "propertyValue": str(prop),
                             "constraint": [str(c_type),str(val)],
                             "presentIn": presentIn,
                             "missingIn": missingIn
                         })
 
-        return {"type": "PVCI", "constraintDiffer": all_reports} if all_reports else None
+        return {"type": "VCI", "differ": all_reports} if all_reports else None
 
 
 
