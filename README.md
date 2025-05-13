@@ -1,6 +1,7 @@
 # SHACL-driven Consistency Validator
 
 🛠️ To perform SHACL-driven consistency validation that systematically detects inconsistencies among the artefacts involved in the TED Mapping Workflow. 
+
 It directly support the consistency validation among ontologies, conceptual mappings, and RML mapping rules.
 ---
 
