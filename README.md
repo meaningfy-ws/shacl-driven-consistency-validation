@@ -1,6 +1,7 @@
-# CM2SHACL
+# SHACL-driven Cross-layer Consistency Validator
 
-A tool to generate SHACL shapes from Conceptual Mapping for RDF graphs validation.
+A SHACL-driven Cross-layer Consistency Validation framework that leverages SHACL as a unified data profile to detect inconsistencies among various modeling assets involved in the TED mapping workflow.
+
 
 ## Prerequisite
 
