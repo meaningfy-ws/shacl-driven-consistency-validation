@@ -38,7 +38,7 @@ The Consistency Validator currently supports SHACL extraction from multiple arte
 
 - **OWL Ontologies**:  
   ➔ Extracted using [Astrea](https://github.com/oeg-upm/astrea).  
-  One option is use the [SCOOP-UI platform](https://demos.citius.usc.es/scoop/) which integrates Astrea for a more user-friendly SHACL generation experience from OWL ontologies.
+  Another option is use the [SCOOP-UI platform](https://demos.citius.usc.es/scoop/) which integrates Astrea for a more user-friendly SHACL generation experience from OWL ontologies.
 
 Each artefact type has its corresponding SHACL extraction module, enabling automated consistency checking across multiple layers and sources.
 
