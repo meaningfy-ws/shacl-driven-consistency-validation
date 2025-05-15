@@ -6,6 +6,7 @@ from src.cm2shacl.cm2shacl import CMtoSHACL
 from src.consistency_validation.rml2shacl_rewrite import RML2SHACLRewrite
 from src.consistency_validation.owl2shacl_rewrite import enhance_shacl_with_owl
 from src.consistency_validation.consistency_validation import consistencyValidator
+from src.consistency_validation.owl2shacl.owl2shacl import translateFromFile
 import time
 
 
@@ -40,8 +41,11 @@ def run_consistency_validation(args):
     if args.owl_cache:
         print("[OWL] Reuse OWL cache...")
     elif args.owl and args.owl_shacl:
-        print("[OWL] Rewriting SHACL from OWL...")
+        print("[OWL] Generating and Rewriting SHACL from OWL...")
+        translateFromFile(args.owl, args.owl_shacl)
         enhance_shacl_with_owl(shacl_path=args.owl_shacl, owl_path=args.owl, output_path=args.owl_shacl+"_rewrite.ttl")
+        generated_files["OWL"] = args.owl_shacl+"_rewrite.ttl"
+    elif args.owl_shacl:
         generated_files["OWL"] = args.owl_shacl+"_rewrite.ttl"
 
     print("[Validation] Running consistency validation...")
